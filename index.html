@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>F.R. di Busato Fausto — L'informatica al tuo servizio</title>
+  <meta name="description" content="F.R. di Busato Fausto: assistenza informatica, hardware, reti, software su misura e formazione per le aziende dal 2000. Novellara (RE).">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#contenuto">Vai al contenuto</a>
+
+  <div class="progresso" id="progresso" aria-hidden="true"></div>
+  <div class="sfondo" aria-hidden="true"></div>
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <div class="orb orb-a" aria-hidden="true"></div>
+  <div class="orb orb-b" aria-hidden="true"></div>
+
+  <header class="header">
+    <nav class="nav container" aria-label="Navigazione principale">
+      <a class="marchio" href="index.html">
+        <span class="marchio-logo">F.R.</span>
+        <span class="marchio-testo">
+          <strong>F.R. di Busato Fausto</strong>
+          <span>l'informatica al tuo servizio</span>
+        </span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="menu" aria-label="Apri il menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu" id="menu">
+        <li><a href="#azienda">L'Azienda</a></li>
+        <li><a href="#servizi">Servizi</a></li>
+        <li><a href="sviluppo-software.html">Sviluppo Software</a></li>
+        <li><a href="#partner">Partner</a></li>
+        <li><a class="nav-cta" href="#contatti">Contatti</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="contenuto">
+
+    <!-- ================= HERO ================= -->
+    <section class="hero container">
+      <div>
+        <p class="eyebrow entra">Dal 2000 · Novellara (RE)</p>
+        <h1 class="entra" data-passo="1">L'informatica<br>al <span class="gradiente">tuo servizio</span>.</h1>
+        <p class="hero-lead entra" data-passo="2">
+          Assistenza, hardware, reti e software su misura per la tua azienda.
+          Oltre venticinque anni di esperienza al fianco delle imprese, con soluzioni
+          concrete e un supporto sempre raggiungibile.
+        </p>
+        <div class="hero-azioni entra" data-passo="3">
+          <a class="btn btn-pieno" href="#servizi">Scopri i servizi</a>
+          <a class="btn btn-vuoto" href="sviluppo-software.html">Sviluppo software →</a>
+        </div>
+        <p class="hero-nota entra" data-passo="4">
+          <span><b>25+</b> anni di attività</span>
+          <span><b>Microsoft</b> Partner</span>
+          <span><b>Assistenza</b> anche da remoto</span>
+        </p>
+      </div>
+
+      <div class="terminale entra" data-passo="5" id="terminale" aria-hidden="true">
+        <div class="terminale-barra">
+          <i></i><i></i><i></i>
+          <em>fr-busato — console</em>
+        </div>
+        <div class="terminale-corpo" id="term-body"></div>
+      </div>
+    </section>
+
+    <!-- ================= PARTNER STRISCIA ================= -->
+    <div class="partner-striscia" id="partner">
+      <p class="partner-titolo">Partner tecnologici ufficiali</p>
+      <div class="marquee">
+        <div class="marquee-traccia" id="marquee-traccia">
+          <ul class="marquee-gruppo" aria-label="Partner tecnologici">
+            <li class="badge-partner">
+              <span class="badge-icona" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><rect x="1" y="1" width="10.5" height="10.5" fill="#f25022"/><rect x="12.5" y="1" width="10.5" height="10.5" fill="#7fba00"/><rect x="1" y="12.5" width="10.5" height="10.5" fill="#00a4ef"/><rect x="12.5" y="12.5" width="10.5" height="10.5" fill="#ffb900"/></svg>
+              </span>
+              <span class="badge-nome">Microsoft</span>
+            </li>
+            <li class="badge-partner">
+              <span class="badge-icona" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.5" fill="none" stroke="#0e7bb8" stroke-width="2"/><text x="12" y="15.4" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="8.2" fill="#0e7bb8" letter-spacing=".3">DELL</text></svg>
+              </span>
+              <span class="badge-nome">Dell</span>
+            </li>
+            <li class="badge-partner">
+              <span class="badge-icona" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="6" cy="5" r="3.4" fill="#1b1f27"/><circle cx="18" cy="5" r="3.4" fill="#1b1f27"/><circle cx="12" cy="13" r="9" fill="#f4f7fc"/><ellipse cx="8.2" cy="11.6" rx="2.5" ry="3" transform="rotate(-18 8.2 11.6)" fill="#1b1f27"/><ellipse cx="15.8" cy="11.6" rx="2.5" ry="3" transform="rotate(18 15.8 11.6)" fill="#1b1f27"/><ellipse cx="12" cy="16.4" rx="1.7" ry="1.2" fill="#1b1f27"/></svg>
+              </span>
+              <span class="badge-nome">Panda Security</span>
+            </li>
+            <li class="badge-partner">
+              <span class="badge-icona" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 2.5 21.5 21h-4.6l-1.9-4H9L12 2.5z" fill="#3aa0e8"/><path d="M12 2.5 2.5 21h4.6L12 10.8V2.5z" fill="#7fc4f5"/></svg>
+              </span>
+              <span class="badge-nome">Acronis</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= AZIENDA ================= -->
+    <section class="sezione container" id="azienda">
+      <div class="sezione-testa rivela">
+        <p class="eyebrow">L'Azienda</p>
+        <h2>Un partner informatico, non un semplice fornitore.</h2>
+      </div>
+      <div class="azienda-griglia">
+        <div class="azienda-testo rivela">
+          <p>
+            <strong>F.R. di Busato Fausto</strong> è un'impresa individuale nata nel marzo 2000
+            in provincia di Reggio Emilia. Il titolare, Fausto Busato, perito tecnico industriale
+            con studi in ingegneria elettronica, lavora in ambito informatico dal 1996 al fianco
+            di aziende del territorio.
+          </p>
+          <p>
+            Negli anni l'attività si è ampliata: consulenza per l'acquisto di prodotti informatici,
+            realizzazione di reti, pagine web e <strong>software personalizzato</strong> per sistemi
+            Microsoft con tecnologie VB.NET, Visual Basic e VBA, fino alla personalizzazione di
+            AutoCAD con Autolisp.
+          </p>
+          <p>
+            Oggi, anche grazie a diverse collaborazioni, siamo in grado di affiancare il cliente
+            in un mondo — quello informatico — in continua evoluzione, individuando le soluzioni
+            più consone al suo modo di lavorare.
+          </p>
+        </div>
+        <div class="pannello-dati rivela" data-ritardo="1">
+          <div class="dato">
+            <span class="dato-num" data-conta="2000">2000</span>
+            <span class="dato-desc">Anno di fondazione dell'azienda a Novellara, nel cuore della provincia reggiana.</span>
+          </div>
+          <div class="dato">
+            <span class="dato-num" data-conta="1996">1996</span>
+            <span class="dato-desc">Inizio delle prime collaborazioni informatiche e di disegno tecnico con le aziende del territorio.</span>
+          </div>
+          <div class="dato">
+            <span class="dato-num" data-conta="4">4</span>
+            <span class="dato-desc">Partnership tecnologiche ufficiali: Microsoft, Dell, Panda Security e Acronis.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SERVIZI ================= -->
+    <section class="sezione container" id="servizi">
+      <div class="sezione-testa rivela">
+        <p class="eyebrow">Prodotti e Servizi</p>
+        <h2>Tutto ciò che serve alla tua infrastruttura.</h2>
+        <p class="sottotitolo">Dall'assistenza quotidiana alla progettazione di soluzioni su misura: un unico interlocutore per l'informatica della tua azienda.</p>
+      </div>
+      <div class="servizi-griglia">
+        <article class="servizio rivela">
+          <div class="servizio-icona" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <h3>Assistenza Hardware</h3>
+          <p>Ricerca e soluzione dei guasti negli apparati informatici aziendali, primi fra tutti PC e server, con interventi puntuali e celeri.</p>
+        </article>
+        <article class="servizio rivela" data-ritardo="1">
+          <div class="servizio-icona" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16.5 9.4 7.55 4.24M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96 12 12.01l8.73-5.05M12 22.08V12"/></svg>
+          </div>
+          <h3>Fornitura Hardware</h3>
+          <p>Dopo un'attenta valutazione delle esigenze, forniamo componenti e accessori per PC e reti dei marchi più prestigiosi.</p>
+        </article>
+        <article class="servizio rivela" data-ritardo="2">
+          <div class="servizio-icona" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <h3>Software su misura</h3>
+          <p>Mini gestionali, elaborazione dati, aiuto alla produzione e automazione Office: software sviluppato attorno al tuo modo di lavorare.</p>
+        </article>
+        <article class="servizio rivela">
+          <div class="servizio-icona" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></svg>
+          </div>
+          <h3>Reti e Sicurezza</h3>
+          <p>Progettazione e gestione di reti aziendali, backup, filtro contenuti e protezione dei dati con soluzioni Panda Security e Acronis.</p>
+        </article>
+        <article class="servizio rivela" data-ritardo="1">
+          <div class="servizio-icona" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3>Consulenza e Assistenza</h3>
+          <p>Individuiamo con te le soluzioni più consone alle tue esigenze e ti seguiamo nella loro realizzazione, anche con assistenza remota.</p>
+        </article>
+        <article class="servizio rivela" data-ritardo="2">
+          <div class="servizio-icona" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <h3>Corsi di Formazione</h3>
+          <p>Corsi individuali o per piccoli gruppi: informatica di base, Office, Access, AutoCAD, posta elettronica e web.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================= SVILUPPO SOFTWARE (anteprima) ================= -->
+    <section class="sezione container" id="sviluppo-software">
+      <div class="sezione-testa rivela">
+        <p class="eyebrow">Sviluppo Software</p>
+        <h2>Progetti nati dalle esigenze reali delle aziende.</h2>
+        <p class="sottotitolo">Una selezione dei software che abbiamo sviluppato. Ogni progetto racconta un problema concreto e la soluzione costruita su misura per risolverlo.</p>
+      </div>
+      <div class="bento" id="featured-grid" aria-label="Progetti in evidenza"></div>
+      <p style="margin-top:2.2rem" class="rivela">
+        <a class="btn btn-vuoto" href="sviluppo-software.html">Vedi tutti i progetti →</a>
+      </p>
+    </section>
+
+    <!-- ================= ASSISTENZA REMOTA ================= -->
+    <section class="sezione container">
+      <div class="callout rivela">
+        <div>
+          <p class="eyebrow">Assistenza Remota</p>
+          <h2>Un problema urgente? Ci colleghiamo subito.</h2>
+          <p>Il servizio di assistenza remota consente di risolvere i piccoli problemi in modo rapido e con la partecipazione dell'operatore, senza attendere un intervento in sede.</p>
+        </div>
+        <a class="btn btn-pieno" href="https://logins.livecare.net/liveletexecustomunified/DDG7D1416OT0S9K1" target="_blank" rel="noopener noreferrer">Contatta un operatore</a>
+      </div>
+    </section>
+
+    <!-- ================= CONTATTI ================= -->
+    <section class="sezione container" id="contatti">
+      <div class="sezione-testa rivela">
+        <p class="eyebrow">Contatti</p>
+        <h2>Parliamo del tuo progetto.</h2>
+        <p class="sottotitolo">Scrivici o vieni a trovarci: individueremo insieme la soluzione più adatta alla tua azienda.</p>
+      </div>
+      <div class="contatti-griglia">
+        <div class="contatto rivela">
+          <h3>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Dove siamo
+          </h3>
+          <p>Via Marzabotto, 1<br>42017 Novellara (RE)<br>Italia</p>
+        </div>
+        <div class="contatto rivela" data-ritardo="1">
+          <h3>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+            Scrivici
+          </h3>
+          <p>Per informazioni, preventivi<br>o richieste di assistenza:<br><a href="mailto:info@fr-busato.it">info@fr-busato.it</a></p>
+        </div>
+        <div class="contatto rivela" data-ritardo="2">
+          <h3>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Assistenza remota
+          </h3>
+          <p>Per gli interventi urgenti è attivo il collegamento remoto con operatore.<br><a href="https://logins.livecare.net/liveletexecustomunified/DDG7D1416OT0S9K1" target="_blank" rel="noopener noreferrer">Avvia la sessione →</a></p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-griglia">
+        <div class="footer-col">
+          <a class="marchio" href="index.html">
+            <span class="marchio-logo">F.R.</span>
+            <span class="marchio-testo">
+              <strong>F.R. di Busato Fausto</strong>
+              <span>l'informatica al tuo servizio</span>
+            </span>
+          </a>
+          <p style="max-width:22rem; margin-top:1rem;">Assistenza informatica, hardware, reti, software su misura e formazione per le aziende dal 2000.</p>
+        </div>
+        <div class="footer-col">
+          <h3>Navigazione</h3>
+          <ul>
+            <li><a href="index.html#azienda">L'Azienda</a></li>
+            <li><a href="index.html#servizi">Servizi</a></li>
+            <li><a href="sviluppo-software.html">Sviluppo Software</a></li>
+            <li><a href="index.html#contatti">Contatti</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Informazioni legali</h3>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="cookie-policy.html">Cookie Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-legale">
+        <span>© <span id="anno-corrente"></span> F.R. di Busato Fausto — Via Marzabotto, 1 — 42017 Novellara (RE)</span>
+        <span>P.IVA 01878620358</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= AVVISO COOKIE ================= -->
+  <div class="avviso-cookie" id="avviso-cookie" role="region" aria-label="Informativa sui cookie" hidden>
+    <p>Questo sito non utilizza cookie di profilazione. Vengono impiegati solo strumenti tecnici necessari al funzionamento. Maggiori dettagli nella <a href="cookie-policy.html">Cookie Policy</a>.</p>
+    <button class="btn btn-pieno" id="chiudi-cookie">Ho capito</button>
+  </div>
+
+  <script src="assets/js/progetti.js"></script>
+  <script src="assets/js/portfolio.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
