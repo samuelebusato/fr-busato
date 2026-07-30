@@ -1,5 +1,19 @@
 [
   {
+    "id": "nuovo-sito-web",
+    "data": "2026-07-30",
+    "dataLabel": "30 luglio 2026",
+    "tag": "Novità",
+    "titolo": "Online il nuovo sito di F.R. di Busato Fausto",
+    "anteprima": "Abbiamo rinnovato completamente il sito: nuova veste grafica, una pagina dedicata per ogni servizio, il portfolio dei software e questo blog per restare aggiornati.",
+    "corpo": [
+      "Siamo felici di presentare il <strong>nuovo sito di F.R. di Busato Fausto</strong>, rinnovato nella grafica e nei contenuti per raccontare meglio quello che facciamo.",
+      "Trovi una <strong>pagina dedicata per ogni servizio</strong> — sviluppo software, reti sicure, privacy e conformità (GDPR e NIS2), monitoraggio di siti e domini, assistenza e fornitura hardware — con casi d'uso e informazioni utili. Ci sono poi il <strong>portfolio dei progetti software</strong> e questo <strong>blog</strong>, dove pubblicheremo novità e annunci.",
+      "Dai un'occhiata e, se hai bisogno di una mano o di un preventivo, <a href='index.html#contatti'>scrivici</a>: saremo felici di aiutarti."
+    ],
+    "link": { "testo": "Esplora il sito", "url": "index.html" }
+  },
+  {
     "id": "cerco-tester-heleox",
     "data": "2026-07-30",
     "dataLabel": "30 luglio 2026",

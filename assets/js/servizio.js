@@ -33,7 +33,7 @@
   }
 
   document.title = s.nome + " — F.R. di Busato Fausto";
-  if (s.colore) document.documentElement.style.setProperty("--accent", s.colore);
+  /* Le pagine servizio usano l'accento della home (blu): nessun override. */
   const md = document.querySelector('meta[name="description"]');
   if (md) md.setAttribute("content", s.nome + " — " + s.sottotitolo);
 
