@@ -124,13 +124,9 @@ a:hover{ text-decoration:underline; }
 }
 .marchio:hover{ text-decoration:none; }
 .marchio-logo{
-  width:38px; height:38px; border-radius:10px; flex:none;
-  display:grid; place-items:center;
-  font-weight:700; font-size:.85rem; letter-spacing:.02em;
-  color:#ffffff;
-  background:linear-gradient(140deg, #3b82f6, #2563eb);
-  border:1px solid color-mix(in srgb, var(--accent) 50%, transparent);
-  box-shadow:0 6px 18px -6px rgba(37,99,235,.55);
+  width:40px; height:40px; flex:none;
+  background:url("../img/favicon.svg") center / contain no-repeat;
+  font-size:0; color:transparent;
 }
 .marchio-testo{ line-height:1.15; }
 .marchio-testo strong{ display:block; font-size:.98rem; font-weight:600; }
@@ -874,7 +870,7 @@ h3{ font-size:1.18rem; font-weight:600; }
 
 /* ---- Servizi: tier in evidenza + tier secondario ---- */
 .servizi-evidenza{
-  display:grid; grid-template-columns:repeat(3, 1fr); gap:1.4rem;
+  display:grid; grid-template-columns:repeat(4, 1fr); gap:1.4rem;
   margin-bottom:1.4rem;
 }
 .servizi-secondari{
@@ -907,6 +903,10 @@ h3{ font-size:1.18rem; font-weight:600; }
 
 /* ---- Richiamo HeleoX ---- */
 .heleox{
+  --accent:#8b5cf6;
+  --accent-2: color-mix(in srgb, var(--accent) 78%, #0a1220);
+  --accent-soft: color-mix(in srgb, var(--accent) 13%, transparent);
+  --accent-line: color-mix(in srgb, var(--accent) 34%, transparent);
   margin-top:2.8rem;
   display:grid; grid-template-columns:1.55fr .9fr; gap:2rem; align-items:center;
   border:1px solid var(--accent-line);
@@ -917,7 +917,7 @@ h3{ font-size:1.18rem; font-weight:600; }
   padding:2.4rem;
 }
 .heleox-titolo{ font-size:clamp(1.4rem, 2.6vw, 1.7rem); margin:.3rem 0 .8rem; }
-.heleox-testo > p{ color:var(--muted); margin:0; max-width:40rem; }
+.heleox-testo > p:not(.eyebrow){ color:var(--muted); margin:0; max-width:40rem; }
 .heleox-annuncio{
   display:flex; align-items:center; flex-wrap:wrap; gap:.7rem 1rem;
   margin:1.4rem 0;
@@ -937,15 +937,15 @@ h3{ font-size:1.18rem; font-weight:600; }
 .heleox-vetrina{
   display:flex; flex-direction:column; gap:1.2rem; align-items:center;
   padding:1.8rem 1.6rem;
-  border:1px solid rgba(110,168,255,.22); border-radius:var(--radius);
-  background:linear-gradient(165deg, #14223f, #0d1730);
-  box-shadow:0 24px 60px -34px rgba(37,99,235,.5);
+  border:1px solid color-mix(in srgb, var(--accent) 30%, transparent); border-radius:var(--radius);
+  background:linear-gradient(165deg, #1c1836, #130f28);
+  box-shadow:0 24px 60px -34px color-mix(in srgb, var(--accent) 55%, transparent);
 }
 .heleox-scudo{
   width:76px; height:76px; border-radius:22px; display:grid; place-items:center;
-  color:#8fc0ff;
-  background:radial-gradient(circle at 30% 25%, rgba(110,168,255,.4), transparent 70%), rgba(110,168,255,.08);
-  border:1px solid rgba(110,168,255,.3);
+  color:color-mix(in srgb, var(--accent) 45%, #ffffff);
+  background:radial-gradient(circle at 30% 25%, color-mix(in srgb, var(--accent) 45%, transparent), transparent 70%), color-mix(in srgb, var(--accent) 12%, transparent);
+  border:1px solid color-mix(in srgb, var(--accent) 35%, transparent);
 }
 .heleox-scudo svg{ width:40px; height:40px; }
 .heleox-check{ list-style:none; margin:0; padding:0; display:grid; gap:.6rem; width:100%; }
@@ -1027,13 +1027,14 @@ h3{ font-size:1.18rem; font-weight:600; }
 
 /* ---- Responsive V4 ---- */
 @media (max-width: 980px){
-  .servizi-evidenza{ grid-template-columns:1fr; }
+  .servizi-evidenza{ grid-template-columns:repeat(2, 1fr); }
   .servizi-secondari{ grid-template-columns:repeat(2, 1fr); }
   .heleox{ grid-template-columns:1fr; }
   .heleox-vetrina{ max-width:24rem; }
   .blog-griglia{ grid-template-columns:repeat(2, 1fr); }
 }
 @media (max-width: 700px){
+  .servizi-evidenza{ grid-template-columns:1fr; }
   .servizi-secondari{ grid-template-columns:1fr; }
   .heleox{ padding:1.7rem; }
   .heleox-annuncio{ flex-direction:column; align-items:flex-start; }
