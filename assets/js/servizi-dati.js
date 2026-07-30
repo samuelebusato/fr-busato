@@ -30,7 +30,7 @@ const SERVIZI = [
     sottotitolo: "Progettiamo e proteggiamo la rete della tua azienda: segmentazione, backup, difesa dai malware e continuità operativa.",
     colore: "#2563eb",
     descrizione: [
-      "Una rete aziendale ben progettata è la base di tutto: collega postazioni, server e servizi cloud e, allo stesso tempo, deve proteggerli. Ci occupiamo della progettazione, della configurazione e della gestione di reti sicure, con firewall, segmentazione, backup e sistemi di protezione dei dati basati su soluzioni Panda Security e Acronis.",
+      "Una rete aziendale ben progettata è la base di tutto: collega postazioni, server e servizi cloud e, allo stesso tempo, deve proteggerli. Ci occupiamo della progettazione, della configurazione e della gestione di reti sicure, con firewall, segmentazione, backup e sistemi di protezione dei dati basati su soluzioni WatchGuard e Acronis.",
       "L'obiettivo è duplice: tenere l'infrastruttura efficiente e difenderla da attacchi, guasti e perdite di dati, con un piano di continuità che riduce al minimo i tempi di fermo."
     ],
     perche: "Gli attacchi informatici non colpiscono solo le grandi aziende: le piccole e medie imprese sono un bersaglio frequente, proprio perché spesso meno protette.",
@@ -172,24 +172,27 @@ const SERVIZI = [
   },
   {
     id: "fornitura-hardware",
-    nome: "Fornitura Hardware",
+    nome: "Fornitura Hardware e Software",
     occhiello: "Servizio · Fornitura",
-    titolo: "Fornitura <span class=\"gradiente\">hardware</span>",
-    sottotitolo: "Consigliamo e forniamo PC, server, componenti e accessori dei migliori marchi, scelti in base alle tue reali esigenze.",
+    titolo: "Fornitura <span class=\"gradiente\">hardware e software</span>",
+    sottotitolo: "Consigliamo e forniamo PC, server, componenti, accessori e software dei migliori marchi, scelti in base alle tue reali esigenze.",
     colore: "#14b8a6",
     descrizione: [
-      "Acquistare la tecnologia giusta significa non spendere più del necessario e avere strumenti adatti al proprio lavoro. Dopo un'analisi delle esigenze, forniamo componenti, PC, server e accessori per reti dei marchi più affidabili, come Dell.",
+      "Acquistare la tecnologia giusta significa non spendere più del necessario e avere strumenti adatti al proprio lavoro. Dopo un'analisi delle esigenze, forniamo componenti, PC, server e accessori per reti dei marchi più affidabili, come Dell e Lenovo.",
+      "Alla parte hardware affianchiamo la fornitura dei software: sistemi operativi, applicativi da ufficio e soluzioni per la sicurezza e il backup, con licenze in regola e configurate a dovere.",
       "Ti aiutiamo a scegliere configurazioni equilibrate, pensate per durare e per crescere insieme all'azienda."
     ],
     perche: "Un acquisto sbagliato si paga due volte: prima nell'investimento, poi nei problemi e nelle sostituzioni anticipate.",
     statistiche: [
-      { numero: "marchi affidabili", testo: "forniamo hardware dei produttori più solidi sul mercato, come Dell", fonte: "" },
+      { numero: "marchi affidabili", testo: "forniamo hardware dei produttori più solidi sul mercato, come Dell e Lenovo", fonte: "" },
+      { numero: "hardware + software", testo: "un unico fornitore per macchine, licenze e configurazione", fonte: "" },
       { numero: "su misura", testo: "configurazioni scelte in base alle reali esigenze, senza sprechi", fonte: "" }
     ],
     casiUso: [
       "Rinnovo del parco PC dell'ufficio",
       "Acquisto di un nuovo server o di un sistema di storage",
       "Fornitura di componenti e accessori per la rete",
+      "Fornitura di software e licenze: sistemi operativi, Office, sicurezza e backup",
       "Consulenza pre-acquisto per scegliere la configurazione giusta"
     ],
     aChiServe: [
@@ -207,9 +210,10 @@ const SERVIZI = [
       { titolo: "Fornitura e installazione", testo: "Consegniamo e, se vuoi, installiamo e configuriamo tutto, pronto all'uso." }
     ],
     faq: [
-      { domanda: "Che marchi trattate?", risposta: "Produttori affidabili come Dell, oltre a componenti e accessori di qualità per PC e reti." },
+      { domanda: "Che marchi trattate?", risposta: "Produttori affidabili come Dell e Lenovo, oltre a componenti e accessori di qualità per PC e reti." },
+      { domanda: "Fornite anche i software?", risposta: "Sì: sistemi operativi, applicativi da ufficio e soluzioni per sicurezza e backup, con licenze regolari e già configurate." },
       { domanda: "Posso farmi consigliare senza impegno?", risposta: "Certo: la consulenza prima dell'acquisto è parte del servizio." },
-      { domanda: "Vi occupate anche dell'installazione?", risposta: "Sì, possiamo consegnare e configurare l'hardware pronto all'uso." }
+      { domanda: "Vi occupate anche dell'installazione?", risposta: "Sì, possiamo consegnare e configurare hardware e software pronti all'uso." }
     ]
   },
   {

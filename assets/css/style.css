@@ -735,11 +735,13 @@ h3{ font-size:1.18rem; font-weight:600; }
   filter:grayscale(.6) brightness(1);
   transition:filter .35s ease, transform .35s ease, border-color .35s ease, box-shadow .35s ease;
   white-space:nowrap;
+  text-decoration:none;
 }
 .badge-partner:hover{
   filter:none; transform:translateY(-3px);
   border-color:var(--accent-line);
   box-shadow:0 14px 34px -16px color-mix(in srgb, var(--accent) 50%, transparent);
+  text-decoration:none;
 }
 .badge-icona{ display:grid; place-items:center; flex:none; }
 .badge-icona svg{ width:26px; height:26px; display:block; }

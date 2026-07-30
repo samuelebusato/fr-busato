@@ -148,25 +148,6 @@ const PROGETTI = [
     immagini: []
   },
   {
-    id: "automazione-autocad",
-    nome: "Automazione AutoCAD",
-    anno: 2024,
-    categoria: "Automazione CAD",
-    colore: "#f0a437",
-    dimensione: "md",
-    breve: "Personalizzazioni di AutoCAD in Autolisp per velocizzare il disegno tecnico e collegare i dati di progetto alla produzione.",
-    contesto: "Il disegno tecnico ripetitivo sottrae tempo prezioso alla progettazione: molte operazioni in AutoCAD seguono schemi ricorrenti che possono essere automatizzati.",
-    soluzione: "Grazie a una buona conoscenza del linguaggio Autolisp e della personalizzazione di AutoCAD, abbiamo realizzato comandi e routine su misura che riducono i tempi di disegno e gli errori manuali.",
-    funzionalita: [
-      "Comandi personalizzati per operazioni ricorrenti",
-      "Generazione automatica di elementi di disegno",
-      "Collegamento tra dati archiviati e disegno tecnico",
-      "Riduzione dei tempi e degli errori manuali"
-    ],
-    tecnologie: ["AutoCAD", "Autolisp"],
-    immagini: []
-  },
-  {
     id: "elaborazione-dati",
     nome: "Elaborazione Dati",
     anno: 2024,
