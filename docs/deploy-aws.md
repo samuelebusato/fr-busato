@@ -69,9 +69,53 @@ sull'account di default (HeleoX).
   HSTS, X-Content-Type-Options, X-Frame-Options ecc.
 
 Il sito usa link espliciti `.html` e query string: nessuna rewrite necessaria.
-Nota: con OAC un oggetto inesistente risponde 403; per avere 404 veri aggiungere
-`s3:ListBucket` (ARN del bucket) alla bucket policy, ed eventualmente una custom
-error response.
+
+### Bucket policy completa (OAC + 404 veri)
+
+Da incollare in S3 → bucket → Permissions → Bucket policy, **dopo** aver creato
+la distribuzione. Sostituire: nome bucket, Account ID (12 cifre, menu in alto a
+destra) e ID distribuzione (console CloudFront) — in **entrambe** le statement.
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowCloudFrontReadObjects",
+      "Effect": "Allow",
+      "Principal": { "Service": "cloudfront.amazonaws.com" },
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::fr-busato-sito/*",
+      "Condition": {
+        "StringEquals": {
+          "AWS:SourceArn": "arn:aws:cloudfront::123456789012:distribution/E2ABCDEF123456"
+        }
+      }
+    },
+    {
+      "Sid": "AllowCloudFrontListBucketFor404",
+      "Effect": "Allow",
+      "Principal": { "Service": "cloudfront.amazonaws.com" },
+      "Action": "s3:ListBucket",
+      "Resource": "arn:aws:s3:::fr-busato-sito",
+      "Condition": {
+        "StringEquals": {
+          "AWS:SourceArn": "arn:aws:cloudfront::123456789012:distribution/E2ABCDEF123456"
+        }
+      }
+    }
+  ]
+}
+```
+
+Note di sicurezza:
+- il Principal è il **servizio** CloudFront: è la Condition su `AWS:SourceArn`
+  a limitare l'accesso alla sola distribuzione indicata;
+- `s3:GetObject` va sugli **oggetti** (`…/*`), `s3:ListBucket` sul **bucket**
+  (senza `/*`): resource invertite = policy non funzionante;
+- la statement `ListBucket` trasforma i 403 sugli URL inesistenti in 404 veri,
+  senza esporre alcun listing pubblico;
+- "Block public access" resta attivo: nessun principal pubblico in questa policy.
 
 Verifica con l'URL `dxxxxxxx.cloudfront.net` prima di toccare il DNS.
 
