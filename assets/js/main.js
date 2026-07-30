@@ -183,12 +183,12 @@
   }
 
   /* ----------------------------------------------------------
-     Tagline "terminale": scrive di continuo "l'informatica"
+     Titolo "terminale": scrive di continuo "L'informatica"
      lettera per lettera, con cursore lampeggiante di fianco
      ---------------------------------------------------------- */
-  const twWord = document.getElementById("tw-tagline-word");
+  const twWord = document.getElementById("tw-title-word");
   if (twWord) {
-    const parola = "l'informatica";
+    const parola = "L'informatica";
     if (riduciMovimento) {
       twWord.textContent = parola;
     } else {

@@ -130,14 +130,14 @@ a:hover{ text-decoration:underline; }
 }
 .marchio-testo{ line-height:1.15; }
 .marchio-testo strong{ display:block; font-size:.98rem; font-weight:600; }
-.marchio-testo > span{ display:block; font-size:.72rem; color:var(--muted); letter-spacing:.04em; }
+.marchio-testo span{ display:block; font-size:.72rem; color:var(--muted); letter-spacing:.04em; }
 
-/* Tagline "terminale": scrive di continuo "l'informatica" */
-.marchio-tagline .tw-line{ font-family:var(--font-mono); letter-spacing:0; }
-.tw-word{ font-weight:700; color:var(--text); }
-.tw-caret{
-  display:inline-block; width:.5em; height:1em;
-  background:var(--accent-2); vertical-align:-.12em; margin:0 1px;
+/* Titolo "terminale": scrive di continuo "L'informatica" con cursore */
+.tw-word-h1{ font-weight:700; }
+.tw-caret-h1{
+  display:inline-block; width:.06em; min-width:3px; height:.86em;
+  margin-left:.05em; border-radius:2px;
+  background:var(--accent); vertical-align:-.02em;
   animation:lampeggia 1s steps(1) infinite;
 }
 .sr-only{
