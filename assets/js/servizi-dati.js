@@ -52,6 +52,12 @@ const SERVIZI = [
       "Aziende con più sedi o con personale che lavora da remoto",
       "Studi professionali che trattano dati sensibili",
       "Chi ha già subito un attacco o una perdita di dati e vuole evitare che riaccada"
+    ],
+    approfondimenti: [
+      { titolo: "Che cos'è un firewall?", testo: "È il sistema — hardware o software — che controlla il traffico in entrata e in uscita dalla rete, lasciando passare solo ciò che è autorizzato e bloccando i tentativi di accesso indesiderati. È la prima barriera tra la rete aziendale e Internet." },
+      { titolo: "Cosa significa segmentare la rete?", testo: "Vuol dire dividere la rete in zone separate — per esempio uffici, reparto produttivo e rete ospiti. Così, se un dispositivo viene compromesso o infettato, il problema resta confinato e non si propaga a tutta l'azienda." },
+      { titolo: "Che cos'è un ransomware?", testo: "È un tipo di malware che blocca i dati dell'azienda cifrandoli e chiede un riscatto per sbloccarli. È una delle minacce più diffuse e costose: la difesa migliore è la prevenzione, unita a backup affidabili che permettono di ripartire senza pagare." },
+      { titolo: "Perché il backup è così importante?", testo: "Un backup aggiornato è ciò che ti permette di recuperare i dati dopo un guasto, un errore umano o un attacco. Senza un backup testato, una singola disavventura può significare la perdita definitiva di anni di lavoro." }
     ]
   },
   {
@@ -85,6 +91,16 @@ const SERVIZI = [
       "Soggetti che rientrano negli obblighi della direttiva NIS2",
       "E-commerce e attività che raccolgono dati online"
     ],
+    approfondimenti: [
+      { titolo: "Che cos'è il GDPR?", testo: [
+        "Il GDPR (General Data Protection Regulation, Regolamento UE 2016/679) è la normativa europea sulla protezione dei dati personali, in vigore dal maggio 2018. Si applica a qualunque impresa o professionista che tratti dati di persone che si trovano nell'Unione Europea, indipendentemente dalle dimensioni dell'attività.",
+        "Stabilisce alcuni principi fondamentali — liceità, trasparenza, minimizzazione e limitazione delle finalità — e riconosce alle persone diritti precisi sui propri dati: accesso, rettifica, cancellazione e portabilità." ] },
+      { titolo: "Perché è importante adeguarsi al GDPR?", testo: [
+        "Adeguarsi non significa soltanto evitare le sanzioni, che possono arrivare a 20 milioni di euro o al 4% del fatturato: significa proteggere i dati dei tuoi clienti e la fiducia che ripongono in te.",
+        "Un trattamento dei dati corretto e documentato riduce i rischi, previene i danni reputazionali di una violazione e diventa un segno di serietà e affidabilità agli occhi di clienti e partner." ] },
+      { titolo: "Che cos'è la direttiva NIS2?", testo: "NIS2 (Direttiva UE 2022/2555) è la normativa europea sulla sicurezza informatica, recepita in Italia con il D.Lgs. 138/2024. Rispetto al passato amplia notevolmente i soggetti coinvolti — comprese molte medie imprese e le loro catene di fornitura — e impone misure di gestione del rischio, obblighi di segnalazione degli incidenti e responsabilità dirette in capo agli organi di gestione." },
+      { titolo: "Cosa significa monitorare un sito o un dominio?", testo: "Significa controllare con regolarità che il sito rispetti gli standard di sicurezza e conformità: certificati e cifratura (HTTPS), header di sicurezza, gestione corretta di cookie e informative privacy, assenza di dati o credenziali esposti. Ogni controllo produce un report chiaro, con le priorità e le azioni da intraprendere." }
+    ],
     certificazioni: true
   },
   {
@@ -114,6 +130,10 @@ const SERVIZI = [
       "Aziende che non hanno un tecnico informatico interno",
       "Uffici e studi che devono ridurre al minimo i tempi di fermo",
       "Chi cerca un riferimento affidabile e sempre raggiungibile"
+    ],
+    approfondimenti: [
+      { titolo: "Assistenza in sede o da remoto?", testo: "Da remoto ci colleghiamo al tuo computer per risolvere subito i problemi software e di configurazione, senza attese. In sede interveniamo quando serve mettere le mani sull'hardware: sostituire un componente, riparare un guasto fisico o intervenire sugli apparati di rete." },
+      { titolo: "Cos'è la manutenzione preventiva?", testo: "È l'insieme dei controlli periodici — stato dei dischi, aggiornamenti, temperature, verifica dei backup — che permettono di individuare un problema prima che diventi un fermo improvviso. Prevenire costa molto meno che riparare un guasto non previsto." }
     ]
   },
   {
@@ -142,6 +162,10 @@ const SERVIZI = [
       "Aziende che devono rinnovare o ampliare la dotazione informatica",
       "Chi vuole un consiglio indipendente prima di acquistare",
       "Attività che cercano un unico fornitore affidabile"
+    ],
+    approfondimenti: [
+      { titolo: "Perché farsi consigliare prima di acquistare?", testo: "Perché la configurazione giusta dipende dall'uso reale: un acquisto sovradimensionato è denaro sprecato, uno sottodimensionato crea rallentamenti e sostituzioni anticipate. Un consiglio indipendente ti fa spendere il giusto, senza pagare per ciò che non ti serve." },
+      { titolo: "Cosa vuol dire configurazione scalabile?", testo: "Significa scegliere hardware che possa crescere insieme all'azienda — per esempio un server con spazio per aggiungere memoria o dischi in seguito — evitando di dover ricominciare da capo al primo aumento delle esigenze." }
     ]
   },
   {
@@ -170,6 +194,10 @@ const SERVIZI = [
       "Aziende senza un reparto IT interno",
       "Chi cerca un punto di riferimento stabile per l'informatica",
       "Attività che vogliono migliorare o digitalizzare i propri processi"
+    ],
+    approfondimenti: [
+      { titolo: "Che cos'è l'assistenza remota?", testo: "È la possibilità di collegarci in sicurezza al tuo computer, con il tuo consenso, per vedere il problema e risolverlo in diretta. Molti interventi si concludono in pochi minuti, senza bisogno di spostamenti né di attese." },
+      { titolo: "Perché avere un interlocutore unico?", testo: "Perché evita di dover coordinare fornitori diversi che non si parlano tra loro. Un unico referente conosce la tua infrastruttura, mantiene coerenti le scelte nel tempo e ti fa risparmiare tempo ed errori." }
     ]
   }
 ];

@@ -1093,6 +1093,13 @@ h3{ font-size:1.18rem; font-weight:600; }
 .servizio-testo p{ color:var(--muted); margin:0 0 1.1rem; }
 .servizio-testo p:last-child{ margin-bottom:0; }
 
+/* In dettaglio (spiegazioni dei concetti) */
+.servizio-approfondimenti{ display:grid; gap:1.6rem; margin-top:1.4rem; }
+.approfondimento{ border-left:3px solid var(--accent-line); padding-left:1.3rem; }
+.approfondimento h3{ margin-bottom:.4rem; }
+.approfondimento p{ color:var(--muted); margin:.55rem 0 0; max-width:56rem; }
+.approfondimento p:first-of-type{ margin-top:0; }
+
 /* Griglia dei dati/statistiche */
 .stat-griglia{
   display:grid; grid-template-columns:repeat(4, 1fr); gap:1.2rem;

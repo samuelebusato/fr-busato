@@ -62,6 +62,22 @@
     cont.appendChild(sez);
   }
 
+  /* ---- In dettaglio (approfondimenti / spiegazioni) ---- */
+  if (s.approfondimenti && s.approfondimenti.length) {
+    const sez = el("section", "sezione container servizio-sezione rivela");
+    sez.appendChild(el("h2", null, "In dettaglio"));
+    const wrap = el("div", "servizio-approfondimenti");
+    s.approfondimenti.forEach(function (a) {
+      const box = el("div", "approfondimento");
+      box.appendChild(el("h3", null, a.titolo));
+      const testi = Array.isArray(a.testo) ? a.testo : [a.testo];
+      testi.forEach(function (t) { box.appendChild(el("p", null, t)); });
+      wrap.appendChild(box);
+    });
+    sez.appendChild(wrap);
+    cont.appendChild(sez);
+  }
+
   /* ---- Perché è importante (dati) ---- */
   if (s.statistiche && s.statistiche.length) {
     const sez = el("section", "sezione container servizio-sezione rivela");
