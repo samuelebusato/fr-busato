@@ -276,6 +276,10 @@ const SERVIZI = [
    ============================================================ */
 
 const CERTIFICAZIONI = [
-  // Esempio (da compilare con le certificazioni reali):
-  // { nome: "ISO/IEC 27001", ente: "Ente certificatore", anno: "2025", immagine: "assets/img/cert-iso27001.png" }
+  { nome: "Master per Privacy Officer e Consulente della Privacy", ente: "Federprivacy" },
+  { nome: "Direttiva NIS2: indicazioni operative", ente: "Wolters Kluwer" },
+  { nome: "Cloud Tech Associate — Advanced Disaster Recovery", ente: "Acronis" },
+  { nome: "Acronis Sales Professional", ente: "Acronis" },
+  { nome: "VMware Technical Solutions Professional (VTSP)", ente: "VMware" },
+  { nome: "VMware Sales Professional (VSP)", ente: "VMware" }
 ];

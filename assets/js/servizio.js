@@ -154,7 +154,7 @@
     sez.setAttribute("data-cert-sezione", "");
     sez.hidden = true;
     sez.appendChild(el("h2", null, "Certificazioni"));
-    sez.appendChild(el("p", "sottotitolo", "Le certificazioni che attestano la nostra competenza in materia di privacy, sicurezza e conformità."));
+    sez.appendChild(el("p", "sottotitolo", "Le certificazioni che attestano la nostra competenza in materia di privacy, conformità, sicurezza e continuità operativa."));
     sez.appendChild(el("div", "certificazioni-griglia"));
     cont.appendChild(sez);
   }
