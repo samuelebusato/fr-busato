@@ -58,6 +58,18 @@ const SERVIZI = [
       { titolo: "Cosa significa segmentare la rete?", testo: "Vuol dire dividere la rete in zone separate — per esempio uffici, reparto produttivo e rete ospiti. Così, se un dispositivo viene compromesso o infettato, il problema resta confinato e non si propaga a tutta l'azienda." },
       { titolo: "Che cos'è un ransomware?", testo: "È un tipo di malware che blocca i dati dell'azienda cifrandoli e chiede un riscatto per sbloccarli. È una delle minacce più diffuse e costose: la difesa migliore è la prevenzione, unita a backup affidabili che permettono di ripartire senza pagare." },
       { titolo: "Perché il backup è così importante?", testo: "Un backup aggiornato è ciò che ti permette di recuperare i dati dopo un guasto, un errore umano o un attacco. Senza un backup testato, una singola disavventura può significare la perdita definitiva di anni di lavoro." }
+    ],
+    approccio: [
+      { titolo: "Analisi", testo: "Analizziamo la rete esistente, i dispositivi collegati e le reali esigenze dell'azienda." },
+      { titolo: "Progettazione", testo: "Definiamo l'architettura più adatta: segmentazione, firewall, backup e sistemi di protezione." },
+      { titolo: "Realizzazione", testo: "Configuriamo e installiamo tutto, con test per verificare sicurezza e prestazioni." },
+      { titolo: "Gestione nel tempo", testo: "Restiamo a disposizione per manutenzione, aggiornamenti e monitoraggio continuativo." }
+    ],
+    faq: [
+      { domanda: "Quanto tempo serve per mettere in sicurezza la rete?", risposta: "Dipende dalla dimensione e dallo stato attuale. Dopo un sopralluogo ti diamo tempi e un preventivo chiari, senza sorprese." },
+      { domanda: "Dovrò cambiare tutti gli apparati?", risposta: "Non necessariamente: partiamo da ciò che hai già e integriamo o sostituiamo solo dove serve davvero." },
+      { domanda: "Cosa succede se subiamo un attacco?", risposta: "Con backup aggiornati e procedure di ripristino si riparte in tempi rapidi. Ti affianchiamo anche nella gestione dell'incidente." },
+      { domanda: "Fate assistenza anche dopo l'installazione?", risposta: "Sì: manutenzione, aggiornamenti e monitoraggio della rete nel tempo fanno parte del servizio." }
     ]
   },
   {
@@ -101,6 +113,18 @@ const SERVIZI = [
       { titolo: "Che cos'è la direttiva NIS2?", testo: "NIS2 (Direttiva UE 2022/2555) è la normativa europea sulla sicurezza informatica, recepita in Italia con il D.Lgs. 138/2024. Rispetto al passato amplia notevolmente i soggetti coinvolti — comprese molte medie imprese e le loro catene di fornitura — e impone misure di gestione del rischio, obblighi di segnalazione degli incidenti e responsabilità dirette in capo agli organi di gestione." },
       { titolo: "Cosa significa monitorare un sito o un dominio?", testo: "Significa controllare con regolarità che il sito rispetti gli standard di sicurezza e conformità: certificati e cifratura (HTTPS), header di sicurezza, gestione corretta di cookie e informative privacy, assenza di dati o credenziali esposti. Ogni controllo produce un report chiaro, con le priorità e le azioni da intraprendere." }
     ],
+    approccio: [
+      { titolo: "Analisi", testo: "Esaminiamo i trattamenti di dati, i siti e i sistemi per fotografare lo stato attuale." },
+      { titolo: "Valutazione dei rischi", testo: "Individuiamo criticità e lacune rispetto agli obblighi di GDPR e NIS2." },
+      { titolo: "Adeguamento", testo: "Predisponiamo procedure, informative, consensi e le misure tecniche e organizzative necessarie." },
+      { titolo: "Monitoraggio", testo: "Controlliamo periodicamente domini e siti e ti segnaliamo cosa mantenere in regola." }
+    ],
+    faq: [
+      { domanda: "Il GDPR vale anche per una piccola impresa?", risposta: "Sì. Si applica a chiunque tratti dati personali, indipendentemente dalle dimensioni dell'attività." },
+      { domanda: "Ho già una privacy policy sul sito, basta?", risposta: "È un buon punto di partenza, ma non basta: la conformità riguarda anche consensi, sicurezza, registro dei trattamenti e gestione dei diritti degli interessati." },
+      { domanda: "Cosa rischio se non sono in regola?", risposta: "Sanzioni molto elevate (fino a 20 milioni di euro o al 4% del fatturato), oltre a danni reputazionali e alla perdita di fiducia dei clienti." },
+      { domanda: "Ogni quanto va controllato un sito?", risposta: "Un monitoraggio periodico — ad esempio settimanale o mensile — intercetta i problemi nuovi prima che diventino gravi." }
+    ],
     certificazioni: true
   },
   {
@@ -134,6 +158,16 @@ const SERVIZI = [
     approfondimenti: [
       { titolo: "Assistenza in sede o da remoto?", testo: "Da remoto ci colleghiamo al tuo computer per risolvere subito i problemi software e di configurazione, senza attese. In sede interveniamo quando serve mettere le mani sull'hardware: sostituire un componente, riparare un guasto fisico o intervenire sugli apparati di rete." },
       { titolo: "Cos'è la manutenzione preventiva?", testo: "È l'insieme dei controlli periodici — stato dei dischi, aggiornamenti, temperature, verifica dei backup — che permettono di individuare un problema prima che diventi un fermo improvviso. Prevenire costa molto meno che riparare un guasto non previsto." }
+    ],
+    approccio: [
+      { titolo: "Diagnosi", testo: "Individuiamo la causa del problema, da remoto o in sede." },
+      { titolo: "Intervento", testo: "Ripariamo o sostituiamo ciò che serve, cercando sempre la soluzione più rapida." },
+      { titolo: "Verifica", testo: "Controlliamo che tutto funzioni e ti diamo qualche consiglio per evitare che riaccada." }
+    ],
+    faq: [
+      { domanda: "Intervenite anche in giornata?", risposta: "Per le urgenze cerchiamo di intervenire il prima possibile, spesso subito da remoto." },
+      { domanda: "Riparate anche i server?", risposta: "Sì: PC, server, periferiche e apparati di rete." },
+      { domanda: "Conviene riparare o sostituire?", risposta: "Ti diamo un consiglio onesto in base ai costi e all'età dell'apparato, così spendi il giusto." }
     ]
   },
   {
@@ -166,6 +200,16 @@ const SERVIZI = [
     approfondimenti: [
       { titolo: "Perché farsi consigliare prima di acquistare?", testo: "Perché la configurazione giusta dipende dall'uso reale: un acquisto sovradimensionato è denaro sprecato, uno sottodimensionato crea rallentamenti e sostituzioni anticipate. Un consiglio indipendente ti fa spendere il giusto, senza pagare per ciò che non ti serve." },
       { titolo: "Cosa vuol dire configurazione scalabile?", testo: "Significa scegliere hardware che possa crescere insieme all'azienda — per esempio un server con spazio per aggiungere memoria o dischi in seguito — evitando di dover ricominciare da capo al primo aumento delle esigenze." }
+    ],
+    approccio: [
+      { titolo: "Analisi delle esigenze", testo: "Capiamo come lavori e cosa ti serve davvero, oggi e nei prossimi anni." },
+      { titolo: "Proposta", testo: "Ti proponiamo configurazioni equilibrate, con alternative e prezzi chiari." },
+      { titolo: "Fornitura e installazione", testo: "Consegniamo e, se vuoi, installiamo e configuriamo tutto, pronto all'uso." }
+    ],
+    faq: [
+      { domanda: "Che marchi trattate?", risposta: "Produttori affidabili come Dell, oltre a componenti e accessori di qualità per PC e reti." },
+      { domanda: "Posso farmi consigliare senza impegno?", risposta: "Certo: la consulenza prima dell'acquisto è parte del servizio." },
+      { domanda: "Vi occupate anche dell'installazione?", risposta: "Sì, possiamo consegnare e configurare l'hardware pronto all'uso." }
     ]
   },
   {
@@ -198,6 +242,16 @@ const SERVIZI = [
     approfondimenti: [
       { titolo: "Che cos'è l'assistenza remota?", testo: "È la possibilità di collegarci in sicurezza al tuo computer, con il tuo consenso, per vedere il problema e risolverlo in diretta. Molti interventi si concludono in pochi minuti, senza bisogno di spostamenti né di attese." },
       { titolo: "Perché avere un interlocutore unico?", testo: "Perché evita di dover coordinare fornitori diversi che non si parlano tra loro. Un unico referente conosce la tua infrastruttura, mantiene coerenti le scelte nel tempo e ti fa risparmiare tempo ed errori." }
+    ],
+    approccio: [
+      { titolo: "Ascolto", testo: "Partiamo dalle tue esigenze e dai problemi concreti da risolvere." },
+      { titolo: "Proposta", testo: "Individuiamo le soluzioni più adatte e te le spieghiamo in modo semplice." },
+      { titolo: "Realizzazione e supporto", testo: "Ti seguiamo nella realizzazione e restiamo raggiungibili nel tempo, anche da remoto." }
+    ],
+    faq: [
+      { domanda: "Posso contattarvi anche per un singolo problema?", risposta: "Sì, anche per interventi occasionali: non serve un contratto continuativo." },
+      { domanda: "Fate assistenza da remoto?", risposta: "Sì: per i problemi urgenti ci colleghiamo subito, con il tuo consenso." },
+      { domanda: "Lavorate anche con software non vostri?", risposta: "Sì, ti aiutiamo a scegliere e gestire anche soluzioni di terze parti." }
     ]
   }
 ];

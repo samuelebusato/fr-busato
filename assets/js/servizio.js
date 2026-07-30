@@ -95,6 +95,23 @@
     cont.appendChild(sez);
   }
 
+  /* ---- Come lavoriamo (approccio) ---- */
+  if (s.approccio && s.approccio.length) {
+    const sez = el("section", "sezione container servizio-sezione rivela");
+    sez.appendChild(el("h2", null, "Come lavoriamo"));
+    const ol = el("ol", "servizio-approccio");
+    s.approccio.forEach(function (p) {
+      const li = document.createElement("li");
+      const box = el("div", "passo-testo");
+      box.appendChild(el("strong", null, p.titolo));
+      box.appendChild(el("p", null, p.testo));
+      li.appendChild(box);
+      ol.appendChild(li);
+    });
+    sez.appendChild(ol);
+    cont.appendChild(sez);
+  }
+
   /* ---- Casi d'uso + A chi serve ---- */
   if ((s.casiUso && s.casiUso.length) || (s.aChiServe && s.aChiServe.length)) {
     const sez = el("section", "sezione container servizio-sezione rivela");
@@ -110,6 +127,24 @@
     if (s.casiUso && s.casiUso.length) grid.appendChild(blocco("Casi d'uso", s.casiUso));
     if (s.aChiServe && s.aChiServe.length) grid.appendChild(blocco("A chi serve", s.aChiServe));
     sez.appendChild(grid);
+    cont.appendChild(sez);
+  }
+
+  /* ---- Domande frequenti (FAQ del servizio) ---- */
+  if (s.faq && s.faq.length) {
+    const sez = el("section", "sezione container servizio-sezione rivela");
+    sez.appendChild(el("h2", null, "Domande frequenti"));
+    const wrap = el("div", "faq");
+    s.faq.forEach(function (f) {
+      const d = document.createElement("details");
+      d.className = "faq-item";
+      const sum = document.createElement("summary");
+      sum.textContent = f.domanda;
+      d.appendChild(sum);
+      d.appendChild(el("p", null, f.risposta));
+      wrap.appendChild(d);
+    });
+    sez.appendChild(wrap);
     cont.appendChild(sez);
   }
 

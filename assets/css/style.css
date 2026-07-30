@@ -1100,6 +1100,44 @@ h3{ font-size:1.18rem; font-weight:600; }
 .approfondimento p{ color:var(--muted); margin:.55rem 0 0; max-width:56rem; }
 .approfondimento p:first-of-type{ margin-top:0; }
 
+/* Come lavoriamo (approccio, passi numerati) */
+.servizio-approccio{
+  list-style:none; margin:1.4rem 0 0; padding:0;
+  display:grid; gap:1.2rem; counter-reset:passo; max-width:56rem;
+}
+.servizio-approccio li{ display:grid; grid-template-columns:auto 1fr; gap:1rem; align-items:start; }
+.servizio-approccio li::before{
+  counter-increment:passo; content:counter(passo);
+  width:2.2rem; height:2.2rem; flex:none;
+  display:grid; place-items:center;
+  font-family:var(--font-display); font-weight:700; font-size:.95rem;
+  color:#ffffff; border-radius:50%;
+  background:linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 65%, #6ea8ff));
+}
+.passo-testo strong{ font-family:var(--font-display); font-size:1.05rem; display:block; margin-bottom:.2rem; }
+.passo-testo p{ color:var(--muted); margin:0; }
+
+/* FAQ (accordion) */
+.faq{ display:grid; gap:.8rem; max-width:52rem; margin-top:1.4rem; }
+.faq-item{
+  border:1px solid var(--line); border-radius:var(--radius-sm);
+  background:linear-gradient(165deg, var(--surface), var(--surface-2));
+  overflow:hidden;
+}
+.faq-item summary{
+  list-style:none; cursor:pointer;
+  padding:1rem 1.2rem;
+  font-family:var(--font-display); font-weight:600; font-size:1rem;
+  display:flex; justify-content:space-between; align-items:center; gap:1rem;
+}
+.faq-item summary::-webkit-details-marker{ display:none; }
+.faq-item summary::after{
+  content:"+"; color:var(--accent-2); font-size:1.4rem; line-height:1; flex:none;
+  transition:transform .25s ease;
+}
+.faq-item[open] summary::after{ transform:rotate(45deg); }
+.faq-item p{ margin:0; padding:0 1.2rem 1.1rem; color:var(--muted); }
+
 /* Griglia dei dati/statistiche */
 .stat-griglia{
   display:grid; grid-template-columns:repeat(4, 1fr); gap:1.2rem;
