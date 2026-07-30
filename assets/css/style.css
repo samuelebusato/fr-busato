@@ -918,16 +918,28 @@ h3{ font-size:1.18rem; font-weight:600; }
 .heleox{
   --accent:#8b5cf6;
   --accent-2: color-mix(in srgb, var(--accent) 78%, #0a1220);
-  --accent-soft: color-mix(in srgb, var(--accent) 13%, transparent);
+  --accent-soft: color-mix(in srgb, var(--accent) 15%, transparent);
   --accent-line: color-mix(in srgb, var(--accent) 34%, transparent);
   margin-top:2.8rem;
   display:grid; grid-template-columns:1.55fr .9fr; gap:2rem; align-items:center;
-  border:1px solid var(--accent-line);
+  border:1.5px solid color-mix(in srgb, var(--accent) 55%, transparent);
   border-radius:calc(var(--radius) + 6px);
   background:
     radial-gradient(90% 130% at 100% 0%, var(--accent-soft), transparent 60%),
     linear-gradient(165deg, var(--surface), var(--surface-2));
   padding:2.4rem;
+  box-shadow:
+    0 0 0 4px color-mix(in srgb, var(--accent) 12%, transparent),
+    0 0 40px -2px color-mix(in srgb, var(--accent) 34%, transparent),
+    0 24px 60px -28px color-mix(in srgb, var(--accent) 55%, transparent);
+  transition:box-shadow .35s ease, border-color .35s ease;
+}
+.heleox:hover{
+  border-color:color-mix(in srgb, var(--accent) 70%, transparent);
+  box-shadow:
+    0 0 0 5px color-mix(in srgb, var(--accent) 16%, transparent),
+    0 0 56px 2px color-mix(in srgb, var(--accent) 42%, transparent),
+    0 26px 66px -26px color-mix(in srgb, var(--accent) 60%, transparent);
 }
 .heleox-titolo{ font-size:clamp(1.4rem, 2.6vw, 1.7rem); margin:.3rem 0 .8rem; }
 .heleox-testo > p:not(.eyebrow){ color:var(--muted); margin:0; max-width:40rem; }
