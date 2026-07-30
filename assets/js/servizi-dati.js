@@ -276,10 +276,10 @@ const SERVIZI = [
    ============================================================ */
 
 const CERTIFICAZIONI = [
-  { nome: "Master per Privacy Officer e Consulente della Privacy", ente: "Federprivacy" },
-  { nome: "Direttiva NIS2: indicazioni operative", ente: "Wolters Kluwer" },
-  { nome: "Cloud Tech Associate — Advanced Disaster Recovery", ente: "Acronis" },
-  { nome: "Acronis Sales Professional", ente: "Acronis" },
-  { nome: "VMware Technical Solutions Professional (VTSP)", ente: "VMware" },
-  { nome: "VMware Sales Professional (VSP)", ente: "VMware" }
+  { nome: "Master per Privacy Officer e Consulente della Privacy", ente: "Federprivacy", immagine: "assets/img/cert-federprivacy.png" },
+  { nome: "Direttiva NIS2: indicazioni operative", ente: "Wolters Kluwer", immagine: "assets/img/cert-wolterskluwer.svg" },
+  { nome: "Cloud Tech Associate — Advanced Disaster Recovery", ente: "Acronis", immagine: "assets/img/cert-acronis.svg" },
+  { nome: "Acronis Sales Professional", ente: "Acronis", immagine: "assets/img/cert-acronis.svg" },
+  { nome: "VMware Technical Solutions Professional (VTSP)", ente: "VMware", immagine: "assets/img/cert-vmware.svg" },
+  { nome: "VMware Sales Professional (VSP)", ente: "VMware", immagine: "assets/img/cert-vmware.svg" }
 ];
