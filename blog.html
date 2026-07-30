@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sviluppo Software — F.R. di Busato Fausto</title>
-  <meta name="description" content="I software sviluppati da F.R. di Busato Fausto: gestionali, automazioni Office e AutoCAD, elaborazione dati e soluzioni su misura per le aziende.">
+  <title>Blog & Annunci — F.R. di Busato Fausto</title>
+  <meta name="description" content="Annunci, novità e aggiornamenti da F.R. di Busato Fausto: nuovi progetti software, servizi e iniziative come la ricerca tester per la demo di HeleoX.">
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,8 +36,8 @@
       <ul class="nav-menu" id="menu">
         <li><a href="index.html#azienda">L'Azienda</a></li>
         <li><a href="index.html#servizi">Servizi</a></li>
-        <li><a class="attivo" href="sviluppo-software.html" aria-current="page">Sviluppo Software</a></li>
-        <li><a href="blog.html">Blog</a></li>
+        <li><a href="sviluppo-software.html">Sviluppo Software</a></li>
+        <li><a class="attivo" href="blog.html" aria-current="page">Blog</a></li>
         <li><a class="nav-cta" href="index.html#contatti">Contatti</a></li>
       </ul>
     </nav>
@@ -46,52 +46,32 @@
   <main id="contenuto">
 
     <section class="sezione container" style="padding-bottom:2rem;">
-      <p class="eyebrow entra">Sviluppo Software</p>
-      <h1 class="entra" data-passo="1">I nostri <span class="gradiente">progetti</span>.</h1>
+      <p class="eyebrow entra">Blog &amp; Annunci</p>
+      <h1 class="entra" data-passo="1">Novità e <span class="gradiente">annunci</span>.</h1>
       <p class="sottotitolo entra" data-passo="2" style="margin-top:1.2rem;">
-        Software nati dalle esigenze reali delle aziende: gestionali, automazioni e strumenti
-        su misura, sviluppati e rodati sul campo. Seleziona un progetto per scoprirne le specifiche.
+        Aggiornamenti su progetti, servizi e iniziative di F.R. di Busato Fausto.
+        Qui pubblichiamo le nostre novità — dai nuovi software alla ricerca di tester per le demo.
       </p>
     </section>
 
     <section class="container" style="padding-bottom:5rem;">
-      <div class="filtri entra" data-passo="3" role="group" aria-label="Filtra i progetti per anno">
-        <span class="filtri-etichetta">Anno</span>
-        <!-- I filtri vengono generati automaticamente da portfolio.js -->
-      </div>
-      <div class="bento" id="griglia-progetti" aria-label="Elenco dei progetti"></div>
-    </section>
-
-    <!-- ===== Richiamo HeleoX ===== -->
-    <section class="container" style="padding-bottom:5rem;">
-      <div class="heleox rivela">
-        <div class="heleox-testo">
-          <p class="eyebrow">Progetto in evidenza · HeleoX</p>
-          <h3 class="heleox-titolo">Abbiamo seguito lo sviluppo di <span class="gradiente">HeleoX</span></h3>
-          <p>HeleoX controlla ogni settimana, in automatico, la sicurezza e la conformità GDPR dei siti web: indica cosa non va, come sistemarlo e cita la norma esatta. Pensato per sviluppatori, agenzie web e PMI.</p>
-          <div class="heleox-annuncio">
-            <span class="heleox-badge">🔎 Cerchiamo tester</span>
-            <p>Stiamo cercando tester per la <strong>demo</strong>: provala e aiutaci a renderla migliore.</p>
-          </div>
-          <div class="heleox-azioni">
-            <a class="btn btn-pieno" href="https://www.heleox.it" target="_blank" rel="noopener noreferrer">Visita heleox.it →</a>
-            <a class="btn btn-vuoto" href="mailto:info@fr-busato.it?subject=Tester%20demo%20HeleoX">Candidati come tester</a>
-          </div>
-        </div>
-        <div class="heleox-vetrina" aria-hidden="true">
-          <div class="heleox-scudo">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-          </div>
-          <ul class="heleox-check">
-            <li><i></i>Security headers</li>
-            <li><i></i>TLS &amp; certificati</li>
-            <li><i></i>Conformità GDPR</li>
-          </ul>
-        </div>
-      </div>
+      <div class="blog-griglia" id="blog-griglia" aria-label="Elenco degli annunci"></div>
+      <p class="blog-vuoto" id="blog-vuoto" hidden>Caricamento degli annunci…</p>
     </section>
 
   </main>
+
+  <!-- ================= POP-UP ANNUNCIO ================= -->
+  <dialog class="annuncio-modal" id="annuncio-modal" aria-labelledby="annuncio-modal-titolo">
+    <button class="annuncio-modal-chiudi" type="button" aria-label="Chiudi">&times;</button>
+    <div class="annuncio-meta">
+      <span class="annuncio-data annuncio-modal-data"></span>
+      <span class="annuncio-tag annuncio-modal-tag"></span>
+    </div>
+    <h2 class="annuncio-modal-titolo" id="annuncio-modal-titolo"></h2>
+    <div class="annuncio-modal-corpo"></div>
+    <a class="btn btn-pieno annuncio-modal-link" href="#" hidden></a>
+  </dialog>
 
   <footer class="footer">
     <div class="container">
@@ -104,7 +84,7 @@
               <span>l'informatica al tuo servizio</span>
             </span>
           </a>
-          <p style="max-width:22rem; margin-top:1rem;">Sviluppo software su misura, reti sicure, consulenza informatica e privacy, assistenza e formazione per le aziende dal 2000.</p>
+          <p style="max-width:22rem; margin-top:1rem;">Assistenza informatica, sviluppo software su misura, reti sicure, consulenza privacy e formazione per le aziende dal 2000.</p>
         </div>
         <div class="footer-col">
           <h3>Navigazione</h3>
@@ -136,8 +116,7 @@
     <button class="btn btn-pieno" id="chiudi-cookie">Ho capito</button>
   </div>
 
-  <script src="assets/js/progetti.js"></script>
-  <script src="assets/js/portfolio.js"></script>
+  <script src="assets/js/blog.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>

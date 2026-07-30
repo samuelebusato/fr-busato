@@ -1,0 +1,30 @@
+[
+  {
+    "id": "cerco-tester-heleox",
+    "data": "2026-07-30",
+    "dataLabel": "30 luglio 2026",
+    "tag": "Beta · Tester",
+    "titolo": "Cerchiamo tester per la demo di HeleoX",
+    "anteprima": "HeleoX controlla ogni settimana la sicurezza e la conformità GDPR dei siti web. Cerchiamo sviluppatori, agenzie e aziende disposti a provare la demo e darci un riscontro.",
+    "corpo": [
+      "F.R. di Busato Fausto ha seguito lo sviluppo di <strong>HeleoX</strong>, il servizio che ogni settimana controlla in automatico la sicurezza e la conformità GDPR dei siti web: indica cosa non va, come sistemarlo e cita la norma esatta. È pensato per sviluppatori, agenzie web e PMI.",
+      "In vista del rilascio stiamo cercando <strong>tester per la demo</strong>: bastano un sito e un po' di tempo per provarlo e dirci cosa migliorare. Il tuo riscontro ci aiuta a rendere lo strumento più utile e affidabile.",
+      "Per candidarti scrivi a <a href='mailto:info@fr-busato.it?subject=Tester%20demo%20HeleoX'>info@fr-busato.it</a> oppure dai un'occhiata al progetto su <a href='https://www.heleox.it' target='_blank' rel='noopener noreferrer'>heleox.it</a>."
+    ],
+    "link": { "testo": "Visita heleox.it", "url": "https://www.heleox.it" }
+  },
+  {
+    "id": "nuovi-progetti-software",
+    "data": "2026-07-15",
+    "dataLabel": "15 luglio 2026",
+    "tag": "Novità",
+    "titolo": "Nuovi progetti software nel nostro portfolio",
+    "anteprima": "Abbiamo aggiornato la sezione Sviluppo Software con nuovi lavori: una distinta base parametrica in beta, un sistema di gestione resi serverless su AWS, uno scraper per aste automobilistiche e altro ancora.",
+    "corpo": [
+      "Il nostro portfolio di sviluppo software cresce. Tra i nuovi progetti trovi la <strong>Distinta Base Parametrica</strong>, uno strumento modulare per la generazione e la gestione delle BOM (già in beta), e un <strong>Returns Management System</strong> interamente serverless su AWS per la gestione dei resi e-commerce.",
+      "Ci sono anche <strong>ScraperAH</strong>, applicazione per l'estrazione automatica dei dati dei veicoli dai siti di aste online, e un <strong>gestionale containerizzato con Docker</strong> affiancato da una web app per l'analisi dei dati.",
+      "Per ogni progetto abbiamo seguito l'intero ciclo di sviluppo, dall'analisi dei requisiti alla progettazione e all'implementazione."
+    ],
+    "link": { "testo": "Vai ai progetti", "url": "sviluppo-software.html" }
+  }
+]
