@@ -86,7 +86,7 @@
           const dy = a.y - b.y;
           const dist = Math.hypot(dx, dy);
           if (dist < 140) {
-            ctx.strokeStyle = "rgba(90, 140, 240," + (0.16 * (1 - dist / 140)) + ")";
+            ctx.strokeStyle = "rgba(37, 99, 235," + (0.14 * (1 - dist / 140)) + ")";
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
@@ -97,7 +97,7 @@
       }
 
       nodi.forEach(function (n) {
-        ctx.fillStyle = "rgba(130, 175, 255, .55)";
+        ctx.fillStyle = "rgba(37, 99, 235, .40)";
         ctx.beginPath();
         ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
         ctx.fill();

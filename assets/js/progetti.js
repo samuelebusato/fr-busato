@@ -33,7 +33,7 @@ const PROGETTI = [
     nome: "frGest",
     anno: 2025,
     categoria: "Mini gestionale",
-    colore: "#4d8dff",
+    colore: "#2563eb",
     dimensione: "xl",
     breve: "Il mini gestionale sviluppato in VB.NET e rodato in anni di utilizzo quotidiano nelle piccole aziende: bolle, fatture, magazzino e molto altro, con la flessibilità che i prodotti commerciali non offrono.",
     contesto: "In tanti anni di esperienza si è presentata spesso la necessità di un mini gestionale con caratteristiche particolari: molte piccole aziende, reggiane e non, non trovavano nei prodotti commerciali ciò che cercavano per funzionalità o immediatezza d'uso.",
