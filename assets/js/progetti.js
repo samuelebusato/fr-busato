@@ -36,7 +36,7 @@ const PROGETTI = [
     nome: "Distinta Base Parametrica",
     anno: 2026,
     categoria: "Gestione BOM · Beta",
-    colore: "#22c55e",
+    colore: "#5fca8d",
     dimensione: "xl",
     breve: "Il progetto più recente: uno strumento moderno, modulare e altamente personalizzabile per la generazione e la gestione di distinte base (BOM), pensato per integrarsi in processi aziendali complessi. Già disponibile in una prima versione beta.",
     contesto: "Le aziende manifatturiere gestiscono distinte base sempre più articolate, che devono restare coerenti tra i reparti e dialogare con gli altri sistemi gestionali. Gli strumenti tradizionali sono spesso rigidi e difficili da adattare a prodotti configurabili.",

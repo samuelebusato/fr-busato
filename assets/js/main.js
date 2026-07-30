@@ -183,6 +183,32 @@
   }
 
   /* ----------------------------------------------------------
+     Tagline "terminale": scrive di continuo "l'informatica"
+     lettera per lettera, con cursore lampeggiante di fianco
+     ---------------------------------------------------------- */
+  const twWord = document.getElementById("tw-tagline-word");
+  if (twWord) {
+    const parola = "l'informatica";
+    if (riduciMovimento) {
+      twWord.textContent = parola;
+    } else {
+      let i = 0;
+      let cancella = false;
+      (function tic() {
+        if (!cancella) {
+          twWord.textContent = parola.slice(0, ++i);
+          if (i >= parola.length) { cancella = true; setTimeout(tic, 1600); }
+          else setTimeout(tic, 105);
+        } else {
+          twWord.textContent = parola.slice(0, --i);
+          if (i <= 0) { cancella = false; setTimeout(tic, 500); }
+          else setTimeout(tic, 55);
+        }
+      })();
+    }
+  }
+
+  /* ----------------------------------------------------------
      Nastro partner: clona il gruppo per lo scorrimento infinito
      ---------------------------------------------------------- */
   const traccia = document.getElementById("marquee-traccia");
