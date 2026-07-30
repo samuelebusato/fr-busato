@@ -146,7 +146,72 @@ aws cloudfront create-invalidation --distribution-id XXXXXXXX --paths "/*" --pro
 `/*` conta come 1 percorso (1.000 gratuiti/mese). Evoluzione futura: GitHub
 Actions che fa sync+invalidation a ogni push su `main`.
 
+## 8. Deploy automatico da GitHub (OIDC, senza access key)
+
+Il workflow [`.github/workflows/deploy.yml`](../.github/workflows/deploy.yml)
+fa `s3 sync` + invalidation a ogni push su `main`. GitHub si autentica ad AWS
+via **OIDC** assumendo un ruolo IAM: nessuna access key salvata su GitHub.
+
+Setup una tantum lato AWS:
+
+1. **Identity provider** — IAM → Identity providers → Add provider →
+   *OpenID Connect* → Provider URL `https://token.actions.githubusercontent.com`,
+   Audience `sts.amazonaws.com`.
+2. **Ruolo** — IAM → Roles → Create role → *Web identity* → provider appena
+   creato, audience `sts.amazonaws.com`, GitHub organization `samuelebusato`,
+   repository `fr-busato`, branch `main`. Nome es. `github-deploy-fr-busato`.
+   La trust policy generata deve contenere:
+
+   ```json
+   "Condition": {
+     "StringEquals": {
+       "token.actions.githubusercontent.com:aud": "sts.amazonaws.com",
+       "token.actions.githubusercontent.com:sub": "repo:samuelebusato/fr-busato:ref:refs/heads/main"
+     }
+   }
+   ```
+
+3. **Permessi del ruolo** (inline policy, minimo indispensabile — sostituire
+   bucket, Account ID e Distribution ID):
+
+   ```json
+   {
+     "Version": "2012-10-17",
+     "Statement": [
+       {
+         "Sid": "ListaBucket",
+         "Effect": "Allow",
+         "Action": ["s3:ListBucket", "s3:GetBucketLocation"],
+         "Resource": "arn:aws:s3:::fr-busato-sito"
+       },
+       {
+         "Sid": "ScritturaOggetti",
+         "Effect": "Allow",
+         "Action": ["s3:PutObject", "s3:DeleteObject"],
+         "Resource": "arn:aws:s3:::fr-busato-sito/*"
+       },
+       {
+         "Sid": "InvalidazioneCloudFront",
+         "Effect": "Allow",
+         "Action": "cloudfront:CreateInvalidation",
+         "Resource": "arn:aws:cloudfront::123456789012:distribution/E2ABCDEF123456"
+       }
+     ]
+   }
+   ```
+
+4. **Secret su GitHub** — repo → Settings → Secrets and variables → Actions →
+   *New repository secret*, tre voci:
+   - `AWS_ROLE_ARN` → ARN del ruolo (IAM → Roles → il ruolo → in alto)
+   - `S3_BUCKET` → `fr-busato-sito`
+   - `CLOUDFRONT_DISTRIBUTION_ID` → ID della distribuzione
+
+Da quel momento ogni push su `main` pubblica da solo (tab **Actions** per lo
+stato). Finché i secret non esistono, il run fallisce al passo credenziali:
+è atteso. Il workflow esclude `docs/`, `README.md`, `.git/` e `.github/`.
+
 ## Costi
 
 ACM gratuito · CloudFront: 1 TB/mese sempre gratuito · S3: centesimi ·
-Route 53: 0,50 $/mese (solo opzione A). Totale realistico: **< 1 €/mese**.
+Route 53: 0,50 $/mese (solo opzione A) · GitHub Actions: gratuito per repo
+pubbliche. Totale realistico: **< 1 €/mese**.

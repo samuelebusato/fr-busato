@@ -1,0 +1,49 @@
+# Deploy automatico su S3 + CloudFront a ogni push su main.
+# Autenticazione via OIDC: nessuna access key salvata su GitHub.
+# Richiede 3 secret di repo (Settings → Secrets and variables → Actions):
+#   AWS_ROLE_ARN                 arn del ruolo IAM assunto via OIDC
+#   S3_BUCKET                    nome del bucket (es. fr-busato-sito)
+#   CLOUDFRONT_DISTRIBUTION_ID   id della distribuzione (es. E1A2B3C4D5E6F7)
+# Setup completo lato AWS: docs/deploy-aws.md §8.
+
+name: Deploy su S3 + CloudFront
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  id-token: write   # necessario per OIDC verso AWS
+  contents: read
+
+concurrency:
+  group: deploy-sito
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Credenziali AWS via OIDC
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: eu-central-1
+
+      - name: Sync dei file su S3
+        run: |
+          aws s3 sync . "s3://${{ secrets.S3_BUCKET }}" \
+            --delete \
+            --exclude ".git/*" \
+            --exclude ".github/*" \
+            --exclude "docs/*" \
+            --exclude "README.md"
+
+      - name: Invalidazione cache CloudFront
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id "${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}" \
+            --paths "/*"
