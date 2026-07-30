@@ -70,7 +70,8 @@ const SERVIZI = [
       { domanda: "Dovrò cambiare tutti gli apparati?", risposta: "Non necessariamente: partiamo da ciò che hai già e integriamo o sostituiamo solo dove serve davvero." },
       { domanda: "Cosa succede se subiamo un attacco?", risposta: "Con backup aggiornati e procedure di ripristino si riparte in tempi rapidi. Ti affianchiamo anche nella gestione dell'incidente." },
       { domanda: "Fate assistenza anche dopo l'installazione?", risposta: "Sì: manutenzione, aggiornamenti e monitoraggio della rete nel tempo fanno parte del servizio." }
-    ]
+    ],
+    certificazioni: true
   },
   {
     id: "privacy-conformita",

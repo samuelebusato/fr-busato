@@ -62,6 +62,17 @@
     cont.appendChild(sez);
   }
 
+  /* ---- Certificazioni (riempite da certificazioni.js) ---- */
+  if (s.certificazioni) {
+    const sez = el("section", "sezione container servizio-sezione rivela");
+    sez.setAttribute("data-cert-sezione", "");
+    sez.hidden = true;
+    sez.appendChild(el("h2", null, "Certificazioni ufficiali"));
+    sez.appendChild(el("p", "sottotitolo", "Le certificazioni che attestano la nostra competenza in materia di privacy, conformità, sicurezza e continuità operativa."));
+    sez.appendChild(el("div", "certificazioni-griglia"));
+    cont.appendChild(sez);
+  }
+
   /* ---- In dettaglio (approfondimenti / spiegazioni) ---- */
   if (s.approfondimenti && s.approfondimenti.length) {
     const sez = el("section", "sezione container servizio-sezione rivela");
@@ -145,17 +156,6 @@
       wrap.appendChild(d);
     });
     sez.appendChild(wrap);
-    cont.appendChild(sez);
-  }
-
-  /* ---- Certificazioni (riempite da certificazioni.js) ---- */
-  if (s.certificazioni) {
-    const sez = el("section", "sezione container servizio-sezione rivela");
-    sez.setAttribute("data-cert-sezione", "");
-    sez.hidden = true;
-    sez.appendChild(el("h2", null, "Certificazioni"));
-    sez.appendChild(el("p", "sottotitolo", "Le certificazioni che attestano la nostra competenza in materia di privacy, conformità, sicurezza e continuità operativa."));
-    sez.appendChild(el("div", "certificazioni-griglia"));
     cont.appendChild(sez);
   }
 
