@@ -1,0 +1,120 @@
+/* ============================================================
+   Pagina servizio — rendering dinamico (servizio.html?id=...)
+   Legge i dati da SERVIZI (servizi-dati.js) e costruisce la pagina.
+   ============================================================ */
+(function () {
+  "use strict";
+
+  if (typeof SERVIZI === "undefined") return;
+  const cont = document.getElementById("servizio-contenuto");
+  if (!cont) return;
+
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id");
+  const s = SERVIZI.find(function (x) { return x.id === id; });
+
+  function el(tag, cls, html) {
+    const e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (html != null) e.innerHTML = html;
+    return e;
+  }
+
+  /* Servizio non trovato */
+  if (!s) {
+    cont.innerHTML =
+      "<section class=\"sezione container\">" +
+      "<p class=\"eyebrow\">Servizio</p>" +
+      "<h1>Servizio non trovato</h1>" +
+      "<p class=\"sottotitolo\" style=\"margin-top:1rem\">Il servizio richiesto non esiste. Torna alla home per scoprire tutti i nostri servizi.</p>" +
+      "<p style=\"margin-top:1.6rem\"><a class=\"btn btn-pieno\" href=\"index.html#servizi\">Tutti i servizi</a></p>" +
+      "</section>";
+    return;
+  }
+
+  document.title = s.nome + " — F.R. di Busato Fausto";
+  if (s.colore) document.documentElement.style.setProperty("--accent", s.colore);
+  const md = document.querySelector('meta[name="description"]');
+  if (md) md.setAttribute("content", s.nome + " — " + s.sottotitolo);
+
+  /* ---- Hero ---- */
+  const hero = el("section", "sezione container servizio-hero");
+  const torna = el("a", "torna", "<span aria-hidden=\"true\">←</span> Tutti i servizi");
+  torna.href = "index.html#servizi";
+  hero.appendChild(torna);
+  hero.insertAdjacentHTML("beforeend",
+    "<p class=\"eyebrow entra\">" + s.occhiello + "</p>" +
+    "<h1 class=\"entra\" data-passo=\"1\">" + s.titolo + "</h1>" +
+    "<p class=\"sottotitolo entra\" data-passo=\"2\" style=\"margin-top:1.1rem\">" + s.sottotitolo + "</p>" +
+    "<div class=\"hero-azioni entra\" data-passo=\"3\" style=\"margin-top:1.7rem\">" +
+      "<a class=\"btn btn-pieno\" href=\"index.html#contatti\">Richiedi informazioni</a>" +
+      "<a class=\"btn btn-vuoto\" href=\"index.html#servizi\">Altri servizi →</a>" +
+    "</div>");
+  cont.appendChild(hero);
+
+  /* ---- Cos'è ---- */
+  if (s.descrizione && s.descrizione.length) {
+    const sez = el("section", "sezione container servizio-sezione rivela");
+    sez.appendChild(el("h2", null, "Cos'è"));
+    const wrap = el("div", "servizio-testo");
+    s.descrizione.forEach(function (p) { wrap.appendChild(el("p", null, p)); });
+    sez.appendChild(wrap);
+    cont.appendChild(sez);
+  }
+
+  /* ---- Perché è importante (dati) ---- */
+  if (s.statistiche && s.statistiche.length) {
+    const sez = el("section", "sezione container servizio-sezione rivela");
+    sez.appendChild(el("h2", null, "Perché è importante"));
+    if (s.perche) sez.appendChild(el("p", "sottotitolo", s.perche));
+    const grid = el("div", "stat-griglia");
+    s.statistiche.forEach(function (st) {
+      const c = el("div", "stat");
+      c.appendChild(el("span", "stat-num", st.numero));
+      c.appendChild(el("span", "stat-testo", st.testo));
+      if (st.fonte) c.appendChild(el("span", "stat-fonte", "Fonte: " + st.fonte));
+      grid.appendChild(c);
+    });
+    sez.appendChild(grid);
+    cont.appendChild(sez);
+  }
+
+  /* ---- Casi d'uso + A chi serve ---- */
+  if ((s.casiUso && s.casiUso.length) || (s.aChiServe && s.aChiServe.length)) {
+    const sez = el("section", "sezione container servizio-sezione rivela");
+    const grid = el("div", "servizio-doppia");
+    function blocco(titolo, voci) {
+      const box = el("div", "servizio-blocco");
+      box.appendChild(el("h2", null, titolo));
+      const ul = el("ul", "lista-check");
+      voci.forEach(function (x) { ul.appendChild(el("li", null, x)); });
+      box.appendChild(ul);
+      return box;
+    }
+    if (s.casiUso && s.casiUso.length) grid.appendChild(blocco("Casi d'uso", s.casiUso));
+    if (s.aChiServe && s.aChiServe.length) grid.appendChild(blocco("A chi serve", s.aChiServe));
+    sez.appendChild(grid);
+    cont.appendChild(sez);
+  }
+
+  /* ---- Certificazioni (riempite da certificazioni.js) ---- */
+  if (s.certificazioni) {
+    const sez = el("section", "sezione container servizio-sezione rivela");
+    sez.setAttribute("data-cert-sezione", "");
+    sez.hidden = true;
+    sez.appendChild(el("h2", null, "Certificazioni"));
+    sez.appendChild(el("p", "sottotitolo", "Le certificazioni che attestano la nostra competenza in materia di privacy, sicurezza e conformità."));
+    sez.appendChild(el("div", "certificazioni-griglia"));
+    cont.appendChild(sez);
+  }
+
+  /* ---- Call to action finale ---- */
+  const cta = el("section", "sezione container");
+  cta.innerHTML =
+    "<div class=\"callout rivela\">" +
+      "<div><p class=\"eyebrow\">" + s.nome + "</p><h2>Parliamo del tuo progetto.</h2>" +
+      "<p>Raccontaci le tue esigenze: individueremo insieme la soluzione più adatta alla tua azienda.</p></div>" +
+      "<a class=\"btn btn-pieno\" href=\"index.html#contatti\">Contattaci</a>" +
+    "</div>";
+  cont.appendChild(cta);
+})();

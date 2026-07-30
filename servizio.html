@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Servizio — F.R. di Busato Fausto</title>
+  <meta name="description" content="I servizi informatici di F.R. di Busato Fausto: sviluppo software, reti sicure, privacy e conformità, assistenza e fornitura hardware.">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#contenuto">Vai al contenuto</a>
+
+  <div class="progresso" id="progresso" aria-hidden="true"></div>
+  <div class="sfondo" aria-hidden="true"></div>
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <div class="orb orb-a" aria-hidden="true"></div>
+  <div class="orb orb-b" aria-hidden="true"></div>
+
+  <header class="header">
+    <nav class="nav container" aria-label="Navigazione principale">
+      <a class="marchio" href="index.html">
+        <span class="marchio-logo">F.R.</span>
+        <span class="marchio-testo">
+          <strong>F.R. di Busato Fausto</strong>
+          <span>l'informatica al tuo servizio</span>
+        </span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="menu" aria-label="Apri il menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu" id="menu">
+        <li><a href="index.html#azienda">L'Azienda</a></li>
+        <li><a class="attivo" href="index.html#servizi">Servizi</a></li>
+        <li><a href="sviluppo-software.html">Sviluppo Software</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a class="nav-cta" href="index.html#contatti">Contatti</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="contenuto">
+    <div id="servizio-contenuto"></div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-griglia">
+        <div class="footer-col">
+          <a class="marchio" href="index.html">
+            <span class="marchio-logo">F.R.</span>
+            <span class="marchio-testo">
+              <strong>F.R. di Busato Fausto</strong>
+              <span>l'informatica al tuo servizio</span>
+            </span>
+          </a>
+          <p style="max-width:22rem; margin-top:1rem;">Sviluppo software su misura, reti sicure, consulenza informatica e privacy, assistenza e formazione per le aziende dal 2000.</p>
+        </div>
+        <div class="footer-col">
+          <h3>Navigazione</h3>
+          <ul>
+            <li><a href="index.html#azienda">L'Azienda</a></li>
+            <li><a href="index.html#servizi">Servizi</a></li>
+            <li><a href="sviluppo-software.html">Sviluppo Software</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="index.html#contatti">Contatti</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Informazioni legali</h3>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="cookie-policy.html">Cookie Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-legale">
+        <span>© <span id="anno-corrente"></span> F.R. di Busato Fausto — Via Marzabotto, 1 — 42017 Novellara (RE)</span>
+        <span>P.IVA 01878620358</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="avviso-cookie" id="avviso-cookie" role="region" aria-label="Informativa sui cookie" hidden>
+    <p>Questo sito non utilizza cookie di profilazione. Vengono impiegati solo strumenti tecnici necessari al funzionamento. Maggiori dettagli nella <a href="cookie-policy.html">Cookie Policy</a>.</p>
+    <button class="btn btn-pieno" id="chiudi-cookie">Ho capito</button>
+  </div>
+
+  <script src="assets/js/servizi-dati.js"></script>
+  <script src="assets/js/servizio.js"></script>
+  <script src="assets/js/certificazioni.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

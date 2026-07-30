@@ -60,6 +60,23 @@
     const ctx = canvas.getContext("2d");
     let larghezza, altezza, nodi;
 
+    /* Costellazioni disegnate nello sfondo (coordinate relative 0..1;
+       ax/ay = posizione del centro sul canvas, s = dimensione) */
+    const COSTELLAZIONI = [
+      { /* Ariete */ ax: .16, ay: .26, s: .12,
+        stelle: [[1, .35], [.6, .5], [.45, .6], [.05, .85]],
+        lati: [[0, 1], [1, 2], [2, 3]], grandi: [0] },
+      { /* Toro */ ax: .8, ay: .22, s: .2,
+        stelle: [[.4, .62], [.32, .6], [.28, .66], [.33, .55], [.42, .5], [.72, .16], [.8, .58]],
+        lati: [[2, 1], [1, 0], [2, 3], [3, 4], [4, 5], [0, 6]], grandi: [0] },
+      { /* Cancro */ ax: .2, ay: .74, s: .13,
+        stelle: [[.5, 0], [.5, .4], [.56, .52], [.8, .98], [.1, .9]],
+        lati: [[0, 1], [1, 2], [2, 3], [2, 4]], grandi: [] },
+      { /* Scorpione */ ax: .8, ay: .68, s: .2,
+        stelle: [[.15, .03], [.05, .12], [.02, .22], [.22, .32], [.26, .44], [.32, .56], [.38, .66], [.47, .74], [.58, .78], [.69, .76], [.77, .68], [.8, .57], [.72, .52]],
+        lati: [[0, 1], [1, 2], [0, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 8], [8, 9], [9, 10], [10, 11], [11, 12]], grandi: [3] }
+    ];
+
     function inizializza() {
       larghezza = canvas.width = window.innerWidth;
       altezza = canvas.height = window.innerHeight;
@@ -101,6 +118,47 @@
         ctx.beginPath();
         ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
         ctx.fill();
+      });
+
+      disegnaCostellazioni();
+    }
+
+    /* Disegna Ariete, Toro, Cancro e Scorpione, leggermente più
+       visibili rispetto ai nodi di sfondo */
+    function disegnaCostellazioni() {
+      const base = Math.min(larghezza, altezza);
+      COSTELLAZIONI.forEach(function (c) {
+        const S = base * c.s;
+        const ox = c.ax * larghezza - S / 2;
+        const oy = c.ay * altezza - S / 2;
+        function pt(k) { return [ox + c.stelle[k][0] * S, oy + c.stelle[k][1] * S]; }
+
+        ctx.strokeStyle = "rgba(70, 120, 235, .30)";
+        ctx.lineWidth = 1;
+        c.lati.forEach(function (e) {
+          const a = pt(e[0]), b = pt(e[1]);
+          ctx.beginPath();
+          ctx.moveTo(a[0], a[1]);
+          ctx.lineTo(b[0], b[1]);
+          ctx.stroke();
+        });
+
+        c.stelle.forEach(function (s, k) {
+          const p = pt(k);
+          const grande = c.grandi.indexOf(k) !== -1;
+          const r = grande ? 2.4 : 1.6;
+          const g = ctx.createRadialGradient(p[0], p[1], 0, p[0], p[1], r * 4);
+          g.addColorStop(0, grande ? "rgba(130, 175, 255, .95)" : "rgba(90, 140, 240, .8)");
+          g.addColorStop(1, "rgba(90, 140, 240, 0)");
+          ctx.fillStyle = g;
+          ctx.beginPath();
+          ctx.arc(p[0], p[1], r * 4, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.fillStyle = grande ? "rgba(210, 225, 255, .98)" : "rgba(160, 195, 255, .9)";
+          ctx.beginPath();
+          ctx.arc(p[0], p[1], r, 0, Math.PI * 2);
+          ctx.fill();
+        });
       });
     }
 
