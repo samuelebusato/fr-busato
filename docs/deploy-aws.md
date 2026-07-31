@@ -160,16 +160,25 @@ Setup una tantum lato AWS:
 2. **Ruolo** — IAM → Roles → Create role → *Web identity* → provider appena
    creato, audience `sts.amazonaws.com`, GitHub organization `samuelebusato`,
    repository `fr-busato`, branch `main`. Nome es. `github-deploy-fr-busato`.
-   La trust policy generata deve contenere:
+   La trust policy deve contenere:
 
    ```json
    "Condition": {
      "StringEquals": {
        "token.actions.githubusercontent.com:aud": "sts.amazonaws.com",
-       "token.actions.githubusercontent.com:sub": "repo:samuelebusato/fr-busato:ref:refs/heads/main"
+       "token.actions.githubusercontent.com:sub": "repo:samuelebusato@163120697/fr-busato@1315929854:ref:refs/heads/main"
      }
    }
    ```
+
+   > ⚠️ **Formato del `sub`**: questo account GitHub emette il sub con gli **ID
+   > numerici immutabili** (`owner@ID/repo@ID`), non il formato classico
+   > `repo:owner/repo:...` riportato da molte guide. Con il formato classico
+   > STS risponde "Not authorized to perform sts:AssumeRoleWithWebIdentity"
+   > anche se tutto il resto è corretto. In caso di dubbi, il valore reale si
+   > ricava facendo stampare i claim del token con `core.getIDToken()` in un
+   > passo `actions/github-script`. Il vincolo sugli ID è anche più robusto:
+   > sopravvive alle rinomine e impedisce il riuso del nome da parte di terzi.
 
 3. **Permessi del ruolo** (inline policy, minimo indispensabile — sostituire
    bucket, Account ID e Distribution ID):
