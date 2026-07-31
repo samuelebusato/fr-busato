@@ -30,7 +30,9 @@ jobs:
       - name: Credenziali AWS via OIDC
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          # L'ARN di un ruolo non è un segreto: la protezione sta nella trust
+          # policy, che accetta solo token OIDC di questa repo sul branch main.
+          role-to-assume: arn:aws:iam::219712358948:role/github-deploy-fr-busato
           aws-region: eu-central-1
 
       - name: Sync dei file su S3
