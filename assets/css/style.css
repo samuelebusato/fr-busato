@@ -1213,3 +1213,100 @@ h3{ font-size:1.18rem; font-weight:600; }
 @media (max-width: 560px){
   .stat-griglia{ grid-template-columns:1fr; }
 }
+
+/* ------------------------------------------------------------
+   Recensioni — stelle ambra su tema chiaro
+   ------------------------------------------------------------ */
+.recensioni-riepilogo{
+  display:flex; align-items:center; gap:.9rem; flex-wrap:wrap;
+  margin-bottom:2.4rem;
+}
+.recensioni-media{
+  font-family:var(--font-display); font-size:2.4rem; font-weight:600;
+  line-height:1; color:var(--text);
+}
+.recensioni-media-stelle{ display:inline-flex; gap:.1rem; font-size:1.35rem; }
+.recensioni-media-stelle .stella{ color:var(--line-forte); }
+.recensioni-media-stelle .stella.piena{ color:#f59e0b; }
+.recensioni-conteggio{ color:var(--muted); font-size:.95rem; }
+
+.recensioni-griglia{
+  display:grid; grid-template-columns:repeat(3, 1fr); gap:1.4rem;
+}
+.recensione{
+  margin:0; padding:1.6rem;
+  border:1px solid var(--line); border-radius:var(--radius);
+  background:linear-gradient(165deg, var(--surface), var(--surface-2));
+  display:flex; flex-direction:column; gap:.85rem;
+  transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+.recensione:hover{
+  transform:translateY(-4px); border-color:var(--accent-line);
+  box-shadow:0 20px 45px -22px color-mix(in srgb, var(--accent) 40%, transparent);
+}
+.recensione-stelle{ display:inline-flex; gap:.1rem; font-size:1.1rem; }
+.recensione-stelle .stella{ color:var(--line-forte); }
+.recensione-stelle .stella.piena{ color:#f59e0b; }
+.recensione-testo{
+  margin:0; color:var(--muted); font-size:.98rem; line-height:1.6;
+}
+.recensione-testo::before{ content:"\201C"; }
+.recensione-testo::after{ content:"\201D"; }
+.recensione-autore{ display:flex; align-items:baseline; gap:.6rem; margin-top:auto; flex-wrap:wrap; }
+.recensione-nome{ font-family:var(--font-display); font-weight:600; color:var(--text); font-size:.98rem; }
+.recensione-data{ font-size:.82rem; color:var(--faint); font-family:var(--font-mono); }
+
+.recensioni-vuoto{ text-align:center; color:var(--muted); padding:1.4rem 0 .4rem; }
+
+/* ---------- Form recensione ---------- */
+.recensione-form-box{
+  margin-top:2.6rem; padding:1.9rem 2rem;
+  border:1px solid var(--line); border-radius:var(--radius);
+  background:linear-gradient(165deg, var(--surface), var(--surface-2));
+}
+.recensione-form-box h3{ margin-bottom:1.2rem; }
+.recensione-form{ display:flex; flex-direction:column; gap:1.1rem; }
+.rec-riga{ display:grid; grid-template-columns:1fr auto; gap:1.1rem; align-items:start; }
+.rec-campo{ display:flex; flex-direction:column; gap:.4rem; }
+.rec-campo > span, .rec-etichetta{ font-weight:600; font-size:.9rem; color:var(--text); }
+.recensione-form input, .recensione-form textarea{
+  font:inherit; color:var(--text);
+  background:var(--bg); border:1px solid var(--line-forte); border-radius:var(--radius-sm);
+  padding:.7rem .9rem; width:100%; resize:vertical;
+  transition:border-color .2s, box-shadow .2s;
+}
+.recensione-form input::placeholder, .recensione-form textarea::placeholder{ color:var(--faint); }
+.recensione-form input:focus, .recensione-form textarea:focus{
+  outline:none; border-color:var(--accent);
+  box-shadow:0 0 0 3px var(--accent-soft);
+}
+
+/* Selettore stelle interattivo (radiogroup di button) */
+.rec-stelle-input{ display:inline-flex; gap:.15rem; }
+.rec-stella{
+  background:none; border:none; cursor:pointer; padding:.1rem;
+  font-size:1.8rem; line-height:1; color:var(--line-forte);
+  transition:color .12s, transform .12s;
+}
+.rec-stella:hover{ transform:scale(1.12); }
+.rec-stella.piena{ color:#f59e0b; }
+.rec-stella:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; border-radius:6px; }
+
+.rec-piede{ display:flex; align-items:center; justify-content:space-between; gap:1.2rem; flex-wrap:wrap; }
+.rec-nota{ font-size:.85rem; color:var(--muted); max-width:36rem; margin:0; }
+.rec-nota strong{ color:var(--text); }
+.rec-errore{ font-size:.9rem; color:#dc2626; font-weight:600; margin:0; }
+.rec-ok{
+  font-size:.92rem; color:#047857; font-weight:600; margin:0;
+  background:rgba(4,120,87,.08); border:1px solid rgba(4,120,87,.28);
+  border-radius:var(--radius-sm); padding:.7rem .9rem;
+}
+
+@media (max-width: 900px){
+  .recensioni-griglia{ grid-template-columns:repeat(2, 1fr); }
+}
+@media (max-width: 600px){
+  .recensioni-griglia{ grid-template-columns:1fr; }
+  .rec-riga{ grid-template-columns:1fr; }
+  .rec-piede .btn{ width:100%; justify-content:center; }
+}

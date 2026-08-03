@@ -42,7 +42,6 @@
     "foundingDate": "2000",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Via Marzabotto, 1",
       "addressLocality": "Novellara",
       "addressRegion": "RE",
       "postalCode": "42017",
@@ -94,6 +93,7 @@
         <li><a href="#certificazioni">Certificazioni</a></li>
         <li><a href="sviluppo-software.html">Sviluppo Software</a></li>
         <li><a href="blog.html">Blog</a></li>
+        <li><a href="#recensioni">Recensioni</a></li>
         <li><a class="nav-cta" href="#contatti">Contatti</a></li>
       </ul>
     </nav>
@@ -418,6 +418,56 @@
       </div>
     </section>
 
+    <!-- ================= RECENSIONI ================= -->
+    <!-- Le recensioni mostrate vivono in assets/data/recensioni.json (curate:
+         pubblichi solo quelle approvate). Il form NON salva nulla e non
+         traccia: compone un'email precompilata verso fausto@fr-busato.it.
+         Logica in assets/js/recensioni.js. -->
+    <section class="sezione container" id="recensioni">
+      <div class="sezione-testa rivela">
+        <p class="eyebrow">Recensioni</p>
+        <h2>La parola ai nostri clienti.</h2>
+        <p class="sottotitolo">Hai lavorato con noi? Raccontaci com'è andata. Le recensioni vengono pubblicate dopo una verifica.</p>
+      </div>
+
+      <!-- Riepilogo media: nascosto finché non c'è almeno una recensione -->
+      <div class="recensioni-riepilogo rivela" id="recensioni-riepilogo" hidden>
+        <span class="recensioni-media" id="recensioni-media">0,0</span>
+        <span class="recensioni-media-stelle" id="recensioni-media-stelle" aria-hidden="true"></span>
+        <span class="recensioni-conteggio" id="recensioni-conteggio"></span>
+      </div>
+
+      <div class="recensioni-griglia" id="recensioni-griglia" aria-label="Recensioni dei clienti"></div>
+      <p class="recensioni-vuoto" id="recensioni-vuoto" hidden>Non ci sono ancora recensioni pubblicate. Vuoi essere il primo?</p>
+
+      <!-- Form: lascia una recensione (compone un'email, non salva dati) -->
+      <div class="recensione-form-box rivela">
+        <h3>Lascia una recensione</h3>
+        <form class="recensione-form" id="recensione-form" novalidate>
+          <div class="rec-riga">
+            <label class="rec-campo" for="rec-nome">
+              <span>Nome</span>
+              <input type="text" id="rec-nome" name="nome" maxlength="60" placeholder="Come vuoi comparire" autocomplete="name" required>
+            </label>
+            <div class="rec-campo rec-stelle-campo">
+              <span class="rec-etichetta">Valutazione</span>
+              <div class="rec-stelle-input" id="rec-stelle-input" role="radiogroup" aria-label="Valutazione da 1 a 5 stelle"></div>
+            </div>
+          </div>
+          <label class="rec-campo" for="rec-commento">
+            <span>Commento</span>
+            <textarea id="rec-commento" name="commento" rows="4" maxlength="600" placeholder="La tua esperienza con F.R. di Busato Fausto" required></textarea>
+          </label>
+          <p class="rec-errore" id="rec-errore" role="alert" hidden></p>
+          <p class="rec-ok" id="rec-ok" hidden>Si apre la tua email con la recensione già compilata: inviala e la pubblicheremo dopo una verifica. Grazie!</p>
+          <div class="rec-piede">
+            <p class="rec-nota">Inviando si apre la tua email con la recensione già scritta: la pubblichiamo dopo una verifica. <strong>Il sito non salva alcun dato.</strong></p>
+            <button type="submit" class="btn btn-pieno">Invia la recensione →</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
     <!-- ================= CONTATTI ================= -->
     <section class="sezione container" id="contatti">
       <div class="sezione-testa rivela">
@@ -431,7 +481,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
             Dove siamo
           </h3>
-          <p>Via Marzabotto, 1<br>42017 Novellara (RE)<br>Italia</p>
+          <p>Novellara (RE)<br>Italia</p>
         </div>
         <div class="contatto rivela" data-ritardo="1">
           <h3>
@@ -486,7 +536,7 @@
         </div>
       </div>
       <div class="footer-legale">
-        <span>© <span id="anno-corrente"></span> F.R. di Busato Fausto — Via Marzabotto, 1 — 42017 Novellara (RE)</span>
+        <span>© <span id="anno-corrente"></span> F.R. di Busato Fausto — Novellara (RE)</span>
         <span>P.IVA 01878620358</span>
       </div>
     </div>
@@ -515,6 +565,7 @@
   <script src="assets/js/blog.js"></script>
   <script src="assets/js/servizi-dati.js"></script>
   <script src="assets/js/certificazioni.js"></script>
+  <script src="assets/js/recensioni.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>
