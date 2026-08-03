@@ -23,6 +23,14 @@
   const EMAIL = "fausto@fr-busato.it";
   const MAX = 5;
 
+  // Riflettore che segue il cursore sulle card: attivo solo con puntatore
+  // fine (no touch) e movimento consentito. Degrada in sicurezza — senza,
+  // il riflettore CSS resta centrato di default.
+  const RIFLETTORE =
+    typeof window.matchMedia === "function" &&
+    window.matchMedia("(pointer: fine)").matches &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   /* ---------- Testo semplice: neutralizza eventuale HTML ---------- */
   function escapeHtml(str) {
     const div = document.createElement("div");
@@ -73,14 +81,27 @@
       const stelle = Math.min(MAX, Number(r.stelle));
       const card = document.createElement("figure");
       card.className = "recensione";
+      const nomePulito = String(r.nome).trim();
+      const iniziale = (nomePulito.charAt(0) || "?").toUpperCase();
       card.innerHTML =
         '<div class="recensione-stelle" role="img" aria-label="' + stelle + ' su ' + MAX + ' stelle">' + starsMarkup(stelle) + "</div>" +
         '<blockquote class="recensione-testo">' + escapeHtml(r.commento) + "</blockquote>" +
         '<figcaption class="recensione-autore">' +
-          '<span class="recensione-nome">' + escapeHtml(r.nome) + "</span>" +
-          (r.data ? '<span class="recensione-data">' + escapeHtml(r.data) + "</span>" : "") +
+          '<span class="recensione-mono" aria-hidden="true">' + escapeHtml(iniziale) + "</span>" +
+          '<span class="recensione-autore-testo">' +
+            '<span class="recensione-nome">' + escapeHtml(nomePulito) + "</span>" +
+            (r.data ? '<span class="recensione-data">' + escapeHtml(r.data) + "</span>" : "") +
+          "</span>" +
         "</figcaption>";
       griglia.appendChild(card);
+
+      if (RIFLETTORE) {
+        card.addEventListener("mousemove", function (e) {
+          const rect = card.getBoundingClientRect();
+          card.style.setProperty("--mx", (e.clientX - rect.left) + "px");
+          card.style.setProperty("--my", (e.clientY - rect.top) + "px");
+        });
+      }
     });
   }
 

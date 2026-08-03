@@ -1214,99 +1214,296 @@ h3{ font-size:1.18rem; font-weight:600; }
   .stat-griglia{ grid-template-columns:1fr; }
 }
 
-/* ------------------------------------------------------------
-   Recensioni — stelle ambra su tema chiaro
-   ------------------------------------------------------------ */
+/* ============================================================
+   RECENSIONI — Design finale (graft B "Premium showcase" +
+   pattern-firma "riflettore al cursore" di C)
+   Tema chiaro/blu · font già presenti · zero risorse esterne.
+   Stelle oro #f59e0b su traccia var(--line-forte).
+   Sostituisce integralmente il CSS recensioni attuale.
+   ============================================================ */
+
+/* ---------- Riepilogo media: pannello elevato con badge ---------- */
 .recensioni-riepilogo{
-  display:flex; align-items:center; gap:.9rem; flex-wrap:wrap;
-  margin-bottom:2.4rem;
+  position:relative;
+  display:flex; align-items:center; gap:1.1rem 1.4rem; flex-wrap:wrap;
+  margin-bottom:2.6rem;
+  padding:1.5rem 1.8rem;
+  border:1px solid var(--accent-line);
+  border-radius:calc(var(--radius) + 4px);
+  background:
+    radial-gradient(120% 150% at 0% 0%, var(--accent-soft), transparent 58%),
+    linear-gradient(165deg, var(--surface), var(--surface-2));
+  box-shadow:
+    0 0 0 4px color-mix(in srgb, var(--accent) 8%, transparent),
+    0 22px 50px -30px color-mix(in srgb, var(--accent) 45%, transparent);
+}
+/* Eyebrow mono a tutta larghezza sopra la media */
+.recensioni-riepilogo::before{
+  content:"\2605  Giudizio dei clienti";
+  flex-basis:100%;
+  font-family:var(--font-mono); font-size:.68rem; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--accent-2);
 }
 .recensioni-media{
-  font-family:var(--font-display); font-size:2.4rem; font-weight:600;
-  line-height:1; color:var(--text);
+  display:inline-flex; align-items:center; gap:.5rem;
+  font-family:var(--font-display); font-size:2.9rem; font-weight:700;
+  line-height:1; color:var(--accent-2); letter-spacing:-.01em;
 }
-.recensioni-media-stelle{ display:inline-flex; gap:.1rem; font-size:1.35rem; }
+/* Stella grande accanto al numero */
+.recensioni-media::before{
+  content:"\2605"; color:#f59e0b; font-size:2.1rem; line-height:1;
+  filter:drop-shadow(0 4px 10px color-mix(in srgb, #f59e0b 45%, transparent));
+}
+.recensioni-media-stelle{ display:inline-flex; gap:.12rem; font-size:1.4rem; }
 .recensioni-media-stelle .stella{ color:var(--line-forte); }
 .recensioni-media-stelle .stella.piena{ color:#f59e0b; }
-.recensioni-conteggio{ color:var(--muted); font-size:.95rem; }
+.recensioni-conteggio{
+  color:var(--muted); font-size:.86rem;
+  font-family:var(--font-mono); letter-spacing:.02em;
+  padding-left:1.1rem; margin-left:.1rem;
+  border-left:1px solid var(--line-forte);
+}
 
+/* ---------- Griglia 3 → 2 → 1 ---------- */
 .recensioni-griglia{
-  display:grid; grid-template-columns:repeat(3, 1fr); gap:1.4rem;
+  display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1.4rem;
+  align-items:start;
 }
+/* Con una sola recensione la fila non deve sembrare spoglia: la card
+   viene centrata a larghezza confortevole invece di restare stretta a
+   sinistra. Con 2+ recensioni la griglia torna a riempirsi da sinistra. */
+.recensioni-griglia .recensione:only-child{
+  grid-column:1 / -1; width:100%; max-width:36rem; margin-inline:auto;
+}
+
+/* ---------- Card recensione: superficie premium + riflettore ---------- */
 .recensione{
-  margin:0; padding:1.6rem;
+  position:relative; overflow:hidden; isolation:isolate;
+  margin:0; padding:1.7rem 1.6rem 1.5rem;
   border:1px solid var(--line); border-radius:var(--radius);
-  background:linear-gradient(165deg, var(--surface), var(--surface-2));
-  display:flex; flex-direction:column; gap:.85rem;
-  transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  background:
+    radial-gradient(130% 120% at 100% 0%, var(--accent-soft), transparent 55%),
+    linear-gradient(165deg, var(--surface), var(--surface-2));
+  display:flex; flex-direction:column; gap:1rem;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.65),
+    0 12px 30px -26px color-mix(in srgb, var(--accent) 45%, transparent);
+  transition:transform .28s ease, border-color .28s ease, box-shadow .28s ease;
+  animation:rec-entra .7s cubic-bezier(.16,.84,.44,1) both;
 }
+/* Contenuto sopra riflettore e filigrana */
+.recensione > *{ position:relative; z-index:1; }
+
+/* Filigrana virgolette in stile display */
+.recensione::before{
+  content:"\201C";
+  position:absolute; top:.1rem; right:1.1rem; z-index:0;
+  font-family:var(--font-display); font-weight:700;
+  font-size:4.6rem; line-height:1; color:var(--accent);
+  opacity:.10; pointer-events:none;
+}
+/* Riflettore che segue il cursore (--mx/--my via JS; centrato di default) */
+.recensione::after{
+  content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+  opacity:0; transition:opacity .35s ease;
+  background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),
+    color-mix(in srgb, var(--accent) 14%, transparent), transparent 62%);
+}
+.recensione:hover::after{ opacity:1; }
 .recensione:hover{
-  transform:translateY(-4px); border-color:var(--accent-line);
-  box-shadow:0 20px 45px -22px color-mix(in srgb, var(--accent) 40%, transparent);
+  transform:translateY(-5px); border-color:var(--accent-line);
+  box-shadow:
+    0 0 0 4px color-mix(in srgb, var(--accent) 8%, transparent),
+    0 28px 55px -26px color-mix(in srgb, var(--accent) 48%, transparent);
 }
-.recensione-stelle{ display:inline-flex; gap:.1rem; font-size:1.1rem; }
-.recensione-stelle .stella{ color:var(--line-forte); }
+
+@keyframes rec-entra{
+  from{ opacity:0; transform:translateY(26px) scale(.985); }
+  to{ opacity:1; transform:none; }
+}
+.recensione:nth-child(1){ animation-delay:.04s; }
+.recensione:nth-child(2){ animation-delay:.10s; }
+.recensione:nth-child(3){ animation-delay:.16s; }
+.recensione:nth-child(4){ animation-delay:.22s; }
+.recensione:nth-child(5){ animation-delay:.28s; }
+.recensione:nth-child(6){ animation-delay:.34s; }
+.recensione:nth-child(7){ animation-delay:.40s; }
+.recensione:nth-child(8){ animation-delay:.46s; }
+.recensione:nth-child(9){ animation-delay:.52s; }
+
+/* ---------- Stelle card: pop "a onda" in hover ---------- */
+.recensione-stelle{ display:inline-flex; gap:.14rem; font-size:1.1rem; }
+.recensione-stelle .stella{
+  color:var(--line-forte);
+  transition:transform .2s cubic-bezier(.34,1.56,.64,1), color .2s ease;
+}
 .recensione-stelle .stella.piena{ color:#f59e0b; }
+.recensione:hover .recensione-stelle .stella.piena{ transform:translateY(-2px) scale(1.16); }
+.recensione-stelle .stella:nth-child(2){ transition-delay:.03s; }
+.recensione-stelle .stella:nth-child(3){ transition-delay:.06s; }
+.recensione-stelle .stella:nth-child(4){ transition-delay:.09s; }
+.recensione-stelle .stella:nth-child(5){ transition-delay:.12s; }
+
 .recensione-testo{
-  margin:0; color:var(--muted); font-size:.98rem; line-height:1.6;
+  margin:0; color:var(--text); font-size:1rem; line-height:1.62; font-weight:400;
 }
-.recensione-testo::before{ content:"\201C"; }
-.recensione-testo::after{ content:"\201D"; }
-.recensione-autore{ display:flex; align-items:baseline; gap:.6rem; margin-top:auto; flex-wrap:wrap; }
-.recensione-nome{ font-family:var(--font-display); font-weight:600; color:var(--text); font-size:.98rem; }
-.recensione-data{ font-size:.82rem; color:var(--faint); font-family:var(--font-mono); }
 
-.recensioni-vuoto{ text-align:center; color:var(--muted); padding:1.4rem 0 .4rem; }
+/* ---------- Autore con monogramma circolare ---------- */
+.recensione-autore{
+  display:flex; align-items:center; gap:.8rem;
+  margin-top:auto; padding-top:.9rem;
+  border-top:1px solid var(--line);
+}
+.recensione-mono{
+  flex:none; display:grid; place-items:center;
+  width:2.6rem; height:2.6rem; border-radius:999px;
+  background:var(--accent-soft); border:1px solid var(--accent-line);
+  color:var(--accent-2);
+  font-family:var(--font-display); font-weight:700; font-size:1.05rem;
+  line-height:1; text-transform:uppercase;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.5);
+}
+.recensione-autore-testo{
+  display:flex; flex-direction:column; gap:.1rem; min-width:0;
+}
+.recensione-nome{
+  font-family:var(--font-display); font-weight:600;
+  color:var(--text); font-size:.98rem; line-height:1.25;
+}
+.recensione-data{
+  font-size:.76rem; color:var(--faint);
+  font-family:var(--font-mono); letter-spacing:.02em;
+}
 
-/* ---------- Form recensione ---------- */
-.recensione-form-box{
-  margin-top:2.6rem; padding:1.9rem 2rem;
-  border:1px solid var(--line); border-radius:var(--radius);
+/* ---------- Stato vuoto ---------- */
+.recensioni-vuoto{
+  grid-column:1 / -1;
+  text-align:center; color:var(--muted);
+  padding:2.2rem 1.4rem; margin:0;
+  border:1px dashed var(--line-forte); border-radius:var(--radius);
   background:linear-gradient(165deg, var(--surface), var(--surface-2));
+}
+
+/* ============================================================
+   Form recensione — stessa pelle premium, stelle interattive
+   ============================================================ */
+.recensione-form-box{
+  position:relative; overflow:hidden;
+  margin-top:2.6rem; padding:1.9rem 2rem;
+  border:1px solid var(--accent-line); border-radius:calc(var(--radius) + 2px);
+  background:
+    radial-gradient(110% 130% at 100% 0%, var(--accent-soft), transparent 60%),
+    linear-gradient(165deg, var(--surface), var(--surface-2));
+  box-shadow:
+    0 0 0 4px color-mix(in srgb, var(--accent) 6%, transparent),
+    0 20px 46px -32px color-mix(in srgb, var(--accent) 45%, transparent);
+}
+.recensione-form-box::before{
+  content:""; position:absolute; inset:0 0 auto 0; height:3px;
+  background:linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 40%, #0ea5e9));
+  opacity:.75;
 }
 .recensione-form-box h3{ margin-bottom:1.2rem; }
 .recensione-form{ display:flex; flex-direction:column; gap:1.1rem; }
 .rec-riga{ display:grid; grid-template-columns:1fr auto; gap:1.1rem; align-items:start; }
 .rec-campo{ display:flex; flex-direction:column; gap:.4rem; }
-.rec-campo > span, .rec-etichetta{ font-weight:600; font-size:.9rem; color:var(--text); }
+.rec-campo > span, .rec-etichetta{
+  font-family:var(--font-mono); font-size:.72rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--accent-2); font-weight:600;
+}
 .recensione-form input, .recensione-form textarea{
   font:inherit; color:var(--text);
-  background:var(--bg); border:1px solid var(--line-forte); border-radius:var(--radius-sm);
-  padding:.7rem .9rem; width:100%; resize:vertical;
-  transition:border-color .2s, box-shadow .2s;
+  background:var(--surface); border:1px solid var(--line-forte); border-radius:var(--radius-sm);
+  padding:.75rem .95rem; width:100%; box-sizing:border-box; resize:vertical;
+  transition:border-color .2s, box-shadow .2s, background .2s;
 }
 .recensione-form input::placeholder, .recensione-form textarea::placeholder{ color:var(--faint); }
+.recensione-form input:hover, .recensione-form textarea:hover{ border-color:var(--accent-line); }
 .recensione-form input:focus, .recensione-form textarea:focus{
   outline:none; border-color:var(--accent);
   box-shadow:0 0 0 3px var(--accent-soft);
 }
 
 /* Selettore stelle interattivo (radiogroup di button) */
-.rec-stelle-input{ display:inline-flex; gap:.15rem; }
+.rec-stelle-input{ display:inline-flex; gap:.2rem; }
 .rec-stella{
-  background:none; border:none; cursor:pointer; padding:.1rem;
-  font-size:1.8rem; line-height:1; color:var(--line-forte);
-  transition:color .12s, transform .12s;
+  background:none; border:none; cursor:pointer; padding:.1rem .12rem;
+  font-size:1.9rem; line-height:1; color:var(--line-forte);
+  transition:color .14s ease, transform .18s cubic-bezier(.34,1.56,.64,1), filter .14s ease;
 }
-.rec-stella:hover{ transform:scale(1.12); }
-.rec-stella.piena{ color:#f59e0b; }
+.rec-stella:hover{ transform:scale(1.22) rotate(-4deg); }
+.rec-stella:active{ transform:scale(.94); }
+.rec-stella.piena{ color:#f59e0b; filter:drop-shadow(0 2px 6px rgba(245,158,11,.42)); }
 .rec-stella:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; border-radius:6px; }
 
 .rec-piede{ display:flex; align-items:center; justify-content:space-between; gap:1.2rem; flex-wrap:wrap; }
 .rec-nota{ font-size:.85rem; color:var(--muted); max-width:36rem; margin:0; }
 .rec-nota strong{ color:var(--text); }
-.rec-errore{ font-size:.9rem; color:#dc2626; font-weight:600; margin:0; }
+
+/* Stati esito con badge e comparsa morbida */
+.rec-errore{
+  font-size:.9rem; color:#dc2626; font-weight:600; margin:0;
+  display:flex; align-items:center; gap:.5rem;
+  animation:rec-avviso .3s ease both;
+}
+.rec-errore::before{
+  content:"!"; flex:0 0 auto; display:inline-grid; place-items:center;
+  width:1.15rem; height:1.15rem; border-radius:50%;
+  background:#dc2626; color:#fff; font-size:.75rem; font-weight:700; line-height:1;
+}
 .rec-ok{
   font-size:.92rem; color:#047857; font-weight:600; margin:0;
-  background:rgba(4,120,87,.08); border:1px solid rgba(4,120,87,.28);
-  border-radius:var(--radius-sm); padding:.7rem .9rem;
+  display:flex; align-items:flex-start; gap:.55rem;
+  background:linear-gradient(120deg, rgba(4,120,87,.10), rgba(4,120,87,.04));
+  border:1px solid rgba(4,120,87,.28);
+  border-radius:var(--radius-sm); padding:.8rem 1rem;
+  animation:rec-avviso .35s ease both;
+}
+.rec-ok::before{
+  content:"\2713"; flex:0 0 auto; display:inline-grid; place-items:center;
+  width:1.3rem; height:1.3rem; border-radius:50%; margin-top:.05rem;
+  background:#047857; color:#fff; font-size:.8rem; font-weight:700; line-height:1;
+}
+@keyframes rec-avviso{
+  from{ opacity:0; transform:translateY(-4px); }
+  to{ opacity:1; transform:none; }
 }
 
+/* ============================================================
+   Accessibilità
+   ============================================================ */
+#recensioni :is(a, button, input, textarea, select, [tabindex]):focus-visible{
+  outline:2px solid var(--accent); outline-offset:2px; border-radius:var(--radius-sm);
+}
+
+/* ============================================================
+   Responsive: 3 → 2 → 1 colonne
+   ============================================================ */
 @media (max-width: 900px){
-  .recensioni-griglia{ grid-template-columns:repeat(2, 1fr); }
+  .recensioni-griglia{ grid-template-columns:repeat(2, minmax(0,1fr)); }
 }
 @media (max-width: 600px){
   .recensioni-griglia{ grid-template-columns:1fr; }
   .rec-riga{ grid-template-columns:1fr; }
   .rec-piede .btn{ width:100%; justify-content:center; }
+  .recensioni-riepilogo{ padding:1.3rem 1.4rem; }
+  .recensioni-media{ font-size:2.5rem; }
+  .recensioni-conteggio{
+    padding-left:0; margin-left:0; border-left:none; flex-basis:100%;
+  }
+}
+
+/* ============================================================
+   Rispetto di prefers-reduced-motion
+   ============================================================ */
+@media (prefers-reduced-motion: reduce){
+  .recensione{ animation:none; }
+  .recensione,
+  .recensione-stelle .stella,
+  .rec-stella{ transition:none; }
+  .recensione:hover{ transform:none; }
+  .recensione::after{ display:none; }
+  .recensione:hover .recensione-stelle .stella.piena{ transform:none; }
+  .rec-stella:hover, .rec-stella:active{ transform:none; }
+  .rec-errore, .rec-ok{ animation:none; }
 }
