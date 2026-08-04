@@ -38,6 +38,13 @@
     const ant = document.createElement("div");
     ant.className = "card-anteprima";
 
+    /* Motivo animato a tema del progetto, se disponibile */
+    if (window.MOTIVI && MOTIVI.ha(p.id)) {
+      ant.classList.add("card-anteprima-motivo");
+      ant.appendChild(MOTIVI.crea(p.id));
+      return ant;
+    }
+
     if (p.immagini && p.immagini.length) {
       const img = document.createElement("img");
       img.src = p.immagini[0];
@@ -68,10 +75,15 @@
     return ant;
   }
 
-  /* Crea una singola card progetto */
-  function costruisciCard(p) {
+  /* Crea una singola card progetto.
+     La dimensione dipende dalla POSIZIONE nella griglia (pattern
+     "giocoso" che alterna grandi e piccole su entrambi i lati,
+     CSS .bento nth-child), non più dal campo dimensione. */
+  function costruisciCard(p, indice) {
+    const passo = ((indice || 0) % 6);
+    const grande = passo === 0 || passo === 4;
     const card = document.createElement("a");
-    card.className = "card-progetto " + (p.dimensione || "md");
+    card.className = "card-progetto " + (grande ? "xl" : "md");
     card.href = "progetto.html?id=" + encodeURIComponent(p.id);
     card.style.setProperty("--c", p.colore);
     card.setAttribute("aria-label", p.nome + " — scopri il progetto");
@@ -100,8 +112,15 @@
 
     card.append(tags, titolo, desc);
 
-    if (p.dimensione === "xl" || p.dimensione === "lg") {
+    if (grande) {
       card.appendChild(costruisciAnteprima(p));
+    } else if (window.MOTIVI && MOTIVI.ha(p.id)) {
+      /* Card piccole: il motivo a tema diventa uno sfondo sfumato */
+      const bg = document.createElement("div");
+      bg.className = "card-motivo-bg";
+      bg.setAttribute("aria-hidden", "true");
+      bg.appendChild(MOTIVI.crea(p.id));
+      card.appendChild(bg);
     }
 
     const azione = document.createElement("span");
@@ -125,7 +144,7 @@
   const featured = document.getElementById("featured-grid");
   if (featured) {
     PROGETTI.slice(0, 3).forEach(function (p, i) {
-      const card = costruisciCard(p);
+      const card = costruisciCard(p, i);
       preparaNascita(card, i);
       featured.appendChild(card);
     });
@@ -150,7 +169,7 @@
     }
 
     lista.forEach(function (p, i) {
-      const card = costruisciCard(p);
+      const card = costruisciCard(p, i);
       preparaNascita(card, i);
       griglia.appendChild(card);
     });

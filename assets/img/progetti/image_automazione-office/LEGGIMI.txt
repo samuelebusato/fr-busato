@@ -1,0 +1,8 @@
+Immagini - Automazione Office
+
+Metti in questa cartella 2-3 immagini di questo progetto,
+nominate 1, 2 e 3 (es. 1.jpg, 2.png, 3.webp).
+
+Compaiono da sole nella pagina del progetto, in un layout dinamico.
+Formati supportati: jpg, jpeg, png, webp.
+Finche' la cartella e' vuota viene mostrato un segnaposto elegante.

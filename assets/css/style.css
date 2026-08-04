@@ -1507,3 +1507,336 @@ h3{ font-size:1.18rem; font-weight:600; }
   .rec-stella:hover, .rec-stella:active{ transform:none; }
   .rec-errore, .rec-ok{ animation:none; }
 }
+
+/* ============================================================
+   V6 — Pagina progetto: layout editoriale asimmetrico + galleria
+   ============================================================ */
+
+/* Il corpo passa da griglia a 2 colonne a un flusso editoriale */
+.progetto-corpo.progetto-flusso{
+  display:block;
+  max-width:72rem;
+}
+.progetto-flusso .progetto-blocco{
+  position:relative;
+  margin:0 0 3.2rem;
+  max-width:44rem;
+}
+.blocco-eyebrow{
+  font-family:var(--font-mono); font-size:.78rem; letter-spacing:.22em;
+  color:color-mix(in srgb, var(--accent) 70%, #0a1220);
+  display:block; margin-bottom:.55rem;
+}
+.blocco-eyebrow::before{ content:"// "; color:var(--faint); }
+.progetto-flusso .progetto-blocco h2{ margin-bottom:.3rem; }
+.progetto-flusso .progetto-blocco p{ color:var(--muted); margin:.5rem 0 0; }
+
+/* "La soluzione": spostata a destra e trattata come scheda in evidenza */
+.blocco-soluzione{
+  margin-left:auto;
+  max-width:49rem;
+  padding:1.7rem 1.9rem;
+  border-left:3px solid var(--accent);
+  border-radius:0 var(--radius) var(--radius) 0;
+  background:
+    radial-gradient(120% 130% at 100% 0%, var(--accent-soft), transparent 60%),
+    linear-gradient(165deg, var(--surface), var(--surface-2));
+  box-shadow:0 26px 64px -36px color-mix(in srgb, var(--accent) 48%, transparent);
+}
+
+/* "Funzionalità": scheda spostata a sinistra */
+.blocco-funzioni{
+  max-width:41rem;
+  padding:1.7rem 1.9rem;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  background:linear-gradient(165deg, var(--surface-2), var(--surface));
+}
+.blocco-funzioni .lista-funzioni{ margin-top:.9rem; }
+
+/* -------- Galleria immagini (base; disposizione sparsa in V8) -------- */
+.progetto-galleria{ margin:.4rem 0 3.4rem; }
+.galleria-item{
+  margin:0; overflow:hidden; border-radius:var(--radius);
+  border:1px solid var(--line-forte);
+  background:var(--surface-2);
+  transition:transform .45s cubic-bezier(.22,.7,.3,1), box-shadow .4s ease;
+}
+.galleria-item img{
+  width:100%; height:100%; object-fit:cover; display:block; border:0; border-radius:0;
+  transition:transform .6s cubic-bezier(.22,.7,.3,1);
+}
+.galleria-item:hover img{ transform:scale(1.05); }
+
+@media (max-width: 700px){
+  .progetto-corpo.progetto-flusso{ max-width:none; }
+  .progetto-flusso .progetto-blocco,
+  .blocco-soluzione,
+  .blocco-funzioni{ max-width:none; margin-left:0; }
+}
+@media (prefers-reduced-motion: reduce){
+  .galleria-item, .galleria-item img{ transition:none; }
+}
+
+/* ============================================================
+   V7 — Motivi animati a tema (uno per progetto)
+   ============================================================ */
+.motivo{ position:absolute; inset:0; color:var(--c, var(--accent)); }
+.m-svg{ width:100%; height:100%; display:block; }
+
+/* Motivo dentro la card della griglia: piccolo "schermo" scuro */
+.card-anteprima-motivo{
+  min-height:6rem;
+  border-color:color-mix(in srgb, var(--c) 30%, transparent);
+  background:
+    radial-gradient(120% 120% at 80% 110%, color-mix(in srgb, var(--c) 22%, transparent), transparent 60%),
+    linear-gradient(160deg, #0e1a30, #0b1424);
+}
+
+/* Il motivo come SFONDO dell'intestazione della pagina progetto:
+   a tutta larghezza, dietro il contenuto, sfumato verso il colore
+   del progetto e il trasparente (nessun riquadro) */
+.progetto-hero-motivo{ position:relative; }
+.progetto-sfondo{
+  position:absolute; left:50%; top:-6rem;
+  transform:translateX(-50%);
+  width:100vw; height:clamp(26rem, 60vw, 38rem);
+  z-index:-1; pointer-events:none;
+  color:var(--accent);
+  opacity:.55;
+  -webkit-mask-image:
+    linear-gradient(180deg, #000 30%, transparent 97%),
+    linear-gradient(100deg, rgba(0,0,0,.35), #000 45%);
+  -webkit-mask-composite:source-in;
+  mask-image:
+    linear-gradient(180deg, #000 30%, transparent 97%),
+    linear-gradient(100deg, rgba(0,0,0,.35), #000 45%);
+  mask-composite:intersect;
+}
+.progetto-sfondo .motivo{ position:absolute; inset:0; }
+/* Velo colorato: la sfumatura verso l'accento del progetto */
+.progetto-sfondo::after{
+  content:""; position:absolute; inset:0;
+  background:
+    radial-gradient(70% 90% at 78% 12%, color-mix(in srgb, var(--accent) 20%, transparent), transparent 65%),
+    linear-gradient(180deg, transparent 55%, color-mix(in srgb, var(--accent) 7%, transparent) 78%, transparent 100%);
+}
+/* Sul fondo chiaro i tratti respirano un po' di più */
+.progetto-sfondo .m-edge{ opacity:.34; }
+.progetto-sfondo .m-ring{ opacity:.26; }
+.progetto-sfondo .m-node{ opacity:.55; }
+
+/* Primitive di disegno */
+.m-edge, .m-ring, .m-scan{ stroke:currentColor; fill:none; }
+.m-edge{ stroke-width:1.3; opacity:.22; }
+.m-ring{ stroke-width:1; opacity:.16; }
+.m-tratt{ stroke-dasharray:3 7; }
+.m-node, .m-blip{ fill:currentColor; }
+.m-node{ opacity:.4; }
+.m-hit{ fill:none; }
+.m-wedge{ fill:currentColor; opacity:.14; }
+.m-scan{ stroke-width:1.6; opacity:.8; }
+.m-freccia{ fill:currentColor; opacity:.55; }
+.m-box{ fill:none; stroke:currentColor; stroke-width:1.5; opacity:.6; }
+.m-barra{
+  fill:currentColor; opacity:.4;
+  transform-box:fill-box; transform-origin:bottom;
+}
+.m-dente{
+  fill:none; stroke:currentColor; opacity:.5;
+  stroke-width:11; stroke-dasharray:7 8;
+}
+
+/* Animazioni condivise (guidate da --d per lo sfasamento) */
+.m-pulse{
+  animation:m-pulse 2.6s ease-in-out infinite; animation-delay:var(--d, 0s);
+  transform-box:fill-box; transform-origin:center;
+}
+@keyframes m-pulse{
+  0%, 100%{ opacity:.28; }
+  50%{ opacity:1; filter:drop-shadow(0 0 5px currentColor); }
+}
+.m-flow{ stroke-dasharray:5 9; animation:m-flow 3.2s linear infinite; animation-delay:var(--d, 0s); }
+@keyframes m-flow{ to{ stroke-dashoffset:-140; } }
+.m-sweep{
+  transform-box:fill-box; transform-origin:center;
+  animation:m-spin 4.6s linear infinite;
+}
+@keyframes m-spin{ to{ transform:rotate(360deg); } }
+.m-sweep.m-rev{ animation-direction:reverse; }
+
+/* Alone che si espande (hub delle sinapsi, echi radar, ingranaggi) */
+.m-halo{
+  animation:m-halo 3.4s ease-out infinite; animation-delay:var(--d, 0s);
+  transform-box:fill-box; transform-origin:center;
+}
+@keyframes m-halo{
+  0%{ transform:scale(.6); opacity:.5; }
+  70%, 100%{ transform:scale(1.5); opacity:0; }
+}
+
+/* Righe che si scrivono da sole (documento frGest) */
+.m-write{
+  stroke-dasharray:var(--len, 100);
+  animation:m-write 4.5s ease-in-out infinite; animation-delay:var(--d, 0s);
+}
+@keyframes m-write{
+  0%{ stroke-dashoffset:var(--len, 100); opacity:.9; }
+  45%, 85%{ stroke-dashoffset:0; opacity:.9; }
+  100%{ stroke-dashoffset:0; opacity:.15; }
+}
+
+/* Barre del grafico che crescono */
+.m-bar{
+  animation:m-bar 3.4s ease-in-out infinite; animation-delay:var(--d, 0s);
+}
+@keyframes m-bar{
+  0%{ transform:scaleY(.35); }
+  55%, 100%{ transform:scaleY(1); }
+}
+
+/* Nastro trasportatore: i pezzi avanzano */
+.m-travel{ animation:m-travel 6s linear infinite; }
+@keyframes m-travel{
+  from{ transform:translateX(-80px); }
+  to{ transform:translateX(160px); }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .m-pulse, .m-flow, .m-sweep, .m-halo, .m-write, .m-bar, .m-travel{ animation:none; }
+  .m-node, .m-blip{ opacity:.7; }
+  .m-write{ stroke-dashoffset:0; }
+}
+
+/* ============================================================
+   V8 — Righe alternate testo/immagine + griglia "giocosa"
+   ============================================================ */
+
+/* ---- Pagina progetto: testo e immagine fianco a fianco,
+        lati che si invertono a ogni riga ---- */
+.duo{
+  display:grid; grid-template-columns:1.04fr .96fr;
+  gap:2rem 3rem; align-items:center;
+  margin:0 0 3.6rem;
+}
+.duo .progetto-blocco{ margin:0; max-width:none; }
+.duo-inversa .duo-img{ order:-1; }
+.duo.solo{ grid-template-columns:1fr; }
+.duo.solo .duo-img{ display:none; }
+
+.duo-img{
+  margin:0; position:relative;
+  border-radius:var(--radius); overflow:hidden;
+  border:1px solid var(--line-forte);
+  background:var(--surface-2);
+  aspect-ratio:16 / 11;
+  box-shadow:0 24px 58px -30px rgba(18,32,59,.35);
+  transition:transform .45s cubic-bezier(.22,.7,.3,1), box-shadow .4s ease;
+}
+.duo-img img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.duo-img:hover{
+  transform:translateY(-4px);
+  box-shadow:0 30px 70px -26px color-mix(in srgb, var(--accent) 55%, rgba(18,32,59,.4));
+}
+/* Tocco giocoso senza inclinare nulla: le immagini sono sfalsate
+   in verticale e leggermente più strette del testo, verso l'esterno */
+.duo:not(.duo-inversa) .duo-img{ width:94%; margin-left:auto; transform:translateY(1.1rem); }
+.duo-inversa .duo-img{ width:94%; margin-right:auto; transform:translateY(-1rem); }
+.duo:not(.duo-inversa) .duo-img:hover{ transform:translateY(.6rem); }
+.duo-inversa .duo-img:hover{ transform:translateY(-1.4rem); }
+
+/* Pannello-motivo usato al posto della prima foto quando manca */
+.duo-motivo{
+  position:absolute; inset:0;
+  color:var(--accent);
+  background:
+    radial-gradient(110% 120% at 82% 108%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 60%),
+    linear-gradient(160deg, #0e1a30, #0b1424);
+}
+.duo-motivo .motivo{ position:absolute; inset:0; }
+
+/* ---- Griglia progetti: pattern "giocoso" ----
+   Le dimensioni dipendono dalla posizione: le card grandi si
+   alternano sinistra/destra e le piccole si intrecciano intorno,
+   così nessun lato ha solo card grandi o solo piccole. */
+.bento .card-progetto,
+.bento .card-progetto.xl,
+.bento .card-progetto.lg,
+.bento .card-progetto.md{ grid-column:span 2; grid-row:span 1; }
+.bento .card-progetto:nth-child(6n+1){ grid-column:span 4; grid-row:span 2; } /* grande a sinistra */
+.bento .card-progetto:nth-child(6n+4){ grid-column:span 2; grid-row:span 2; } /* piccola alta */
+.bento .card-progetto:nth-child(6n+5){ grid-column:3 / span 4; grid-row:span 2; } /* grande a destra */
+/* Angoli non tutti uguali: ogni card ha una "firma" diversa, ma dritta */
+.bento .card-progetto:nth-child(3n+1){ border-radius:2.4rem 1.1rem 1.5rem 1.5rem; }
+.bento .card-progetto:nth-child(3n+2){ border-radius:1.1rem 1.5rem 2.4rem 1.5rem; }
+.bento .card-progetto:nth-child(3n+3){ border-radius:1.5rem 2.4rem 1.1rem 2.1rem; }
+
+/* ---- Motivo come sfondo sfumato nelle card piccole ---- */
+.card-motivo-bg{
+  position:absolute; inset:0; z-index:0; pointer-events:none;
+  color:var(--c);
+  opacity:.2;
+  -webkit-mask-image:linear-gradient(115deg, transparent 8%, #000 55%);
+  mask-image:linear-gradient(115deg, transparent 8%, #000 55%);
+  transition:opacity .35s ease;
+}
+.card-progetto:hover .card-motivo-bg{ opacity:.36; }
+.card-motivo-bg .m-svg{ width:100%; height:100%; }
+/* Il contenuto resta sopra il motivo */
+.card-tags, .card-titolo, .card-desc, .card-azione, .card-anteprima{
+  position:relative; z-index:2;
+}
+
+@media (max-width: 980px){
+  .bento .card-progetto,
+  .bento .card-progetto.xl,
+  .bento .card-progetto.lg,
+  .bento .card-progetto.md{ grid-column:span 1; grid-row:span 1; }
+  .bento .card-progetto:nth-child(6n+1),
+  .bento .card-progetto:nth-child(6n+5){ grid-column:span 2; grid-row:span 2; }
+  .bento .card-progetto:nth-child(6n+4){ grid-column:span 1; grid-row:span 2; }
+}
+@media (max-width: 700px){
+  .duo,
+  .duo.solo{ grid-template-columns:1fr; gap:1.3rem; margin-bottom:2.6rem; }
+  .duo-inversa .duo-img{ order:2; }
+  .duo:not(.duo-inversa) .duo-img,
+  .duo-inversa .duo-img{ width:100%; margin:0; transform:none; }
+  .bento .card-progetto:nth-child(6n+1),
+  .bento .card-progetto:nth-child(6n+4),
+  .bento .card-progetto:nth-child(6n+5){ grid-column:span 1; grid-row:span 1; }
+  .progetto-sfondo{ height:24rem; opacity:.4; }
+}
+@media (prefers-reduced-motion: reduce){
+  .duo-img{ transition:none; transform:none !important; }
+}
+
+/* ============================================================
+   V9 — Animazioni sobrie: i motivi si muovono SOLO al passaggio
+   del cursore. Da fermi mostrano un fotogramma statico elegante.
+   ============================================================ */
+.m-pulse, .m-flow, .m-sweep, .m-halo, .m-bar, .m-travel{
+  animation-play-state:paused;
+}
+:is(.card-progetto:hover, .progetto-hero-motivo:hover, .duo-img:hover)
+  :is(.m-pulse, .m-flow, .m-sweep, .m-halo, .m-bar, .m-travel){
+  animation-play-state:running;
+}
+/* Da fermi i nodi restano ben visibili (non nel loro minimo) */
+.m-pulse{ opacity:.6; }
+
+/* Le righe "che si scrivono" da ferme sono scritte per intero */
+.m-write{ animation:none; stroke-dasharray:none; }
+:is(.card-progetto:hover, .progetto-hero-motivo:hover, .duo-img:hover) .m-write{
+  stroke-dasharray:var(--len, 100);
+  animation:m-write 4.5s ease-in-out infinite;
+  animation-delay:var(--d, 0s);
+}
+
+/* Anche le anteprime segnaposto (equalizer, scintille) solo su hover */
+.mock-grafico i,
+.mock-riga::after,
+.galleria-segnaposto{ animation-play-state:paused; }
+.card-progetto:hover :is(.mock-grafico i, .mock-riga::after){
+  animation-play-state:running;
+}
