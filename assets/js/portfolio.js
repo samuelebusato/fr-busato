@@ -186,7 +186,7 @@
       c.style.animationDelay = (i * 30) + "ms";
       c.classList.add("card-esce");
     });
-    setTimeout(function () { popola(anno); }, 260);
+    setTimeout(function () { popola(anno); }, 330);
   }
 
   /* Filtri generati dai dati, con conteggio dei progetti */

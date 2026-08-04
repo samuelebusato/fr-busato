@@ -1840,3 +1840,30 @@ h3{ font-size:1.18rem; font-weight:600; }
 .card-progetto:hover :is(.mock-grafico i, .mock-riga::after){
   animation-play-state:running;
 }
+
+/* ============================================================
+   V10 — Fluidità della sezione Sviluppo Software
+   Easing più morbidi e tempi leggermente più distesi: la pagina
+   scorre e reagisce senza scatti.
+   ============================================================ */
+.card-progetto{
+  transition:transform .5s cubic-bezier(.16,.8,.26,1),
+             box-shadow .5s ease,
+             border-color .4s ease;
+  will-change:transform;
+}
+.card-nasce{ animation:card-in .85s cubic-bezier(.16,.8,.26,1) forwards; }
+@keyframes card-in{
+  from{ opacity:0; transform:translateY(26px) scale(.975); }
+  to{ opacity:1; transform:none; }
+}
+.card-esce{ animation:card-out .32s ease forwards; }
+.chip{ transition:all .3s ease; }
+.card-progetto .card-anteprima{ transition:transform .5s cubic-bezier(.16,.8,.26,1); }
+.card-azione{ transition:background .3s ease, gap .3s ease; }
+.duo-img{ transition:transform .55s cubic-bezier(.16,.8,.26,1), box-shadow .5s ease; }
+.rivela{ transition:opacity .85s ease, transform .85s cubic-bezier(.16,.8,.26,1); }
+
+@media (prefers-reduced-motion: reduce){
+  .card-progetto{ will-change:auto; transition:none; }
+}
