@@ -157,67 +157,13 @@ window.MOTIVI = (function () {
     return s;
   }
 
-  /* --- Automazione Office: ingranaggi che ruotano --- */
-  function ingranaggi() {
-    var s = "";
-    s += '<g class="m-sweep" style="animation-duration:9s"><rect class="m-hit" x="105" y="15" width="150" height="150"/>' +
-      cerchio("m-dente", 180, 90, 52) + cerchio("m-ring", 180, 90, 34) + cerchio("m-node", 180, 90, 7) +
-      linea("m-edge", 180, 56, 180, 124) + linea("m-edge", 146, 90, 214, 90) + "</g>";
-    s += '<g class="m-sweep m-rev" style="animation-duration:6s"><rect class="m-hit" x="222" y="96" width="120" height="120"/>' +
-      cerchio("m-dente", 282, 156, 36, "stroke-width:8") + cerchio("m-ring", 282, 156, 22) + cerchio("m-node", 282, 156, 5.5) + "</g>";
-    s += cerchio("m-ring m-halo", 180, 90, 62) + cerchio("m-ring m-halo", 282, 156, 46, "--d:1.2s");
-    s += cerchio("m-node m-pulse", 92, 52, 4, "--d:.3s") + cerchio("m-node m-pulse", 74, 160, 4, "--d:.9s") + cerchio("m-node m-pulse", 350, 60, 4, "--d:1.5s");
-    return s;
-  }
-
-  /* --- Elaborazione Dati: dal caos all'ordine --- */
-  function trasforma() {
-    var s = "";
-    var caos = [[38, 48], [66, 96], [34, 140], [78, 172], [58, 64], [90, 130], [44, 186], [84, 40]];
-    caos.forEach(function (p, i) {
-      s += cerchio("m-node m-pulse", p[0], p[1], 4, "--d:" + (i * 0.3).toFixed(2) + "s");
-    });
-    /* imbuto */
-    s += linea("m-edge m-flow", 104, 60, 176, 96) + linea("m-edge m-flow", 104, 160, 176, 124, "--d:.5s") + linea("m-edge m-flow", 176, 96, 176, 124, "--d:1s");
-    s += linea("m-scan m-flow", 176, 110, 250, 110, "--d:.2s");
-    s += '<polygon class="m-freccia" points="258,110 246,104 246,116"/>';
-    /* griglia ordinata */
-    for (var r = 0; r < 3; r++) for (var c = 0; c < 3; c++) {
-      s += cerchio("m-node m-pulse", 292 + c * 34, 76 + r * 34, 4.5, "--d:" + ((r * 3 + c) * 0.18).toFixed(2) + "s");
-    }
-    s += '<rect class="m-ring" style="opacity:.22" x="274" y="58" width="104" height="104" rx="12"/>';
-    return s;
-  }
-
-  /* --- Tracciabilità: nastro con pezzi che avanzano --- */
-  function nastro() {
-    var s = linea("m-ring", 20, 150, 380, 150) + linea("m-ring", 20, 158, 380, 158);
-    [60, 140, 220, 300, 372].forEach(function (x) {
-      s += cerchio("m-ring", x, 154, 6);
-    });
-    s += '<g class="m-travel">' +
-      '<rect class="m-box" x="40" y="118" width="30" height="24" rx="5"/>' +
-      '<rect class="m-box" x="150" y="118" width="30" height="24" rx="5"/>' +
-      '<rect class="m-box" x="260" y="118" width="30" height="24" rx="5"/>' + "</g>";
-    /* stazioni di controllo che si accendono al passaggio */
-    [[105, 70], [215, 70], [325, 70]].forEach(function (p, i) {
-      s += linea("m-edge", p[0], p[1] + 14, p[0], 116);
-      s += '<rect class="m-ring" x="' + (p[0] - 16) + '" y="' + (p[1] - 14) + '" width="32" height="28" rx="6"/>';
-      s += cerchio("m-node m-pulse", p[0], p[1], 5, "--d:" + (i * 0.8).toFixed(2) + "s");
-    });
-    return s;
-  }
-
   var B = {
     "second-brain": function () { return wrap(sinapsi(), "m-sinapsi"); },
     "scraper-aste-auto": function () { return wrap(radar(), "m-radar"); },
     "distinta-base-parametrica": function () { return wrap(distinta(), "m-distinta"); },
     "returns-management-aws": function () { return wrap(flusso(), "m-flusso"); },
     "frgest": function () { return wrap(documento(), "m-documento"); },
-    "gestionale-aste-dati": function () { return wrap(grafico(), "m-grafico"); },
-    "automazione-office": function () { return wrap(ingranaggi(), "m-ingranaggi"); },
-    "elaborazione-dati": function () { return wrap(trasforma(), "m-trasforma"); },
-    "tracciabilita-produzione": function () { return wrap(nastro(), "m-nastro"); }
+    "gestionale-aste-dati": function () { return wrap(grafico(), "m-grafico"); }
   };
 
   return {
