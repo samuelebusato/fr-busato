@@ -459,7 +459,7 @@ h3{ font-size:1.18rem; font-weight:600; }
 .mock-riga.media{ width:78%; }
 
 .card-azione{
-  position:absolute; right:1.2rem; bottom:1.2rem;
+  position:absolute; right:1.2rem; bottom:1.2rem; z-index:2;
   display:inline-flex; align-items:center; gap:.45rem;
   font-size:.85rem; font-weight:600;
   color:color-mix(in srgb, var(--c) 60%, #0a1220);
@@ -1782,8 +1782,12 @@ h3{ font-size:1.18rem; font-weight:600; }
 }
 .card-progetto:hover .card-motivo-bg{ opacity:.36; }
 .card-motivo-bg .m-svg{ width:100%; height:100%; }
-/* Il contenuto resta sopra il motivo */
-.card-tags, .card-titolo, .card-desc, .card-azione, .card-anteprima{
+/* Il contenuto resta sopra il motivo.
+   .card-azione e' esclusa di proposito: e' ancorata in basso a destra con
+   position:absolute, e includerla qui la riportava nel flusso, dove
+   right/bottom la spostavano sopra la descrizione. Il suo z-index sta
+   nella sua regola. */
+.card-tags, .card-titolo, .card-desc, .card-anteprima{
   position:relative; z-index:2;
 }
 
