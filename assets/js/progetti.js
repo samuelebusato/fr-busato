@@ -36,6 +36,28 @@
 
 const PROGETTI = [
   {
+    id: "cyberse",
+    nome: "Cyberse",
+    anno: 2026,
+    categoria: "Documentazione di rete · In arrivo",
+    colore: "#6366f1",
+    dimensione: "xl",
+    breve: "Il sapere che tiene in piedi le reti dei clienti smette di vivere dentro documenti che invecchiano e diventa un archivio vivo, sempre aggiornato, con una cassaforte per le chiavi. Per chi fa l'informatica di mestiere, per conto di altri. In arrivo prossimamente.",
+    contesto: "Chi gestisce l'informatica di altre aziende custodisce un patrimonio invisibile: com'è fatta ogni rete, quale apparato regge cosa, dove finiscono i backup, chi ha le chiavi di che cosa. Per anni tutto questo è stato affidato a documenti di testo — preziosi il giorno in cui si scrivono, già superati il giorno dopo. E quando servono davvero, di corsa, il documento dice una cosa e la realtà ne dice un'altra.",
+    soluzione: "Cyberse trasforma quei documenti in un organismo vivo. Ogni cliente ha il suo spazio: le reti, gli apparati e i legami che li tengono insieme, le licenze, le persone, i piani di backup — tutto collegato, navigabile, aggiornato nel momento stesso in cui cambia. Le chiavi non stanno più sparse in un file: vivono in una cassaforte a parte, che si apre una alla volta e ricorda ogni apertura. Il confine fra un cliente e l'altro non è una buona intenzione del programma ma una regola incisa nelle fondamenta, perché i dati di un'azienda non possano finire sotto gli occhi di un'altra nemmeno per sbaglio. La piattaforma si affaccia da sola sugli strumenti che l'azienda già usa e va a vedere come stanno le cose, invece di aspettare che qualcuno le trascriva; e i vecchi documenti si riversano dentro, per non buttare via dieci anni di lavoro. Alla fine il documento torna a esistere — ma come fotografia datata di un archivio che vive altrove, non come il posto in cui la verità è costretta ad abitare.",
+    funzionalita: [
+      "Ogni cliente con le sue reti, i suoi apparati e i legami fra loro",
+      "Licenze, persone, condivisioni e piani di backup sempre a portata",
+      "Cassaforte delle credenziali, con scadenze e promemoria automatici",
+      "Si affaccia sugli strumenti già in uso e ne legge lo stato da sola",
+      "Importazione dei vecchi documenti, per non perdere lo storico",
+      "Ogni consultazione lascia traccia: si risale sempre al perché",
+      "Accesso protetto da secondo fattore"
+    ],
+    tecnologie: ["C# · .NET 10", "Blazor", "PostgreSQL", "Cifratura", "Integrazioni API"],
+    immagini: []
+  },
+  {
     id: "second-brain",
     nome: "Second Brain",
     anno: 2026,
@@ -54,6 +76,27 @@ const PROGETTI = [
       "Sempre allineato e sincronizzato su più dispositivi"
     ],
     tecnologie: ["Knowledge base", "Markdown & Obsidian", "Automazioni", "AI assistant", "Git"],
+    immagini: []
+  },
+  {
+    id: "heleox",
+    nome: "HeleoX",
+    anno: 2026,
+    categoria: "Sicurezza e conformità web",
+    colore: "#8b5cf6",
+    dimensione: "md",
+    breve: "Un sito web non è mai finito, e quasi nessuno se ne accorge in tempo. HeleoX lo tiene d'occhio a ogni giro: dice cosa lo espone, cosa non rispetta le regole e come si sistema — citando la norma esatta, non un voto da interpretare.",
+    contesto: "Un sito cambia da solo: scade un certificato, si aggiorna un componente, si aggiunge uno strumento di statistiche e con lui un pezzo di normativa da rispettare. Chi lo gestisce se ne accorge quasi sempre tardi — quando qualcosa si rompe, o quando arriva una contestazione. I controlli esistono, ma sono fotografie scattate una volta sola, e per leggerle bisogna già sapere cosa si sta guardando.",
+    soluzione: "HeleoX guarda il sito con continuità invece che una volta sola. A intervalli regolari lo interroga da fuori, come farebbe un visitatore qualunque, e ne osserva il comportamento reale: cosa lascia scoperto, come protegge le connessioni, quali tracciatori partono davvero prima che qualcuno abbia detto di sì. Da quell'osservazione nasce un rapporto leggibile anche da chi non è del mestiere: non un punteggio da decifrare, ma un elenco di cose da fare in ordine di urgenza, ognuna con la sua spiegazione e con il riferimento alla regola che la richiede. Sicurezza e rispetto delle norme vivono nello stesso controllo, perché a chi tiene in piedi un sito il problema si presenta una volta sola, non due.",
+    funzionalita: [
+      "Controllo periodico e automatico, non una verifica una tantum",
+      "Rapporto leggibile recapitato via email a ogni giro",
+      "Ogni problema con il suo rimedio e la fonte che lo richiede",
+      "Sicurezza e conformità in un unico controllo, non in due",
+      "Comportamento osservato dal vivo, non dedotto da un elenco",
+      "Pensato per chi cura molti siti: agenzie, sviluppatori e piccole imprese"
+    ],
+    tecnologie: ["React", "AWS Lambda", "Fargate", "Terraform", "Infrastruttura serverless"],
     immagini: []
   },
   {

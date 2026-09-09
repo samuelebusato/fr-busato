@@ -157,7 +157,77 @@ window.MOTIVI = (function () {
     return s;
   }
 
+  /* --- Cyberse: le reti dei clienti in orbita attorno allo scudo --- */
+  function orbita() {
+    var cx = 200, cy = 110, s = "";
+    /* Le reti dei clienti: ognuna un apparato con un nodo appeso verso
+       l'esterno, cosi' il disegno resta dentro la cornice a ogni posizione. */
+    var reti = [[52, 42], [348, 40], [40, 176], [360, 172], [128, 190], [272, 192]];
+
+    reti.forEach(function (r, i) {
+      s += linea("m-edge m-flow", r[0], r[1], cx, cy, "--d:" + (i * 0.36).toFixed(2) + "s");
+    });
+    reti.forEach(function (r, i) {
+      var dx = r[0] - cx, dy = r[1] - cy, L = Math.sqrt(dx * dx + dy * dy);
+      var ux = dx / L, uy = dy / L;
+      s += '<rect class="m-box m-pulse" style="--d:' + (i * 0.3).toFixed(2) + 's" x="' +
+        (r[0] - 13) + '" y="' + (r[1] - 9) + '" width="26" height="18" rx="5"/>';
+      s += linea("m-edge", r[0] + ux * 10, r[1] + uy * 10, r[0] + ux * 22, r[1] + uy * 22);
+      s += cerchio("m-node m-pulse", r[0] + ux * 22, r[1] + uy * 22, 3.2,
+        "--d:" + (0.5 + i * 0.3).toFixed(2) + "s");
+    });
+
+    /* L'orbita del marchio: le due ellissi inclinate. Il tratteggio che scorre
+       da' il senso della rotazione senza far viaggiare nessun oggetto. */
+    s += '<ellipse class="m-ring" cx="200" cy="110" rx="74" ry="33" transform="rotate(-18 200 110)"/>';
+    s += '<ellipse class="m-ring m-flow" cx="200" cy="110" rx="62" ry="27" transform="rotate(-18 200 110)"/>';
+
+    /* Lo scudo al centro, con la linea che lo divide come nel marchio */
+    s += '<path class="m-box m-pulse" d="M200,74 L226,86 L226,112 Q226,138 200,150 Q174,138 174,112 L174,86 Z"/>';
+    s += linea("m-edge", 200, 80, 200, 146);
+    s += cerchio("m-ring m-halo", cx, cy, 44, "--d:0s");
+    s += cerchio("m-ring m-halo", cx, cy, 44, "--d:1.7s");
+    return s;
+  }
+
+  /* --- HeleoX: un sito tenuto sotto osservazione, giro dopo giro --- */
+  function osservazione() {
+    var cx = 200, cy = 110, s = "";
+
+    /* i due cerchi dell'osservazione che si ripete */
+    s += cerchio("m-ring", cx, cy, 86);
+    s += cerchio("m-ring m-tratt", cx, cy, 101);
+
+    /* la finestra del sito guardato */
+    s += '<rect class="m-box" x="112" y="46" width="176" height="128" rx="9"/>';
+    s += linea("m-edge", 112, 70, 288, 70);
+    [126, 137, 148].forEach(function (x) { s += cerchio("m-node", x, 58, 2.6); });
+    s += '<rect class="m-box" style="opacity:.3" x="162" y="52" width="112" height="12" rx="6"/>';
+
+    /* le righe della pagina, lette una dopo l'altra */
+    [[92, 118], [110, 96], [128, 128], [146, 74]].forEach(function (r, i) {
+      s += linea("m-edge m-write", 132, r[0], 132 + r[1], r[0],
+        "--len:" + r[1] + "; --d:" + (i * 0.5).toFixed(2) + "s");
+    });
+
+    /* cosa il controllo trova, tutt'intorno: si accendono in sequenza,
+       che e' il giro periodico invece di una fotografia sola */
+    for (var i = 0; i < 8; i++) {
+      var a = i * Math.PI / 4;
+      var x = cx + 101 * Math.sin(a), y = cy - 101 * Math.cos(a);
+      s += cerchio("m-node m-pulse", x, y, 4, "--d:" + (i * 0.34).toFixed(2) + "s");
+    }
+    /* Gli aloni stanno sui marcatori in diagonale, non su quelli agli
+       estremi: al culmine dell'animazione crescono di meta' e sul bordo
+       verrebbero tagliati. */
+    s += cerchio("m-ring m-halo", cx + 71.4, cy - 71.4, 12, "--d:.2s");
+    s += cerchio("m-ring m-halo", cx - 71.4, cy + 71.4, 12, "--d:1.4s");
+    return s;
+  }
+
   var B = {
+    "cyberse": function () { return wrap(orbita(), "m-orbita"); },
+    "heleox": function () { return wrap(osservazione(), "m-osservazione"); },
     "second-brain": function () { return wrap(sinapsi(), "m-sinapsi"); },
     "scraper-aste-auto": function () { return wrap(radar(), "m-radar"); },
     "distinta-base-parametrica": function () { return wrap(distinta(), "m-distinta"); },
