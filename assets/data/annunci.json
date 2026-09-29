@@ -1,5 +1,23 @@
 [
   {
+    "id": "cyberse-disponibile-msp",
+    "data": "2026-09-29",
+    "dataLabel": "29 settembre 2026",
+    "tag": "Disponibile",
+    "titolo": "Cyberse è disponibile per gli MSP",
+    "anteprima": "Cyberse, la documentazione di rete che si aggiorna da sola, è in esercizio ogni giorno sulle reti dei nostri clienti. Da oggi la proponiamo anche agli MSP: si parte da una prova su un tuo cliente vero.",
+    "corpo": [
+      "Il 9 settembre avevamo presentato <strong>Cyberse</strong> come «in arrivo». Oggi è in esercizio ogni giorno sulle reti dei nostri clienti, e lo proponiamo anche agli <strong>MSP</strong>, a chi gestisce l'informatica per conto di altre aziende.",
+      "Cyberse sostituisce i documenti di rete con un archivio vivo. Legge da solo le console già in uso — Microsoft 365, Acronis, WatchGuard, HPE Instant On — e, con un agente in sola lettura, la rete, Active Directory, i firewall OPNsense e le stampanti. Le password stanno in una cassaforte separata, e ogni lettura resta registrata.",
+      "Soprattutto, <strong>ti dice che cosa non va senza doverlo cercare</strong>: backup che non sono andati a buon fine, PC senza antivirus, utenze rimaste aperte, amministratori senza secondo fattore. E quando serve un documento, si genera: una relazione di rete in PDF, con lo schema disegnato dai dati e senza password dentro.",
+      "Per provarlo non serve una demo: si parte da un tuo cliente vero, con condizioni da definire insieme. <a href='mailto:fausto@fr-busato.it?subject=Cyberse%20-%20prova%20per%20MSP'>Scrivici</a>; se usi già Cyberse, entri dal pulsante «Accedi a MSP» in alto."
+    ],
+    "link": {
+      "testo": "Scopri Cyberse",
+      "url": "cyberse.html"
+    }
+  },
+  {
     "id": "nuovo-sito-web",
     "data": "2026-07-30",
     "dataLabel": "30 luglio 2026",
