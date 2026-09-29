@@ -203,17 +203,24 @@ a:hover{ text-decoration:underline; }
   transition:background .2s ease, border-color .2s ease;
 }
 .nav-cta:hover{ background:color-mix(in srgb, var(--accent) 26%, transparent); }
-/* Accesso al portale MSP di Cyberse: l'indaco del prodotto, come il riquadro
-   .richiamo, per distinguerlo da "Contatti" */
+/* Accesso al portale MSP di Cyberse, ultima voce del menu dopo "Contatti":
+   l'indaco del prodotto, come il riquadro .richiamo. Compatto, con il lucchetto
+   come icona (cerchio bianco) davanti al testo. */
 .nav-menu .nav-portale{
-  display:inline-flex; align-items:center; gap:.45rem;
-  padding:.5rem 1.05rem; border-radius:999px;
+  display:inline-flex; align-items:center; gap:.4rem;
+  padding:.3rem .8rem .3rem .32rem; border-radius:999px;
+  font-size:.84rem; line-height:1.2;
   color:#ffffff; background:#6366f1;
-  box-shadow:0 8px 20px -10px rgba(99,102,241,.8);
-  transition:background .2s ease, transform .2s ease;
+  box-shadow:0 6px 14px -8px rgba(99,102,241,.8);
+  transition:background .2s ease;
 }
-.nav-menu .nav-portale:hover{ color:#ffffff; background:#4f46e5; transform:translateY(-1px); }
-.nav-portale svg{ width:15px; height:15px; flex:none; }
+.nav-menu .nav-portale:hover{ color:#ffffff; background:#4f46e5; }
+.nav-portale-icona{
+  width:20px; height:20px; flex:none; border-radius:50%;
+  display:grid; place-items:center;
+  background:#ffffff; color:#6366f1;
+}
+.nav-portale-icona svg{ width:11px; height:11px; }
 
 .nav-toggle{
   display:none; background:none; border:1px solid var(--line);
@@ -686,10 +693,12 @@ h3{ font-size:1.18rem; font-weight:600; }
   .nav-menu.aperto{ display:flex; }
   .nav-menu li{ border-bottom:1px solid var(--line); }
   .nav-menu li:last-child{ border-bottom:0; padding-top:.9rem; }
-  .nav-menu li.nav-voce-portale{ border-bottom:0; padding-top:.9rem; }
+  /* "Contatti" e, per ultimo, il portale: due pulsanti, senza riga fra loro */
+  .nav-menu li:has(> .nav-cta){ border-bottom:0; padding-top:.9rem; }
+  .nav-menu li.nav-voce-portale{ padding-top:.6rem; }
   .nav-menu a{ display:block; padding:.85rem 0; }
   .nav-cta{ text-align:center; }
-  .nav-menu .nav-portale{ display:flex; justify-content:center; padding:.85rem 0; }
+  .nav-menu .nav-portale{ display:flex; justify-content:center; padding:.55rem 0; font-size:.9rem; }
   .nav-toggle{ display:block; }
 }
 
