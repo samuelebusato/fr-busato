@@ -312,7 +312,7 @@ const SERVIZI = [
       "Chi eredita una rete senza documentazione e deve ricostruirla"
     ],
     faq: [
-      { domanda: "Come si accede?", risposta: "Dal pulsante «Portale MSP» in alto in ogni pagina del sito, con email, password e secondo fattore." },
+      { domanda: "Come si accede?", risposta: "Dal pulsante «Accedi a MSP» in alto in ogni pagina del sito, con email, password e secondo fattore." },
       { domanda: "Devo installare qualcosa?", risposta: "Solo l'agente nelle sedi di cui si vuole leggere la rete: un programma Windows in sola lettura. Le console cloud si collegano senza installare nulla." },
       { domanda: "Il mio cliente può accedere a Cyberse?", risposta: "Oggi Cyberse è lo strumento di chi gestisce la rete. Al cliente si consegna la relazione di rete in PDF, sempre aggiornata ai dati del momento." },
       { domanda: "Sono un MSP: come posso provarlo?", risposta: "Scrivici: si parte da una prova su un tuo cliente vero e le condizioni si definiscono insieme." }
