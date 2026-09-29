@@ -84,7 +84,7 @@
     const grande = passo === 0 || passo === 4;
     const card = document.createElement("a");
     card.className = "card-progetto " + (grande ? "xl" : "md");
-    card.href = "progetto.html?id=" + encodeURIComponent(p.id);
+    card.href = p.pagina || ("progetto.html?id=" + encodeURIComponent(p.id));
     card.style.setProperty("--c", p.colore);
     card.setAttribute("aria-label", p.nome + " — scopri il progetto");
     card.dataset.anno = p.anno;

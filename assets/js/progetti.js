@@ -20,6 +20,8 @@
    soluzione   → paragrafo "La soluzione" nella pagina di dettaglio
    funzionalita→ elenco puntato delle funzionalità principali
    tecnologie  → elenco delle tecnologie utilizzate
+   pagina      → (opzionale) pagina propria del progetto: la card porta
+                 lì invece che a progetto.html?id=...
 
    IMMAGINI (2-3 per progetto):
    Ogni progetto ha una sua cartella in
@@ -35,6 +37,20 @@
    ============================================================ */
 
 const PROGETTI = [
+  {
+    /* Cyberse ha una scheda sua, cyberse.html: la card porta lì (campo
+       "pagina") e progetto.html?id=cyberse rimanda lì. Stesse regole sui
+       testi della scheda: vedi il commento in testa a cyberse.html. */
+    id: "cyberse",
+    nome: "Cyberse",
+    anno: 2026,
+    categoria: "Documentazione di rete · Disponibile per MSP",
+    colore: "#6366f1",
+    dimensione: "xl",
+    breve: "La documentazione di rete che si aggiorna da sola: un archivio vivo delle reti dei clienti, con le password in una cassaforte e le segnalazioni di ciò che non va. Per chi fa l'informatica di mestiere, per conto di altri. Disponibile per MSP.",
+    pagina: "cyberse.html",
+    immagini: []
+  },
   {
     id: "second-brain",
     nome: "Second Brain",
