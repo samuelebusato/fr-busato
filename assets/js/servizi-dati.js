@@ -16,6 +16,9 @@
    casiUso     → array di stringhe (casi d'uso)
    aChiServe   → array di stringhe (destinatari)
    certificazioni → true per mostrare la sezione certificazioni
+   azioni      → (opzionale) pulsanti in testa alla pagina, array di
+                 { testo, url, stile: "pieno" | "vuoto" }. Senza, la
+                 pagina mostra "Richiedi informazioni" e "Altri servizi".
 
    Per aggiungere/modificare un servizio basta editare questo file
    e fare commit + push.

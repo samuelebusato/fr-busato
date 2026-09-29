@@ -36,28 +36,6 @@
 
 const PROGETTI = [
   {
-    id: "cyberse",
-    nome: "Cyberse",
-    anno: 2026,
-    categoria: "Documentazione di rete · In arrivo",
-    colore: "#6366f1",
-    dimensione: "xl",
-    breve: "Il sapere che tiene in piedi le reti dei clienti smette di vivere dentro documenti che invecchiano e diventa un archivio vivo, sempre aggiornato, con una cassaforte per le chiavi. Per chi fa l'informatica di mestiere, per conto di altri. In arrivo prossimamente.",
-    contesto: "Chi gestisce l'informatica di altre aziende custodisce un patrimonio invisibile: com'è fatta ogni rete, quale apparato regge cosa, dove finiscono i backup, chi ha le chiavi di che cosa. Per anni tutto questo è stato affidato a documenti di testo — preziosi il giorno in cui si scrivono, già superati il giorno dopo. E quando servono davvero, di corsa, il documento dice una cosa e la realtà ne dice un'altra.",
-    soluzione: "Cyberse trasforma quei documenti in un organismo vivo. Ogni cliente ha il suo spazio: le reti, gli apparati e i legami che li tengono insieme, le licenze, le persone, i piani di backup — tutto collegato, navigabile, aggiornato nel momento stesso in cui cambia. Le chiavi non stanno più sparse in un file: vivono in una cassaforte a parte, che si apre una alla volta e ricorda ogni apertura. Il confine fra un cliente e l'altro non è una buona intenzione del programma ma una regola incisa nelle fondamenta, perché i dati di un'azienda non possano finire sotto gli occhi di un'altra nemmeno per sbaglio. La piattaforma si affaccia da sola sugli strumenti che l'azienda già usa e va a vedere come stanno le cose, invece di aspettare che qualcuno le trascriva; e i vecchi documenti si riversano dentro, per non buttare via dieci anni di lavoro. Alla fine il documento torna a esistere — ma come fotografia datata di un archivio che vive altrove, non come il posto in cui la verità è costretta ad abitare.",
-    funzionalita: [
-      "Ogni cliente con le sue reti, i suoi apparati e i legami fra loro",
-      "Licenze, persone, condivisioni e piani di backup sempre a portata",
-      "Cassaforte delle credenziali, con scadenze e promemoria automatici",
-      "Si affaccia sugli strumenti già in uso e ne legge lo stato da sola",
-      "Importazione dei vecchi documenti, per non perdere lo storico",
-      "Ogni consultazione lascia traccia: si risale sempre al perché",
-      "Accesso protetto da secondo fattore"
-    ],
-    tecnologie: ["C# · .NET 10", "Blazor", "PostgreSQL", "Cifratura", "Integrazioni API"],
-    immagini: []
-  },
-  {
     id: "second-brain",
     nome: "Second Brain",
     anno: 2026,

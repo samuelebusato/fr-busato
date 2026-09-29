@@ -42,13 +42,19 @@
   const torna = el("a", "torna", "<span aria-hidden=\"true\">←</span> Tutti i servizi");
   torna.href = "index.html#servizi";
   hero.appendChild(torna);
+  /* Pulsanti: quelli del servizio se ne ha (campo "azioni"), altrimenti i due standard */
+  const azioni = s.azioni || [
+    { testo: "Richiedi informazioni", url: "index.html#contatti", stile: "pieno" },
+    { testo: "Altri servizi →", url: "index.html#servizi", stile: "vuoto" }
+  ];
   hero.insertAdjacentHTML("beforeend",
     "<p class=\"eyebrow entra\">" + s.occhiello + "</p>" +
     "<h1 class=\"entra\" data-passo=\"1\">" + s.titolo + "</h1>" +
     "<p class=\"sottotitolo entra\" data-passo=\"2\" style=\"margin-top:1.1rem\">" + s.sottotitolo + "</p>" +
     "<div class=\"hero-azioni entra\" data-passo=\"3\" style=\"margin-top:1.7rem\">" +
-      "<a class=\"btn btn-pieno\" href=\"index.html#contatti\">Richiedi informazioni</a>" +
-      "<a class=\"btn btn-vuoto\" href=\"index.html#servizi\">Altri servizi →</a>" +
+      azioni.map(function (a) {
+        return "<a class=\"btn btn-" + a.stile + "\" href=\"" + a.url + "\">" + a.testo + "</a>";
+      }).join("") +
     "</div>");
   cont.appendChild(hero);
 

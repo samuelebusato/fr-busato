@@ -21,6 +21,15 @@
 
   var params = new URLSearchParams(window.location.search);
   var id = params.get("id");
+
+  /* Progetti diventati servizi: il vecchio indirizzo porta alla pagina nuova,
+     così i link già pubblicati (annunci, siti esterni) non si rompono. */
+  var SPOSTATI = { cyberse: "servizio.html?id=cyberse" };
+  if (Object.prototype.hasOwnProperty.call(SPOSTATI, id)) {
+    window.location.replace(SPOSTATI[id]);
+    return;
+  }
+
   var progetto = PROGETTI.find(function (p) { return p.id === id; });
 
   function escapeHtml(s) {
