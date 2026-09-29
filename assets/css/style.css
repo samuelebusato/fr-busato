@@ -203,14 +203,6 @@ a:hover{ text-decoration:underline; }
   transition:background .2s ease, border-color .2s ease;
 }
 .nav-cta:hover{ background:color-mix(in srgb, var(--accent) 26%, transparent); }
-/* "Accedi a MSP" (portale di Cyberse), ultima voce del menu dopo "Contatti":
-   stesso stile di "Contatti" (.nav-cta, sull'elemento), più il lucchetto come
-   icona davanti al testo. */
-/* inline-flex prenderebbe l'interlinea del testo (1.65) e sarebbe più alto di
-   "Contatti", che è in linea: con 1.25 i due pulsanti hanno la stessa altezza */
-.nav-menu .nav-portale{ display:inline-flex; align-items:center; gap:.4rem; line-height:1.25; }
-.nav-portale-icona{ display:inline-flex; flex:none; color:var(--accent-2); }
-.nav-portale-icona svg{ width:14px; height:14px; }
 
 .nav-toggle{
   display:none; background:none; border:1px solid var(--line);
@@ -687,7 +679,6 @@ h3{ font-size:1.18rem; font-weight:600; }
   .nav-menu li:has(> .nav-cta){ border-bottom:0; padding-top:.9rem; }
   .nav-menu a{ display:block; padding:.85rem 0; }
   .nav-cta{ text-align:center; }
-  .nav-menu .nav-portale{ display:flex; justify-content:center; line-height:inherit; }
   .nav-toggle{ display:block; }
 }
 
@@ -1931,4 +1922,140 @@ h3{ font-size:1.18rem; font-weight:600; }
 
 @media (prefers-reduced-motion: reduce){
   .card-progetto{ will-change:auto; transition:none; }
+}
+
+/* ============================================================
+   Pagina Cyberse (cyberse.html) — la scheda del prodotto, costruita
+   sulla presentazione ai clienti. L'accento è l'indaco del riquadro
+   .richiamo della home: le quattro variabili si ridefiniscono tutte,
+   perché quelle derivate in :root non seguono --accent da sole.
+   ============================================================ */
+.pagina-cyberse{
+  --accent:#6366f1;
+  --accent-2: color-mix(in srgb, var(--accent) 78%, #0a1220);
+  --accent-soft: color-mix(in srgb, var(--accent) 13%, transparent);
+  --accent-line: color-mix(in srgb, var(--accent) 34%, transparent);
+}
+.cy-hero{
+  display:grid; grid-template-columns:1.3fr .9fr; gap:3rem; align-items:center;
+  padding:4.2rem 0 2.2rem;
+}
+.cy-hero .torna{ display:flex; width:fit-content; margin-bottom:1.4rem; }
+.cy-hero h1{ font-size:clamp(3rem, 7vw, 4.8rem); }
+.cy-hero .richiamo-annuncio{ margin:1.5rem 0; }
+.cy-sezione{ padding:3.4rem 0; }
+.cy-sezione > .sottotitolo{ margin-top:.8rem; }
+
+.cy-griglia{ display:grid; gap:1.2rem; margin-top:1.8rem; }
+.cy-griglia.due{ grid-template-columns:repeat(2, 1fr); }
+.cy-griglia.tre{ grid-template-columns:repeat(3, 1fr); }
+.cy-griglia.cinque{ grid-template-columns:repeat(5, 1fr); }
+.cy-carta{
+  border:1px solid var(--line); border-radius:var(--radius);
+  background:linear-gradient(165deg, var(--surface), var(--surface-2));
+  padding:1.5rem;
+}
+.cy-carta h3{ font-size:1.06rem; margin-bottom:.45rem; }
+.cy-carta p{ color:var(--muted); font-size:.95rem; margin:0; }
+.cy-num{
+  display:block; margin-bottom:.6rem;
+  font-family:var(--font-mono); font-size:.8rem; letter-spacing:.08em; color:var(--accent-2);
+}
+.cy-frase{
+  max-width:54rem; margin:1rem 0 0;
+  font-family:var(--font-display); font-weight:600; line-height:1.35;
+  font-size:clamp(1.25rem, 2.5vw, 1.7rem);
+}
+.cy-frase strong{ color:var(--accent-2); }
+
+/* Righe testo + schermata, alternate */
+.cy-riga{
+  display:grid; grid-template-columns:.85fr 1.15fr; gap:2.6rem; align-items:center;
+  margin-top:3rem;
+}
+.cy-riga.inversa > :first-child{ order:2; }
+.cy-riga h3{ font-size:1.3rem; margin-bottom:.6rem; }
+.cy-riga > div > p:not(.eyebrow):not(.sottotitolo){ color:var(--muted); margin:0 0 .8rem; }
+.cy-schermata{ margin:0; }
+.cy-schermata a{
+  display:block; overflow:hidden; background:#ffffff;
+  border:1px solid var(--line); border-radius:14px;
+  box-shadow:0 26px 54px -30px color-mix(in srgb, var(--accent) 60%, transparent);
+  transition:transform .3s ease, box-shadow .3s ease;
+}
+.cy-schermata a:hover{ transform:translateY(-3px); }
+.cy-schermata img{ display:block; width:100%; height:auto; }
+.cy-schermata figcaption{
+  margin-top:.75rem; font-family:var(--font-mono); font-size:.78rem; color:var(--faint);
+}
+.cy-schermata-larga{ margin-top:2.2rem; }
+
+/* Da dove arrivano i dati: fonti → Cyberse → che cosa vedete */
+.cy-flusso{
+  display:grid; grid-template-columns:1fr auto .8fr auto 1fr; gap:1rem; align-items:stretch;
+  margin-top:1.8rem;
+}
+.cy-freccia{ align-self:center; color:var(--accent-2); font-size:1.5rem; }
+.cy-centro{
+  display:flex; flex-direction:column; justify-content:center;
+  background:linear-gradient(165deg, #1c1836, #130f28);
+  border-color:color-mix(in srgb, var(--accent) 40%, transparent);
+}
+.cy-centro h3{ color:#ffffff; font-size:1.3rem; }
+.cy-centro p{ color:#c3d2ee; }
+.cy-elenco{ list-style:none; margin:.7rem 0 0; padding:0; display:grid; gap:.55rem; }
+.cy-elenco li{ position:relative; padding-left:1rem; color:var(--muted); font-size:.94rem; }
+.cy-elenco li::before{
+  content:""; position:absolute; left:0; top:.62em;
+  width:6px; height:6px; border-radius:50%; background:var(--accent);
+}
+.cy-elenco strong{ color:var(--text); font-weight:600; }
+
+.cy-garanzie li{ color:var(--text); }
+
+/* Segnalazioni: gravità */
+.cy-badge{
+  display:inline-block; margin-top:.9rem; padding:.2rem .6rem; border-radius:999px;
+  font-family:var(--font-mono); font-size:.68rem; letter-spacing:.06em; text-transform:uppercase;
+}
+.cy-badge.critica{ color:#b91c1c; background:rgba(220,38,38,.09); border:1px solid rgba(220,38,38,.3); }
+.cy-badge.attenzione{ color:#a16207; background:rgba(234,179,8,.12); border:1px solid rgba(202,138,4,.35); }
+
+/* Lo stesso lavoro, nei due modi */
+.cy-tabella-wrap{
+  overflow-x:auto; margin-top:1.8rem;
+  border:1px solid var(--line); border-radius:var(--radius); background:var(--surface);
+}
+.cy-tabella{ width:100%; min-width:34rem; border-collapse:collapse; }
+.cy-tabella th,
+.cy-tabella td{ padding:.85rem 1.2rem; text-align:left; border-bottom:1px solid var(--line); font-size:.95rem; }
+.cy-tabella thead th{
+  background:var(--surface-2); color:var(--faint);
+  font-family:var(--font-mono); font-size:.72rem; font-weight:500; letter-spacing:.1em; text-transform:uppercase;
+}
+.cy-tabella tbody th{ font-family:var(--font-display); font-weight:600; }
+.cy-tabella td:nth-child(2){ color:var(--muted); }
+.cy-tabella td:nth-child(3){ color:var(--accent-2); font-weight:600; }
+.cy-tabella tbody tr:last-child > *{ border-bottom:0; }
+
+.cy-nota{ margin-top:1.6rem; font-family:var(--font-mono); font-size:.78rem; color:var(--faint); }
+
+@media (max-width: 1100px){
+  .cy-griglia.cinque{ grid-template-columns:repeat(3, 1fr); }
+}
+@media (max-width: 980px){
+  .cy-hero{ grid-template-columns:1fr; gap:2.2rem; }
+  .cy-hero .richiamo-vetrina{ max-width:26rem; }
+  .cy-griglia.tre,
+  .cy-griglia.cinque{ grid-template-columns:repeat(2, 1fr); }
+  .cy-riga{ grid-template-columns:1fr; gap:1.6rem; }
+  .cy-riga.inversa > :first-child{ order:0; }
+  .cy-flusso{ grid-template-columns:1fr; }
+  .cy-freccia{ justify-self:center; transform:rotate(90deg); }
+}
+@media (max-width: 600px){
+  .cy-griglia.due,
+  .cy-griglia.tre,
+  .cy-griglia.cinque{ grid-template-columns:1fr; }
+  .cy-sezione{ padding:2.6rem 0; }
 }

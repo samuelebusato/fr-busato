@@ -24,7 +24,7 @@
 
   /* Progetti diventati servizi: il vecchio indirizzo porta alla pagina nuova,
      così i link già pubblicati (annunci, siti esterni) non si rompono. */
-  var SPOSTATI = { cyberse: "servizio.html?id=cyberse" };
+  var SPOSTATI = { cyberse: "cyberse.html" };
   if (Object.prototype.hasOwnProperty.call(SPOSTATI, id)) {
     window.location.replace(SPOSTATI[id]);
     return;

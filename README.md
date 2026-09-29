@@ -17,6 +17,7 @@ Completamente responsive; le animazioni si disattivano per chi ha attivo
 ├── progetto.html            → dettaglio di un progetto (dinamica, ?id=...)
 ├── servizio.html            → pagina di un servizio (dinamica, ?id=...)
 ├── blog.html                → annunci e novità
+├── cyberse.html             → la scheda di Cyberse
 ├── privacy.html             → informativa privacy (GDPR)
 ├── cookie-policy.html       → cookie policy (Linee guida Garante)
 ├── robots.txt, sitemap.xml
@@ -53,7 +54,7 @@ aggiorna da solo.
 | Progetti | `assets/js/progetti.js`, array `PROGETTI` | I campi sono descritti in testa al file. I **primi 3** dell'array compaiono anche in home. |
 | Immagini di un progetto | `assets/img/progetti/image_<id>/` | File `1`, `2`, `3` (webp, jpg, jpeg o png): l'immagine N accompagna la riga N della pagina. Senza immagini si vede un segnaposto. |
 | Servizi | `assets/js/servizi-dati.js`, array `SERVIZI` | Un servizio nuovo va aggiunto anche a `sitemap.xml`. Il campo opzionale `azioni` sostituisce i pulsanti in testa alla pagina. |
-| Cyberse | voce `cyberse` di `SERVIZI` + riquadro `.richiamo` nella sezione Servizi di `index.html` | È un servizio, non più un progetto: `progetto.html?id=cyberse` rimanda a `servizio.html?id=cyberse`. Il bottone «Accedi a MSP» nel menu di ogni pagina, dopo «Contatti» e con lo stesso stile, porta a `https://msp.fr-busato.it/accesso`. |
+| Cyberse | `cyberse.html` (la scheda, dalla presentazione ai clienti) + riquadro `.richiamo` nella sezione Servizi di `index.html` | Le regole sui testi sono in testa a `cyberse.html`. Le schermate in `assets/img/cyberse/` vengono solo dall'ambiente dimostrativo. `progetto.html?id=cyberse` e `servizio.html?id=cyberse` rimandano alla scheda. Il bottone «Accedi a MSP» nel menu di ogni pagina, dopo «Contatti» e con lo stesso stile, porta a `https://msp.fr-busato.it/accesso`. |
 | Certificazioni | `assets/js/servizi-dati.js`, array `CERTIFICAZIONI` | Con l'array vuoto la sezione resta nascosta. |
 | Annunci del blog | `assets/data/annunci.json` | I campi sono descritti in testa a `blog.js`. |
 | Recensioni | `assets/data/recensioni.json` | Si pubblicano solo quelle approvate. Il modulo sul sito non salva nulla: apre un'email precompilata verso fausto@fr-busato.it. |

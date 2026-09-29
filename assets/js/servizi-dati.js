@@ -261,62 +261,6 @@ const SERVIZI = [
       { domanda: "Fate assistenza da remoto?", risposta: "Sì: per i problemi urgenti ci colleghiamo subito, con il tuo consenso." },
       { domanda: "Lavorate anche con software non vostri?", risposta: "Sì, ti aiutiamo a scegliere e gestire anche soluzioni di terze parti." }
     ]
-  },
-  {
-    /* Cyberse: prodotto nostro, in esercizio sui clienti di F.R. e non ancora
-       venduto ad altri MSP. Qui solo cose costruite e in uso: niente numeri
-       dell'archivio, niente prezzi, niente portale del cliente finale (non
-       esiste), la cifratura si dice "autenticata" senza nominare l'algoritmo. */
-    id: "cyberse",
-    nome: "Cyberse — Documentazione di rete",
-    occhiello: "Servizio · Documentazione di rete",
-    titolo: "<span class=\"gradiente\">Cyberse</span>: la documentazione di rete che si aggiorna da sola",
-    sottotitolo: "Un archivio unico delle reti che gestisci: si aggiorna leggendo le console e gli apparati già in uso, tiene le password in una cassaforte a parte e ti dice da solo che cosa non va.",
-    colore: "#6366f1",
-    azioni: [
-      { testo: "Richiedi informazioni", url: "index.html#contatti", stile: "pieno" },
-      { testo: "Accedi al portale →", url: "https://msp.fr-busato.it/accesso", stile: "vuoto" }
-    ],
-    descrizione: [
-      "Chi gestisce l'informatica di altre aziende custodisce un sapere prezioso e fragile: com'è fatta ogni rete, quale apparato regge cosa, dove finiscono i backup, chi ha le chiavi di che cosa. Di solito vive in documenti scritti a mano, già superati il giorno dopo, e quando servono davvero dicono una cosa mentre la rete ne dice un'altra.",
-      "Cyberse li sostituisce con un archivio vivo. Ogni cliente ha le sue schede — apparati, reti e VLAN, persone, caselle di posta, licenze, condivisioni, piani di backup, domini e sedi — collegate fra loro. Non serve trascriverle: Cyberse legge da solo Microsoft 365, Acronis, WatchGuard Cloud e HPE Networking Instant On, e un agente installato in sede esplora la rete, Active Directory, i firewall OPNsense e le stampanti, in sola lettura.",
-      "Il documento torna a esistere, ma come risultato: una relazione di rete in PDF, con lo schema disegnato dai dati e senza password dentro, pronta da consegnare al cliente. Cyberse è in esercizio ogni giorno sulle reti dei clienti di F.R. di Busato Fausto; agli altri MSP lo proponiamo partendo da una prova su un loro cliente vero."
-    ],
-    approfondimenti: [
-      { titolo: "Ogni dato dice da dove viene", testo: "Accanto a ogni informazione c'è la fonte che l'ha fornita e quando è stata letta. Se due fonti non concordano, la scheda lo dice invece di sceglierne una a caso; se un dato non lo conosce nessuno, lo dice lo stesso." },
-      { titolo: "Le password escono dai documenti", testo: "Le credenziali stanno in una cassaforte separata dal resto dell'archivio, protette da cifratura autenticata. Mostrarle e copiarle sono due azioni distinte, richiedono di confermare di nuovo il secondo fattore e restano registrate." },
-      { titolo: "Ti dice che cosa non va, senza cercarlo", testo: [
-        "Ogni ora Cyberse controlla le reti e apre da solo le segnalazioni: backup che saltano l'esecuzione prevista, PC senza antivirus o con l'antivirus non aggiornato, credenziali scadute, account di dominio disattivati o fermi da tempo, PC che non accedono più al dominio.",
-        "Anche sul cloud: amministratori di Microsoft 365 senza secondo fattore, caselle che inoltrano la posta all'esterno, e le console che hanno smesso di rispondere."
-      ] },
-      { titolo: "Ogni cliente separato dagli altri", testo: "Il confine fra un cliente e l'altro non è una buona intenzione del programma: è imposto dal database stesso, su ogni tabella. Il secondo fattore è sempre obbligatorio e ogni accesso e ogni lettura lasciano traccia." },
-      { titolo: "L'agente legge, non esegue", testo: "L'agente che si installa in sede serve a leggere la rete: individua gli apparati, le porte aperte e le cartelle condivise, legge Active Directory, i firewall e le stampanti. Non esegue comandi sugli apparati e non cambia nulla." },
-      { titolo: "I vecchi documenti non si buttano", testo: "Le documentazioni in Word si caricano dal portale: i dati finiscono nelle schede e le password nella cassaforte, e il file non viene conservato." }
-    ],
-    approccio: [
-      { titolo: "Prova su un cliente vero", testo: "Si parte da un cliente reale, non da dati di esempio: così si vede subito che cosa Cyberse trova da solo." },
-      { titolo: "Collegamento", testo: "Colleghiamo le console già in uso e installiamo l'agente in sede; i vecchi documenti si importano dal portale." },
-      { titolo: "Archivio vivo", testo: "Schede, legami fra gli apparati e segnalazioni si popolano leggendo la rete, non trascrivendola." },
-      { titolo: "Nel lavoro di tutti i giorni", testo: "Da quel momento l'archivio è il punto di partenza di ogni intervento, e la relazione di rete si genera quando serve." }
-    ],
-    casiUso: [
-      "Sapere com'è fatta la rete di un cliente prima di entrare in sede",
-      "Trovare in un attimo una password, una licenza o il piano di backup giusto",
-      "Accorgersi di un backup saltato o di un PC senza antivirus prima che diventi un problema",
-      "Consegnare al cliente una relazione aggiornata sulla sua rete",
-      "Passare le consegne fra tecnici senza perdere informazioni"
-    ],
-    aChiServe: [
-      "MSP e consulenti che gestiscono l'informatica di più aziende",
-      "I clienti di F.R. di Busato Fausto, per cui è parte del servizio di assistenza",
-      "Chi eredita una rete senza documentazione e deve ricostruirla"
-    ],
-    faq: [
-      { domanda: "Come si accede?", risposta: "Dal pulsante «Accedi a MSP» in alto in ogni pagina del sito, con email, password e secondo fattore." },
-      { domanda: "Devo installare qualcosa?", risposta: "Solo l'agente nelle sedi di cui si vuole leggere la rete: un programma Windows in sola lettura. Le console cloud si collegano senza installare nulla." },
-      { domanda: "Il mio cliente può accedere a Cyberse?", risposta: "Oggi Cyberse è lo strumento di chi gestisce la rete. Al cliente si consegna la relazione di rete in PDF, sempre aggiornata ai dati del momento." },
-      { domanda: "Sono un MSP: come posso provarlo?", risposta: "Scrivici: si parte da una prova su un tuo cliente vero e le condizioni si definiscono insieme." }
-    ]
   }
 ];
 

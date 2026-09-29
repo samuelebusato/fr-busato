@@ -11,6 +11,14 @@
 
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");
+
+  /* Servizi con una pagina tutta loro: il vecchio indirizzo porta lì */
+  const PAGINE_PROPRIE = { cyberse: "cyberse.html" };
+  if (Object.prototype.hasOwnProperty.call(PAGINE_PROPRIE, id)) {
+    window.location.replace(PAGINE_PROPRIE[id]);
+    return;
+  }
+
   const s = SERVIZI.find(function (x) { return x.id === id; });
 
   function el(tag, cls, html) {

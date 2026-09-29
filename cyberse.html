@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cyberse — Documentazione di rete — F.R. di Busato Fausto</title>
+  <meta name="description" content="Cyberse: la documentazione della rete smette di essere un file e diventa un archivio vivo, che si aggiorna da solo, custodisce le password a parte e segnala che cosa non va.">
+  <link rel="canonical" href="https://www.fr-busato.it/cyberse.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="F.R. di Busato Fausto">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:title" content="Cyberse — Documentazione di rete">
+  <meta property="og:description" content="La documentazione della rete smette di essere un file e diventa un archivio vivo, che si aggiorna da solo.">
+  <meta property="og:url" content="https://www.fr-busato.it/cyberse.html">
+  <meta property="og:image" content="https://www.fr-busato.it/assets/img/cyberse-logo.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Scheda di Cyberse, costruita sulla presentazione ai clienti (13 slide,
+       2026-09-23) con le schermate del carosello dei vantaggi (2026-09-27).
+       Regole sui testi: solo cose costruite e in esercizio; niente numeri
+       dell'archivio, niente prezzi, niente portale del cliente finale (non
+       esiste); la cifratura è "autenticata", senza nominare l'algoritmo; le
+       schermate vengono SOLO dall'ambiente dimostrativo (aziende inventate).
+       Niente comparsa allo scorrimento (.rivela): su una pagina così lunga
+       lasciava tratti vuoti finché il blocco non entrava abbastanza nello
+       schermo. Il contenuto è sempre visibile. -->
+</head>
+<body class="pagina-cyberse">
+
+  <a class="skip-link" href="#contenuto">Vai al contenuto</a>
+
+  <div class="progresso" id="progresso" aria-hidden="true"></div>
+  <div class="sfondo" aria-hidden="true"></div>
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <div class="orb orb-a" aria-hidden="true"></div>
+  <div class="orb orb-b" aria-hidden="true"></div>
+
+  <header class="header">
+    <nav class="nav container" aria-label="Navigazione principale">
+      <a class="marchio" href="index.html">
+        <span class="marchio-logo">F.R.</span>
+        <span class="marchio-testo">
+          <strong>F.R. di Busato Fausto</strong>
+          <span>l'informatica al tuo servizio</span>
+        </span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="menu" aria-label="Apri il menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu" id="menu">
+        <li><a href="index.html#azienda">L'Azienda</a></li>
+        <li><a class="attivo" href="index.html#servizi">Servizi</a></li>
+        <li><a href="index.html#certificazioni">Certificazioni</a></li>
+        <li><a href="sviluppo-software.html">Sviluppo Software</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a class="nav-cta" href="index.html#contatti">Contatti</a></li>
+        <li class="nav-voce-portale"><a class="nav-cta nav-portale" href="https://msp.fr-busato.it/accesso">Accedi a MSP</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="contenuto">
+
+    <!-- ================= HERO ================= -->
+    <section class="container cy-hero">
+      <div>
+        <a class="torna entra" href="index.html#servizi"><span aria-hidden="true">←</span> Tutti i servizi</a>
+        <p class="eyebrow entra">Documentazione di rete</p>
+        <h1 class="entra" data-passo="1"><span class="gradiente">Cyberse</span></h1>
+        <p class="sottotitolo entra" data-passo="2" style="margin-top:1rem">La documentazione della vostra rete smette di essere un file e diventa un archivio vivo, che si aggiorna da solo.</p>
+        <div class="richiamo-annuncio entra" data-passo="2">
+          <span class="richiamo-badge">✦ In esercizio</span>
+          <p>Lo usiamo ogni giorno sulle reti dei nostri clienti.</p>
+        </div>
+        <div class="hero-azioni entra" data-passo="3">
+          <a class="btn btn-pieno" href="index.html#contatti">Richiedi informazioni</a>
+          <a class="btn btn-vuoto" href="https://msp.fr-busato.it/accesso">Accedi a MSP</a>
+        </div>
+      </div>
+      <div class="richiamo-vetrina entra" data-passo="2" aria-hidden="true">
+        <div class="richiamo-marchio">
+          <img src="assets/img/cyberse-logo.jpg" alt="" width="1200" height="630" decoding="async">
+        </div>
+        <ul class="richiamo-check">
+          <li><i></i>Si aggiorna leggendo la rete</li>
+          <li><i></i>Password in cassaforte</li>
+          <li><i></i>Segnala da solo che cosa non va</li>
+          <li><i></i>Ogni cliente separato dagli altri</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= IL PUNTO DI PARTENZA ================= -->
+    <section class="container cy-sezione">
+      <p class="eyebrow">Il punto di partenza</p>
+      <h2>Il documento di rete, oggi</h2>
+      <p class="sottotitolo">Ogni sede ha il suo documento: apparati, indirizzi, VLAN, backup, credenziali. Il modello è collaudato e il contenuto è buono. Il problema non è che cosa c'è scritto: è che il file resta fermo mentre la rete cambia.</p>
+      <div class="cy-griglia tre">
+        <div class="cy-carta"><h3>Vive dentro un file</h3><p>Uno per sede. Per sapere che cosa contiene bisogna aprirlo, e per confrontarne due bisogna aprirli tutti e due.</p></div>
+        <div class="cy-carta"><h3>Lo aggiorna una persona</h3><p>Quando ha tempo, e quando si ricorda. Fra una revisione e l'altra la rete è già cambiata, e il file non lo sa.</p></div>
+        <div class="cy-carta"><h3>Si porta dietro i segreti</h3><p>Le password stanno lì dentro, in chiaro, dentro una cartella sincronizzata su più computer.</p></div>
+      </div>
+    </section>
+
+    <!-- ================= IL FORMATO ================= -->
+    <section class="container cy-sezione">
+      <p class="eyebrow">Il formato</p>
+      <h2>Cinque cose che un file non sa fare</h2>
+      <p class="sottotitolo">Nessuna si risolve scrivendo meglio il documento. Sono limiti del contenitore.</p>
+      <div class="cy-griglia cinque">
+        <div class="cy-carta"><span class="cy-num">01</span><h3>Tiene i segreti in chiaro</h3><p>Chi apre il file legge tutte le password, e nessuno sa che le ha lette.</p></div>
+        <div class="cy-carta"><span class="cy-num">02</span><h3>Non si può interrogare</h3><p>«Dove sono i NAS di quel modello?» vuol dire aprire i file uno per uno.</p></div>
+        <div class="cy-carta"><span class="cy-num">03</span><h3>Non ha storia</h3><p>Il numero di revisione lo scrive una persona, quando si ricorda.</p></div>
+        <div class="cy-carta"><span class="cy-num">04</span><h3>Non dice quanto è fresco</h3><p>Un dato vecchio di tre anni ha lo stesso aspetto di uno di ieri.</p></div>
+        <div class="cy-carta"><span class="cy-num">05</span><h3>Si sdoppia da solo</h3><p>Due persone che scrivono da due computer producono due copie diverse.</p></div>
+      </div>
+    </section>
+
+    <!-- ================= LA PROPOSTA ================= -->
+    <section class="container cy-sezione">
+      <p class="eyebrow">La proposta</p>
+      <h2>Cyberse, in una frase</h2>
+      <p class="cy-frase">Un archivio unico della vostra rete, che si aggiorna leggendo gli apparati e le console che già avete, e che vi dice che cosa non va <strong>prima che ve ne accorgiate voi</strong>.</p>
+      <div class="cy-griglia tre">
+        <div class="cy-carta"><h3>Uno solo</h3><p>Apparati, persone, backup, segmenti e credenziali nello stesso posto, cercabili in un campo.</p></div>
+        <div class="cy-carta"><h3>Sempre datato</h3><p>Ogni dato dice da dove viene e quando è stato visto l'ultima volta. Il vecchio si riconosce.</p></div>
+        <div class="cy-carta"><h3>Segreti separati</h3><p>Cassaforte cifrata, aperta dietro un secondo fattore. Ogni lettura resta scritta, e ogni cliente è isolato dagli altri.</p></div>
+      </div>
+
+      <div class="cy-riga">
+        <div>
+          <h3>Si fa una domanda e si ha una risposta</h3>
+          <p>«Su quali sedi c'è un NAS di quel modello?» In un archivio è una ricerca. In una cartella di documenti è un pomeriggio, e alla fine non si è sicuri di averli aperti tutti.</p>
+          <p>Apparati, persone, reti, backup e licenze stanno nello stesso posto, e ogni elenco si filtra e si ordina dalle intestazioni.</p>
+        </div>
+        <figure class="cy-schermata">
+          <a href="assets/img/cyberse/ricerca.png"><img src="assets/img/cyberse/ricerca.png" alt="Cyberse: l'elenco dei 42 asset di un'azienda dimostrativa, ristretto dalla ricerca della parola «produzione»" width="1655" height="862" loading="lazy" decoding="async"></a>
+          <figcaption>Quarantadue asset di un cliente, ristretti a una parola.</figcaption>
+        </figure>
+      </div>
+
+      <div class="cy-riga inversa">
+        <div>
+          <h3>Ogni dato dice da dove viene e quando</h3>
+          <p>Un documento non sa dire la sua età: uno fermo da tre anni sembra identico a uno di ieri. In Cyberse sotto ogni campo c'è scritto chi l'ha detto e quando l'ha visto.</p>
+          <p>E dove non sa, lo dice. «Nessuno l'ha ancora detto» è un'informazione: distingue il dato che manca da quello che nessuno ha mai rilevato.</p>
+        </div>
+        <figure class="cy-schermata">
+          <a href="assets/img/cyberse/provenienza.png"><img src="assets/img/cyberse/provenienza.png" alt="Cyberse: la scheda di un computer dimostrativo; sotto ogni campo c'è chi l'ha rilevato e quando, oppure «nessuno l'ha ancora detto»" width="1208" height="845" loading="lazy" decoding="async"></a>
+          <figcaption>«L'agente locale, visto 4 giorni fa.»</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ================= DA DOVE ARRIVANO I DATI ================= -->
+    <section class="container cy-sezione">
+      <p class="eyebrow">Come resta aggiornato</p>
+      <h2>Da dove arrivano i dati</h2>
+      <div class="cy-flusso">
+        <div class="cy-carta">
+          <h3>Le fonti che già avete</h3>
+          <ul class="cy-elenco">
+            <li><strong>Un agente di rete</strong> sulle vostre sedi</li>
+            <li><strong>Active Directory</strong>: persone e computer</li>
+            <li><strong>Microsoft 365</strong>: persone, caselle, licenze e domini</li>
+            <li><strong>Acronis</strong>: i piani di backup</li>
+            <li><strong>WatchGuard</strong>: firewall e antivirus</li>
+            <li><strong>HPE Instant On e OPNsense</strong>: la rete</li>
+          </ul>
+        </div>
+        <span class="cy-freccia" aria-hidden="true">→</span>
+        <div class="cy-carta cy-centro">
+          <h3>Cyberse</h3>
+          <p>Confronta, unisce e data ogni informazione. Se due fonti si contraddicono, lo dice invece di scegliere in silenzio.</p>
+        </div>
+        <span class="cy-freccia" aria-hidden="true">→</span>
+        <div class="cy-carta">
+          <h3>Che cosa vedete</h3>
+          <ul class="cy-elenco">
+            <li><strong>La scheda del cliente</strong>: sedi, apparati, persone, backup e reti, sempre alla data di oggi.</li>
+            <li><strong>Il documento, quando serve</strong>: torna come stampa datata, che si rigenera. Nessuno lo modifica più.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= LE FONTI CHE NON CI SONO ANCORA ================= -->
+    <section class="container cy-sezione">
+      <p class="eyebrow">Le fonti che non ci sono ancora</p>
+      <h2>Se una console non c'è, si aggiunge</h2>
+      <p class="sottotitolo">L'elenco non è chiuso: è fatto per crescere. Un fornitore nuovo entra in uno dei tre modi già affrontati, e da quel momento i suoi dati stanno nelle stesse schede, con la stessa provenienza e le stesse segnalazioni.</p>
+      <div class="cy-griglia tre">
+        <div class="cy-carta"><span class="cy-num">1</span><h3>Con una credenziale nostra</h3><p>La console ci riconosce come gestori e ci apre solo la parte vostra. È il caso di Acronis e WatchGuard.</p></div>
+        <div class="cy-carta"><span class="cy-num">2</span><h3>Con una credenziale vostra</h3><p>La rilasciate voi, vale solo per voi e resta sulla vostra scheda. È il caso di HPE Instant On.</p></div>
+        <div class="cy-carta"><span class="cy-num">3</span><h3>Con un vostro consenso</h3><p>Nessuna password da consegnare: autorizzate la nostra applicazione, e la revocate quando volete. È il caso di Microsoft 365.</p></div>
+      </div>
+      <div class="cy-griglia due">
+        <div class="cy-carta"><h3>Quello che eredita il giorno stesso</h3><p>Data e provenienza, riconoscimento degli apparati, legami, disaccordi fra fonti e segnalazioni. Una fonte nuova non li rifà: li trova già fatti.</p></div>
+        <div class="cy-carta"><h3>Quello che serve da voi</h3><p>Che il fornitore esponga un'interfaccia, e il vostro via libera. Da lì in poi si legge soltanto: verso le vostre console non scriviamo mai.</p></div>
+      </div>
+    </section>
+
+    <!-- ================= LA GARANZIA ================= -->
+    <section class="container cy-sezione">
+      <div class="cy-riga" style="margin-top:0">
+        <div>
+          <p class="eyebrow">La garanzia</p>
+          <h2>Che cosa l'agente non fa</h2>
+          <p class="sottotitolo">Un programma che entra nella vostra rete deve dire con chiarezza dove si ferma. Cyberse legge e basta: <strong>non è uno strumento di telecontrollo</strong>, e non lo diventa con un aggiornamento.</p>
+          <p class="sottotitolo" style="margin-top:1rem">Un agente per sede, non uno su ogni computer. Si installa una volta, lavora e si spegne.</p>
+        </div>
+        <ul class="lista-check cy-garanzie">
+          <li>Nessun comando eseguito sui vostri computer</li>
+          <li>Nessuno script, nessuna console remota, nessuna modifica</li>
+          <li>Privilegi minimi: legge solo ciò che serve a documentare</li>
+          <li>Ogni console si collega solo dopo un vostro consenso esplicito</li>
+          <li>Anche le letture sono registrate, non solo le modifiche</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= I SEGRETI ================= -->
+    <section class="container cy-sezione">
+      <p class="eyebrow">I segreti</p>
+      <h2>Le password fuori dai documenti</h2>
+      <p class="sottotitolo">Nel documento resta il <strong>riferimento</strong>, non il segreto. La password vive cifrata in una cassaforte separata, legata alla scheda a cui appartiene.</p>
+      <div class="cy-riga">
+        <ul class="lista-check">
+          <li>Si legge una alla volta, non aprendo un file intero</li>
+          <li>Ogni lettura lascia traccia: chi, quando, quale</li>
+          <li>«Mostra» e «Copia» sono due azioni diverse, e due permessi diversi: si può incollare una password senza che compaia mai sullo schermo</li>
+          <li>Chiavi Wi-Fi e chiavi di licenza seguono la stessa strada</li>
+          <li>Chi non ha il permesso non vede nemmeno che esistono</li>
+        </ul>
+        <figure class="cy-schermata">
+          <a href="assets/img/cyberse/cassaforte.png"><img src="assets/img/cyberse/cassaforte.png" alt="Cyberse: le credenziali di un'azienda dimostrativa, con i pulsanti Mostra e Copia al posto delle password" width="1235" height="852" loading="lazy" decoding="async"></a>
+          <figcaption>Nella colonna delle password non c'è nessuna password.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ================= LA PIATTAFORMA ================= -->
+    <section class="container cy-sezione">
+      <p class="eyebrow">La piattaforma</p>
+      <h2>Dove finiscono i vostri dati</h2>
+      <p class="sottotitolo">Un archivio che raccoglie la rete di più aziende deve difendersi meglio di quello che documenta.</p>
+      <div class="cy-griglia tre">
+        <div class="cy-carta"><h3>Ogni cliente isolato</h3><p>La separazione la impone il database stesso, non il programma che ci scrive sopra.</p></div>
+        <div class="cy-carta"><h3>Segreti cifrati</h3><p>Cifratura autenticata, e mai una copia in chiaro nei dati raccolti dalle fonti.</p></div>
+        <div class="cy-carta"><h3>Secondo fattore</h3><p>Obbligatorio, e le credenziali stanno dietro di esso: la password da sola non apre niente.</p></div>
+        <div class="cy-carta"><h3>Tracciate le letture</h3><p>Chi ha aperto quale password, e quando. Non soltanto chi ha modificato qualcosa.</p></div>
+        <div class="cy-carta"><h3>Solo canale cifrato</h3><p>Il portale risponde unicamente in HTTPS, e solo al proprio nome.</p></div>
+        <div class="cy-carta"><h3>Nessuna terza parte</h3><p>Caratteri e risorse ospitati in proprio: il vostro indirizzo IP non esce verso nessuno.</p></div>
+      </div>
+    </section>
+
+    <!-- ================= IL VANTAGGIO DECISIVO ================= -->
+    <section class="container cy-sezione">
+      <p class="eyebrow">Il vantaggio decisivo</p>
+      <h2>Che cosa non va, senza cercarlo</h2>
+      <p class="sottotitolo">Un archivio che descrive e basta serve a poco. Cyberse rilegge tutto a ogni giro e apre una segnalazione dove trova un problema, raggruppata per sede e per motivo. Un file non lo farà mai: non confronta niente con niente.</p>
+      <div class="cy-griglia tre">
+        <div class="cy-carta"><h3>Un computer senza antivirus</h3><p>Acceso, in rete, e nessuna console lo protegge.</p><span class="cy-badge critica">Critica</span></div>
+        <div class="cy-carta"><h3>Un computer che nessuno conosce</h3><p>Vivo sulla rete, ma assente da ogni console.</p><span class="cy-badge critica">Critica</span></div>
+        <div class="cy-carta"><h3>Un backup senza esito</h3><p>Il piano esiste, ma non è andato a buon fine.</p><span class="cy-badge critica">Critica</span></div>
+        <div class="cy-carta"><h3>Un antivirus non aggiornato</h3><p>Firme o motore fermi da troppo tempo.</p><span class="cy-badge attenzione">Attenzione</span></div>
+        <div class="cy-carta"><h3>Un'utenza rimasta aperta</h3><p>La persona è uscita, la sua utenza no.</p><span class="cy-badge attenzione">Attenzione</span></div>
+        <div class="cy-carta"><h3>Una credenziale scaduta</h3><p>Ha superato la durata che le è stata data.</p><span class="cy-badge attenzione">Attenzione</span></div>
+      </div>
+      <figure class="cy-schermata cy-schermata-larga">
+        <a href="assets/img/cyberse/segnalazioni.png"><img src="assets/img/cyberse/segnalazioni.png" alt="Cyberse: le segnalazioni di un'azienda dimostrativa, raggruppate per motivo: PC senza antivirus, backup non eseguiti, utenze ferme" width="1544" height="718" loading="lazy" decoding="async"></a>
+        <figcaption>Le regole girano da sole ogni ora. Una segnalazione si chiude quando la sua causa non c'è più: nessuno la toglie a mano.</figcaption>
+      </figure>
+    </section>
+
+    <!-- ================= IL CONTENUTO ================= -->
+    <section class="container cy-sezione">
+      <p class="eyebrow">Il contenuto</p>
+      <h2>Che cosa c'è in una scheda</h2>
+      <div class="cy-griglia cinque">
+        <div class="cy-carta"><h3>Apparati</h3><p>Server, computer, switch, stampanti, NAS, telecamere.</p></div>
+        <div class="cy-carta"><h3>Persone</h3><p>Utenze, gruppi e chi appartiene a che cosa.</p></div>
+        <div class="cy-carta"><h3>Reti</h3><p>Segmenti, VLAN, linee e reti Wi-Fi.</p></div>
+        <div class="cy-carta"><h3>Backup</h3><p>Piani, macchine protette e ultima riuscita.</p></div>
+        <div class="cy-carta"><h3>Cartelle</h3><p>Le condivisioni di rete e dove stanno.</p></div>
+        <div class="cy-carta"><h3>Licenze</h3><p>Con la chiave al sicuro e la scadenza.</p></div>
+        <div class="cy-carta"><h3>Porte</h3><p>Che cosa ogni apparato espone in rete.</p></div>
+        <div class="cy-carta"><h3>Legami</h3><p>Che cosa è collegato a che cosa, e come.</p></div>
+        <div class="cy-carta"><h3>Sedi</h3><p>Indirizzi, contatti e riferimenti dei fornitori.</p></div>
+        <div class="cy-carta"><h3>Storia</h3><p>Da quando è in servizio, quando è stato dismesso, chi l'ha visto per ultimo.</p></div>
+      </div>
+      <div class="cy-riga inversa">
+        <div>
+          <h3>La rete la disegna chi la percorre</h3>
+          <p>Segmenti, VLAN e apparati non li scrive più una persona a mano: li porta dentro chi la rete la percorre davvero, cioè l'agente in sola lettura e i firewall.</p>
+          <p>E un segmento è una scheda come le altre, con la sua subnet: si apre, si cerca, e si sa che cosa ci sta dentro.</p>
+        </div>
+        <figure class="cy-schermata">
+          <a href="assets/img/cyberse/segmenti.png"><img src="assets/img/cyberse/segmenti.png" alt="Cyberse: i segmenti di rete di un'azienda dimostrativa, ognuno con la sua subnet" width="1205" height="840" loading="lazy" decoding="async"></a>
+          <figcaption>Ospiti, Produzione, Uffici: ognuno con la sua subnet.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ================= IN SINTESI ================= -->
+    <section class="container cy-sezione">
+      <p class="eyebrow">In sintesi</p>
+      <h2>Lo stesso lavoro, nei due modi</h2>
+      <div class="cy-tabella-wrap">
+        <table class="cy-tabella">
+          <thead>
+            <tr><th scope="col">Che cosa cambia</th><th scope="col">Con i file sciolti</th><th scope="col">Con Cyberse</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Dove sta il dato</th><td>Un documento per sede</td><td>Un archivio per tutte</td></tr>
+            <tr><th scope="row">Chi lo aggiorna</th><td>Una persona, a mano</td><td>Gli apparati e le console, da soli</td></tr>
+            <tr><th scope="row">Le password</th><td>In chiaro, dentro il file</td><td>Cifrate a parte, una alla volta</td></tr>
+            <tr><th scope="row">Chi può vedere cosa</th><td>Chi apre il file, vede tutto</td><td>Ruoli, e un secondo fattore</td></tr>
+            <tr><th scope="row">Trovare una cosa</th><td>Aprire i file a uno a uno</td><td>Una ricerca su tutto</td></tr>
+            <tr><th scope="row">Quanto è fresco</th><td>Non si sa</td><td>Ogni voce porta la sua data</td></tr>
+            <tr><th scope="row">Chi l'ha letto</th><td>Nessuna traccia</td><td>Registrato, lettura per lettura</td></tr>
+            <tr><th scope="row">I problemi</th><td>Li scoprite dopo</td><td>Ve li dice prima</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ================= IL PASSO SUCCESSIVO ================= -->
+    <section class="container cy-sezione">
+      <div class="cy-riga" style="margin-top:0; align-items:start">
+        <div>
+          <p class="eyebrow">Il passo successivo</p>
+          <h2>Il documento torna solo come stampa</h2>
+          <p class="sottotitolo">Quando serve consegnare qualcosa a qualcuno — un audit, un fornitore, un cambio di macchina — il documento si rigenera alla data di oggi, con lo schema della rete disegnato dai dati e senza password dentro. Nessuno lo modifica più a mano.</p>
+        </div>
+        <div>
+          <h3 style="font-size:1.3rem">Come si parte</h3>
+          <ol class="servizio-approccio">
+            <li><div class="passo-testo"><strong>Il vostro documento entra così com'è</strong><p>Niente da ricompilare: quello che c'è scritto diventa schede, e le password vanno nella cassaforte.</p></div></li>
+            <li><div class="passo-testo"><strong>Un agente per sede, in sola lettura</strong><p>Su una macchina Windows qualunque. Si installa in pochi minuti.</p></div></li>
+            <li><div class="passo-testo"><strong>Le console si collegano col vostro consenso</strong><p>Una alla volta, quando volete voi. Da lì l'archivio si tiene da solo.</p></div></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= INVITO ================= -->
+    <section class="container cy-sezione">
+      <div class="callout">
+        <div>
+          <p class="eyebrow">Cyberse</p>
+          <h2>Parliamo della vostra rete.</h2>
+          <p>Per i nostri clienti Cyberse fa parte dell'assistenza. Se gestite reti per conto di altri, si parte da una prova su un vostro cliente vero, con condizioni da definire insieme.</p>
+        </div>
+        <div class="hero-azioni">
+          <a class="btn btn-pieno" href="index.html#contatti">Richiedi informazioni</a>
+          <a class="btn btn-vuoto" href="https://msp.fr-busato.it/accesso">Accedi a MSP</a>
+        </div>
+      </div>
+      <p class="cy-nota">Le schermate vengono dall'ambiente dimostrativo di Cyberse: aziende e dati inventati. La rete di un cliente vero non finisce su un sito.</p>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-griglia">
+        <div class="footer-col">
+          <a class="marchio" href="index.html">
+            <span class="marchio-logo">F.R.</span>
+            <span class="marchio-testo">
+              <strong>F.R. di Busato Fausto</strong>
+              <span>l'informatica al tuo servizio</span>
+            </span>
+          </a>
+          <p style="max-width:22rem; margin-top:1rem;">Sviluppo software su misura, reti sicure, consulenza informatica e privacy, assistenza e formazione per le aziende dal 2000.</p>
+        </div>
+        <div class="footer-col">
+          <h3>Navigazione</h3>
+          <ul>
+            <li><a href="index.html#azienda">L'Azienda</a></li>
+            <li><a href="index.html#servizi">Servizi</a></li>
+            <li><a href="index.html#certificazioni">Certificazioni</a></li>
+            <li><a href="sviluppo-software.html">Sviluppo Software</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="index.html#contatti">Contatti</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Informazioni legali</h3>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="cookie-policy.html">Cookie Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-legale">
+        <span>© <span id="anno-corrente"></span> F.R. di Busato Fausto — Novellara (RE)</span>
+        <span>P.IVA 01878620358</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="avviso-cookie" id="avviso-cookie" role="region" aria-label="Informativa sui cookie" hidden>
+    <p>Questo sito non utilizza cookie di profilazione. Vengono impiegati solo strumenti tecnici necessari al funzionamento. Maggiori dettagli nella <a href="cookie-policy.html">Cookie Policy</a>.</p>
+    <button class="btn btn-pieno" id="chiudi-cookie">Ho capito</button>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
