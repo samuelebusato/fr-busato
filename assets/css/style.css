@@ -2086,7 +2086,10 @@ h3{ font-size:1.18rem; font-weight:600; }
   font-family:var(--font-body); color:var(--faint);
 }
 .forza-flusso li.corrente{
-  background:var(--accent); border-color:var(--accent); color:#fff; font-weight:600;
+  /* il colore del progetto un po' più scuro: il bianco resta leggibile anche coi colori tenui */
+  background:color-mix(in srgb, var(--accent) 85%, #0a1220);
+  border-color:color-mix(in srgb, var(--accent) 85%, #0a1220);
+  color:#fff; font-weight:600;
   box-shadow:0 10px 26px -12px color-mix(in srgb, var(--accent) 75%, transparent);
 }
 
@@ -2127,35 +2130,23 @@ h3{ font-size:1.18rem; font-weight:600; }
 }
 
 /* ---- Griglia dei progetti: la card in evidenza (campo evidenza) ----
-   L'unica scura fra le chiare: fondo blu notte tinto col colore del progetto,
-   testi chiari, bordo e alone pieni. Si nota senza animazioni */
+   Chiara come le altre, nel colore del progetto appena più carico: si distingue
+   per il bordo pieno, l'alone leggero e l'etichetta. (Il 2026-10-06 era stata
+   provata scura: troppo diversa dal resto della vetrina, utente) */
 .card-progetto.card-in-evidenza{
-  color:#eef3ff;
-  border:1.5px solid color-mix(in srgb, var(--c) 70%, transparent);
+  border:1.5px solid color-mix(in srgb, var(--c) 55%, transparent);
   background:
-    radial-gradient(120% 110% at 85% 110%, color-mix(in srgb, var(--c) 48%, transparent), transparent 58%),
-    radial-gradient(90% 70% at 0% 0%, color-mix(in srgb, var(--c) 22%, transparent), transparent 60%),
-    linear-gradient(160deg, #10224d 0%, #0a1531 100%);
+    radial-gradient(120% 110% at 85% 110%, color-mix(in srgb, var(--c) 24%, transparent), transparent 55%),
+    linear-gradient(160deg, color-mix(in srgb, var(--c) 16%, #ffffff) 0%, color-mix(in srgb, var(--c) 6%, #f4f8ff) 100%);
   box-shadow:
-    0 0 0 4px color-mix(in srgb, var(--c) 12%, transparent),
-    0 30px 64px -28px color-mix(in srgb, var(--c) 70%, transparent);
+    0 0 0 4px color-mix(in srgb, var(--c) 9%, transparent),
+    0 26px 56px -30px color-mix(in srgb, var(--c) 55%, transparent);
 }
-.card-in-evidenza .card-titolo{ color:#ffffff; }
-.card-in-evidenza .card-titolo::before{ background:#ffffff; box-shadow:0 0 14px color-mix(in srgb, var(--c) 90%, #ffffff); }
-.card-in-evidenza .card-desc{ color:rgba(226,234,255,.84); }
-.card-in-evidenza .card-anno,
-.card-in-evidenza .card-cat{
-  color:#cfdcff;
-  background:rgba(255,255,255,.07);
-  border-color:rgba(255,255,255,.22);
-}
-.card-in-evidenza .card-evidenza{ color:var(--c); background:#ffffff; box-shadow:0 6px 20px -8px rgba(0,0,0,.6); }
-.card-in-evidenza .card-evidenza::before{ background:var(--c); }
-.card-in-evidenza .card-anteprima-motivo{ border-color:rgba(255,255,255,.16); }
 .card-evidenza{
   display:inline-flex; align-items:center; gap:.45rem;
   font-family:var(--font-mono); font-size:.72rem; letter-spacing:.06em; font-weight:600;
-  color:#fff; background:var(--c);
+  /* il colore del progetto un po' più scuro: il bianco resta leggibile */
+  color:#fff; background:color-mix(in srgb, var(--c) 85%, #0a1220);
   padding:.28rem .8rem; border-radius:999px;
   box-shadow:0 6px 18px -8px var(--c);
 }

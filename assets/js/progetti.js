@@ -125,8 +125,8 @@ const PROGETTI = [
   {
     /* 2026-10-06: sopra Returns Management e sotto HeleoX, per importanza (decisione
        dell'utente); la quinta posizione della griglia è una card grande, e l'etichetta
-       "Novità" la fa risaltare. Il colore è il blu d'azione della nuova interfaccia del
-       programma. Il software si chiama Compono (scelto dall'utente il 2026-10-06); il
+       "Novità" la fa risaltare. Il colore è un blu tenue della tavolozza della nuova
+       interfaccia del programma (#4d7ee0): il blu pieno stonava con la vetrina (utente). Il software si chiama Compono (scelto dall'utente il 2026-10-06); il
        progetto invece si chiama come l'azienda cliente, che qui non si nomina. I testi
        sono generici di proposito (utente): i punti forti, non il caso del cliente.
        L'integrazione con CAD e gestionale è quella della versione finale (utente): oggi
@@ -137,7 +137,7 @@ const PROGETTI = [
     nome: "Compono",
     anno: 2026,
     categoria: "Distinta base parametrica",
-    colore: "#2059d1",
+    colore: "#4d7ee0",
     dimensione: "xl",
     evidenza: "Novità",
     breve: "Il software che si piega al tuo prodotto, non il contrario: dal disegno ai pezzi, ai fogli per i reparti e allo scarico di magazzino, con regole e articoli che l'azienda modella a piacimento. E dialoga con il CAD e con il gestionale.",
