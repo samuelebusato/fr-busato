@@ -1,4 +1,4 @@
-Immagini - Distinta Base Parametrica
+Immagini - Compono (distinta base parametrica)
 
 Metti in questa cartella 2-3 immagini di questo progetto,
 nominate 1, 2 e 3 (es. 1.jpg, 2.png, 3.webp).

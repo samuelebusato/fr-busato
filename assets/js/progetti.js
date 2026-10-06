@@ -113,6 +113,33 @@ const PROGETTI = [
     immagini: []
   },
   {
+    /* 2026-10-06: sopra Returns Management e sotto HeleoX, per importanza (decisione
+       dell'utente); la quinta posizione della griglia è una card grande. Il colore è il
+       blu del marchio della nuova interfaccia del programma. Il software si chiama
+       Compono (scelto dall'utente il 2026-10-06); il progetto invece si chiama come
+       l'azienda cliente, che qui non si nomina. L'id resta quello di prima: è
+       nell'indirizzo della pagina, nella cartella delle immagini e nei motivi. */
+    id: "distinta-base-parametrica",
+    nome: "Compono",
+    anno: 2026,
+    categoria: "Distinta base parametrica",
+    colore: "#1849b3",
+    dimensione: "xl",
+    breve: "Dal disegno all'officina in un solo gesto: si carica la commessa, e ogni pannello si scompone da sé in profili, lamiere, vetri e viti, con i fogli per ogni reparto e lo scarico di magazzino già pronti. Le regole le decide l'azienda, non il codice.",
+    contesto: "Chi produce pannelli su misura conosce il paradosso: ogni commessa è diversa, ma il modo di scomporla in pezzi era scritto una volta per tutte dentro un vecchio programma. Cambiare un profilo, aggiungere una variante o un nuovo tipo di pannello voleva dire riscrivere il software, e ogni regola nuova restava ferma finché qualcuno non metteva mano al codice.",
+    soluzione: "Abbiamo costruito uno strumento che fa il contrario: le regole escono dal codice e diventano dati che l'azienda vede e governa. Si carica la distinta che arriva dal disegno e, prima di salvare qualunque cosa, il programma la legge, calcola ogni pezzo e mostra riga per riga cosa non torna. Poi ogni pannello si scompone da sé, livello dopo livello: telaio, rinforzi, lamiere interne ed esterne, vetri, riempimento, viteria, con le misure di taglio e il disegno quotato di ogni apertura. Ne escono i fogli per ciascun reparto, la distinta di consegna per il cliente e lo scarico di magazzino, che diventa definitivo solo quando qualcuno lo conferma e da lì si corregge soltanto con rettifiche tracciate. Prima di affidargli il lavoro lo abbiamo messo alla prova contro il sistema che sostituisce, su decine di migliaia di pezzi già prodotti: ogni differenza è stata trovata e spiegata. Oggi è in collaudo, con un'interfaccia nuova pensata per chi lo usa ogni giorno.",
+    funzionalita: [
+      "Importazione controllata: prima si vede cosa verrà calcolato, poi si conferma",
+      "Ogni pannello scomposto da sé in tutti i suoi pezzi, livello dopo livello",
+      "Fogli per ogni reparto, disegni quotati e distinta di consegna",
+      "Scarico di magazzino con anteprima, conferma e rettifiche, pronto per il gestionale",
+      "Regole e materiali governati dall'azienda, non scritti nel codice",
+      "Ogni operazione tracciata: chi, quando e cosa è cambiato"
+    ],
+    tecnologie: ["React", "Node.js", "SQL Server", "Motore di calcolo parametrico", "Test automatici"],
+    immagini: []
+  },
+  {
     id: "returns-management-aws",
     nome: "Returns Management System",
     anno: 2025,
@@ -150,25 +177,6 @@ const PROGETTI = [
       "Pattern a strategie: una logica dedicata per ogni portale d'asta"
     ],
     tecnologie: ["TypeScript", "Fastify", "Playwright", "Redis", "Zod", "WebSocket"],
-    immagini: []
-  },
-  {
-    id: "distinta-base-parametrica",
-    nome: "Distinta Base Parametrica",
-    anno: 2026,
-    categoria: "Gestione BOM · Beta",
-    colore: "#5fca8d",
-    dimensione: "xl",
-    breve: "Il nostro progetto più recente: uno strumento moderno e modulare che piega la complessità delle distinte base alla volontà di chi le governa. Configurabile fin nel dettaglio, già vivo in una prima beta.",
-    contesto: "Nelle aziende manifatturiere una distinta base non è un elenco: è un organismo che cambia, si ramifica e deve restare coerente tra reparti e sistemi diversi. Gli strumenti tradizionali sono gabbie rigide, e ogni prodotto configurabile diventa un'eccezione da domare a mano.",
-    soluzione: "Stiamo costruendo uno strumento parametrico e modulare che genera e gestisce le distinte base come materia viva, plasmandola sui processi reali dell'azienda invece di imporne di propri. Dietro le quinte, un'architettura dati progettata da zero — un database strutturato pensato per reggere complessità e crescita nel tempo. La prima beta è già nelle mani di chi la userà.",
-    funzionalita: [
-      "Generazione parametrica di distinte base (BOM) configurabili",
-      "Architettura modulare e altamente personalizzabile",
-      "Integrazione e interoperabilità con altri sistemi aziendali",
-      "Database strutturato progettato per scalabilità e affidabilità"
-    ],
-    tecnologie: ["Progettazione dati", "Database SQL", "Web app", "Architettura modulare"],
     immagini: []
   },
   {

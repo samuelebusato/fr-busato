@@ -51,9 +51,9 @@
     "dataLabel": "15 luglio 2026",
     "tag": "Novità",
     "titolo": "Nuovi progetti software nel nostro portfolio",
-    "anteprima": "Abbiamo aggiornato la sezione Sviluppo Software con nuovi lavori: una distinta base parametrica in beta, un sistema di gestione resi serverless su AWS, uno scraper per aste automobilistiche e altro ancora.",
+    "anteprima": "Abbiamo aggiornato la sezione Sviluppo Software con nuovi lavori: una distinta base parametrica, un sistema di gestione resi serverless su AWS, uno scraper per aste automobilistiche e altro ancora.",
     "corpo": [
-      "Il nostro portfolio di sviluppo software cresce. Tra i nuovi progetti trovi la <strong>Distinta Base Parametrica</strong>, uno strumento modulare per la generazione e la gestione delle BOM (già in beta), e un <strong>Returns Management System</strong> interamente serverless su AWS per la gestione dei resi e-commerce.",
+      "Il nostro portfolio di sviluppo software cresce. Tra i nuovi progetti trovi la <strong>Distinta Base Parametrica</strong>, uno strumento modulare per la generazione e la gestione delle BOM, e un <strong>Returns Management System</strong> interamente serverless su AWS per la gestione dei resi e-commerce.",
       "Ci sono anche <strong>ScraperAH</strong>, applicazione per l'estrazione automatica dei dati dei veicoli dai siti di aste online, e un <strong>gestionale containerizzato con Docker</strong> affiancato da una web app per l'analisi dei dati.",
       "Per ogni progetto abbiamo seguito l'intero ciclo di sviluppo, dall'analisi dei requisiti alla progettazione e all'implementazione."
     ],
