@@ -101,6 +101,15 @@
       cat.textContent = p.categoria;
       tags.appendChild(cat);
     }
+    /* Etichetta in evidenza (campo opzionale evidenza, dal 2026-10-06): la card
+       prende bordo e bagliore pieni nel colore del progetto */
+    if (p.evidenza) {
+      card.classList.add("card-in-evidenza");
+      const ev = document.createElement("span");
+      ev.className = "card-evidenza";
+      ev.textContent = p.evidenza;
+      tags.appendChild(ev);
+    }
 
     const titolo = document.createElement("h3");
     titolo.className = "card-titolo";

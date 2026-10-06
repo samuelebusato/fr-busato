@@ -127,11 +127,57 @@
     righe.push({ row: row, fig: fig });
   }
 
+  /* I numeri delle sezioni (01, 02…) seguono quelle che il progetto ha davvero */
+  var numero = 0;
+  function prossimoNumero() {
+    numero++;
+    return (numero < 10 ? "0" : "") + numero;
+  }
+
+  /* Punti di forza (campo opzionale puntiForza, dal 2026-10-06): una griglia di
+     schede a tutta larghezza, con in testa, se c'è, la striscia del flusso.
+     Non è una riga con immagine: le immagini 1, 2, 3 restano di contesto,
+     soluzione e funzionalità */
+  function sezioneForza(num) {
+    var sec = bloccoTesto(num, progetto.titoloForza || "Punti di forza", null, "blocco-forza rivela");
+    if (progetto.flusso && progetto.flusso.length) {
+      var flusso = document.createElement("ol");
+      flusso.className = "forza-flusso";
+      progetto.flusso.forEach(function (passo) {
+        var li = document.createElement("li");
+        li.textContent = passo;
+        if (passo === progetto.nome) li.className = "corrente";
+        flusso.appendChild(li);
+      });
+      sec.appendChild(flusso);
+    }
+    var griglia = document.createElement("div");
+    griglia.className = "forza-griglia";
+    progetto.puntiForza.forEach(function (punto, i) {
+      var scheda = document.createElement("article");
+      scheda.className = "forza-card";
+      var n = document.createElement("span");
+      n.className = "forza-num";
+      n.textContent = (i < 9 ? "0" : "") + (i + 1);
+      var h = document.createElement("h3");
+      h.textContent = punto.titolo;
+      var p = document.createElement("p");
+      p.textContent = punto.testo;
+      scheda.append(n, h, p);
+      griglia.appendChild(scheda);
+    });
+    sec.appendChild(griglia);
+    return sec;
+  }
+
   if (progetto.contesto) {
-    rigaDuo(bloccoTesto("01", "Il contesto", progetto.contesto, "blocco-contesto"), false);
+    rigaDuo(bloccoTesto(prossimoNumero(), "Il contesto", progetto.contesto, "blocco-contesto"), false);
+  }
+  if (progetto.puntiForza && progetto.puntiForza.length) {
+    corpo.appendChild(sezioneForza(prossimoNumero()));
   }
   if (progetto.soluzione) {
-    rigaDuo(bloccoTesto("02", "La soluzione", progetto.soluzione, "blocco-soluzione"), true);
+    rigaDuo(bloccoTesto(prossimoNumero(), "La soluzione", progetto.soluzione, "blocco-soluzione"), true);
   }
   if (progetto.funzionalita && progetto.funzionalita.length) {
     var ul = document.createElement("ul");
@@ -141,7 +187,7 @@
       li.textContent = x;
       ul.appendChild(li);
     });
-    rigaDuo(bloccoTesto("03", "Funzionalità principali", ul, "blocco-funzioni"), false);
+    rigaDuo(bloccoTesto(prossimoNumero(), "Funzionalità principali", ul, "blocco-funzioni"), false);
   }
 
   /* -------- Immagini: la N-esima accompagna la riga N -------- */

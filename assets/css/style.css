@@ -2059,3 +2059,115 @@ h3{ font-size:1.18rem; font-weight:600; }
   .cy-griglia.cinque{ grid-template-columns:1fr; }
   .cy-sezione{ padding:2.6rem 0; }
 }
+
+/* ============================================================
+   V10 (2026-10-06) — Punti di forza nella pagina progetto
+   e card "in evidenza" nella griglia
+   ============================================================ */
+
+/* ---- Pagina progetto: la sezione dei punti di forza (campo puntiForza) ---- */
+.progetto-flusso .blocco-forza{ max-width:none; margin:0 0 3.6rem; }
+
+/* Striscia del flusso: i passaggi che il progetto collega, il progetto in pieno */
+.forza-flusso{
+  list-style:none; margin:1.1rem 0 0; padding:0;
+  display:flex; flex-wrap:wrap; align-items:center; row-gap:.7rem;
+}
+.forza-flusso li{
+  position:relative;
+  font-family:var(--font-mono); font-size:.8rem; letter-spacing:.04em;
+  padding:.45rem .95rem; border-radius:999px;
+  background:var(--surface); border:1px solid var(--accent-line);
+  color:color-mix(in srgb, var(--accent) 70%, #0a1220);
+}
+.forza-flusso li + li{ margin-left:2rem; }
+.forza-flusso li + li::before{
+  content:"→"; position:absolute; left:-1.45rem; top:50%; transform:translateY(-50%);
+  font-family:var(--font-body); color:var(--faint);
+}
+.forza-flusso li.corrente{
+  background:var(--accent); border-color:var(--accent); color:#fff; font-weight:600;
+  box-shadow:0 10px 26px -12px color-mix(in srgb, var(--accent) 75%, transparent);
+}
+
+/* Le schede: una per punto, con la riga d'accento in testa */
+.forza-griglia{
+  display:grid; grid-template-columns:repeat(4, 1fr); gap:1.1rem;
+  margin-top:1.6rem;
+}
+.forza-card{
+  position:relative; overflow:hidden;
+  padding:1.45rem 1.35rem 1.55rem;
+  border-radius:var(--radius);
+  background:linear-gradient(165deg, color-mix(in srgb, var(--accent) 9%, #ffffff) 0%, var(--surface) 70%);
+  border:1px solid var(--accent-line);
+  transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.forza-card::before{
+  content:""; position:absolute; inset:0 0 auto 0; height:3px;
+  background:linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 25%, transparent));
+}
+.forza-card:hover{
+  transform:translateY(-4px);
+  border-color:color-mix(in srgb, var(--accent) 55%, transparent);
+  box-shadow:0 22px 48px -26px color-mix(in srgb, var(--accent) 60%, transparent);
+}
+.forza-num{
+  font-family:var(--font-mono); font-size:.78rem; letter-spacing:.18em;
+  color:color-mix(in srgb, var(--accent) 70%, #0a1220);
+}
+.blocco-forza .forza-card h3{ margin:.55rem 0 .45rem; font-family:var(--font-display); }
+.blocco-forza .forza-card p{ margin:0; color:var(--muted); font-size:.95rem; line-height:1.55; }
+
+@media (max-width:980px){
+  .forza-griglia{ grid-template-columns:repeat(2, 1fr); }
+}
+@media (max-width:600px){
+  .forza-griglia{ grid-template-columns:1fr; }
+}
+
+/* ---- Griglia dei progetti: la card in evidenza (campo evidenza) ----
+   L'unica scura fra le chiare: fondo blu notte tinto col colore del progetto,
+   testi chiari, bordo e alone pieni. Si nota senza animazioni */
+.card-progetto.card-in-evidenza{
+  color:#eef3ff;
+  border:1.5px solid color-mix(in srgb, var(--c) 70%, transparent);
+  background:
+    radial-gradient(120% 110% at 85% 110%, color-mix(in srgb, var(--c) 48%, transparent), transparent 58%),
+    radial-gradient(90% 70% at 0% 0%, color-mix(in srgb, var(--c) 22%, transparent), transparent 60%),
+    linear-gradient(160deg, #10224d 0%, #0a1531 100%);
+  box-shadow:
+    0 0 0 4px color-mix(in srgb, var(--c) 12%, transparent),
+    0 30px 64px -28px color-mix(in srgb, var(--c) 70%, transparent);
+}
+.card-in-evidenza .card-titolo{ color:#ffffff; }
+.card-in-evidenza .card-titolo::before{ background:#ffffff; box-shadow:0 0 14px color-mix(in srgb, var(--c) 90%, #ffffff); }
+.card-in-evidenza .card-desc{ color:rgba(226,234,255,.84); }
+.card-in-evidenza .card-anno,
+.card-in-evidenza .card-cat{
+  color:#cfdcff;
+  background:rgba(255,255,255,.07);
+  border-color:rgba(255,255,255,.22);
+}
+.card-in-evidenza .card-evidenza{ color:var(--c); background:#ffffff; box-shadow:0 6px 20px -8px rgba(0,0,0,.6); }
+.card-in-evidenza .card-evidenza::before{ background:var(--c); }
+.card-in-evidenza .card-anteprima-motivo{ border-color:rgba(255,255,255,.16); }
+.card-evidenza{
+  display:inline-flex; align-items:center; gap:.45rem;
+  font-family:var(--font-mono); font-size:.72rem; letter-spacing:.06em; font-weight:600;
+  color:#fff; background:var(--c);
+  padding:.28rem .8rem; border-radius:999px;
+  box-shadow:0 6px 18px -8px var(--c);
+}
+.card-evidenza::before{
+  content:""; width:6px; height:6px; border-radius:50%; background:#fff; flex:none;
+}
+/* Come i motivi: nessuna animazione sempre attiva, il punto pulsa solo al passaggio */
+.card-progetto:hover .card-evidenza::before{ animation:evidenza-pulsa 1.6s ease-in-out infinite; }
+@keyframes evidenza-pulsa{
+  0%, 100%{ opacity:1; transform:scale(1); }
+  50%{ opacity:.35; transform:scale(.7); }
+}
+@media (prefers-reduced-motion: reduce){
+  .card-progetto:hover .card-evidenza::before{ animation:none; }
+}

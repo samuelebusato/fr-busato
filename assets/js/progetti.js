@@ -22,6 +22,16 @@
    tecnologie  → elenco delle tecnologie utilizzate
    pagina      → (opzionale) pagina propria del progetto: la card porta
                  lì invece che a progetto.html?id=...
+   evidenza    → (opzionale) etichetta in evidenza sulla card, es.
+                 "Novità": la card prende un bordo e un bagliore pieni
+   puntiForza  → (opzionale) i punti di forza, [{ titolo, testo }]: nella
+                 pagina di dettaglio diventano una griglia di schede
+                 dopo "Il contesto"
+   titoloForza → (opzionale) il titolo di quella sezione
+                 (di base "Punti di forza")
+   flusso      → (opzionale) i passaggi che il progetto collega, es.
+                 ["CAD", "Compono", "Gestionale"]: una striscia con le
+                 frecce in testa alla sezione dei punti di forza
 
    IMMAGINI (2-3 per progetto):
    Ogni progetto ha una sua cartella in
@@ -114,27 +124,41 @@ const PROGETTI = [
   },
   {
     /* 2026-10-06: sopra Returns Management e sotto HeleoX, per importanza (decisione
-       dell'utente); la quinta posizione della griglia è una card grande. Il colore è il
-       blu del marchio della nuova interfaccia del programma. Il software si chiama
-       Compono (scelto dall'utente il 2026-10-06); il progetto invece si chiama come
-       l'azienda cliente, che qui non si nomina. L'id resta quello di prima: è
-       nell'indirizzo della pagina, nella cartella delle immagini e nei motivi. */
+       dell'utente); la quinta posizione della griglia è una card grande, e l'etichetta
+       "Novità" la fa risaltare. Il colore è il blu d'azione della nuova interfaccia del
+       programma. Il software si chiama Compono (scelto dall'utente il 2026-10-06); il
+       progetto invece si chiama come l'azienda cliente, che qui non si nomina. I testi
+       sono generici di proposito (utente): i punti forti, non il caso del cliente.
+       L'integrazione con CAD e gestionale è quella della versione finale (utente): oggi
+       il CAD arriva come file esportato, e al gestionale vanno i due file dello scarico.
+       L'id resta quello di prima: è nell'indirizzo della pagina, nella cartella delle
+       immagini e nei motivi. */
     id: "distinta-base-parametrica",
     nome: "Compono",
     anno: 2026,
     categoria: "Distinta base parametrica",
-    colore: "#1849b3",
+    colore: "#2059d1",
     dimensione: "xl",
-    breve: "Dal disegno all'officina in un solo gesto: si carica la commessa, e ogni pannello si scompone da sé in profili, lamiere, vetri e viti, con i fogli per ogni reparto e lo scarico di magazzino già pronti. Le regole le decide l'azienda, non il codice.",
-    contesto: "Chi produce pannelli su misura conosce il paradosso: ogni commessa è diversa, ma il modo di scomporla in pezzi era scritto una volta per tutte dentro un vecchio programma. Cambiare un profilo, aggiungere una variante o un nuovo tipo di pannello voleva dire riscrivere il software, e ogni regola nuova restava ferma finché qualcuno non metteva mano al codice.",
-    soluzione: "Abbiamo costruito uno strumento che fa il contrario: le regole escono dal codice e diventano dati che l'azienda vede e governa. Si carica la distinta che arriva dal disegno e, prima di salvare qualunque cosa, il programma la legge, calcola ogni pezzo e mostra riga per riga cosa non torna. Poi ogni pannello si scompone da sé, livello dopo livello: telaio, rinforzi, lamiere interne ed esterne, vetri, riempimento, viteria, con le misure di taglio e il disegno quotato di ogni apertura. Ne escono i fogli per ciascun reparto, la distinta di consegna per il cliente e lo scarico di magazzino, che diventa definitivo solo quando qualcuno lo conferma e da lì si corregge soltanto con rettifiche tracciate. Prima di affidargli il lavoro lo abbiamo messo alla prova contro il sistema che sostituisce, su decine di migliaia di pezzi già prodotti: ogni differenza è stata trovata e spiegata. Oggi è in collaudo, con un'interfaccia nuova pensata per chi lo usa ogni giorno.",
+    evidenza: "Novità",
+    breve: "Il software che si piega al tuo prodotto, non il contrario: dal disegno ai pezzi, ai fogli per i reparti e allo scarico di magazzino, con regole e articoli che l'azienda modella a piacimento. E dialoga con il CAD e con il gestionale.",
+    contesto: "Chi produce su misura conosce il paradosso: ogni ordine è diverso, ma il software che lo traduce in pezzi è rigido. Le regole di composizione restano chiuse nel codice, un prodotto nuovo diventa un progetto informatico, e tra il disegno, i reparti e il gestionale i dati vanno ricopiati a ogni passaggio.",
+    titoloForza: "Perché Compono",
+    flusso: ["Disegno CAD", "Compono", "Reparti produttivi", "Gestionale"],
+    puntiForza: [
+      { titolo: "Flessibile per natura", testo: "Misure, varianti e componenti sono regole, non codice. Un prodotto nuovo, o una modifica a uno esistente, è una configurazione: non un nuovo sviluppo." },
+      { titolo: "Su misura della tua azienda", testo: "Fogli per ogni reparto, unità di misura, materiali e regole di magazzino si modellano sul vostro modo di lavorare, non su quello del software." },
+      { titolo: "Articoli a piacimento", testo: "Si inseriscono, si modificano e si organizzano dall'interfaccia, con il materiale giusto per ogni misura. E un articolo ancora in uso non sparisce per errore." },
+      { titolo: "Collegato a CAD e gestionale", testo: "Legge le distinte che nascono dal disegno e restituisce al gestionale scarichi e consegne: dal progetto al magazzino, senza ricopiare nulla." }
+    ],
+    soluzione: "Compono rovescia la prospettiva: le regole escono dal codice e diventano dati che l'azienda vede, configura e fa evolvere. Un prodotto si descrive una volta, con le sue misure, le sue varianti e i suoi componenti; poi ogni ordine si scompone da sé, livello dopo livello, in tutto ciò che serve per produrlo. Articoli, materiali, sostituzioni per misura, fogli di lavorazione e regole di magazzino si gestiscono dall'interfaccia. Il disegno arriva dal CAD e i risultati tornano al gestionale: un solo flusso, dal progetto al magazzino. Prima di importare un ordine Compono mostra che cosa calcolerà, e ogni operazione resta tracciata. Ed è stato messo alla prova sul campo, confrontato con il sistema che sostituisce su decine di migliaia di pezzi già prodotti.",
     funzionalita: [
-      "Importazione controllata: prima si vede cosa verrà calcolato, poi si conferma",
-      "Ogni pannello scomposto da sé in tutti i suoi pezzi, livello dopo livello",
-      "Fogli per ogni reparto, disegni quotati e distinta di consegna",
-      "Scarico di magazzino con anteprima, conferma e rettifiche, pronto per il gestionale",
-      "Regole e materiali governati dall'azienda, non scritti nel codice",
-      "Ogni operazione tracciata: chi, quando e cosa è cambiato"
+      "Distinte base parametriche: un prodotto, tutte le sue varianti",
+      "Ogni ordine scomposto da sé in pezzi, misure e materiali",
+      "Articoli, materiali e regole gestiti dall'interfaccia",
+      "Fogli di lavorazione configurabili per ogni reparto",
+      "Scarico di magazzino con anteprima, conferma e rettifiche tracciate",
+      "Integrazione con il CAD e con il gestionale aziendale",
+      "Ruoli e registro delle attività: chi ha fatto cosa, e quando"
     ],
     tecnologie: ["React", "Node.js", "SQL Server", "Motore di calcolo parametrico", "Test automatici"],
     immagini: []
