@@ -265,7 +265,7 @@ const SERVIZI = [
 ];
 
 /* ============================================================
-   CERTIFICAZIONI — privacy, GDPR e sicurezza
+   CERTIFICAZIONI — certificazioni e formazione
    ------------------------------------------------------------
    Compaiono nella home e nella pagina "Privacy, GDPR e
    Conformità". Finché l'array è vuoto le relative sezioni
@@ -273,6 +273,8 @@ const SERVIZI = [
 
    Per pubblicarle aggiungi un oggetto per ogni certificazione:
      { nome: "Nome certificazione",
+       tipo: "Corso di formazione",    // opzionale: solo per ciò che NON è
+                                       // una certificazione ottenuta
        ente: "Ente che la rilascia",   // opzionale
        anno: "2025",                    // opzionale
        immagine: "assets/img/cert-xxx.png" } // opzionale (logo)
@@ -280,10 +282,43 @@ const SERVIZI = [
    ============================================================ */
 
 const CERTIFICAZIONI = [
-  { nome: "Master per Privacy Officer e Consulente della Privacy", ente: "Federprivacy", immagine: "assets/img/cert-federprivacy.png" },
-  { nome: "Direttiva NIS2: indicazioni operative", ente: "Wolters Kluwer", immagine: "assets/img/cert-wolterskluwer.svg" },
+  // È un corso, non una certificazione: Fausto l'ha frequentato, la certificazione
+  // non l'ha mai ottenuta. Senza logo: il regolamento Federprivacy ammette il logo solo
+  // per attestare l'iscrizione all'associazione (vedi ASSOCIAZIONI qui sotto).
+  { nome: "Master per Privacy Officer e Consulente della Privacy", tipo: "Corso di formazione", ente: "Federprivacy", anno: "2020" },
+  // Anche questo è un corso frequentato, non una certificazione. Senza logo: i termini d'uso di
+  // wolterskluwer.com non concedono a terzi l'uso dei loro contenuti, loghi compresi.
+  { nome: "Direttiva NIS2: indicazioni operative", tipo: "Corso di formazione", ente: "Wolters Kluwer" },
   { nome: "Cloud Tech Associate — Advanced Disaster Recovery", ente: "Acronis", immagine: "assets/img/cert-acronis.svg" },
   { nome: "Acronis Sales Professional", ente: "Acronis", immagine: "assets/img/cert-acronis.svg" },
   { nome: "VMware Technical Solutions Professional (VTSP)", ente: "VMware", immagine: "assets/img/cert-vmware.svg" },
   { nome: "VMware Sales Professional (VSP)", ente: "VMware", immagine: "assets/img/cert-vmware.svg" }
+];
+
+/* ============================================================
+   ASSOCIAZIONI — iscrizioni ad associazioni di categoria
+   ------------------------------------------------------------
+   Compaiono sotto le certificazioni, nella home e nella pagina
+   "Privacy, GDPR e Conformità", come una riga per iscrizione.
+
+   Federprivacy (regolamento «Tutela e disciplina utilizzo marchi
+   Federprivacy», federprivacy.org/associazione/regolamento-uso-loghi):
+   il logo si usa solo finché l'iscrizione è valida e solo per
+   attestarla; non si modifica; resta più piccolo del marchio F.R.;
+   va accompagnato dalla qualifica esatta del registro soci
+   ("Socio Membro" per le persone fisiche). Iscrizione scaduta →
+   si toglie la riga.
+
+     { ente: "Nome associazione",
+       iscritto: "Chi è iscritto",       // persona o azienda, come nel registro
+       qualifica: "Socio Membro",        // esattamente come nel registro
+       codice: "FP-00000",               // opzionale
+       verifica: "https://...",          // opzionale: scheda nel registro soci
+       immagine: "assets/img/xxx.png" }  // logo ufficiale, senza modifiche
+   ============================================================ */
+
+const ASSOCIAZIONI = [
+  { ente: "Federprivacy", iscritto: "Fausto Busato", qualifica: "Socio Membro", codice: "FP-16198",
+    verifica: "https://www.federprivacy.org/cb-profile/16198-fausto-busato",
+    immagine: "assets/img/federprivacy-logo.png" }
 ];

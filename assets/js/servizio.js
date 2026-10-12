@@ -81,8 +81,8 @@
     const sez = el("section", "sezione container servizio-sezione rivela");
     sez.setAttribute("data-cert-sezione", "");
     sez.hidden = true;
-    sez.appendChild(el("h2", null, "Certificazioni ufficiali"));
-    sez.appendChild(el("p", "sottotitolo", "Le certificazioni che attestano la nostra competenza in materia di privacy, conformità, sicurezza e continuità operativa."));
+    sez.appendChild(el("h2", null, "Certificazioni e formazione"));
+    sez.appendChild(el("p", "sottotitolo", "Le certificazioni e la formazione specialistica che documentano la nostra competenza in materia di privacy, conformità, sicurezza e continuità operativa."));
     sez.appendChild(el("div", "certificazioni-griglia"));
     cont.appendChild(sez);
   }

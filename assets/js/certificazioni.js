@@ -45,7 +45,7 @@
       const nome = document.createElement("strong");
       nome.textContent = c.nome || "";
       testo.appendChild(nome);
-      const dettaglio = [c.ente, c.anno].filter(Boolean).join(" · ");
+      const dettaglio = [c.tipo, c.ente, c.anno].filter(Boolean).join(" · ");
       if (dettaglio) {
         const span = document.createElement("span");
         span.textContent = dettaglio;
@@ -55,5 +55,46 @@
 
       griglia.appendChild(card);
     });
+
+    /* Iscrizioni ad associazioni (ASSOCIAZIONI in servizi-dati.js):
+       una riga sotto la griglia, col logo piccolo e la qualifica esatta. */
+    if (typeof ASSOCIAZIONI === "undefined" || !ASSOCIAZIONI.length) return;
+
+    const elenco = document.createElement("div");
+    elenco.className = "associazioni";
+
+    ASSOCIAZIONI.forEach(function (a) {
+      const riga = document.createElement("p");
+      riga.className = "associazione";
+
+      if (a.immagine) {
+        const img = document.createElement("img");
+        img.src = a.immagine;
+        img.alt = a.ente;
+        img.loading = "lazy";
+        riga.appendChild(img);
+      }
+
+      const testo = document.createElement("span");
+      const chi = document.createElement("strong");
+      chi.textContent = a.iscritto;
+      const qualifica = document.createElement("strong");
+      qualifica.textContent = a.qualifica;
+      testo.append(chi, " è ", qualifica, " di " + a.ente);
+      if (a.codice) testo.append(" · iscrizione " + a.codice);
+      if (a.verifica) {
+        const link = document.createElement("a");
+        link.href = a.verifica;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.textContent = "verifica nel registro soci";
+        testo.append(" · ", link);
+      }
+      riga.appendChild(testo);
+
+      elenco.appendChild(riga);
+    });
+
+    griglia.after(elenco);
   });
 })();
