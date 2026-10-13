@@ -267,23 +267,6 @@
   }
 
   /* ----------------------------------------------------------
-     Nastro partner: clona il gruppo per lo scorrimento infinito
-     ---------------------------------------------------------- */
-  const traccia = document.getElementById("marquee-traccia");
-  if (traccia) {
-    const gruppo = traccia.querySelector(".marquee-gruppo");
-    if (gruppo && !riduciMovimento) {
-      /* 4 gruppi identici → l'animazione a -50% si ripete senza stacchi */
-      for (let i = 0; i < 3; i++) {
-        const clone = gruppo.cloneNode(true);
-        clone.setAttribute("aria-hidden", "true");
-        traccia.appendChild(clone);
-      }
-      traccia.classList.add("pronto");
-    }
-  }
-
-  /* ----------------------------------------------------------
      Tilt 3D del terminale nella hero
      ---------------------------------------------------------- */
   const terminale = document.getElementById("terminale");
