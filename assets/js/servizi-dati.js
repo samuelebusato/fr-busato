@@ -289,8 +289,9 @@ const CERTIFICAZIONI = [
   // Anche questo è un corso frequentato, non una certificazione. Senza logo: i termini d'uso di
   // wolterskluwer.com non concedono a terzi l'uso dei loro contenuti, loghi compresi.
   { nome: "Direttiva NIS2: indicazioni operative", tipo: "Corso di formazione", ente: "Wolters Kluwer" },
-  { nome: "Cloud Tech Associate — Advanced Disaster Recovery", ente: "Acronis", immagine: "assets/img/cert-acronis.svg" },
-  { nome: "Acronis Sales Professional", ente: "Acronis", immagine: "assets/img/cert-acronis.svg" },
+  // Logo Acronis: il file ufficiale del kit di marca 2026, navy #00204D, senza modifiche.
+  { nome: "Cloud Tech Associate — Advanced Disaster Recovery", ente: "Acronis", immagine: "assets/img/partner/acronis-logo.svg" },
+  { nome: "Acronis Sales Professional", ente: "Acronis", immagine: "assets/img/partner/acronis-logo.svg" },
   { nome: "VMware Technical Solutions Professional (VTSP)", ente: "VMware", immagine: "assets/img/cert-vmware.svg" },
   { nome: "VMware Sales Professional (VSP)", ente: "VMware", immagine: "assets/img/cert-vmware.svg" }
 ];

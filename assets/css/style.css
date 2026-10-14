@@ -344,6 +344,10 @@ h3{ font-size:1.18rem; font-weight:600; }
 }
 /* max-width:none: le proporzioni del logo non devono mai cedere allo spazio */
 .partner-logo{ height:60px; width:auto; max-width:none; display:block; }
+/* Badge di livello: porta già scritto il rapporto, quindi niente didascalia sotto.
+   64px di altezza (file a 2x) perché le due righe del badge restino leggibili;
+   spazio libero attorno, nessuna forma o ombra aggiunta. */
+.partner-badge{ height:64px; width:auto; max-width:none; display:block; margin:-2px 0 0; }
 .partner-nome{
   height:60px; display:flex; align-items:center;
   font-family:var(--font-display); font-weight:600;
