@@ -278,19 +278,26 @@ const SERVIZI = [
        ente: "Ente che la rilascia",   // opzionale
        anno: "2025",                    // opzionale
        immagine: "assets/img/cert-xxx.png", // opzionale (logo)
-       medaglia: true }                 // opzionale: l'immagine è il badge della
+       medaglia: true,                  // opzionale: l'immagine è il badge della
                                         // certificazione, non un logo, e si mostra più grande
+       miniatura: true }                // opzionale: l'immagine è la miniatura dell'attestato,
+                                        // mostrata come un foglio. Togliere prima i dati
+                                        // personali (codice fiscale, firme)
    e fai commit + push.
    ============================================================ */
 
 const CERTIFICAZIONI = [
   // È un corso, non una certificazione: Fausto l'ha frequentato, la certificazione
-  // non l'ha mai ottenuta. Senza logo: il regolamento Federprivacy ammette il logo solo
-  // per attestare l'iscrizione all'associazione (vedi ASSOCIAZIONI qui sotto).
-  { nome: "Master per Privacy Officer e Consulente della Privacy", tipo: "Corso di formazione", ente: "Federprivacy", anno: "2020" },
-  // Anche questo è un corso frequentato, non una certificazione. Senza logo: i termini d'uso di
-  // wolterskluwer.com non concedono a terzi l'uso dei loro contenuti, loghi compresi.
-  { nome: "Direttiva NIS2: indicazioni operative", tipo: "Corso di formazione", ente: "Wolters Kluwer" },
+  // non l'ha mai ottenuta. Niente logo Federprivacy da solo: il regolamento lo ammette solo
+  // per attestare l'iscrizione all'associazione (vedi ASSOCIAZIONI qui sotto). Al suo posto la
+  // miniatura dell'attestato di Fausto (ottobre 2020), con la firma del presidente coperta.
+  { nome: "Master per Privacy Officer e Consulente della Privacy", tipo: "Corso di formazione", ente: "Federprivacy", anno: "2020",
+    immagine: "assets/img/cert-master-privacy-attestato.png", miniatura: true },
+  // Anche questo è un corso frequentato, non una certificazione. Niente logo Wolters Kluwer da
+  // solo (i loro termini d'uso non lo concedono); al suo posto la miniatura dell'attestato di
+  // Fausto del 20/02/2025, col codice fiscale e la firma della direttrice coperti.
+  { nome: "Direttiva NIS2: indicazioni operative", tipo: "Corso di formazione", ente: "Wolters Kluwer", anno: "2025",
+    immagine: "assets/img/cert-nis2-attestato.png", miniatura: true },
   // Badge ufficiali dell'Acronis Academy, ridotti in proporzione da 600x600 a 200x200,
   // senza altre modifiche. Originali nel Second Brain, allegati/marchi-partner/acronis.
   { nome: "Acronis Cyber Protect Sales Pro", ente: "Acronis Academy · Sales", immagine: "assets/img/cert-acronis-cyber-protect-sales-pro.png", medaglia: true },

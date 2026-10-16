@@ -32,6 +32,7 @@
         img.alt = c.nome || "Certificazione";
         img.loading = "lazy";
         if (c.medaglia) img.className = "certificazione-medaglia";
+        else if (c.miniatura) img.className = "certificazione-miniatura";
         card.appendChild(img);
       } else {
         const badge = document.createElement("span");
