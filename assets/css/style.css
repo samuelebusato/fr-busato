@@ -1221,6 +1221,8 @@ h3{ font-size:1.18rem; font-weight:600; }
   box-shadow:0 16px 38px -18px color-mix(in srgb, var(--accent) 45%, transparent);
 }
 .certificazione img{ height:34px; width:auto; max-width:150px; object-fit:contain; flex:none; }
+/* Badge della certificazione (Acronis Academy): più grande del logo, perché la scritta si legga */
+.certificazione img.certificazione-medaglia{ height:88px; max-width:none; margin:-.4rem 0 -.3rem; }
 .certificazione-badge{
   width:44px; height:44px; border-radius:12px; flex:none;
   display:grid; place-items:center;

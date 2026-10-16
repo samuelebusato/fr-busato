@@ -31,6 +31,7 @@
         img.src = c.immagine;
         img.alt = c.nome || "Certificazione";
         img.loading = "lazy";
+        if (c.medaglia) img.className = "certificazione-medaglia";
         card.appendChild(img);
       } else {
         const badge = document.createElement("span");

@@ -277,7 +277,9 @@ const SERVIZI = [
                                        // una certificazione ottenuta
        ente: "Ente che la rilascia",   // opzionale
        anno: "2025",                    // opzionale
-       immagine: "assets/img/cert-xxx.png" } // opzionale (logo)
+       immagine: "assets/img/cert-xxx.png", // opzionale (logo)
+       medaglia: true }                 // opzionale: l'immagine è il badge della
+                                        // certificazione, non un logo, e si mostra più grande
    e fai commit + push.
    ============================================================ */
 
@@ -289,9 +291,10 @@ const CERTIFICAZIONI = [
   // Anche questo è un corso frequentato, non una certificazione. Senza logo: i termini d'uso di
   // wolterskluwer.com non concedono a terzi l'uso dei loro contenuti, loghi compresi.
   { nome: "Direttiva NIS2: indicazioni operative", tipo: "Corso di formazione", ente: "Wolters Kluwer" },
-  // Logo Acronis: il file ufficiale del kit di marca 2026, navy #00204D, senza modifiche.
-  { nome: "Cloud Tech Associate — Advanced Disaster Recovery", ente: "Acronis", immagine: "assets/img/partner/acronis-logo.svg" },
-  { nome: "Acronis Sales Professional", ente: "Acronis", immagine: "assets/img/partner/acronis-logo.svg" },
+  // Badge ufficiali dell'Acronis Academy, ridotti in proporzione da 600x600 a 200x200,
+  // senza altre modifiche. Originali nel Second Brain, allegati/marchi-partner/acronis.
+  { nome: "Acronis Cyber Protect Sales Pro", ente: "Acronis Academy · Sales", immagine: "assets/img/cert-acronis-cyber-protect-sales-pro.png", medaglia: true },
+  { nome: "EDR Pro", ente: "Acronis Academy · Cloud Tech", immagine: "assets/img/cert-acronis-edr-pro-cloud-tech.png", medaglia: true },
   { nome: "VMware Technical Solutions Professional (VTSP)", ente: "VMware", immagine: "assets/img/cert-vmware.svg" },
   { nome: "VMware Sales Professional (VSP)", ente: "VMware", immagine: "assets/img/cert-vmware.svg" }
 ];
