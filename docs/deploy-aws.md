@@ -146,6 +146,14 @@ aws cloudfront create-invalidation --distribution-id XXXXXXXX --paths "/*" --pro
 `/*` conta come 1 percorso (1.000 gratuiti/mese). Evoluzione futura: GitHub
 Actions che fa sync+invalidation a ogni push su `main`.
 
+**La cache dei browser** è un problema a parte: l'invalidazione svuota CloudFront, non i
+browser. Senza `Cache-Control`, i browser tengono JS e CSS per un tempo stimato da loro, e chi
+ha già visitato il sito continua a vedere la versione vecchia (successo il 2026-10-16 con le
+certificazioni). Per questo il sync carica ogni file con
+`--cache-control "public, max-age=0, must-revalidate, s-maxage=86400"`: il browser ricontrolla
+sempre (304 se il file non è cambiato), CloudFront tiene la copia un giorno, fino alla prossima
+invalidazione. A mano, aggiungere la stessa opzione al comando `aws s3 sync` qui sopra.
+
 ## 8. Deploy automatico da GitHub (OIDC, senza access key)
 
 Il workflow [`.github/workflows/deploy.yml`](../.github/workflows/deploy.yml)

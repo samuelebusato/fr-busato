@@ -35,10 +35,17 @@ jobs:
           role-to-assume: arn:aws:iam::219712358948:role/github-deploy-fr-busato
           aws-region: eu-central-1
 
+      # Cache-Control su ogni file. Senza, i browser tengono JS e CSS per un tempo stimato da
+      # loro e una modifica può restare invisibile per ore a chi ha già visitato il sito.
+      # max-age=0, must-revalidate: il browser ricontrolla ogni volta (risposta 304 se il
+      # file non è cambiato). s-maxage=86400: CloudFront tiene la sua copia un giorno, e
+      # l'invalidazione qui sotto la svuota a ogni rilascio.
+      # Il checkout dà a ogni file una data nuova, quindi sync li ricarica tutti con l'header.
       - name: Sync dei file su S3
         run: |
           aws s3 sync . "s3://${{ secrets.S3_BUCKET }}" \
             --delete \
+            --cache-control "public, max-age=0, must-revalidate, s-maxage=86400" \
             --exclude ".git/*" \
             --exclude ".github/*" \
             --exclude "docs/*" \
