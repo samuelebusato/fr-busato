@@ -2161,3 +2161,18 @@ h3{ font-size:1.18rem; font-weight:600; }
 @media (prefers-reduced-motion: reduce){
   .card-progetto:hover .card-evidenza::before{ animation:none; }
 }
+
+/* ============================================================
+   V11 (2026-10-27) — Sezioni libere nella pagina progetto
+   (campi testoForza e sezioni di progetti.js)
+   ============================================================ */
+
+/* Il paragrafo sotto il titolo resta di una misura leggibile, anche a tutta larghezza */
+.progetto-flusso .blocco-forza > p{ max-width:46rem; }
+
+/* La fila di numeri: le schede dei servizi, con la riga d'accento dei punti di forza */
+.blocco-forza .stat{ position:relative; overflow:hidden; border-color:var(--accent-line); }
+.blocco-forza .stat::before{
+  content:""; position:absolute; inset:0 0 auto 0; height:3px;
+  background:linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 25%, transparent));
+}

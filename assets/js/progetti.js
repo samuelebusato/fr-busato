@@ -32,6 +32,14 @@
    flusso      → (opzionale) i passaggi che il progetto collega, es.
                  ["CAD", "Compono", "Gestionale"]: una striscia con le
                  frecce in testa alla sezione dei punti di forza
+   testoForza  → (opzionale) un paragrafo sotto il titolo dei punti di forza
+   titoloContesto, titoloSoluzione, titoloFunzionalita
+               → (opzionali) i titoli delle tre sezioni, al posto di
+                 "Il contesto", "La soluzione", "Funzionalità principali"
+   sezioni     → (opzionale) altre sezioni a tutta larghezza dopo "La
+                 soluzione", [{ titolo, testo, punti, cifre }]: punti come
+                 puntiForza (una griglia di schede), cifre [{ valore, testo }]
+                 una fila di numeri; testo è il paragrafo sotto il titolo
 
    IMMAGINI (2-3 per progetto):
    Ogni progetto ha una sua cartella in
@@ -127,40 +135,85 @@ const PROGETTI = [
        dell'utente); la quinta posizione della griglia è una card grande, e l'etichetta
        "Novità" la fa risaltare. Il colore è un blu tenue della tavolozza della nuova
        interfaccia del programma (#4d7ee0): il blu pieno stonava con la vetrina (utente). Il software si chiama Compono (scelto dall'utente il 2026-10-06); il
-       progetto invece si chiama come l'azienda cliente, che qui non si nomina. I testi
-       sono generici di proposito (utente): i punti forti, non il caso del cliente.
-       L'integrazione con CAD e gestionale è quella della versione finale (utente): oggi
-       il CAD arriva come file esportato, e al gestionale vanno i due file dello scarico.
+       progetto invece si chiama come l'azienda cliente, che qui non si nomina.
+       2026-10-27, riscritta su richiesta dell'utente: al centro, in quest'ordine,
+       l'analisi e la formalizzazione del flusso di lavoro, il rifacimento della
+       distinta, la qualità tecnica (sicurezza e costruzione), le funzioni e ciò che
+       cambiano per il cliente. Niente nomi né dettagli che rendano riconoscibile il
+       cliente (prodotti, codici, città). Ogni numero viene dai documenti del progetto:
+       il 97,6 % è il confronto dello scarico con tutto l'archivio del vecchio, 23.727 su
+       23.730 è una famiglia di prodotti, 51 → 7 s è l'importazione ottimizzata dentro
+       Compono (non il confronto col vecchio), i test sono 317 del server, 132
+       d'integrazione e 127 del client. Il legame diretto col gestionale non c'è ancora
+       (oggi Compono prepara i file del vecchio programma): va scritto come prossimo
+       passo finché non è in esercizio.
        L'id resta quello di prima: è nell'indirizzo della pagina, nella cartella delle
        immagini e nei motivi. */
     id: "distinta-base-parametrica",
     nome: "Compono",
     anno: 2026,
-    categoria: "Distinta base parametrica",
+    categoria: "Digitalizzazione dei processi · Distinta base",
     colore: "#4d7ee0",
     dimensione: "xl",
     evidenza: "Novità",
-    breve: "Il software che si piega al tuo prodotto, non il contrario: dal disegno ai pezzi, ai fogli per i reparti e allo scarico di magazzino, con regole e articoli che l'azienda modella a piacimento. E dialoga con il CAD e con il gestionale.",
-    contesto: "Chi produce su misura conosce il paradosso: ogni ordine è diverso, ma il software che lo traduce in pezzi è rigido. Le regole di composizione restano chiuse nel codice, un prodotto nuovo diventa un progetto informatico, e tra il disegno, i reparti e il gestionale i dati vanno ricopiati a ogni passaggio.",
-    titoloForza: "Perché Compono",
-    flusso: ["Disegno CAD", "Compono", "Reparti produttivi", "Gestionale"],
+    breve: "Prima di essere un software, un'analisi: il lavoro di un'azienda che produce su misura, seguito dall'ufficio tecnico al magazzino e trasformato in un unico flusso digitale. La distinta, ripensata da capo. E sotto, un programma costruito e collaudato con il rigore di chi non può permettersi errori.",
+    titoloContesto: "Il punto di partenza",
+    contesto: "Un'azienda manifatturiera che produce su misura: ogni ordine nasce da un disegno dell'ufficio tecnico e deve diventare un elenco preciso di pezzi da tagliare, montare, verniciare e prelevare dal magazzino. Il gestionale serviva solo per bolle e fatture, il magazzino si teneva su fogli Excel, e la distinta la calcolava un programma di vecchia generazione, con le regole di ogni prodotto chiuse nel suo codice. Cambiare un prodotto voleva dire cambiare il programma; e quello che il programma non sapeva fare, lo facevano le persone, a mano.",
+    titoloForza: "Prima il flusso, poi il software",
+    testoForza: "Compono nasce da un'analisi del modo di lavorare dell'azienda. Il percorso di una commessa è stato seguito passo per passo, dall'ufficio tecnico al magazzino; il programma da sostituire è stato studiato regola per regola, e i dubbi chiariti con chi ci lavora ogni giorno. Ne è uscito un flusso formalizzato: regole scritte, ruoli definiti, un solo percorso per ogni ordine.",
+    flusso: ["Ufficio tecnico", "Compono", "Reparti produttivi", "Magazzino"],
     puntiForza: [
-      { titolo: "Flessibile per natura", testo: "Misure, varianti e componenti sono regole, non codice. Un prodotto nuovo, o una modifica a uno esistente, è una configurazione: non un nuovo sviluppo." },
-      { titolo: "Su misura della tua azienda", testo: "Fogli per ogni reparto, unità di misura, materiali e regole di magazzino si modellano sul vostro modo di lavorare, non su quello del software." },
-      { titolo: "Articoli a piacimento", testo: "Si inseriscono, si modificano e si organizzano dall'interfaccia, con il materiale giusto per ogni misura. E un articolo ancora in uso non sparisce per errore." },
-      { titolo: "Collegato a CAD e gestionale", testo: "Legge le distinte che nascono dal disegno e restituisce al gestionale scarichi e consegne: dal progetto al magazzino, senza ricopiare nulla." }
+      { titolo: "Un solo percorso", testo: "Ogni ordine segue la stessa strada: entra dal disegno, viene controllato, si scompone nei suoi pezzi, arriva ai reparti con i loro fogli e si chiude con lo scarico di magazzino. Niente più dati ricopiati da un ufficio all'altro." },
+      { titolo: "Ruoli chiari", testo: "Officina, ufficio tecnico e amministrazione vedono e fanno ciascuno ciò che gli compete, e il programma lo fa rispettare. Ogni operazione resta registrata: chi, cosa, quando." },
+      { titolo: "Il magazzino esce da Excel", testo: "Lo scarico dei materiali si calcola da ogni commessa, con regole che l'azienda vede e modifica. Diventa definitivo solo con la conferma di un responsabile, e da lì si corregge solo con rettifiche tracciate." },
+      { titolo: "Un'anagrafica in ordine", testo: "Articoli e materie prime riorganizzati in famiglie, con unità di misura e codici di magazzino coerenti: la base solida su cui poggia tutto il resto." }
     ],
-    soluzione: "Compono rovescia la prospettiva: le regole escono dal codice e diventano dati che l'azienda vede, configura e fa evolvere. Un prodotto si descrive una volta, con le sue misure, le sue varianti e i suoi componenti; poi ogni ordine si scompone da sé, livello dopo livello, in tutto ciò che serve per produrlo. Articoli, materiali, sostituzioni per misura, fogli di lavorazione e regole di magazzino si gestiscono dall'interfaccia. Il disegno arriva dal CAD e i risultati tornano al gestionale: un solo flusso, dal progetto al magazzino. Prima di importare un ordine Compono mostra che cosa calcolerà, e ogni operazione resta tracciata. Ed è stato messo alla prova sul campo, confrontato con il sistema che sostituisce su decine di migliaia di pezzi già prodotti.",
+    titoloSoluzione: "La distinta, ripensata da capo",
+    soluzione: "Il cuore del progetto è la distinta: la ricetta che trasforma un ordine nell'elenco di tutto ciò che serve per produrlo. Nel programma precedente ogni prodotto era un pezzo di codice, e un articolo nuovo richiedeva un programmatore. In Compono le regole sono diventate dati: misure, varianti, componenti e materiali si descrivono una volta, e ogni ordine si scompone da sé, livello dopo livello. Un prodotto nuovo è una configurazione, non un nuovo sviluppo; parametri, materiali, fogli dei reparti e regole di magazzino si gestiscono dall'interfaccia. Le vecchie regole non sono state riscritte a memoria: sono state lette nel codice del programma precedente, tradotte una per una e confrontate con il suo archivio storico, decine di migliaia di prodotti già realizzati, finché i risultati non coincidevano. Ogni differenza rimasta ha una spiegazione, e correggere i difetti del vecchio è una scelta lasciata al cliente.",
+    sezioni: [
+      {
+        titolo: "Sicuro per progetto",
+        testo: "Un programma che decide cosa tagliare e cosa togliere dal magazzino custodisce il sapere di un'azienda, e va protetto come tale. Qui la sicurezza è un metodo, applicato a ogni funzione nuova prima ancora di scriverla.",
+        punti: [
+          { titolo: "I rischi, prima del codice", testo: "Per ogni funzione si analizza in anticipo cosa potrebbe andare storto, dall'accesso indebito al dato alterato in silenzio, e si decide come impedirlo. Poi lo si prova davvero, non solo sulla carta." },
+          { titolo: "Permessi controllati", testo: "Ciò che un ruolo può fare lo verifica il server a ogni richiesta: non basta nasconderlo nell'interfaccia. Una prova automatica controlla, funzione per funzione, chi può usarla e chi no." },
+          { titolo: "Il minimo indispensabile", testo: "Nell'installazione definitiva il programma lavora sui dati con i soli permessi che gli servono: non può cambiare la struttura del database né cancellare il registro delle attività. E uno scarico confermato non si modifica più: lo impedisce il database stesso." },
+          { titolo: "Difese sempre aggiornate", testo: "Le pagine viaggiano con le protezioni del browser attive, e i componenti su cui il programma si appoggia vengono controllati da soli a ogni modifica e ogni settimana: una vulnerabilità appena scoperta viene segnalata e corretta, non dimenticata." }
+        ]
+      },
+      {
+        titolo: "Collaudato prima di arrivare in officina",
+        testo: "Un errore in una distinta non si vede sullo schermo: si vede in officina, su un pezzo tagliato male. Per questo ogni modifica attraversa una rete di controlli prima di raggiungere l'azienda.",
+        punti: [
+          { titolo: "Oltre 570 test automatici", testo: "Sul calcolo, sulle pagine e sul database, a ogni modifica: se uno solo fallisce, la versione non esce. E i test stessi vengono messi alla prova: si reintroducono apposta errori noti, e devono accorgersene." },
+          { titolo: "Versioni tracciabili", testo: "Ogni versione nasce da un punto preciso e verificato del codice, viene costruita in automatico e installata solo se identica a quella controllata. Si sa sempre cosa è in uso, e si può tornare indietro." },
+          { titolo: "Dati che crescono con ordine", testo: "La struttura del database cambia solo con passaggi numerati, scritti e provati in anticipo. E l'installazione da zero è stata provata seguendo soltanto la guida, fino in fondo, senza interventi a mano." },
+          { titolo: "Accanto al vecchio programma", testo: "Prima di sostituirlo, Compono lavora al suo fianco: ogni differenza emersa dall'uso quotidiano finisce in un registro, con la sua causa e la sua soluzione. Il passaggio definitivo arriva quando il registro non ha più differenze aperte." }
+        ]
+      },
+      {
+        titolo: "I risultati, misurati",
+        testo: "Numeri presi dai collaudi, non stime.",
+        cifre: [
+          { valore: "97,6%", testo: "delle righe di scarico di magazzino identiche a quelle del vecchio programma, su tutto il suo archivio storico. Ogni differenza ha una causa nota." },
+          { valore: "23.727", testo: "prodotti su 23.730 ricalcolati identici al vecchio programma, in una delle famiglie principali. I tre diversi avevano dati sbagliati all'origine." },
+          { valore: "51 → 7 s", testo: "per importare un ordine di grandi dimensioni, dopo che il caricamento è stato ottimizzato." },
+          { valore: "570+", testo: "test automatici a ogni modifica, sul calcolo, sulle pagine e sul database." }
+        ]
+      }
+    ],
+    titoloFunzionalita: "Cosa cambia, ogni giorno",
     funzionalita: [
-      "Distinte base parametriche: un prodotto, tutte le sue varianti",
-      "Ogni ordine scomposto da sé in pezzi, misure e materiali",
-      "Articoli, materiali e regole gestiti dall'interfaccia",
-      "Fogli di lavorazione configurabili per ogni reparto",
-      "Scarico di magazzino con anteprima, conferma e rettifiche tracciate",
-      "Integrazione con il CAD e con il gestionale aziendale",
-      "Ruoli e registro delle attività: chi ha fatto cosa, e quando"
+      "Un prodotto nuovo o una variante si configurano, senza riscrivere il programma",
+      "Ogni commessa controllata prima di entrare: un'anteprima dice come è stato letto il file e cosa non torna",
+      "Fogli per i reparti, distinta di consegna, verniciatura ed etichette dei pezzi, in un'unica stampa",
+      "Scarico di magazzino calcolato da ogni commessa, con conferma e rettifiche tracciate, al posto dei fogli Excel",
+      "Commesse correggibili senza reimportarle, con un'anteprima di ciò che cambia, magazzino compreso",
+      "I documenti già consegnati all'officina restano com'erano, anche se poi cambia la configurazione",
+      "Ruoli e registro delle attività: chi ha fatto cosa, e quando",
+      "Il prossimo passo: il dialogo diretto con il gestionale aziendale"
     ],
-    tecnologie: ["React", "Node.js", "SQL Server", "Motore di calcolo parametrico", "Test automatici"],
+    tecnologie: ["Analisi dei processi", "React", "Node.js", "SQL Server", "Motore parametrico", "Test automatici e CI", "Threat model STRIDE"],
     immagini: []
   },
   {
