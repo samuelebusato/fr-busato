@@ -112,22 +112,85 @@ const PROGETTI = [
     immagini: []
   },
   {
+    /* 2026-10-30, riscritta su richiesta dell'utente con le specifiche della nuova
+       versione web, in esercizio su frgest.fr-busato.it dal 2026-09-24. Fonte: la nota
+       «06 Sviluppo/frgest.md» del Second Brain e le decisioni frgest-* collegate.
+       Si scrive solo ciò che è costruito e in esercizio: il client desktop per Windows
+       è deciso ma non c'è, quindi resta il prossimo passo; la rete agenti non è fatta.
+       frGest scrive e legge i file della fattura elettronica ma non li trasmette (lo fa
+       l'intermediario), e con un intermediario vero non è ancora stato provato: non si
+       scrive che lo sia. Niente nomi di clienti. I numeri: 560 test passati sulla VM al
+       commit 6bb3f79; 5.381 documenti su 5.382 è l'importazione di un archivio cliente
+       (fuori un preventivo vuoto, un solo totale diverso per il dato di allora); 24 tipi
+       di documento dal registro portato dal programma storico. */
     id: "frgest",
     nome: "frGest",
-    anno: 2025,
-    categoria: "Mini gestionale",
+    anno: 2026,
+    categoria: "Gestionale ERP",
     colore: "#2563eb",
     dimensione: "md",
-    breve: "Il mini gestionale che ha imparato il mestiere sul campo: anni di uso quotidiano nelle piccole aziende, e la flessibilità che i software da scaffale non conoscono. Bolle, fatture, magazzino — a modo tuo.",
-    contesto: "In tanti anni sul campo la stessa richiesta è tornata di continuo: un gestionale che si adatti all'azienda, non il contrario. Tante piccole realtà — reggiane e non — nei prodotti commerciali non trovavano né le funzioni né l'immediatezza d'uso che cercavano.",
-    soluzione: "frGest nasce proprio da lì: dall'ascolto dei modi di lavorare più diversi, distillati in un software semplice e flessibile. Niente fronzoli, molta sostanza — e alle spalle molti anni di rodaggio reale che si sentono a ogni clic.",
-    funzionalita: [
-      "Gestione di bolle, fatture e documenti di trasporto",
-      "Magazzino, ordini e scadenziari",
-      "Anagrafiche clienti, fornitori e agenti",
-      "Personalizzabile in base al flusso di lavoro dell'azienda"
+    evidenza: "Nuova versione web",
+    breve: "Il gestionale nato sul campo nel 2002 rinasce sul web. Dal browser, in più persone insieme: documenti, fatture elettroniche in uscita e in entrata, magazzino, IVA, incassi e banche. Vent'anni di mestiere dentro, un motore nuovo sotto.",
+    titoloContesto: "Vent'anni sul campo",
+    contesto: "frGest nasce nel 2002 da una richiesta che tornava di continuo: un gestionale che si adatti all'azienda, e non il contrario. Per vent'anni è cresciuto accanto alle piccole realtà che lo usano ogni giorno, fino a diventare molto più di bolle e fatture: magazzino, servizi a chiamata, scadenze, fatturazione elettronica. Ma era un programma per Windows con l'archivio sul PC: una persona alla volta, i calcoli chiusi dentro le maschere, e le fatture dei fornitori da ribattere a mano, tanto che quasi nessuno lo faceva.",
+    titoloForza: "Rifatto da capo, non migrato",
+    testoForza: "La nuova versione non è il vecchio programma portato sul web. Il codice di allora è stato studiato regola per regola, le norme lette prima di scrivere ogni funzione, Testo unico IVA compreso: ciò che funzionava è rimasto, i difetti noti no. E sotto c'è un motore nuovo, unico, su cui si appoggerà anche il futuro client per Windows.",
+    flusso: ["Preventivo", "Ordine", "DDT", "Fattura", "Incasso"],
+    puntiForza: [
+      { titolo: "Dal browser, in più persone", testo: "Si lavora da qualunque postazione senza installare nulla, e più persone possono lavorare sulla stessa azienda nello stesso momento: i numeri si assegnano all'emissione, senza buchi né doppioni, e due modifiche alla stessa bozza non si sovrascrivono." },
+      { titolo: "Ogni azienda nel suo spazio", testo: "I dati di ogni azienda stanno in uno spazio separato, che è il database stesso a tenere isolato dagli altri. Titolare, operatori e chi consulta soltanto vedono e fanno ciascuno ciò che il proprio ruolo consente." },
+      { titolo: "Un accesso solo", testo: "Si entra con l'accesso unico dei servizi F.R., protetto dal secondo fattore, lo stesso di Cyberse. frGest non custodisce password: sa soltanto chi è entrato, e in quali aziende può lavorare." },
+      { titolo: "Il programma di prima, dentro", testo: "Il titolare carica l'archivio del vecchio programma e frGest lo porta dentro: anagrafiche, listini, documenti con il loro numero originale, incassi, giacenze e interventi. Prima una prova con il resoconto, poi la conferma." }
     ],
-    tecnologie: ["VB.NET", "Windows", "SQL"],
+    titoloSoluzione: "Tutto il ciclo, in un posto solo",
+    soluzione: "Un documento nasce in bozza e riceve il suo numero solo quando lo si emette: in quel momento si congelano cliente, IVA e scadenze, e il magazzino si muove da sé. Da un documento ne nasce un altro senza ribattere nulla: il preventivo diventa ordine, l'ordine si consegna anche a pezzi, i DDT del mese diventano la fattura differita. Prezzi e listini valgono da una data, così una fattura vecchia resta com'era. Dall'altra parte arrivano le fatture dei fornitori, si confrontano con la merce ricevuta e danno al magazzino il suo costo vero. E da tutti questi movimenti, senza nessun saldo tenuto a mano, nascono i registri IVA, la liquidazione, gli scadenzari e la previsione delle banche.",
+    sezioni: [
+      {
+        titolo: "La fattura elettronica, nei due sensi",
+        testo: "Per una piccola azienda la fattura elettronica è il punto in cui il gestionale incontra l'Agenzia delle Entrate. frGest prepara e legge i file; a trasmetterli e a riceverli è l'intermediario scelto dall'azienda.",
+        punti: [
+          { titolo: "File controllati prima di uscire", testo: "Il file XML si scrive dal documento emesso, anche verso la Pubblica Amministrazione, e passa dallo schema ufficiale e dagli stessi controlli dello SdI prima di essere consegnato. Dopo uno scarto se ne prepara un altro, con un nome nuovo." },
+          { titolo: "Le fatture dei fornitori, senza ribatterle", testo: "Si caricano i file dell'intermediario, anche firmati o raccolti in archivi zip: il fornitore si riconosce, o si crea in anagrafica, i doppioni si fermano, e la fattura può registrarsi da sola con la proposta del mese di detrazione." },
+          { titolo: "Dalla fattura al magazzino", testo: "Le righe della fattura si confrontano con la merce ricevuta: quando il DDT del fornitore è lo stesso, il collegamento lo fa frGest. I codici del fornitore si imparano e si propongono la volta dopo." },
+          { titolo: "Ricevute e stati", testo: "Le ricevute dello SdI si abbinano al loro file e aggiornano lo stato del documento: consegnato, scartato, accettato o rifiutato dalla Pubblica Amministrazione." }
+        ]
+      },
+      {
+        titolo: "IVA, scadenze e banche",
+        testo: "I conti che di solito si rifanno su un foglio a parte nascono dagli stessi documenti, e quindi tornano.",
+        punti: [
+          { titolo: "Registri e liquidazione", testo: "Registro vendite e registro acquisti, liquidazione periodica con i suoi righi, chiusa dal titolare: un periodo chiuso non accetta più documenti. La comunicazione trimestrale esce già controllata con lo schema ufficiale, e l'acconto di dicembre è proposto con i suoi metodi." },
+          { titolo: "Incassi e pagamenti", testo: "Scadenzari dei clienti e dei fornitori, incassi e pagamenti su più rate, compensazioni con le note di credito, IVA a esigibilità differita che diventa esigibile quando si incassa." },
+          { titolo: "RIBA e bonifici", testo: "Le distinte RIBA nel formato CBI, con gli esiti della banca che tornano nello scadenzario; i bonifici ai fornitori in formato SEPA, controllati con lo schema ufficiale, e il loro esito che registra o annulla il pagamento." },
+          { titolo: "Più banche, un saldo previsto", testo: "Ogni conto ha il suo saldo, e la previsione mese per mese di ciò che entrerà e uscirà dalle scadenze, con lo scaduto in evidenza." }
+        ]
+      },
+      {
+        titolo: "I numeri",
+        testo: "Presi dal progetto, non stime.",
+        cifre: [
+          { valore: "2002", testo: "l'anno della prima versione: vent'anni di uso quotidiano nelle piccole aziende, riportati nelle regole di quella nuova." },
+          { valore: "5.381 su 5.382", testo: "documenti di un'azienda portati dal vecchio programma. Fuori solo un preventivo vuoto, e un solo totale diverso, per un dato già sbagliato allora." },
+          { valore: "24", testo: "tipi di documento, dal preventivo alla nota di credito con reso, guidati da un unico registro delle regole." },
+          { valore: "560+", testo: "test automatici a ogni modifica, su un database vero: isolamento fra aziende, numerazione contemporanea, calcoli fiscali, file ufficiali." }
+        ]
+      }
+    ],
+    titoloFunzionalita: "Cosa fa, ogni giorno",
+    funzionalita: [
+      "Preventivi, ordini, DDT, fatture immediate e differite, note di credito: uno si trasforma nell'altro",
+      "Fatturazione differita di fine mese dai DDT, una fattura per cliente",
+      "Prezzi e listini con validità da una data, sconti per cliente e per fornitore",
+      "Magazzino con ubicazioni, merce da smistare, giacenza, ordinato e impegnato, valore a costo medio, FIFO o ultimo costo",
+      "Fatture elettroniche in uscita e in entrata, con la registrazione degli acquisti anche automatica",
+      "Registri IVA, liquidazione periodica, comunicazione trimestrale e acconto",
+      "Scadenzari, incassi e pagamenti, RIBA e bonifici SEPA con gli esiti della banca",
+      "Abbonamenti, pacchetti prepagati e interventi, fatturati in bozza per cliente",
+      "Commesse con il consuntivo di ricavi, costi, ore e margine",
+      "Stampa dei documenti in PDF, ed elenchi che si ordinano e si filtrano dalle colonne",
+      "Il prossimo passo: il client per Windows, sullo stesso motore, per chi inserisce molto"
+    ],
+    tecnologie: [".NET 10", "Blazor", "API REST", "PostgreSQL", "OpenID Connect", "FatturaPA", "CBI e SEPA", "Test automatici"],
     immagini: []
   },
   {
