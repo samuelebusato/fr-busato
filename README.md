@@ -13,7 +13,7 @@ Completamente responsive; le animazioni si disattivano per chi ha attivo
 
 ```
 ├── index.html               → home
-├── sviluppo-software.html   → griglia dei progetti con filtri per anno
+├── sviluppo-software.html   → griglia dei progetti con filtri per anno, e «Il metodo»
 ├── progetto.html            → dettaglio di un progetto (dinamica, ?id=...)
 ├── servizio.html            → pagina di un servizio (dinamica, ?id=...)
 ├── blog.html                → annunci e novità
@@ -34,6 +34,7 @@ Completamente responsive; le animazioni si disattivano per chi ha attivo
 │   │   ├── portfolio.js     → griglia progetti, filtri, progetti in evidenza in home
 │   │   ├── progetto.js      → pagina di dettaglio progetto
 │   │   ├── motivi.js        → decorazioni animate, una per progetto
+│   │   ├── metodo.js        → la linea del percorso che si accende in «Il metodo»
 │   │   ├── servizio.js      → pagina servizio
 │   │   ├── certificazioni.js→ sezione certificazioni
 │   │   ├── blog.js          → annunci (home e blog)
@@ -52,6 +53,7 @@ aggiorna da solo.
 | Cosa | Dove | Note |
 |---|---|---|
 | Progetti | `assets/js/progetti.js`, array `PROGETTI` | I campi sono descritti in testa al file. I **primi 3** dell'array compaiono anche in home. |
+| Il metodo | `sviluppo-software.html`, sezione `#metodo` | Testo fisso nella pagina, dopo la griglia. Le regole sui testi sono nel commento in testa alla sezione: discorsivo, onesto sull'intelligenza artificiale (la usiamo, e lo si dice), nessuna promessa che il lavoro non mantenga. |
 | Immagini di un progetto | `assets/img/progetti/image_<id>/` | File `1`, `2`, `3` (webp, jpg, jpeg o png): l'immagine N accompagna la riga N della pagina. Senza immagini si vede un segnaposto. |
 | Servizi | `assets/js/servizi-dati.js`, array `SERVIZI` | Un servizio nuovo va aggiunto anche a `sitemap.xml`. Il campo opzionale `azioni` sostituisce i pulsanti in testa alla pagina. |
 | Cyberse | `cyberse.html` (la scheda, dalla presentazione ai clienti) + riquadro `.richiamo` nella sezione Servizi di `index.html` + card in `progetti.js` (prima voce, «Disponibile per MSP», campo `pagina` verso la scheda) | Le regole sui testi sono in testa a `cyberse.html`. Le schermate in `assets/img/cyberse/` vengono solo dall'ambiente dimostrativo. `progetto.html?id=cyberse` e `servizio.html?id=cyberse` rimandano alla scheda. Il bottone «Accedi a MSP» nel menu di ogni pagina, dopo «Contatti» e con lo stesso stile, porta a `https://msp.fr-busato.it/accesso`. |

@@ -78,7 +78,28 @@
     meta.appendChild(tag);
   });
 
-  testa.append(eyebrow, h1, breve, meta);
+  testa.append(eyebrow, h1, breve);
+
+  /* Le cifre in testa (campo opzionale inBreve, dal 2026-10-31): tre numeri che
+     dicono subito quanto lavoro c'è dietro, prima delle tecnologie */
+  if (progetto.inBreve && progetto.inBreve.length) {
+    var cifre = document.createElement("ul");
+    cifre.className = "progetto-cifre entra";
+    cifre.dataset.passo = "3";
+    progetto.inBreve.forEach(function (c) {
+      var li = document.createElement("li");
+      var v = document.createElement("b");
+      v.textContent = c.valore;
+      var t = document.createElement("span");
+      t.textContent = c.testo;
+      li.append(v, t);
+      cifre.appendChild(li);
+    });
+    testa.appendChild(cifre);
+    meta.dataset.passo = "4";
+  }
+
+  testa.appendChild(meta);
 
   /* Motivo animato a tema come SFONDO dell'intestazione:
      dietro il contenuto, sfumato verso il colore del progetto
@@ -195,12 +216,64 @@
     return sec;
   }
 
+  /* Il confronto prima/dopo (campo confronto delle sezioni, dal 2026-10-31): la
+     stessa tabella del metodo in sviluppo-software.html, CSS .confronto */
+  function tabellaConfronto(c) {
+    var wrap = document.createElement("div");
+    wrap.className = "confronto-wrap";
+    var tab = document.createElement("table");
+    tab.className = "confronto";
+    var colonne = c.colonne || ["Prima", "Dopo"];
+    var thead = document.createElement("thead");
+    var tr = document.createElement("tr");
+    var vuota = document.createElement("th");
+    vuota.scope = "col";
+    vuota.innerHTML = "<span class=\"sr-only\">Che cosa</span>";
+    tr.appendChild(vuota);
+    colonne.forEach(function (nome) {
+      var th = document.createElement("th");
+      th.scope = "col";
+      th.textContent = nome;
+      tr.appendChild(th);
+    });
+    thead.appendChild(tr);
+    var tbody = document.createElement("tbody");
+    c.righe.forEach(function (riga) {
+      var r = document.createElement("tr");
+      var th = document.createElement("th");
+      th.scope = "row";
+      th.textContent = riga[0];
+      r.appendChild(th);
+      [riga[1], riga[2]].forEach(function (testo, i) {
+        var td = document.createElement("td");
+        td.className = i === 0 ? "prima" : "dopo";
+        td.dataset.etichetta = colonne[i];
+        td.textContent = testo;
+        r.appendChild(td);
+      });
+      tbody.appendChild(r);
+    });
+    tab.append(thead, tbody);
+    wrap.appendChild(tab);
+    return wrap;
+  }
+
   /* Altre sezioni a tutta larghezza (campo opzionale sezioni, dal 2026-10-27),
-     nello stile dei punti di forza: schede, numeri, o entrambi */
+     nello stile dei punti di forza: schede, numeri, confronto, o insieme.
+     Dal 2026-10-31: tema "notte" per il riquadro scuro, link per un rimando in fondo */
   function sezioneLibera(num, s) {
-    var sec = bloccoTesto(num, s.titolo, s.testo || null, "blocco-forza rivela");
+    var cls = "blocco-forza rivela" + (s.tema === "notte" ? " blocco-notte" : "");
+    var sec = bloccoTesto(num, s.titolo, s.testo || null, cls);
+    if (s.confronto && s.confronto.righe) sec.appendChild(tabellaConfronto(s.confronto));
     if (s.punti && s.punti.length) sec.appendChild(grigliaSchede(s.punti));
     if (s.cifre && s.cifre.length) sec.appendChild(grigliaCifre(s.cifre));
+    if (s.link && s.link.href) {
+      var a = document.createElement("a");
+      a.className = "blocco-link";
+      a.href = s.link.href;
+      a.innerHTML = escapeHtml(s.link.testo) + " <span aria-hidden=\"true\">→</span>";
+      sec.appendChild(a);
+    }
     return sec;
   }
 

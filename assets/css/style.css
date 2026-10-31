@@ -1754,7 +1754,7 @@ h3{ font-size:1.18rem; font-weight:600; }
 }
 
 @media (prefers-reduced-motion: reduce){
-  .m-pulse, .m-flow, .m-sweep, .m-halo, .m-write, .m-bar, .m-travel{ animation:none; }
+  .m-pulse, .m-flow, .m-sweep, .m-halo, .m-write, .m-bar, .m-travel, .m-esplodi{ animation:none; }
   .m-node, .m-blip{ opacity:.7; }
   .m-write{ stroke-dashoffset:0; }
 }
@@ -1870,11 +1870,11 @@ h3{ font-size:1.18rem; font-weight:600; }
    V9 — Animazioni sobrie: i motivi si muovono SOLO al passaggio
    del cursore. Da fermi mostrano un fotogramma statico elegante.
    ============================================================ */
-.m-pulse, .m-flow, .m-sweep, .m-halo, .m-bar, .m-travel{
+.m-pulse, .m-flow, .m-sweep, .m-halo, .m-bar, .m-travel, .m-esplodi{
   animation-play-state:paused;
 }
 :is(.card-progetto:hover, .progetto-hero-motivo:hover, .duo-img:hover)
-  :is(.m-pulse, .m-flow, .m-sweep, .m-halo, .m-bar, .m-travel){
+  :is(.m-pulse, .m-flow, .m-sweep, .m-halo, .m-bar, .m-travel, .m-esplodi){
   animation-play-state:running;
 }
 /* Da fermi i nodi restano ben visibili (non nel loro minimo) */
@@ -2175,4 +2175,337 @@ h3{ font-size:1.18rem; font-weight:600; }
 .blocco-forza .stat::before{
   content:""; position:absolute; inset:0 0 auto 0; height:3px;
   background:linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 25%, transparent));
+}
+
+/* ============================================================
+   V12 (2026-10-31) — Sviluppo Software: l'apertura e il metodo.
+   Pagina progetto: cifre in testa, confronto, sezione «notte»
+   (campi inBreve e sezioni[].confronto / .tema / .link di
+   progetti.js). Il motivo esploso di Compono.
+   ============================================================ */
+:root{
+  /* Il blu notte della presentazione di Compono, per i riquadri scuri */
+  --notte:        #0f1b2d;
+  --notte-2:      #18263c;
+  --notte-testo:  #c8d2e2;
+  --notte-tenue:  #a3b1c7;
+  --notte-chiaro: #86a8f2;
+  --notte-linea:  rgba(134,168,242,.18);
+  --ease-out:     cubic-bezier(.16,1,.3,1);
+}
+
+/* ---- Apertura della pagina ---- */
+.sw-apertura{ padding-bottom:2.8rem; }
+.sw-apertura .sottotitolo{ margin-top:1.2rem; font-size:1.1rem; }
+.sw-apertura .hero-azioni{ margin-top:1.9rem; }
+.sw-parole{
+  list-style:none; margin:2.2rem 0 0; padding:0;
+  display:flex; flex-wrap:wrap; gap:.7rem 1.7rem;
+  font-family:var(--font-mono); font-size:.8rem; letter-spacing:.04em; color:var(--muted);
+}
+.sw-parole li{ display:inline-flex; align-items:center; gap:.55rem; }
+.sw-parole li::before{
+  content:"✓"; display:grid; place-items:center; flex:none;
+  width:1.3rem; height:1.3rem; border-radius:50%;
+  font-size:.66rem; font-weight:700; color:#fff;
+  background:var(--accent);
+}
+.sw-progetti{ padding-bottom:2rem; }
+#progetti, #metodo{ scroll-margin-top:6rem; }
+
+/* ---- Il metodo ---- */
+.metodo{ padding:4.5rem 0 2rem; }
+.metodo-testa h2{ max-width:46rem; }
+.metodo-intro{
+  display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr); gap:1.2rem 3rem; align-items:start;
+  margin-top:2rem;
+}
+.metodo-intro p{ margin:0; color:var(--muted); }
+.metodo-intro .metodo-lead{
+  font-family:var(--font-display); font-weight:500; line-height:1.55;
+  font-size:clamp(1.08rem, 1.7vw, 1.26rem); color:var(--text);
+}
+.metodo-blocco{ margin-top:5rem; }
+.metodo-sottotitolo{ font-size:clamp(1.35rem, 2.4vw, 1.75rem); }
+
+/* Il percorso: titolo fermo a sinistra, le cinque tappe a destra */
+.metodo-percorso{
+  display:grid; grid-template-columns:minmax(0,.72fr) minmax(0,1.6fr); gap:1.8rem 3.4rem; align-items:start;
+}
+.percorso-testa{ position:sticky; top:7rem; }
+.percorso-testa h3{ font-size:clamp(1.35rem, 2.4vw, 1.75rem); }
+.percorso-testa p{ color:var(--muted); margin:.7rem 0 0; max-width:22rem; }
+.percorso{ list-style:none; margin:0; padding:0; }
+.tappa{
+  position:relative;
+  display:grid; grid-template-columns:3rem minmax(0,1fr); gap:0 1.4rem;
+  padding-bottom:1.6rem;
+}
+.tappa:last-child{ padding-bottom:0; }
+/* Il tratto fino alla tappa dopo: la base, e sopra la parte accesa (--avanza, da metodo.js) */
+.tappa:not(:last-child)::before,
+.tappa:not(:last-child)::after{
+  content:""; position:absolute; left:calc(1.5rem - 1px); top:1.5rem; bottom:-1.5rem;
+  width:2px; border-radius:2px;
+}
+.tappa:not(:last-child)::before{ background:var(--line-forte); }
+.tappa:not(:last-child)::after{
+  background:linear-gradient(180deg, var(--accent), color-mix(in srgb, var(--accent) 55%, #38bdf8));
+  transform-origin:top; transform:scaleY(var(--avanza, 1));
+}
+.tappa-segno{
+  position:relative; z-index:1;
+  width:3rem; height:3rem; border-radius:50%;
+  display:grid; place-items:center;
+  font-family:var(--font-mono); font-size:.82rem; font-weight:500; letter-spacing:.04em;
+  color:#fff; background:var(--accent); border:2px solid var(--accent);
+  box-shadow:0 0 0 5px var(--bg), 0 10px 24px -10px color-mix(in srgb, var(--accent) 80%, transparent);
+  transition:background-color .45s var(--ease-out), color .45s var(--ease-out), border-color .45s var(--ease-out);
+}
+.tappa-testo{
+  padding:1.15rem 1.35rem 1.25rem;
+  border:1px solid var(--accent-line); border-radius:var(--radius);
+  background:linear-gradient(165deg, var(--surface), var(--surface-2));
+  transition:border-color .45s var(--ease-out);
+}
+.tappa-testo h4{ font-family:var(--font-display); font-size:1.08rem; font-weight:600; line-height:1.3; margin:0 0 .4rem; }
+.tappa-testo p{ margin:0; color:var(--muted); font-size:.97rem; }
+/* Il timbro del collaudo: la tappa è superata */
+.tappa-timbro{
+  display:inline-flex; align-items:center; gap:.45rem; margin-top:.85rem;
+  font-family:var(--font-mono); font-size:.7rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--accent-2);
+  border:1px dashed color-mix(in srgb, var(--accent) 50%, transparent); border-radius:6px;
+  padding:.22rem .6rem;
+  transition:opacity .45s var(--ease-out), transform .45s var(--ease-out);
+}
+.tappa-timbro::before{ content:"✓"; font-weight:700; }
+/* Spenta, solo con lo script: la tappa non ancora raggiunta */
+.percorso-vivo .tappa:not(.accesa) .tappa-segno{
+  background:var(--surface); color:var(--accent-2); border-color:var(--accent-line);
+  box-shadow:0 0 0 5px var(--bg);
+}
+.percorso-vivo .tappa:not(.accesa) .tappa-testo{ border-color:var(--line); }
+.percorso-vivo .tappa:not(.accesa) .tappa-timbro{ opacity:.28; transform:scale(.96); }
+
+/* Le regole: tre schede e due più larghe */
+.regole{
+  display:grid; grid-template-columns:repeat(6, minmax(0,1fr)); gap:1.1rem;
+  margin-top:1.5rem;
+}
+.regola{
+  grid-column:span 2;
+  position:relative; overflow:hidden;
+  padding:1.45rem 1.4rem 1.55rem; border-radius:var(--radius);
+  background:linear-gradient(165deg, color-mix(in srgb, var(--accent) 7%, #ffffff) 0%, var(--surface) 70%);
+  border:1px solid var(--accent-line);
+  /* .rivela la fa comparire: la sua transizione resta, si aggiunge solo il bordo */
+  transition:opacity .85s ease, transform .85s cubic-bezier(.16,.8,.26,1), border-color .35s ease;
+}
+.regola:nth-child(n+4){ grid-column:span 3; }
+.regola::before{
+  content:""; position:absolute; inset:0 0 auto 0; height:3px;
+  background:linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 25%, transparent));
+}
+.regola:hover{ border-color:color-mix(in srgb, var(--accent) 55%, transparent); }
+.regola h4{ font-family:var(--font-display); font-size:1.06rem; font-weight:600; line-height:1.3; margin:.55rem 0 .45rem; }
+.regola p{ margin:0; color:var(--muted); font-size:.95rem; line-height:1.55; }
+
+/* ---- Il confronto: una tabella a due colonne, la seconda in evidenza.
+        Sul telefono ogni riga diventa una scheda con le etichette ---- */
+.confronto-wrap{
+  margin-top:1.5rem; overflow:hidden;
+  border:1px solid var(--line); border-radius:var(--radius);
+  background:var(--surface);
+  box-shadow:0 24px 56px -40px rgba(18,32,59,.4);
+}
+.confronto{ width:100%; border-collapse:collapse; }
+.confronto th,
+.confronto td{
+  padding:.9rem 1.25rem; text-align:left; vertical-align:top;
+  border-bottom:1px solid var(--line); font-size:.96rem; line-height:1.5;
+}
+.confronto thead th{
+  background:var(--surface-2); color:var(--faint);
+  font-family:var(--font-mono); font-size:.72rem; font-weight:500; letter-spacing:.1em; text-transform:uppercase;
+}
+.confronto thead th:last-child{
+  color:var(--accent-2);
+  background:color-mix(in srgb, var(--accent) 10%, var(--surface-2));
+}
+.confronto tbody th{ width:26%; font-family:var(--font-display); font-weight:600; color:var(--text); }
+.confronto td.prima{ width:34%; color:var(--muted); }
+.confronto td.dopo{
+  position:relative; padding-left:2.5rem; color:var(--text);
+  background:color-mix(in srgb, var(--accent) 6%, transparent);
+}
+.confronto td.dopo::before{
+  content:"✓"; position:absolute; left:1.15rem; top:.9rem;
+  font-weight:700; color:var(--accent-2);
+}
+.confronto tbody tr:last-child > *{ border-bottom:0; }
+
+/* ---- I riquadri «notte»: la prova nel metodo, e la sezione dei
+        numeri nella pagina di Compono (tema: "notte") ---- */
+.prova-notte,
+.progetto-flusso .blocco-notte{
+  position:relative; overflow:hidden; isolation:isolate;
+  padding:clamp(1.7rem, 4vw, 2.9rem);
+  border-radius:calc(var(--radius) + 8px);
+  background:
+    radial-gradient(90% 120% at 100% 0%, rgba(77,126,224,.28), transparent 60%),
+    linear-gradient(160deg, var(--notte-2), var(--notte));
+  border:1px solid var(--notte-linea);
+  color:var(--notte-testo);
+  box-shadow:0 40px 90px -50px rgba(15,27,45,.8);
+}
+/* La trama a puntini della presentazione, che sfuma verso il testo */
+.prova-notte::before,
+.blocco-notte::after{
+  content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
+  background-image:radial-gradient(circle, rgba(134,168,242,.22) 0 1.5px, transparent 2px);
+  background-size:13px 13px;
+  -webkit-mask-image:linear-gradient(100deg, transparent 25%, #000 85%);
+  mask-image:linear-gradient(100deg, transparent 25%, #000 85%);
+}
+.prova-notte{
+  display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr); gap:2rem 3rem; align-items:center;
+}
+.prova-notte .eyebrow,
+.blocco-notte .blocco-eyebrow{ color:var(--notte-chiaro); }
+.prova-notte .eyebrow::before,
+.blocco-notte .blocco-eyebrow::before{ color:rgba(200,210,226,.45); }
+.prova-notte h3{ color:#fff; font-size:clamp(1.35rem, 2.6vw, 1.85rem); line-height:1.25; }
+.prova-testo p:not(.eyebrow){ margin:1rem 0 1.6rem; color:var(--notte-testo); }
+.btn-notte{ background:#fff; color:var(--notte); box-shadow:0 10px 28px -12px rgba(134,168,242,.6); }
+.btn-notte:hover{ background:#eef3fd; }
+.prova-cifre{ margin:0; display:grid; }
+.prova-cifre div{
+  display:grid; grid-template-columns:7.4rem minmax(0,1fr); gap:1rem; align-items:baseline;
+  padding:1.05rem 0; border-top:1px solid var(--notte-linea);
+}
+.prova-cifre div:first-child{ border-top:0; padding-top:0; }
+.prova-cifre div:last-child{ padding-bottom:0; }
+.prova-cifre dt{
+  font-family:var(--font-display); font-weight:700; line-height:1; letter-spacing:-.01em;
+  font-size:clamp(1.6rem, 3vw, 2.1rem); color:#fff;
+}
+.prova-cifre dd{ margin:0; color:var(--notte-tenue); font-size:.94rem; line-height:1.45; }
+
+.progetto-flusso .blocco-notte h2{ color:#fff; }
+.progetto-flusso .blocco-notte > p{ color:var(--notte-testo); }
+.blocco-notte .stat{
+  background:rgba(255,255,255,.035); border-color:var(--notte-linea);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+}
+.blocco-notte .stat-num{ color:#fff; font-size:2.05rem; }
+.blocco-notte .stat-testo{ color:var(--notte-tenue); }
+
+/* ---- Pagina progetto: le cifre in testa (campo inBreve) ---- */
+.progetto-cifre{
+  list-style:none; margin:1.7rem 0 0; padding:0;
+  display:flex; flex-wrap:wrap; gap:1rem 0;
+}
+.progetto-cifre li{
+  display:flex; flex-direction:column; gap:.2rem;
+  max-width:15rem; padding:0 1.6rem;
+  border-left:1px solid var(--accent-line);
+}
+.progetto-cifre li:first-child{ padding-left:0; border-left:0; }
+.progetto-cifre b{
+  font-family:var(--font-display); font-weight:700; line-height:1.05; letter-spacing:-.01em;
+  font-size:clamp(1.55rem, 2.6vw, 2.05rem); color:var(--accent-2);
+}
+.progetto-cifre span{ font-size:.87rem; line-height:1.4; color:var(--muted); }
+
+/* ---- Pagina progetto: una riga senza immagine non si distende più su tutta la
+        larghezza. Le righe di un testo lungo arrivavano a 180 caratteri; così torna
+        il disegno di V6: la soluzione a destra, contesto e funzionalità a sinistra ---- */
+.duo.solo .progetto-blocco{ max-width:52rem; }
+.duo.solo .blocco-soluzione{ margin-left:auto; }
+
+/* ---- Pagina progetto: il rimando in fondo a una sezione (sezioni[].link) ---- */
+.blocco-link{
+  display:inline-flex; align-items:center; gap:.45rem; margin-top:1.5rem;
+  font-weight:600; color:var(--accent-2);
+  transition:gap .3s var(--ease-out);
+}
+.blocco-link:hover{ gap:.75rem; text-decoration:none; }
+
+/* ---- Il motivo esploso di Compono: le lastre hanno un fondo, così le
+        guide tratteggiate passano dietro e non attraverso ---- */
+.m-lastra{ fill:color-mix(in srgb, currentColor 9%, var(--m-fondo, var(--surface-2))); stroke:none; }
+.card-anteprima-motivo,
+.duo-motivo{ --m-fondo:#0d1729; }
+.progetto-sfondo{ --m-fondo:var(--bg); }
+/* Nell'intestazione l'esploso sta a destra e più leggero: a tutta larghezza le
+   lastre, che hanno un fondo, finivano dietro il titolo e il testo */
+.progetto-sfondo .m-esploso{ left:42%; }
+.progetto-sfondo .m-esploso .m-scan{ opacity:.42; }
+.progetto-sfondo .m-esploso .m-box{ opacity:.36; }
+/* Al passaggio del cursore gli strati si ricompongono e si riaprono */
+.m-esplodi{
+  animation:m-esplodi 3.8s cubic-bezier(.65,0,.35,1) infinite; animation-delay:var(--d, 0s);
+}
+@keyframes m-esplodi{
+  0%, 100%{ transform:translateX(0); }
+  50%{ transform:translateX(calc(var(--i, 0) * -11px)); }
+}
+
+@media (max-width:980px){
+  .metodo-intro,
+  .metodo-percorso,
+  .prova-notte{ grid-template-columns:minmax(0,1fr); }
+  .percorso-testa{ position:static; }
+  .regola,
+  .regola:nth-child(n+4){ grid-column:span 3; }
+  .regola:last-child{ grid-column:1 / -1; }
+}
+@media (max-width:640px){
+  .metodo{ padding-top:3rem; }
+  .metodo-blocco{ margin-top:3.6rem; }
+  .regole{ grid-template-columns:minmax(0,1fr); }
+  .regola,
+  .regola:nth-child(n+4),
+  .regola:last-child{ grid-column:auto; }
+  .tappa{ grid-template-columns:2.4rem minmax(0,1fr); gap:0 .9rem; }
+  .tappa-segno{ width:2.4rem; height:2.4rem; font-size:.74rem; }
+  .tappa:not(:last-child)::before,
+  .tappa:not(:last-child)::after{ left:calc(1.2rem - 1px); top:1.2rem; bottom:-1.2rem; }
+  .tappa-testo{ padding:1rem 1.1rem 1.1rem; }
+
+  .confronto thead{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
+  .confronto,
+  .confronto tbody,
+  .confronto tr,
+  .confronto th,
+  .confronto td{ display:block; width:auto; }
+  .confronto tbody tr{ padding:1.05rem 1.1rem 1.1rem; border-bottom:1px solid var(--line); }
+  .confronto tbody tr:last-child{ border-bottom:0; }
+  .confronto tbody th,
+  .confronto td{ border:0; padding:0; }
+  .confronto tbody th{ width:auto; margin-bottom:.55rem; }
+  .confronto td.prima{ width:auto; margin-bottom:.55rem; }
+  .confronto td::before,
+  .confronto td.dopo::before{
+    content:attr(data-etichetta); position:static; display:block; margin-bottom:.15rem;
+    font-family:var(--font-mono); font-size:.66rem; font-weight:500; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--faint);
+  }
+  .confronto td.dopo{ padding:.6rem .8rem; border-radius:var(--radius-sm); }
+  .confronto td.dopo::before{ color:var(--accent-2); }
+
+  .prova-cifre div{ grid-template-columns:minmax(0,1fr); gap:.35rem; }
+
+  .progetto-cifre{ flex-direction:column; gap:0; }
+  .progetto-cifre li,
+  .progetto-cifre li:first-child{
+    max-width:none; flex-direction:row; align-items:baseline; gap:.9rem;
+    padding:.7rem 0; border-left:0; border-top:1px solid var(--accent-line);
+  }
+  .progetto-cifre li:first-child{ border-top:0; padding-top:0; }
+  .progetto-cifre b{ min-width:4.6rem; }
+}
+@media (prefers-reduced-motion: reduce){
+  .tappa-segno, .tappa-testo, .tappa-timbro, .blocco-link{ transition:none; }
 }

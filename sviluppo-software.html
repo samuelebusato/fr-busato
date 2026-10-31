@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sviluppo Software su Misura a Reggio Emilia — F.R. di Busato Fausto</title>
-  <meta name="description" content="I software sviluppati da F.R. di Busato Fausto: gestionali, automazioni Office, elaborazione dati e soluzioni su misura per le aziende.">
+  <meta name="description" content="I software su misura di F.R. di Busato Fausto e il metodo con cui li costruiamo: criteri scritti prima, prove sui dati veri, revisione indipendente, rilasci reversibili.">
   <link rel="canonical" href="https://www.fr-busato.it/sviluppo-software.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="F.R. di Busato Fausto">
   <meta property="og:locale" content="it_IT">
   <meta property="og:title" content="Sviluppo Software — F.R. di Busato Fausto">
-  <meta property="og:description" content="I software sviluppati da F.R. di Busato Fausto: gestionali, automazioni Office, elaborazione dati e soluzioni su misura per le aziende.">
+  <meta property="og:description" content="I software su misura di F.R. di Busato Fausto e il metodo con cui li costruiamo: criteri scritti prima, prove sui dati veri, revisione indipendente, rilasci reversibili.">
   <meta property="og:url" content="https://www.fr-busato.it/sviluppo-software.html">
   <meta property="og:image" content="https://www.fr-busato.it/assets/img/og-card.jpg">
   <meta name="twitter:card" content="summary_large_image">
@@ -53,21 +53,198 @@
 
   <main id="contenuto">
 
-    <section class="sezione container" style="padding-bottom:2rem;">
+    <section class="sezione container sw-apertura">
       <p class="eyebrow entra">Sviluppo Software</p>
-      <h1 class="entra" data-passo="1">I nostri <span class="gradiente">progetti</span>.</h1>
-      <p class="sottotitolo entra" data-passo="2" style="margin-top:1.2rem;">
-        Software nati dalle esigenze reali delle aziende: gestionali, automazioni e strumenti
-        su misura, sviluppati e rodati sul campo. Seleziona un progetto per scoprirne le specifiche.
+      <h1 class="entra" data-passo="1">Software su misura,<br>costruiti <span class="gradiente">con metodo</span>.</h1>
+      <p class="sottotitolo entra" data-passo="2">
+        Gestionali, automazioni e strumenti nati dal lavoro vero delle aziende. Prima di scrivere
+        il codice studiamo come lavori; prima di consegnarlo verifichiamo, sui tuoi dati, che tutto torni.
       </p>
+      <div class="hero-azioni entra" data-passo="3">
+        <a class="btn btn-pieno" href="#progetti">Guarda i progetti</a>
+        <a class="btn btn-vuoto" href="#metodo">Come lavoriamo</a>
+      </div>
+      <ul class="sw-parole entra" data-passo="4" aria-label="Il metodo in breve">
+        <li>Criteri scritti prima</li>
+        <li>Prove sui dati veri</li>
+        <li>Revisione indipendente</li>
+        <li>Rilasci reversibili</li>
+      </ul>
     </section>
 
-    <section class="container" style="padding-bottom:5rem;">
-      <div class="filtri entra" data-passo="3" role="group" aria-label="Filtra i progetti per anno">
+    <section class="container sw-progetti" id="progetti" aria-label="I progetti">
+      <div class="filtri entra" data-passo="5" role="group" aria-label="Filtra i progetti per anno">
         <span class="filtri-etichetta">Anno</span>
         <!-- I filtri vengono generati automaticamente da portfolio.js -->
       </div>
       <div class="bento" id="griglia-progetti" aria-label="Elenco dei progetti"></div>
+    </section>
+
+    <!-- ============================================================
+         IL METODO (2026-10-31, richiesta dell'utente): perché i nostri software
+         non sono i soliti programmi fatti in fretta. Regole sui testi, da
+         rispettare in ogni modifica:
+         - discorsivo e non tecnico: niente sigle né nomi di strumenti;
+         - onestà sull'intelligenza artificiale: la usiamo, e lo si dice. Mai
+           scrivere che i software sono fatti «senza AI» o «scritti a mano»: è
+           falso. La differenza la fanno il metodo, le verifiche e le decisioni;
+         - la revisione indipendente è spesso un passaggio separato, non un
+           collega: «occhi freschi che non l'hanno scritta», mai «un'altra persona»;
+         - ogni passo è una regola di sviluppo che applichiamo davvero, ed è lo
+           stesso metodo raccontato al cliente di Compono. Niente promesse in più.
+         ============================================================ -->
+    <section class="container metodo" id="metodo" aria-labelledby="metodo-titolo">
+
+      <div class="metodo-testa rivela">
+        <p class="eyebrow">Il metodo</p>
+        <h2 id="metodo-titolo">Scrivere un programma oggi è facile.<br><span class="gradiente">Fidarsene</span> è un'altra cosa.</h2>
+      </div>
+
+      <div class="metodo-intro rivela">
+        <p class="metodo-lead">
+          Oggi un programma si può mettere in piedi in un pomeriggio, anche con l'aiuto
+          dell'intelligenza artificiale. Sullo schermo sembra tutto a posto, la dimostrazione
+          fila liscia. Poi arriva il primo ordine vero, il dato scritto in un modo che nessuno
+          aveva previsto, il caso che capita una volta all'anno: ed è lì che si vede la
+          differenza fra un programma che sembra funzionare e uno che funziona.
+        </p>
+        <p>
+          Anche noi usiamo gli strumenti più moderni, intelligenza artificiale compresa, come
+          un buon artigiano usa i suoi attrezzi migliori. Ma un attrezzo non decide cosa
+          costruire, non controlla che il pezzo sia giusto e non risponde se è sbagliato.
+          Quello lo fanno il metodo e chi ci lavora: lo studio prima del codice, le verifiche
+          dopo, e una decisione ragionata per ogni scelta.
+        </p>
+      </div>
+
+      <div class="metodo-blocco metodo-percorso">
+        <div class="percorso-testa rivela">
+          <h3>Il percorso di ogni funzione</h3>
+          <p>Ogni funzione, grande o piccola, fa la stessa strada. Nessuna tappa si salta.</p>
+        </div>
+        <!-- La linea si accende mentre lo si legge (metodo.js); senza script, o con
+             il movimento ridotto, è accesa per intero -->
+        <ol class="percorso">
+          <li class="tappa rivela">
+            <span class="tappa-segno" aria-hidden="true">01</span>
+            <div class="tappa-testo">
+              <h4>Prima si decide cosa vuol dire «funziona»</h4>
+              <p>Prima di scrivere una riga si mette nero su bianco che cosa la funzione deve fare, per chi, e come capiremo che è giusta. Sono i criteri di accettazione: si concordano all'inizio, così alla fine non si discute di impressioni.</p>
+              <span class="tappa-timbro" aria-hidden="true">criteri approvati</span>
+            </div>
+          </li>
+          <li class="tappa rivela">
+            <span class="tappa-segno" aria-hidden="true">02</span>
+            <div class="tappa-testo">
+              <h4>Si costruisce insieme alle sue prove</h4>
+              <p>Ogni funzione nasce con i suoi test automatici: piccoli controlli che ripetono il lavoro da soli e si accorgono subito se qualcosa smette di tornare. Girano a ogni modifica, e se uno solo fallisce la versione non esce.</p>
+              <span class="tappa-timbro" aria-hidden="true">test superati</span>
+            </div>
+          </li>
+          <li class="tappa rivela">
+            <span class="tappa-segno" aria-hidden="true">03</span>
+            <div class="tappa-testo">
+              <h4>Si prova sui dati veri</h4>
+              <p>Non su esempi inventati per l'occasione, ma sull'archivio reale dell'azienda. E quando il programma ne sostituisce un altro, il vecchio diventa il metro di paragone: stessi ingressi, stessi risultati, e ogni differenza va spiegata.</p>
+              <span class="tappa-timbro" aria-hidden="true">confronto superato</span>
+            </div>
+          </li>
+          <li class="tappa rivela">
+            <span class="tappa-segno" aria-hidden="true">04</span>
+            <div class="tappa-testo">
+              <h4>Una revisione indipendente</h4>
+              <p>Chi ha scritto una cosa la rilegge con le stesse convinzioni con cui l'ha scritta, e gli errori scivolano via. Per questo ogni modifica passa da una revisione separata, fatta da occhi freschi che non l'hanno scritta: ogni osservazione si corregge, oppure si accetta per iscritto spiegando perché.</p>
+              <span class="tappa-timbro" aria-hidden="true">rilievi chiusi</span>
+            </div>
+          </li>
+          <li class="tappa rivela">
+            <span class="tappa-segno" aria-hidden="true">05</span>
+            <div class="tappa-testo">
+              <h4>Si rilascia con la strada per tornare indietro</h4>
+              <p>Ogni versione si costruisce da un punto preciso e verificato, si controlla prima e dopo l'installazione, e si sa sempre come tornare a quella di prima. Nessuna sorpresa il lunedì mattina.</p>
+              <span class="tappa-timbro" aria-hidden="true">ritorno pronto</span>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="metodo-blocco">
+        <h3 class="metodo-sottotitolo rivela">Le regole che non cambiano</h3>
+        <div class="regole">
+          <article class="regola rivela">
+            <span class="forza-num">01</span>
+            <h4>Prima il lavoro, poi il codice</h4>
+            <p>Un software su misura comincia dal modo in cui lavora l'azienda: si segue il percorso di un ordine dall'ufficio al magazzino, si ascolta chi lo fa ogni giorno, si capisce dove si perde tempo. Spesso il risultato più prezioso, prima ancora del programma, è un flusso più semplice.</p>
+          </article>
+          <article class="regola rivela" data-ritardo="1">
+            <span class="forza-num">02</span>
+            <h4>Ci si ferma a consolidare</h4>
+            <p>Dopo ogni gruppo di funzioni c'è un giro di stabilizzazione: per un po' non si aggiunge nulla, si rilegge, si rinforza e si sistema ciò che c'è. Un programma che cresce solo in avanti, prima o poi, cede.</p>
+          </article>
+          <article class="regola rivela" data-ritardo="2">
+            <span class="forza-num">03</span>
+            <h4>I tuoi dati non si toccano senza il tuo sì</h4>
+            <p>Nessuna modifica ai dati dell'azienda senza un'approvazione esplicita, e senza una copia di sicurezza fatta prima.</p>
+          </article>
+          <article class="regola rivela">
+            <span class="forza-num">04</span>
+            <h4>Ogni decisione ha il suo perché</h4>
+            <p>Ogni scelta viene scritta insieme al suo motivo e alle strade scartate. Fra un anno, quando qualcuno chiederà «perché funziona così?», la risposta ci sarà.</p>
+          </article>
+          <article class="regola rivela" data-ritardo="1">
+            <span class="forza-num">05</span>
+            <h4>Nessun problema nascosto</h4>
+            <p>Un difetto trovato, un limite, un rischio accettato: restano scritti, con il loro stato. Preferiamo dirti cosa non è ancora perfetto piuttosto che lasciartelo scoprire.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="metodo-blocco">
+        <h3 class="metodo-sottotitolo rivela">Lo stesso programma, nei due modi</h3>
+        <div class="confronto-wrap rivela">
+          <table class="confronto">
+            <thead>
+              <tr><th scope="col"><span class="sr-only">Che cosa</span></th><th scope="col">Fatto in fretta</th><th scope="col">Con il nostro metodo</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Cosa deve fare</th><td class="prima" data-etichetta="Fatto in fretta">Si scopre strada facendo</td><td class="dopo" data-etichetta="Con il nostro metodo">Scritto e concordato prima di cominciare</td></tr>
+              <tr><th scope="row">Su cosa si prova</th><td class="prima" data-etichetta="Fatto in fretta">Qualche esempio inventato</td><td class="dopo" data-etichetta="Con il nostro metodo">I dati veri, e il sistema di prima come metro</td></tr>
+              <tr><th scope="row">Chi lo controlla</th><td class="prima" data-etichetta="Fatto in fretta">Chi l'ha scritto</td><td class="dopo" data-etichetta="Con il nostro metodo">Una revisione indipendente, a ogni modifica</td></tr>
+              <tr><th scope="row">Quando qualcosa cambia</th><td class="prima" data-etichetta="Fatto in fretta">Si spera che il resto regga</td><td class="dopo" data-etichetta="Con il nostro metodo">I test lo ricontrollano da soli</td></tr>
+              <tr><th scope="row">Una versione sbagliata</th><td class="prima" data-etichetta="Fatto in fretta">Si rimedia di corsa</td><td class="dopo" data-etichetta="Con il nostro metodo">Si torna a quella di prima</td></tr>
+              <tr><th scope="row">Fra un anno</th><td class="prima" data-etichetta="Fatto in fretta">Nessuno ricorda perché</td><td class="dopo" data-etichetta="Con il nostro metodo">Ogni decisione è scritta col suo perché</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- La prova: i numeri vengono dalla relazione al cliente di Compono del
+           2026-10-31 (il collaudo contro il vecchio programma), gli stessi della
+           sua scheda in progetti.js. Niente nome del cliente né parole di prodotto -->
+      <div class="metodo-blocco prova-notte rivela">
+        <div class="prova-testo">
+          <p class="eyebrow">Un esempio, misurato</p>
+          <h3>Compono, messo alla prova contro il programma che sostituisce.</h3>
+          <p>Per un'azienda manifatturiera stiamo sostituendo il programma di fine anni Novanta che calcolava i pezzi di ogni prodotto. Il vecchio è diventato il metro di paragone: Compono è stato confrontato con lui su decine di migliaia di casi, finché i risultati non coincidevano.</p>
+          <a class="btn btn-notte" href="progetto.html?id=distinta-base-parametrica">Scopri Compono <span aria-hidden="true">→</span></a>
+        </div>
+        <dl class="prova-cifre">
+          <div><dt>99,94%</dt><dd>delle 43.792 combinazioni del prodotto più complesso, identiche al vecchio programma</dd></div>
+          <div><dt>99,45%</dt><dd>di 33.917 prodotti già realizzati, ricalcolati identici</dd></div>
+          <div><dt>1.000+</dt><dd>test automatici, ripetuti a ogni modifica</dd></div>
+        </dl>
+      </div>
+
+    </section>
+
+    <section class="sezione container" style="padding-top:1rem;">
+      <div class="callout rivela">
+        <div>
+          <h2>Hai un lavoro che merita questo metodo?</h2>
+          <p>Raccontaci come lavori oggi, e cosa vorresti che il software facesse per te. Partiamo da lì, prima ancora del codice.</p>
+        </div>
+        <a class="btn btn-pieno" href="index.html#contatti">Contattaci</a>
+      </div>
     </section>
 
   </main>
@@ -120,6 +297,7 @@
   <script src="assets/js/progetti.js"></script>
   <script src="assets/js/motivi.js"></script>
   <script src="assets/js/portfolio.js"></script>
+  <script src="assets/js/metodo.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>

@@ -11,7 +11,7 @@
 
    Le primitive di animazione (m-pulse, m-flow, m-sweep,
    m-spin-rev, m-travel, m-write, m-bar, m-halo) sono nel CSS
-   (sezioni V7/V8).
+   (sezioni V7/V8); m-esplodi, con la sua m-lastra, in V12.
    ============================================================ */
 window.MOTIVI = (function () {
   "use strict";
@@ -81,29 +81,75 @@ window.MOTIVI = (function () {
     return s;
   }
 
-  /* --- Distinta Base: albero che si dirama (BOM) --- */
-  function distinta() {
-    var s = "";
-    var radice = [200, 30];
-    var l1 = [[120, 92], [280, 92]];
-    var l2 = [[64, 158], [150, 158], [244, 158], [330, 158]];
-    function gomito(a, b, i) {
-      var midY = (a[1] + b[1]) / 2;
-      return '<polyline class="m-edge m-flow" style="--d:' + (i * 0.3).toFixed(2) + 's" fill="none" points="' +
-        a[0] + "," + a[1] + " " + a[0] + "," + midY + " " + b[0] + "," + midY + " " + b[0] + "," + b[1] + '"/>';
+  /* --- Compono: l'esploso. Un prodotto aperto nei suoi strati lungo le
+     guide tratteggiate, come in un disegno di montaggio: è la distinta che
+     scompone l'ordine nei suoi pezzi. Al passaggio del cursore gli strati si
+     ricompongono e si riaprono (m-esplodi, CSS V12).
+     Volutamente astratto (2026-10-31): niente lamiere forate né materiali
+     riconoscibili, che direbbero che cosa produce il cliente. --- */
+  function esploso() {
+    var Y = 82, L = 50, H = 80, PASSO = 74, X0 = 62;
+    function rett(cls, x, y, w, h, extra) {
+      return '<rect class="' + cls + '" x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '"' + (extra || "") + "/>";
     }
-    s += gomito(radice, l1[0], 0) + gomito(radice, l1[1], 1);
-    s += gomito(l1[0], l2[0], 2) + gomito(l1[0], l2[1], 3) + gomito(l1[1], l2[2], 4) + gomito(l1[1], l2[3], 5);
-    s += '<rect class="m-box m-pulse" x="188" y="18" width="24" height="24" rx="6"/>';
-    l1.forEach(function (n, i) {
-      s += '<rect class="m-box m-pulse" style="--d:' + (0.35 + i * 0.3) + 's" x="' + (n[0] - 10) + '" y="' + (n[1] - 10) + '" width="20" height="20" rx="5"/>';
-    });
-    l2.forEach(function (n, i) {
-      s += '<rect class="m-box m-pulse" style="--d:' + (0.9 + i * 0.22) + 's" x="' + (n[0] - 8) + '" y="' + (n[1] - 8) + '" width="16" height="16" rx="4"/>';
-      s += linea("m-edge", n[0], n[1] + 8, n[0], n[1] + 26);
-      s += cerchio("m-node m-pulse", n[0], n[1] + 32, 3, "--d:" + (1.3 + i * 0.22) + "s");
-    });
-    return s;
+    /* il riempimento: un tratteggio a 45° tenuto dentro la lastra, senza clipPath
+       (gli id si ripeterebbero fra un motivo e l'altro della stessa pagina) */
+    function tratteggio(x0) {
+      var t = "";
+      for (var k = -84; k < L; k += 12) {
+        var da = Math.max(0, k), a = Math.min(L, H + k);
+        if (da >= a) continue;
+        t += linea("m-edge", x0 + da, Y + da - k, x0 + a, Y + a - k);
+      }
+      return t;
+    }
+    function strato(i, inner) {
+      return '<g class="m-esplodi" style="--i:' + i + '">' + inner + "</g>";
+    }
+
+    /* tutto il disegno è inclinato di 8,53° (tan = 0,15) attorno a x = 62: y sale verso
+       destra. Misure scelte perché il disegno stia anche nella striscia bassa della card */
+    var s = '<g transform="translate(0 9.3) skewY(-8.53)">';
+
+    /* le guide dell'esploso, dietro agli strati */
+    s += linea("m-edge m-flow", X0, Y, X0 + 3 * PASSO + L, Y);
+    s += linea("m-edge m-flow", X0, Y + H, X0 + 3 * PASSO + L, Y + H, "--d:.8s");
+
+    /* dal fondo verso chi guarda */
+    var x3 = X0 + 3 * PASSO;
+    s += strato(3,
+      rett("m-lastra", x3, Y, L, H) + rett("m-ring", x3, Y, L, H) +
+      rett("m-ring", x3 + 10, Y + 12, 30, 24) + rett("m-ring", x3 + 8, Y + 56, 14, 14) +
+      cerchio("m-node m-pulse", x3 + 10, Y + 12, 2.6, "--d:0s") +
+      cerchio("m-node m-pulse", x3 + 40, Y + 12, 2.6, "--d:.35s") +
+      cerchio("m-node m-pulse", x3 + 40, Y + 36, 2.6, "--d:.7s") +
+      cerchio("m-node m-pulse", x3 + 10, Y + 36, 2.6, "--d:1.05s"));
+
+    var x2 = X0 + 2 * PASSO;
+    s += strato(2,
+      rett("m-lastra", x2, Y, L, H) + tratteggio(x2) + rett("m-ring", x2, Y, L, H) +
+      rett("m-lastra", x2 + 10, Y + 12, 30, 24) + rett("m-ring", x2 + 10, Y + 12, 30, 24) +
+      rett("m-lastra", x2 + 8, Y + 56, 14, 14) + rett("m-ring", x2 + 8, Y + 56, 14, 14));
+
+    /* il telaio, la struttura che regge tutto: il tratto più acceso */
+    var x1 = X0 + PASSO;
+    s += strato(1,
+      rett("m-scan", x1 + 2, Y + 2, L - 4, H - 4) +
+      rett("m-scan", x1 + 8, Y + 10, 34, 28) + rett("m-scan", x1 + 6, Y + 54, 18, 18) +
+      linea("m-scan", x1 + 33, Y + 42, x1 + 33, Y + H - 4) +
+      cerchio("m-node m-pulse", x1 + 33, Y + 42, 3, "--d:.5s"));
+
+    s += strato(0,
+      rett("m-lastra", X0, Y, L, H) + rett("m-box", X0, Y, L, H) +
+      rett("m-lastra", X0 + 10, Y + 12, 30, 24) + rett("m-box", X0 + 10, Y + 12, 30, 24) +
+      rett("m-wedge", X0 + 13, Y + 15, 24, 18) +
+      rett("m-lastra", X0 + 8, Y + 56, 14, 14) + rett("m-box", X0 + 8, Y + 56, 14, 14));
+
+    /* la quota sotto il primo strato: le misure di taglio */
+    s += linea("m-edge m-write", X0, Y + H + 10, X0 + L, Y + H + 10, "--len:50; --d:.3s");
+    s += linea("m-edge", X0, Y + H + 6, X0, Y + H + 14) + linea("m-edge", X0 + L, Y + H + 6, X0 + L, Y + H + 14);
+
+    return s + "</g>";
   }
 
   /* --- Returns Management: macchina a stati con flusso --- */
@@ -230,7 +276,7 @@ window.MOTIVI = (function () {
     "heleox": function () { return wrap(osservazione(), "m-osservazione"); },
     "second-brain": function () { return wrap(sinapsi(), "m-sinapsi"); },
     "scraper-aste-auto": function () { return wrap(radar(), "m-radar"); },
-    "distinta-base-parametrica": function () { return wrap(distinta(), "m-distinta"); },
+    "distinta-base-parametrica": function () { return wrap(esploso(), "m-esploso"); },
     "returns-management-aws": function () { return wrap(flusso(), "m-flusso"); },
     "frgest": function () { return wrap(documento(), "m-documento"); },
     "gestionale-aste-dati": function () { return wrap(grafico(), "m-grafico"); }
