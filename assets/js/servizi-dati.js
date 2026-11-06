@@ -280,13 +280,30 @@ const SERVIZI = [
        immagine: "assets/img/cert-xxx.png", // opzionale (logo)
        medaglia: true,                  // opzionale: l'immagine è il badge della
                                         // certificazione, non un logo, e si mostra più grande
-       miniatura: true }                // opzionale: l'immagine è la miniatura dell'attestato,
+       miniatura: true,                 // opzionale: l'immagine è la miniatura dell'attestato,
                                         // mostrata come un foglio. Togliere prima i dati
                                         // personali (codice fiscale, firme)
+       norme: "UNI 0000:2020",          // opzionali, per la certificazione di una persona:
+       persona: "Nome Cognome",         // le norme, chi è certificato, il numero e la
+       numero: "00-00000",              // scadenza, come sul certificato; verifica è il
+       scadenza: "gg/mm/aaaa",          // registro pubblico dell'ente, registro il suo nome
+       verifica: "https://...", registro: "registro ICMQ" }
    e fai commit + push.
    ============================================================ */
 
 const CERTIFICAZIONI = [
+  // Certificazione del personale ICMQ, certificato e lettera di concessione del 28/10/2026.
+  // Regole ICMQ (PS DOC 01 art. 13, PS DOC 04 del 15/07/2024):
+  // - si cita sempre col campo, i limiti e il numero del certificato;
+  // - dev'essere chiaro che è certificata la persona, Fausto Busato, e non l'azienda;
+  // - il marchio ICMQ va solo dal file ufficiale, coi colori originali: finché manca, icona
+  //   generica. Il marchio ACCREDIA non si usa;
+  // - certificato sospeso, revocato o scaduto: si toglie subito (penale 500 € a violazione).
+  // Il registro si consulta solo con la ricerca (POST), quindi il link va alla pagina di ricerca.
+  { nome: "Esperto in Building Information Modeling — CDE Manager", ente: "ICMQ · certificazione del personale",
+    norme: "UNI 11337-7:2018 · UNI/PdR 78:2020",
+    persona: "Fausto Busato", numero: "26-02391", scadenza: "27/10/2031",
+    verifica: "https://www.icmq.it/ricerca-persone.php", registro: "registro ICMQ" },
   // È un corso, non una certificazione: Fausto l'ha frequentato, la certificazione
   // non l'ha mai ottenuta. Niente logo Federprivacy da solo: il regolamento lo ammette solo
   // per attestare l'iscrizione all'associazione (vedi ASSOCIAZIONI qui sotto). Al suo posto la

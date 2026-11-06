@@ -53,6 +53,29 @@
         span.textContent = dettaglio;
         testo.appendChild(span);
       }
+      if (c.norme) {
+        const span = document.createElement("span");
+        span.textContent = c.norme;
+        testo.appendChild(span);
+      }
+      /* Certificazione di una persona: chi, numero e scadenza, come chiede l'ente */
+      const titolare = [c.persona, c.numero && "certificato n° " + c.numero, c.scadenza && "scadenza " + c.scadenza]
+        .filter(Boolean).join(" · ");
+      if (titolare) {
+        const span = document.createElement("span");
+        span.textContent = titolare;
+        testo.appendChild(span);
+      }
+      if (c.verifica) {
+        const link = document.createElement("a");
+        link.className = "certificazione-verifica";
+        link.href = c.verifica;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.textContent = "verifica nel " + (c.registro || "registro dell'ente");
+        if (c.numero) link.title = "Cerca il certificato n° " + c.numero;
+        testo.appendChild(link);
+      }
       card.appendChild(testo);
 
       griglia.appendChild(card);
