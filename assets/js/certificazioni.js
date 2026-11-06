@@ -23,6 +23,10 @@
     if (sezione) sezione.hidden = false;
 
     CERTIFICAZIONI.forEach(function (c) {
+      /* Le pagine dei servizi dicono di che cosa documentano la competenza:
+         una certificazione estranea a quel campo resta solo nella home */
+      if (c.soloHome && !griglia.closest("#certificazioni")) return;
+
       const card = document.createElement("div");
       card.className = "certificazione";
 

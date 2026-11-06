@@ -287,7 +287,9 @@ const SERVIZI = [
        persona: "Nome Cognome",         // le norme, chi è certificato, il numero e la
        numero: "00-00000",              // scadenza, come sul certificato; verifica è il
        scadenza: "gg/mm/aaaa",          // registro pubblico dell'ente, registro il suo nome
-       verifica: "https://...", registro: "registro ICMQ" }
+       verifica: "https://...", registro: "registro ICMQ",
+       soloHome: true }                 // opzionale: non compare nelle pagine dei servizi, se
+                                        // è estranea alle competenze di cui parlano
    e fai commit + push.
    ============================================================ */
 
@@ -300,10 +302,12 @@ const CERTIFICAZIONI = [
   //   generica. Il marchio ACCREDIA non si usa;
   // - certificato sospeso, revocato o scaduto: si toglie subito (penale 500 € a violazione).
   // Il registro si consulta solo con la ricerca (POST), quindi il link va alla pagina di ricerca.
+  // Solo in home: le pagine dei servizi parlano di privacy, sicurezza e continuità operativa, e
+  // lì sarebbe fuori dal suo campo, che ICMQ giudica uso scorretto (PS DOC 04 art. 4).
   { nome: "Esperto in Building Information Modeling — CDE Manager", ente: "ICMQ · certificazione del personale",
     norme: "UNI 11337-7:2018 · UNI/PdR 78:2020",
     persona: "Fausto Busato", numero: "26-02391", scadenza: "27/10/2031",
-    verifica: "https://www.icmq.it/ricerca-persone.php", registro: "registro ICMQ" },
+    verifica: "https://www.icmq.it/ricerca-persone.php", registro: "registro ICMQ", soloHome: true },
   // È un corso, non una certificazione: Fausto l'ha frequentato, la certificazione
   // non l'ha mai ottenuta. Niente logo Federprivacy da solo: il regolamento lo ammette solo
   // per attestare l'iscrizione all'associazione (vedi ASSOCIAZIONI qui sotto). Al suo posto la
