@@ -1936,6 +1936,24 @@ h3{ font-size:1.18rem; font-weight:600; }
   --accent-soft: color-mix(in srgb, var(--accent) 13%, transparent);
   --accent-line: color-mix(in srgb, var(--accent) 34%, transparent);
 }
+/* Pagina frGest (frgest.html): stessi blocchi di Cyberse, con l'accento di frGest */
+.pagina-frgest{
+  --accent:#2563eb;
+  --accent-2: color-mix(in srgb, var(--accent) 78%, #0a1220);
+  --accent-soft: color-mix(in srgb, var(--accent) 13%, transparent);
+  --accent-line: color-mix(in srgb, var(--accent) 34%, transparent);
+}
+.pagina-frgest .cy-centro{ background:linear-gradient(165deg, #10264f, #0a1a38); }
+.richiamo-marchio.fg-marchio{
+  display:flex; align-items:center; gap:1.1rem; padding:1.3rem 1.4rem;
+  background:linear-gradient(165deg, var(--surface), var(--surface-2));
+}
+.richiamo-marchio.fg-marchio img{ width:72px; height:72px; flex:none; }
+.fg-marchio strong{ display:block; font-family:var(--font-display); font-size:1.7rem; line-height:1.1; }
+.fg-marchio span{ display:block; margin-top:.3rem; font-family:var(--font-mono); font-size:.72rem; color:var(--faint); }
+.fg-limiti{ margin:0; gap:.8rem; }
+.fg-limiti li{ font-size:1rem; }
+.cy-sezione .stat-griglia{ margin-top:1.8rem; }
 .cy-hero{
   display:grid; grid-template-columns:1.3fr .9fr; gap:3rem; align-items:center;
   padding:4.2rem 0 2.2rem;

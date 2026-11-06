@@ -18,6 +18,7 @@ Completamente responsive; le animazioni si disattivano per chi ha attivo
 ├── servizio.html            → pagina di un servizio (dinamica, ?id=...)
 ├── blog.html                → annunci e novità
 ├── cyberse.html             → la scheda di Cyberse
+├── frgest.html              → la scheda di frGest
 ├── privacy.html             → informativa privacy (GDPR)
 ├── cookie-policy.html       → cookie policy (Linee guida Garante)
 ├── robots.txt, sitemap.xml
@@ -57,6 +58,7 @@ aggiorna da solo.
 | Immagini di un progetto | `assets/img/progetti/image_<id>/` | File `1`, `2`, `3` (webp, jpg, jpeg o png): l'immagine N accompagna la riga N della pagina. Senza immagini si vede un segnaposto. |
 | Servizi | `assets/js/servizi-dati.js`, array `SERVIZI` | Un servizio nuovo va aggiunto anche a `sitemap.xml`. Il campo opzionale `azioni` sostituisce i pulsanti in testa alla pagina. |
 | Cyberse | `cyberse.html` (la scheda, dalla presentazione ai clienti) + riquadro `.richiamo` nella sezione Servizi di `index.html` + card in `progetti.js` (prima voce, «Disponibile per MSP», campo `pagina` verso la scheda) | Le regole sui testi sono in testa a `cyberse.html`. Le schermate in `assets/img/cyberse/` vengono solo dall'ambiente dimostrativo. `progetto.html?id=cyberse` e `servizio.html?id=cyberse` rimandano alla scheda. Il bottone «Accedi a MSP» nel menu di ogni pagina, dopo «Contatti» e con lo stesso stile, porta a `https://msp.fr-busato.it/accesso`. |
+| frGest | `frgest.html` (la scheda, stessi blocchi `.cy-*` di Cyberse) + card in `progetti.js` (campo `pagina`). Il segno è `assets/img/frgest.svg`, copia di quello del programma. Le regole sui testi sono nel commento in testa alla pagina. |
 | Certificazioni | `assets/js/servizi-dati.js`, array `CERTIFICAZIONI` | Con l'array vuoto la sezione resta nascosta. |
 | Annunci del blog | `assets/data/annunci.json` | I campi sono descritti in testa a `blog.js`. |
 | Recensioni | `assets/data/recensioni.json` | Si pubblicano solo quelle approvate. Il modulo sul sito non salva nulla: apre un'email precompilata verso fausto@fr-busato.it. |

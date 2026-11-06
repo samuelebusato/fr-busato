@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>frGest — Il gestionale per le piccole aziende — F.R. di Busato Fausto</title>
+  <meta name="description" content="frGest: dal preventivo all'incasso, tutto il giro dei documenti in un posto solo. Dal browser, in più persone, con fatture elettroniche, magazzino, IVA, scadenze e banche che nascono dagli stessi documenti.">
+  <link rel="canonical" href="https://www.fr-busato.it/frgest.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="F.R. di Busato Fausto">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:title" content="frGest — Il gestionale per le piccole aziende">
+  <meta property="og:description" content="Dal preventivo all'incasso, tutto il giro dei documenti in un posto solo: dal browser, in più persone.">
+  <meta property="og:url" content="https://www.fr-busato.it/frgest.html">
+  <meta property="og:image" content="https://www.fr-busato.it/assets/img/og-card.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Scheda di frGest, sullo schema di cyberse.html. Fonte: la nota «06 Sviluppo/frgest.md»
+       del Second Brain, stato al commit 8fb3c24 (2026-11-05).
+       Regole sui testi:
+       - solo ciò che è costruito e in esercizio; il client per Windows è il prossimo passo, la
+         rete agenti non c'è;
+       - frGest scrive e legge i file della fattura elettronica ma non li trasmette (lo fa
+         l'intermediario), e con un intermediario vero non è ancora stato provato: non si scrive
+         che lo sia;
+       - le ricevute si abbinano al file per nome: con un intermediario che rinomina, come
+         YouDOX, non regge, e il testo lo dice senza nominarlo;
+       - l'importazione legge solo l'archivio del frGest di prima, non altri gestionali;
+       - niente nomi di clienti, niente prezzi (un listino non c'è), niente clienti esterni
+         finché non ci sono;
+       - niente schermate: finché non c'è un'azienda dimostrativa con dati inventati, i dati veri
+         non finiscono su un sito.
+       I numeri: «5.381 su 5.382» è l'importazione di un archivio cliente (fuori un preventivo
+       vuoto, un solo totale diverso per il dato di allora); 24 tipi di documento dal registro
+       portato dal programma storico; 640+ test: 648 passati sulla VM al commit 8fb3c24.
+       Il segno è assets/img/frgest.svg, copia di FrGest.Web/wwwroot/frgest.svg.
+       Quando frGest cambia stato questa pagina va riletta. -->
+</head>
+<body class="pagina-frgest">
+
+  <a class="skip-link" href="#contenuto">Vai al contenuto</a>
+
+  <div class="progresso" id="progresso" aria-hidden="true"></div>
+  <div class="sfondo" aria-hidden="true"></div>
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <div class="orb orb-a" aria-hidden="true"></div>
+  <div class="orb orb-b" aria-hidden="true"></div>
+
+  <header class="header">
+    <nav class="nav container" aria-label="Navigazione principale">
+      <a class="marchio" href="index.html">
+        <span class="marchio-logo">F.R.</span>
+        <span class="marchio-testo">
+          <strong>F.R. di Busato Fausto</strong>
+          <span>l'informatica al tuo servizio</span>
+        </span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="menu" aria-label="Apri il menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu" id="menu">
+        <li><a href="index.html#azienda">L'Azienda</a></li>
+        <li><a href="index.html#servizi">Servizi</a></li>
+        <li><a href="index.html#certificazioni">Certificazioni</a></li>
+        <li><a class="attivo" href="sviluppo-software.html">Sviluppo Software</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a class="nav-cta" href="index.html#contatti">Contatti</a></li>
+        <li class="nav-voce-portale"><a class="nav-cta nav-portale" href="https://msp.fr-busato.it/accesso">Accedi a MSP</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="contenuto">
+
+    <!-- ================= HERO ================= -->
+    <section class="container cy-hero">
+      <div>
+        <a class="torna entra" href="sviluppo-software.html"><span aria-hidden="true">←</span> Tutti i progetti</a>
+        <p class="eyebrow entra">Il gestionale per le piccole aziende</p>
+        <h1 class="entra" data-passo="1"><span class="gradiente">frGest</span></h1>
+        <p class="sottotitolo entra" data-passo="2" style="margin-top:1rem">Dal preventivo all'incasso, tutto il giro dei documenti in un posto solo: dal browser, in più persone, con i conti che tornano perché nascono dagli stessi documenti.</p>
+        <div class="richiamo-annuncio entra" data-passo="2">
+          <span class="richiamo-badge">✦ Nuova versione web</span>
+          <p>Rifatto da capo e online da settembre 2026: vent'anni di mestiere dentro, un motore nuovo sotto.</p>
+        </div>
+        <div class="hero-azioni entra" data-passo="3">
+          <a class="btn btn-pieno" href="index.html#contatti">Richiedi informazioni</a>
+          <a class="btn btn-vuoto" href="https://frgest.fr-busato.it/">Accedi a frGest</a>
+        </div>
+      </div>
+      <div class="richiamo-vetrina entra" data-passo="2" aria-hidden="true">
+        <div class="richiamo-marchio fg-marchio">
+          <img src="assets/img/frgest.svg" alt="" width="48" height="48" decoding="async">
+          <div>
+            <strong>frGest</strong>
+            <span>Preventivo → Fattura → Incasso</span>
+          </div>
+        </div>
+        <ul class="richiamo-check">
+          <li><i></i>Dal browser, in più persone insieme</li>
+          <li><i></i>Fatture elettroniche, nei due sensi</li>
+          <li><i></i>IVA e scadenze dagli stessi documenti</li>
+          <li><i></i>Il magazzino, col suo costo vero</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= IL PUNTO DI PARTENZA ================= -->
+    <section class="container cy-sezione">
+      <p class="eyebrow">Il punto di partenza</p>
+      <h2>Il gestionale di una piccola azienda, oggi</h2>
+      <p class="sottotitolo">Che cosa serve lo sapete già: bolle, fatture, scadenze. Il problema non è scriverle, è tenere tutto il resto allineato.</p>
+      <div class="cy-griglia tre">
+        <div class="cy-carta"><h3>Una persona alla volta</h3><p>Il programma sta su un PC, con l'archivio accanto. Se in due devono lavorarci, uno aspetta.</p></div>
+        <div class="cy-carta"><h3>I conti su un foglio a parte</h3><p>Scadenze, IVA e previsione della banca si rifanno a mano, e poi c'è da capire quale numero è quello giusto.</p></div>
+        <div class="cy-carta"><h3>Le fatture dei fornitori da ribattere</h3><p>Arrivano già elettroniche, ma caricarle a mano costa più di quanto rende. Così non lo fa quasi nessuno, e il costo vero della merce resta un'idea.</p></div>
+      </div>
+    </section>
+
+    <!-- ================= LA PROPOSTA ================= -->
+    <section class="container cy-sezione">
+      <p class="eyebrow">La proposta</p>
+      <h2>frGest, in una frase</h2>
+      <p class="cy-frase">Un documento nasce in bozza, e quando lo emettete muove da solo magazzino, IVA e scadenze: <strong>i conti non si tengono a mano, si leggono</strong>.</p>
+      <ol class="forza-flusso" aria-label="Il giro dei documenti">
+        <li>Preventivo</li>
+        <li>Ordine</li>
+        <li>DDT</li>
+        <li>Fattura</li>
+        <li>Incasso</li>
+      </ol>
+      <div class="cy-griglia tre">
+        <div class="cy-carta"><h3>Il numero arriva all'emissione</h3><p>La bozza non ha numero. Lo riceve quando la emettete: senza buchi né doppioni anche se lavorate in più persone, e nell'ordine delle date.</p></div>
+        <div class="cy-carta"><h3>Emesso, resta com'era</h3><p>All'emissione si congelano cliente, IVA e scadenze. I prezzi e i listini valgono da una data: una fattura vecchia non cambia se domani cambia un listino.</p></div>
+        <div class="cy-carta"><h3>Uno nasce dall'altro</h3><p>Il preventivo diventa ordine, l'ordine si consegna anche a pezzi, i DDT del mese diventano la fattura differita. Senza ribattere niente, e senza fatturare due volte la stessa riga.</p></div>
+      </div>
+    </section>
+
+    <!-- ================= DA DOVE NASCONO I CONTI ================= -->
+    <section class="container cy-sezione">
+      <p class="eyebrow">Come tornano i conti</p>
+      <h2>Da dove nascono i numeri</h2>
+      <div class="cy-flusso">
+        <div class="cy-carta">
+          <h3>Che cosa scrivete</h3>
+          <ul class="cy-elenco">
+            <li><strong>I documenti di vendita</strong>: preventivi, ordini, DDT, fatture, note di credito</li>
+            <li><strong>Gli incassi e i pagamenti</strong>, anche su più rate</li>
+            <li><strong>Le ore e gli interventi</strong>, se vendete servizi</li>
+          </ul>
+          <h3 style="margin-top:1.1rem">Che cosa caricate</h3>
+          <ul class="cy-elenco">
+            <li><strong>Le fatture dei fornitori</strong>, dai file dell'intermediario</li>
+            <li><strong>Gli esiti della banca</strong>, per RIBA e bonifici</li>
+          </ul>
+        </div>
+        <span class="cy-freccia" aria-hidden="true">→</span>
+        <div class="cy-carta cy-centro">
+          <h3>frGest</h3>
+          <p>Ogni movimento viene da un documento. Nessun saldo è tenuto a mano: giacenze, residui e registri sono la somma di ciò che è successo.</p>
+        </div>
+        <span class="cy-freccia" aria-hidden="true">→</span>
+        <div class="cy-carta">
+          <h3>Che cosa leggete</h3>
+          <ul class="cy-elenco">
+            <li><strong>Il magazzino</strong>: giacenza, ordinato, impegnato e valore</li>
+            <li><strong>I registri IVA</strong> e la liquidazione del periodo</li>
+            <li><strong>Gli scadenzari</strong> di clienti e fornitori</li>
+            <li><strong>La previsione delle banche</strong>, mese per mese</li>
+            <li><strong>Il cruscotto</strong>: fatturato e spese contro l'anno prima</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= LA FATTURA ELETTRONICA ================= -->
+    <section class="container cy-sezione">
+      <p class="eyebrow">La fattura elettronica</p>
+      <h2>Nei due sensi</h2>
+      <p class="sottotitolo">È il punto in cui il gestionale incontra l'Agenzia delle Entrate. frGest prepara e legge i file; a trasmetterli e a riceverli è l'intermediario che avete scelto.</p>
+      <div class="cy-griglia due">
+        <div class="cy-carta"><h3>File controllati prima di uscire</h3><p>Il file XML si scrive dal documento emesso, anche verso la Pubblica Amministrazione, e passa dallo schema ufficiale prima di esservi consegnato. Dopo uno scarto se ne prepara un altro, con un nome nuovo.</p></div>
+        <div class="cy-carta"><h3>Le fatture dei fornitori, senza ribatterle</h3><p>Caricate i file dell'intermediario, anche firmati o raccolti in archivi zip: il fornitore si riconosce o si crea in anagrafica, i doppioni si fermano, e la fattura può registrarsi da sola con la proposta del mese di detrazione.</p></div>
+        <div class="cy-carta"><h3>Dalla fattura al magazzino</h3><p>Le righe della fattura si confrontano con la merce ricevuta. Quando il DDT del fornitore è lo stesso, il collegamento lo fa frGest; i codici del fornitore si imparano e si propongono la volta dopo.</p></div>
+        <div class="cy-carta"><h3>Ricevute e stati</h3><p>Le ricevute dello SdI si importano e aggiornano lo stato del documento (consegnato, scartato, accettato o rifiutato dalla Pubblica Amministrazione), quando l'intermediario conserva il nome del file.</p></div>
+      </div>
+    </section>
+
+    <!-- ================= L'IVA ================= -->
+    <section class="container cy-sezione">
+      <p class="eyebrow">L'IVA</p>
+      <h2>Senza un foglio a parte</h2>
+      <p class="sottotitolo">Le regole fiscali sono state lette alla fonte prima di scriverle, Testo unico IVA compreso. I numeri vengono dai documenti, quindi tornano.</p>
+      <div class="cy-griglia tre">
+        <div class="cy-carta"><h3>Registri e liquidazione</h3><p>Registro vendite e registro acquisti, liquidazione periodica con i suoi righi. La chiude il titolare, e un periodo chiuso non accetta più documenti.</p></div>
+        <div class="cy-carta"><h3>Comunicazione e acconto</h3><p>Il file della comunicazione trimestrale esce già controllato con lo schema ufficiale. L'acconto di dicembre è proposto con i suoi metodi, e si scala da solo nell'ultima liquidazione.</p></div>
+        <div class="cy-carta"><h3>Categorie e prospetto ISA</h3><p>Ogni riga fatturata ha la sua categoria, e il prospetto ne ricava le percentuali da portare al commercialista: una proposta, che frGest non compila né trasmette. Oggi il modello disponibile è uno, il DG66U.</p></div>
+      </div>
+    </section>
+
+    <!-- ================= IL MAGAZZINO ================= -->
+    <section class="container cy-sezione">
+      <p class="eyebrow">Il magazzino</p>
+      <h2>Col suo costo vero</h2>
+      <div class="cy-griglia tre">
+        <div class="cy-carta"><h3>Il costo viene dalla fattura</h3><p>Riscontrata la fattura del fornitore, ogni carico ha il suo costo, con le spese ripartite sulla merce. Finché la fattura non c'è, vale il costo del ricevimento.</p></div>
+        <div class="cy-carta"><h3>Giacenza e valore</h3><p>Giacenza, ordinato e impegnato per articolo, e il valore a una data a costo medio ponderato, FIFO o ultimo costo.</p></div>
+        <div class="cy-carta"><h3>Ubicazioni</h3><p>Un articolo in più posti. La merce che entra è da smistare, con la proposta del posto abituale; quella che esce si preleva dalla più vecchia, e il documento dice da dove.</p></div>
+      </div>
+    </section>
+
+    <!-- ================= INCASSI E BANCHE ================= -->
+    <section class="container cy-sezione">
+      <p class="eyebrow">Incassi, pagamenti e banche</p>
+      <h2>Che cosa entra, che cosa esce, e quando</h2>
+      <div class="cy-griglia due">
+        <div class="cy-carta"><h3>Scadenzari</h3><p>Le rate di clienti e fornitori, con incassi e pagamenti su più rate e le compensazioni con le note di credito. L'IVA a esigibilità differita diventa esigibile quando incassate.</p></div>
+        <div class="cy-carta"><h3>Più banche, un saldo previsto</h3><p>Ogni conto ha il suo saldo, e la previsione mese per mese di ciò che entrerà e uscirà dalle scadenze, con lo scaduto in evidenza.</p></div>
+        <div class="cy-carta"><h3>RIBA</h3><p>Le distinte nel formato CBI, e gli esiti della banca che tornano nello scadenzario: pagato, insoluto, richiamato.</p></div>
+        <div class="cy-carta"><h3>Bonifici</h3><p>Il file per la banca in formato SEPA, controllato con lo schema ufficiale. Ogni bonifico registra il suo pagamento, e un esito negativo lo annulla da solo.</p></div>
+      </div>
+    </section>
+
+    <!-- ================= SERVIZI E COMMESSE ================= -->
+    <section class="container cy-sezione">
+      <p class="eyebrow">Non solo merce</p>
+      <h2>Per chi vende anche servizi</h2>
+      <div class="cy-griglia tre">
+        <div class="cy-carta"><h3>Abbonamenti</h3><p>Periodicità per abbonamento, anticipati o posticipati, il primo periodo in proporzione ai giorni. Il canone è scritto, o viene dal listino. Al momento di fatturare, una fattura in bozza per cliente.</p></div>
+        <div class="cy-carta"><h3>Pacchetti e interventi</h3><p>Il registro degli interventi scala i pacchetti prepagati, dal più vecchio. Oltre il pacchetto si passa a consumo, al prezzo di listino.</p></div>
+        <div class="cy-carta"><h3>Commesse</h3><p>Ricavi, costi, ore, trasferte e merce scaricata, con il margine contro il previsto: il consuntivo si legge senza farlo.</p></div>
+      </div>
+    </section>
+
+    <!-- ================= OGNI GIORNO ================= -->
+    <section class="container cy-sezione">
+      <p class="eyebrow">Ogni giorno</p>
+      <h2>Quello che si vede appena entrati</h2>
+      <div class="cy-griglia tre">
+        <div class="cy-carta"><h3>Il cruscotto</h3><p>Fatturato e spese dell'anno contro lo stesso tratto dell'anno prima, mese per mese, con le scadenze di incassi e pagamenti. E dice che cosa non torna ancora: bozze rimaste, file che non si leggono.</p></div>
+        <div class="cy-carta"><h3>Elenchi che rispondono</h3><p>Ogni elenco si ordina e si filtra dalle intestazioni delle colonne, e il filtro resta nell'indirizzo della pagina.</p></div>
+        <div class="cy-carta"><h3>La stampa</h3><p>Ogni documento si stampa in PDF, con la testata della vostra azienda, il riepilogo IVA e i totali.</p></div>
+      </div>
+    </section>
+
+    <!-- ================= L'ARCHIVIO DI PRIMA ================= -->
+    <section class="container cy-sezione">
+      <div class="cy-riga" style="margin-top:0; align-items:start">
+        <div>
+          <p class="eyebrow">Per chi usa già frGest</p>
+          <h2>Il programma di prima, dentro</h2>
+          <p class="sottotitolo">Non si ricomincia da zero. Il titolare carica l'archivio del vecchio programma, e frGest lo porta dentro: anagrafiche, listini, documenti col loro numero originale, incassi, giacenze e interventi.</p>
+          <p class="sottotitolo" style="margin-top:1rem">Dall'archivio di un'azienda sono entrati <strong>5.381 documenti su 5.382</strong>: fuori un solo preventivo vuoto, e un solo totale diverso, per un dato già sbagliato allora.</p>
+        </div>
+        <div>
+          <h3 style="font-size:1.3rem">Come si fa</h3>
+          <ol class="servizio-approccio">
+            <li><div class="passo-testo"><strong>Si carica il file</strong><p>Dalla pagina dell'azienda, senza installare niente. L'archivio di un'altra partita IVA viene rifiutato.</p></div></li>
+            <li><div class="passo-testo"><strong>Una prova, con il resoconto</strong><p>frGest dice che cosa entrerebbe e che cosa no, prima di toccare qualcosa.</p></div></li>
+            <li><div class="passo-testo"><strong>La conferma del titolare</strong><p>Solo allora i dati entrano. Si può rilanciare senza creare doppioni.</p></div></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= LA PIATTAFORMA ================= -->
+    <section class="container cy-sezione">
+      <p class="eyebrow">La piattaforma</p>
+      <h2>Dove stanno i vostri dati</h2>
+      <p class="sottotitolo">Un gestionale custodisce i conti di un'azienda. Deve difenderli meglio di quanto faccia un PC in ufficio.</p>
+      <div class="cy-griglia tre">
+        <div class="cy-carta"><h3>Ogni azienda isolata</h3><p>La separazione la impone il database stesso, non il programma che ci scrive sopra.</p></div>
+        <div class="cy-carta"><h3>Un accesso solo</h3><p>Si entra con l'accesso unico dei servizi F.R., protetto dal secondo fattore. frGest non custodisce password.</p></div>
+        <div class="cy-carta"><h3>Ognuno il suo ruolo</h3><p>Titolare, operatori e chi consulta soltanto: ciascuno vede e fa ciò che il suo ruolo consente.</p></div>
+        <div class="cy-carta"><h3>Due modifiche, nessuna persa</h3><p>Se in due toccate la stessa bozza, la seconda modifica viene fermata e non sovrascrive la prima.</p></div>
+        <div class="cy-carta"><h3>Solo canale cifrato</h3><p>Il servizio risponde unicamente in HTTPS, e chi non è entrato non vede nessuna pagina.</p></div>
+        <div class="cy-carta"><h3>I dati restano vostri</h3><p>L'archivio dei dati di un'azienda si può scaricare. Se la si cancella, ci sono trenta giorni per ripensarci.</p></div>
+      </div>
+    </section>
+
+    <!-- ================= I NUMERI ================= -->
+    <section class="container cy-sezione">
+      <p class="eyebrow">I numeri</p>
+      <h2>Presi dal progetto, non stime</h2>
+      <div class="stat-griglia">
+        <div class="stat"><span class="stat-num">2002</span><span class="stat-testo">l'anno della prima versione: vent'anni di uso nelle piccole aziende, riportati nelle regole di quella nuova.</span></div>
+        <div class="stat"><span class="stat-num">5.381 su 5.382</span><span class="stat-testo">documenti di un'azienda portati dal vecchio programma.</span></div>
+        <div class="stat"><span class="stat-num">24</span><span class="stat-testo">tipi di documento, dal preventivo alla nota di credito con reso, guidati da un unico registro delle regole.</span></div>
+        <div class="stat"><span class="stat-num">640+</span><span class="stat-testo">test automatici su un database vero, a ogni rilascio: isolamento fra aziende, numerazione contemporanea, calcoli fiscali, file ufficiali.</span></div>
+      </div>
+    </section>
+
+    <!-- ================= IN SINTESI ================= -->
+    <section class="container cy-sezione">
+      <p class="eyebrow">In sintesi</p>
+      <h2>Che cosa è cambiato dal programma di prima</h2>
+      <p class="sottotitolo">Non è il vecchio programma portato sul web: è stato rifatto da capo, tenendo le regole di calcolo che funzionavano.</p>
+      <div class="cy-griglia tre">
+        <div class="cy-carta">
+          <span class="cy-num">Aggiunto</span>
+          <h3>Prima non c'era</h3>
+          <ul class="cy-elenco">
+            <li><strong>Fatture dei fornitori</strong> dai file XML, registrate anche da sole</li>
+            <li><strong>Il costo della merce</strong> e il valore del magazzino</li>
+            <li><strong>Riscontro</strong> fra fattura e merce ricevuta</li>
+            <li><strong>Registri IVA</strong>, liquidazione, comunicazione e acconto</li>
+            <li><strong>Conti con i movimenti</strong> e previsione delle banche</li>
+            <li><strong>Esiti di RIBA e bonifici</strong>, bonifici SEPA</li>
+            <li><strong>Abbonamenti</strong>, categorie dei ricavi e prospetto ISA</li>
+            <li><strong>Cruscotto</strong></li>
+            <li><strong>Importazione</strong> dell'archivio di prima</li>
+          </ul>
+        </div>
+        <div class="cy-carta">
+          <span class="cy-num">Migliorato</span>
+          <h3>C'era, ora va meglio</h3>
+          <ul class="cy-elenco">
+            <li><strong>Più persone insieme</strong>, numerazione senza buchi</li>
+            <li><strong>Riepilogo IVA</strong> che quadra sempre col totale</li>
+            <li><strong>File XML</strong> controllato sullo schema ufficiale</li>
+            <li><strong>Conversioni</strong>: l'ordine si consegna anche a pezzi</li>
+            <li><strong>Incassi e pagamenti</strong> su più rate, con le compensazioni</li>
+            <li><strong>RIBA</strong>: distinte registrate, mai due volte la stessa rata</li>
+            <li><strong>Ubicazioni</strong> con proposta e prelievo dalla merce più vecchia</li>
+            <li><strong>Commesse</strong> con costi veri e margine</li>
+            <li><strong>Accesso</strong> col secondo fattore</li>
+          </ul>
+        </div>
+        <div class="cy-carta">
+          <span class="cy-num">Modificato</span>
+          <h3>Ora funziona diversamente</h3>
+          <ul class="cy-elenco">
+            <li><strong>Dal browser</strong>, non più sul PC con l'archivio accanto</li>
+            <li><strong>Il numero</strong> arriva all'emissione, non all'apertura</li>
+            <li><strong>La fattura immediata</strong> scarica il magazzino</li>
+            <li><strong>Due note di credito</strong>: con reso di merce e senza</li>
+            <li><strong>Negli acquisti</strong> vale il listino del fornitore, non il prezzo di vendita</li>
+            <li><strong>Gli annullamenti</strong> restano scritti col motivo, niente cancellazioni</li>
+            <li><strong>Tre ruoli</strong>: titolare, operatore, consultazione</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PER ESSERE CHIARI ================= -->
+    <section class="container cy-sezione">
+      <div class="cy-riga" style="margin-top:0; align-items:start">
+        <div>
+          <p class="eyebrow">Per essere chiari</p>
+          <h2>Che cosa frGest non fa</h2>
+          <p class="sottotitolo">Meglio saperlo prima. Se una di queste cose vi serve, parliamone: alcune sono già in programma, altre no.</p>
+        </div>
+        <ul class="cy-elenco fg-limiti">
+          <li><strong>Non trasmette allo SdI:</strong> i file li consegna e li riceve il vostro intermediario.</li>
+          <li><strong>Non è una contabilità generale:</strong> prima nota e bilancio restano al commercialista.</li>
+          <li><strong>Non gestisce ritenuta d'acconto e cassa previdenziale</strong>, né il registro dei corrispettivi.</li>
+          <li><strong>Non ha ancora la rete agenti</strong> con le provvigioni.</li>
+          <li><strong>Non ha ancora, fra le cose del programma di prima:</strong> i dati di trasporto sul DDT, lo sconto di testata, la doppia unità di misura, gli inventari e le rettifiche di magazzino, le destinazioni multiple, l'invio di email e PEC.</li>
+          <li><strong>Non ha ancora il client per Windows</strong>, per chi inserisce molto: è il prossimo passo, oggi si lavora dal browser.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= INVITO ================= -->
+    <section class="container cy-sezione">
+      <div class="callout">
+        <div>
+          <p class="eyebrow">frGest</p>
+          <h2>Parliamo della vostra azienda.</h2>
+          <p>Raccontateci come lavorate oggi e con che cosa. Se usate già il frGest di prima, si parte da una prova sul vostro archivio.</p>
+        </div>
+        <div class="hero-azioni">
+          <a class="btn btn-pieno" href="index.html#contatti">Richiedi informazioni</a>
+          <a class="btn btn-vuoto" href="https://frgest.fr-busato.it/">Accedi a frGest</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-griglia">
+        <div class="footer-col">
+          <a class="marchio" href="index.html">
+            <span class="marchio-logo">F.R.</span>
+            <span class="marchio-testo">
+              <strong>F.R. di Busato Fausto</strong>
+              <span>l'informatica al tuo servizio</span>
+            </span>
+          </a>
+          <p style="max-width:22rem; margin-top:1rem;">Sviluppo software su misura, reti sicure, consulenza informatica e privacy, assistenza e formazione per le aziende dal 2000.</p>
+        </div>
+        <div class="footer-col">
+          <h3>Navigazione</h3>
+          <ul>
+            <li><a href="index.html#azienda">L'Azienda</a></li>
+            <li><a href="index.html#servizi">Servizi</a></li>
+            <li><a href="index.html#certificazioni">Certificazioni</a></li>
+            <li><a href="sviluppo-software.html">Sviluppo Software</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="index.html#contatti">Contatti</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Informazioni legali</h3>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="cookie-policy.html">Cookie Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-legale">
+        <span>© <span id="anno-corrente"></span> F.R. di Busato Fausto — Novellara (RE)</span>
+        <span>P.IVA 01878620358</span>
+      </div>
+      <p class="footer-marchi">Microsoft e Microsoft 365 sono marchi del gruppo di società Microsoft. Dell Technologies, Dell e altri marchi sono marchi di Dell Inc. o delle sue sussidiarie. WatchGuard e WatchGuardONE sono marchi registrati o marchi di WatchGuard Technologies, Inc. negli Stati Uniti e/o in altri paesi. Acronis® è un marchio registrato di Acronis International GmbH e/o delle sue affiliate negli Stati Uniti e in altri paesi. Adobe è un marchio registrato o un marchio di Adobe negli Stati Uniti e/o in altri paesi. Lenovo e Lenovo 360 sono marchi registrati o marchi commerciali di Lenovo. Federprivacy® è un marchio registrato dell’Associazione Federprivacy. Gli altri marchi citati appartengono ai rispettivi titolari.</p>
+    </div>
+  </footer>
+
+  <div class="avviso-cookie" id="avviso-cookie" role="region" aria-label="Informativa sui cookie" hidden>
+    <p>Questo sito non utilizza cookie di profilazione. Vengono impiegati solo strumenti tecnici necessari al funzionamento. Maggiori dettagli nella <a href="cookie-policy.html">Cookie Policy</a>.</p>
+    <button class="btn btn-pieno" id="chiudi-cookie">Ho capito</button>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

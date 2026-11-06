@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="frGest">
+  <!--
+    La scheda del browser. Il segno è fratello di quello di Cyberse (Msp.Web/wwwroot/cyberse.svg):
+    tratto bianco da 3,7, riduzione allo 0,82, un solo dettaglio pieno. Dove Cyberse ha il
+    pianeta con lo scudo, frGest ha il documento, e l'orbita con la freccia dice lo stesso
+    movimento: DDT, fattura, scadenza. L'orecchia piena fa la parte del mezzo scudo.
+
+    Il fondo è l'accento dei due prodotti (#2563eb), non il blu notte della scheda di Cyberse:
+    col blu notte il segno risultava troppo scuro, e le due schede affiancate si confondevano.
+
+    L'orbita passa davanti al foglio: una maschera lo apre dove lei lo attraversa.
+    Lo stesso disegno sta in linea, col colore del tema, nella testata (Principale.razor) e
+    nella Scrivania di Cyberse (Icona.FrGest): si cambiano insieme.
+  -->
+  <rect width="48" height="48" rx="10" fill="#2563eb" />
+  <g transform="translate(24 24.4) scale(.82) translate(-24 -24)"
+     fill="none" stroke="#ffffff" stroke-width="3.7" stroke-linecap="round" stroke-linejoin="round">
+    <mask id="taglio" maskUnits="userSpaceOnUse" x="-10" y="-10" width="70" height="70">
+      <rect x="-10" y="-10" width="70" height="70" fill="#ffffff" stroke="none" />
+      <path stroke="#000000" stroke-width="9.5" d="M9 25 C 3.5 31 4.5 38 11 38 C 20 38 33.5 28 40 15" />
+    </mask>
+    <g mask="url(#taglio)">
+      <path d="M26 7 H17 Q14 7 14 10 V36 Q14 39 17 39 H29 Q32 39 32 36 V13 Z" />
+      <path fill="#ffffff" d="M26 7 V13 H32 Z" />
+      <path d="M19.5 19.5 H26.5" />
+      <path d="M19.5 25.5 H23.5" />
+    </g>
+    <path d="M9 25 C 3.5 31 4.5 38 11 38 C 20 38 33.5 28 40 15" />
+    <path d="M33.7 16.7 L40 15 L41.7 21.3" />
+  </g>
+</svg>
