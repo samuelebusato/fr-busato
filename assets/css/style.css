@@ -975,6 +975,9 @@ h3{ font-size:1.18rem; font-weight:600; }
     0 0 56px 2px color-mix(in srgb, var(--accent) 42%, transparent),
     0 26px 66px -26px color-mix(in srgb, var(--accent) 60%, transparent);
 }
+/* Il richiamo di frGest: stesso blocco, con l'accento e il fondo di frGest */
+.richiamo-frgest{ --accent:#2563eb; }
+.richiamo-frgest .richiamo-vetrina{ background:linear-gradient(165deg, #10264f, #0a1a38); }
 .richiamo-titolo{ font-size:clamp(1.4rem, 2.6vw, 1.7rem); margin:.3rem 0 .8rem; }
 .richiamo-testo > p:not(.eyebrow){ color:var(--muted); margin:0; max-width:40rem; }
 .richiamo-annuncio{
