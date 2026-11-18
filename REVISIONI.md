@@ -5,6 +5,40 @@ esercizio. Ciò che gira adesso, e perché, sta nella nota di progetto del Secon
 (`06 Sviluppo/sito-fr-busato.md`). Aperto il 2026-11-18: ciò che viene prima è in `git log` e
 nella nota di progetto. Non si pubblica sul sito (`deploy.yml`, `--exclude`).
 
+## 2026-11-18 — Le pagine dei servizi dicono dove lavoriamo
+
+- **Richiesta di Fausto**: «Sì, proponi», sulla proposta di testi locali per le pagine dei servizi.
+  Poi, vista l'anteprima, «non limitare la fornitura di software a reggio modena e provincia», e
+  infine «Sì, procedi».
+- **Che cosa cambia per chi visita**: in `assets/js/servizi-dati.js` ogni servizio dice dove
+  lavoriamo, con una frase nella descrizione e/o una domanda nelle FAQ:
+  - **Reti sicure**: un paragrafo (province di Reggio Emilia e Modena; sopralluogo e installazione
+    in sede, gestione anche da remoto) e la FAQ «Venite in azienda per il sopralluogo?»;
+  - **Privacy, GDPR e conformità**: un paragrafo (analisi dei trattamenti in azienda, monitoraggio dei
+    siti da remoto) e la FAQ «Serve un incontro in azienda?»;
+  - **Assistenza hardware**: il secondo paragrafo dice dove si interviene in sede, e c'è la FAQ «In
+    che zona intervenite in sede?»;
+  - **Fornitura hardware e software**: la FAQ sull'installazione dice che l'hardware si consegna e si
+    configura in sede nelle due province, e che il software e le licenze si forniscono ovunque;
+  - **Consulenza e assistenza**: la descrizione si apre con «Siamo a Novellara, nella Bassa reggiana,
+    e dal 2000 lavoriamo al fianco delle aziende del territorio», e c'è la FAQ «Lavorate solo in
+    zona?».
+- **Perché così**: niente elenchi di comuni. Le regole di Google sullo spam citano fra gli esempi
+  di parole chiave forzate i «blocchi di testo che elencano città e regioni». Quindi solo
+  Novellara, la Bassa reggiana e le due province, che il sito già dichiarava.
+- **Migrazioni**: nessuna.
+- **Prove**:
+  - un'anteprima su una copia del sito fuori dal repository, coi testi nuovi evidenziati, e le
+    schermate delle cinque pagine mandate a Fausto;
+  - in locale, sul file vero: le cinque pagine si caricano senza errori in console, ognuna ha la
+    FAQ nuova in fondo, la zona citata una o due volte e nessun evidenziato rimasto.
+- **In esercizio**: vedi la nota di progetto. Si verifica che www.fr-busato.it serva
+  `servizi-dati.js` con «Bassa reggiana».
+- **Resta fuori**:
+  - i casi reali, uno per servizio, che devono venire da Fausto;
+  - il «43%» di Reti sicure con fonte «Ricerche di settore», da verificare;
+  - la brochure, che riprende i testi dei servizi ma dice già la zona nella pagina dei contatti.
+
 ## 2026-11-18 — La brochure con via e telefono, come il sito
 
 - **Richiesta di Fausto**: «Sì, allinea», sulla proposta di dare alla brochure la via e il telefono

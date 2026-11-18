@@ -34,7 +34,8 @@ const SERVIZI = [
     colore: "#2563eb",
     descrizione: [
       "Una rete aziendale ben progettata è la base di tutto: collega postazioni, server e servizi cloud e, allo stesso tempo, deve proteggerli. Ci occupiamo della progettazione, della configurazione e della gestione di reti sicure, con firewall, segmentazione, backup e sistemi di protezione dei dati basati su soluzioni WatchGuard e Acronis.",
-      "L'obiettivo è duplice: tenere l'infrastruttura efficiente e difenderla da attacchi, guasti e perdite di dati, con un piano di continuità che riduce al minimo i tempi di fermo."
+      "L'obiettivo è duplice: tenere l'infrastruttura efficiente e difenderla da attacchi, guasti e perdite di dati, con un piano di continuità che riduce al minimo i tempi di fermo.",
+      "Lavoriamo con aziende e studi delle province di Reggio Emilia e Modena: sopralluogo e installazione si fanno in sede, la gestione nel tempo anche da remoto."
     ],
     perche: "Gli attacchi informatici non colpiscono solo le grandi aziende: le piccole e medie imprese sono un bersaglio frequente, proprio perché spesso meno protette.",
     statistiche: [
@@ -72,7 +73,8 @@ const SERVIZI = [
       { domanda: "Quanto tempo serve per mettere in sicurezza la rete?", risposta: "Dipende dalla dimensione e dallo stato attuale. Dopo un sopralluogo ti diamo tempi e un preventivo chiari, senza sorprese." },
       { domanda: "Dovrò cambiare tutti gli apparati?", risposta: "Non necessariamente: partiamo da ciò che hai già e integriamo o sostituiamo solo dove serve davvero." },
       { domanda: "Cosa succede se subiamo un attacco?", risposta: "Con backup aggiornati e procedure di ripristino si riparte in tempi rapidi. Ti affianchiamo anche nella gestione dell'incidente." },
-      { domanda: "Fate assistenza anche dopo l'installazione?", risposta: "Sì: manutenzione, aggiornamenti e monitoraggio della rete nel tempo fanno parte del servizio." }
+      { domanda: "Fate assistenza anche dopo l'installazione?", risposta: "Sì: manutenzione, aggiornamenti e monitoraggio della rete nel tempo fanno parte del servizio." },
+      { domanda: "Venite in azienda per il sopralluogo?", risposta: "Sì. Partiamo da Novellara e seguiamo le aziende delle province di Reggio Emilia e Modena: il sopralluogo e l'installazione si fanno sul posto, monitoraggio e aggiornamenti anche da remoto." }
     ],
     certificazioni: true
   },
@@ -85,7 +87,8 @@ const SERVIZI = [
     colore: "#7c3aed",
     descrizione: [
       "Adeguarsi al GDPR e alla direttiva NIS2 non è solo un obbligo di legge: è un modo per proteggere i dati dei clienti e la reputazione dell'azienda. Ti aiutiamo con l'analisi dei rischi, le procedure, le informative e le misure di sicurezza necessarie.",
-      "A questo affianchiamo il monitoraggio continuo di domini e siti web: controlliamo con regolarità la sicurezza e la conformità (headers di sicurezza, certificati, cookie e privacy) e ti segnaliamo cosa correggere, citando la norma di riferimento. Un controllo costante che trasforma la conformità in un'attività semplice e sotto controllo."
+      "A questo affianchiamo il monitoraggio continuo di domini e siti web: controlliamo con regolarità la sicurezza e la conformità (headers di sicurezza, certificati, cookie e privacy) e ti segnaliamo cosa correggere, citando la norma di riferimento. Un controllo costante che trasforma la conformità in un'attività semplice e sotto controllo.",
+      "Seguiamo aziende e professionisti delle province di Reggio Emilia e Modena. L'analisi dei trattamenti si fa in azienda, con le persone che i dati li usano ogni giorno; il monitoraggio di domini e siti funziona da remoto, ovunque sia il sito."
     ],
     perche: "Le sanzioni per chi non rispetta le norme sulla protezione dei dati sono tra le più elevate previste dalla legge europea — e con la direttiva NIS2, recepita in Italia con il D.Lgs. 138/2024, gli obblighi si estendono a molte medie imprese.",
     statistiche: [
@@ -127,7 +130,8 @@ const SERVIZI = [
       { domanda: "Il GDPR vale anche per una piccola impresa?", risposta: "Sì. Si applica a chiunque tratti dati personali, indipendentemente dalle dimensioni dell'attività." },
       { domanda: "Ho già una privacy policy sul sito, basta?", risposta: "È un buon punto di partenza, ma non basta: la conformità riguarda anche consensi, sicurezza, registro dei trattamenti e gestione dei diritti degli interessati." },
       { domanda: "Cosa rischio se non sono in regola?", risposta: "Sanzioni molto elevate (fino a 20 milioni di euro o al 4% del fatturato), oltre a danni reputazionali e alla perdita di fiducia dei clienti." },
-      { domanda: "Ogni quanto va controllato un sito?", risposta: "Un monitoraggio periodico — ad esempio settimanale o mensile — intercetta i problemi nuovi prima che diventino gravi." }
+      { domanda: "Ogni quanto va controllato un sito?", risposta: "Un monitoraggio periodico — ad esempio settimanale o mensile — intercetta i problemi nuovi prima che diventino gravi." },
+      { domanda: "Serve un incontro in azienda?", risposta: "Per l'adeguamento sì, almeno all'inizio: i trattamenti si capiscono guardando come lavora l'azienda. Il monitoraggio dei siti non richiede visite." }
     ],
     certificazioni: true
   },
@@ -140,7 +144,7 @@ const SERVIZI = [
     colore: "#0ea5e9",
     descrizione: [
       "Un guasto informatico può bloccare il lavoro di un'intera azienda. Ci occupiamo della diagnosi e della riparazione degli apparati — PC, server, periferiche e dispositivi di rete — con l'obiettivo di rimettere tutto in funzione nel minor tempo possibile.",
-      "Interveniamo in sede quando serve un intervento fisico e da remoto per i problemi che si possono risolvere subito, senza attese."
+      "Interveniamo in sede nelle province di Reggio Emilia e Modena quando serve mettere mano agli apparati, e da remoto per i problemi che si possono risolvere subito, senza attese."
     ],
     perche: "Quando un sistema si ferma, ogni ora di inattività ha un costo: in produttività, in ordini persi e in stress per il personale.",
     statistiche: [
@@ -171,7 +175,8 @@ const SERVIZI = [
     faq: [
       { domanda: "Intervenite anche in giornata?", risposta: "Per le urgenze cerchiamo di intervenire il prima possibile, spesso subito da remoto." },
       { domanda: "Riparate anche i server?", risposta: "Sì: PC, server, periferiche e apparati di rete." },
-      { domanda: "Conviene riparare o sostituire?", risposta: "Ti diamo un consiglio onesto in base ai costi e all'età dell'apparato, così spendi il giusto." }
+      { domanda: "Conviene riparare o sostituire?", risposta: "Ti diamo un consiglio onesto in base ai costi e all'età dell'apparato, così spendi il giusto." },
+      { domanda: "In che zona intervenite in sede?", risposta: "Nelle province di Reggio Emilia e Modena, partendo da Novellara. Fuori zona lavoriamo da remoto, quando il problema lo permette." }
     ]
   },
   {
@@ -217,7 +222,7 @@ const SERVIZI = [
       { domanda: "Che marchi trattate?", risposta: "Produttori affidabili come Dell e Lenovo, oltre a componenti e accessori di qualità per PC e reti." },
       { domanda: "Fornite anche i software?", risposta: "Sì: sistemi operativi, applicativi da ufficio e soluzioni per sicurezza e backup, con licenze regolari e già configurate." },
       { domanda: "Posso farmi consigliare senza impegno?", risposta: "Certo: la consulenza prima dell'acquisto è parte del servizio." },
-      { domanda: "Vi occupate anche dell'installazione?", risposta: "Sì, possiamo consegnare e configurare hardware e software pronti all'uso." }
+      { domanda: "Vi occupate anche dell'installazione?", risposta: "Sì. L'hardware lo consegniamo e lo configuriamo pronto all'uso in sede, nelle province di Reggio Emilia e Modena; il software e le licenze li forniamo ovunque, senza limiti di zona." }
     ]
   },
   {
@@ -228,7 +233,7 @@ const SERVIZI = [
     sottotitolo: "Individuiamo insieme a te le soluzioni più adatte e ti seguiamo nella loro realizzazione, anche con assistenza remota.",
     colore: "#ec7211",
     descrizione: [
-      "Il mondo informatico cambia in fretta e non è sempre facile capire quali strumenti servono davvero. Ti affianchiamo come consulente di fiducia: analizziamo le esigenze, proponiamo soluzioni concrete e ti seguiamo nella loro realizzazione.",
+      "Siamo a Novellara, nella Bassa reggiana, e dal 2000 lavoriamo al fianco delle aziende del territorio. Il mondo informatico cambia in fretta e non è sempre facile capire quali strumenti servono davvero. Ti affianchiamo come consulente di fiducia: analizziamo le esigenze, proponiamo soluzioni concrete e ti seguiamo nella loro realizzazione.",
       "Grazie all'assistenza remota possiamo intervenire rapidamente sui problemi quotidiani, senza dover attendere un intervento in sede."
     ],
     perche: "Avere un interlocutore unico e competente evita scelte sbagliate, doppioni e tempo perso a coordinare fornitori diversi.",
@@ -259,7 +264,8 @@ const SERVIZI = [
     faq: [
       { domanda: "Posso contattarvi anche per un singolo problema?", risposta: "Sì, anche per interventi occasionali: non serve un contratto continuativo." },
       { domanda: "Fate assistenza da remoto?", risposta: "Sì: per i problemi urgenti ci colleghiamo subito, con il tuo consenso." },
-      { domanda: "Lavorate anche con software non vostri?", risposta: "Sì, ti aiutiamo a scegliere e gestire anche soluzioni di terze parti." }
+      { domanda: "Lavorate anche con software non vostri?", risposta: "Sì, ti aiutiamo a scegliere e gestire anche soluzioni di terze parti." },
+      { domanda: "Lavorate solo in zona?", risposta: "Gli incontri e gli interventi in sede sono nelle province di Reggio Emilia e Modena; consulenza e assistenza da remoto anche altrove." }
     ]
   }
 ];
