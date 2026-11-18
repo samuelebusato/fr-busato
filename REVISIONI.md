@@ -5,6 +5,18 @@ esercizio. Ciò che gira adesso, e perché, sta nella nota di progetto del Secon
 (`06 Sviluppo/sito-fr-busato.md`). Aperto il 2026-11-18: ciò che viene prima è in `git log` e
 nella nota di progetto. Non si pubblica sul sito (`deploy.yml`, `--exclude`).
 
+## 2026-11-18 — Il deploy toglie dal sito i file che esclude
+
+- **Che cosa cambia**: tolto `--dryrun`. A ogni deploy, dopo il sync, il bucket perde ciò che
+  corrisponde a `FUORI`; quando non c'è niente, non succede niente. Da chi visita: `README.md` e
+  `docs/deploy-aws.md` passano da 200 a 404, il resto del sito è com'era. Il README dice dove si
+  aggiunge un file da tenere fuori.
+- **Prova a vuoto** (run 44290659839, commit `ab07212`): due sole righe `(dryrun) delete:`,
+  `README.md` e `docs/deploy-aws.md`; 61 file caricati come prima.
+- **Migrazioni**: nessuna.
+- **In esercizio**: vedi la nota di progetto; si verifica dal log (due `delete:`) e dal sito (i
+  due file 404, le pagine 200).
+
 ## 2026-11-18 — Il deploy toglie dal sito i file che esclude (prova a vuoto)
 
 - **Richiesta di Fausto**: «Sì, procedi», sulla proposta di togliere dal sito il vecchio

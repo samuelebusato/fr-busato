@@ -111,9 +111,11 @@ Configurazione completa in [`docs/deploy-aws.md`](docs/deploy-aws.md).
 Che il workflow sia verde vuol dire che i file sono stati caricati: la modifica si
 conferma aprendo **www.fr-busato.it** e controllando che ci sia.
 
-Non vanno sul sito `.git/`, `.github/`, `docs/`, `brochure/`, `README.md` e `REVISIONI.md`
-(le voci `--exclude` del sync). Ogni modifica si scrive anche in `REVISIONI.md`, nello stesso
-commit.
+Non vanno sul sito `.git/`, `.github/`, `docs/`, `brochure/`, `README.md` e `REVISIONI.md`.
+L'elenco è uno solo, la variabile `FUORI` del passo di sync in `deploy.yml`: il sync non li
+carica, e subito dopo il deploy li toglie dal bucket se ci sono (le esclusioni da sole non
+cancellano ciò che era già online). Un file da tenere fuori si aggiunge lì. Ogni modifica si
+scrive anche in `REVISIONI.md`, nello stesso commit.
 
 ## La brochure
 

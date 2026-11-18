@@ -68,8 +68,9 @@ jobs:
             --delete \
             --cache-control "public, max-age=0, must-revalidate, s-maxage=86400" \
             "${esclusi[@]}"
-          # --dryrun al primo giro: il log dice che cosa toglierebbe, senza toglierlo (2026-11-18).
-          aws s3 rm "s3://${{ secrets.S3_BUCKET }}" --recursive --dryrun \
+          # Provato prima a vuoto (--dryrun, run 44290659839): toglieva solo README.md e
+          # docs/deploy-aws.md. Quando non c'è niente da togliere, non fa niente.
+          aws s3 rm "s3://${{ secrets.S3_BUCKET }}" --recursive \
             --exclude "*" "${compresi[@]}"
 
       - name: Invalidazione cache CloudFront
