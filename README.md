@@ -42,6 +42,8 @@ Completamente responsive; le animazioni si disattivano per chi ha attivo
 │   │   └── recensioni.js    → recensioni e modulo "lascia una recensione"
 │   └── img/
 │       └── progetti/image_<id>/ → immagini delle pagine progetto
+├── brochure/                → brochure aziendale in PDF: brochure.html, genera.py, il PDF (non si pubblica)
+├── REVISIONI.md             → cronologia delle modifiche (non si pubblica)
 ├── docs/deploy-aws.md       → come è configurato il rilascio su AWS
 └── .github/workflows/deploy.yml
 ```
@@ -108,6 +110,19 @@ Configurazione completa in [`docs/deploy-aws.md`](docs/deploy-aws.md).
 
 Che il workflow sia verde vuol dire che i file sono stati caricati: la modifica si
 conferma aprendo **www.fr-busato.it** e controllando che ci sia.
+
+Non vanno sul sito `.git/`, `.github/`, `docs/`, `brochure/`, `README.md` e `REVISIONI.md`
+(le voci `--exclude` del sync). Ogni modifica si scrive anche in `REVISIONI.md`, nello stesso
+commit.
+
+## La brochure
+
+`brochure/F.R. di Busato Fausto - Brochure aziendale.pdf`, 8 pagine A4, si distribuisce a
+mano. Si cambia `brochure/brochure.html` (i testi seguono le regole del sito, elencate nel
+commento in testa) e si rigenera con `py -I brochure/genera.py`, che la stampa con Chrome;
+`--anteprime <cartella>` scrive anche una PNG per pagina, da controllare prima del commit.
+Quando cambia un testo del sito (servizi, Cyberse, frGest, certificazioni, partner), va
+riletta anche la brochure.
 
 Sulla repo è ancora attivo anche **GitHub Pages**, che pubblica una seconda copia su
 `https://samuelebusato.github.io/fr-busato/`. Il sito ufficiale è quello su

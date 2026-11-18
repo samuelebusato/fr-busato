@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>F.R. di Busato Fausto — Brochure aziendale</title>
+<!-- Brochure aziendale, 8 pagine A4. Si rigenera con: py -I brochure/genera.py
+     Testi presi dal sito (index.html, servizi-dati.js, cyberse.html, frgest.html,
+     sviluppo-software.html, progetti.js) e sottoposti alle stesse regole:
+     - marchi dei partner SOLO in testo, col rapporto vero: Adobe e Acronis chiedono
+       l'approvazione di ogni pubblicazione, e senza il logo Acronis il logo Microsoft
+       non regge (Second Brain, 01 Tecnica/marchi-dei-partner-punto-di-ingresso);
+     - ICMQ: campo, norme, numero, scadenza, ed è certificata la persona;
+     - i due corsi sono corsi, non certificazioni;
+     - Cyberse: solo cose in esercizio, niente numeri dell'archivio né prezzi,
+       cifratura «autenticata», schermate solo dall'ambiente dimostrativo;
+     - frGest: niente schermate, prepara e legge i file ma non li trasmette. -->
+<style>
+@font-face{ font-family:"Sora"; font-weight:400 700; src:url("../assets/fonts/sora-latin.woff2") format("woff2"); unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face{ font-family:"Sora"; font-weight:400 700; src:url("../assets/fonts/sora-latin-ext.woff2") format("woff2"); unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face{ font-family:"Instrument Sans"; font-weight:400 600; src:url("../assets/fonts/instrument-sans-latin.woff2") format("woff2"); unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face{ font-family:"Instrument Sans"; font-weight:400 600; src:url("../assets/fonts/instrument-sans-latin-ext.woff2") format("woff2"); unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face{ font-family:"JetBrains Mono"; font-weight:400 500; src:url("../assets/fonts/jetbrains-mono-latin.woff2") format("woff2"); }
+
+@page{ size:A4; margin:0; }
+*{ box-sizing:border-box; margin:0; padding:0; }
+html,body{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+:root{
+  --navy:#071c40; --navy-2:#0c2c60; --navy-3:#123a7a;
+  --accent:#2563eb; --accent-2:#1b4fc4; --cielo:#3b9bff; --azzurro:#0ea5e9;
+  --text:#12203b; --muted:#4c5a76; --faint:#8492ab;
+  --bg:#f3f6fc; --bg-2:#eaf1fb; --surface:#fff;
+  --line:rgba(37,99,235,.14); --line-forte:rgba(37,99,235,.26);
+  --soft:rgba(37,99,235,.08);
+  --font-display:"Sora","Segoe UI",sans-serif;
+  --font-body:"Instrument Sans","Segoe UI",sans-serif;
+  --font-mono:"JetBrains Mono",Consolas,monospace;
+}
+body{ font-family:var(--font-body); color:var(--text); font-size:9.6pt; line-height:1.5; background:#fff; }
+
+/* ---------- pagina ---------- */
+.pagina{ width:210mm; height:297mm; position:relative; overflow:hidden; page-break-after:always; break-after:page; background:#fff; }
+.pagina:last-child{ page-break-after:auto; break-after:auto; }
+.interno{ padding:24mm 17mm 20mm; background:linear-gradient(180deg,#fff 0%,#fff 60%,var(--bg) 100%); }
+.interno::before{ content:""; position:absolute; left:0; right:0; top:0; height:2.2mm;
+  background:linear-gradient(90deg,var(--navy-2),var(--accent) 45%,var(--azzurro)); }
+.testata{ position:absolute; top:9mm; left:17mm; right:17mm; display:flex; align-items:center; justify-content:space-between;
+  font-size:7.6pt; color:var(--muted); }
+.testata .marchio{ display:flex; align-items:center; gap:2.4mm; font-weight:600; color:var(--text); font-size:8.2pt; }
+.testata .marchio img{ width:7.5mm; height:7.5mm; }
+.testata .sezione-nome{ font-family:var(--font-mono); letter-spacing:.08em; text-transform:uppercase; color:var(--accent); font-size:7pt; }
+.piede{ position:absolute; bottom:9mm; left:17mm; right:17mm; display:flex; justify-content:space-between; align-items:center;
+  font-family:var(--font-mono); font-size:7pt; color:var(--faint); border-top:1px solid var(--line); padding-top:2.6mm; }
+.piede b{ color:var(--accent); font-weight:500; }
+
+/* ---------- tipografia ---------- */
+.occhiello{ font-family:var(--font-mono); font-size:7.6pt; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); font-weight:500; display:flex; align-items:center; gap:2.4mm; }
+.occhiello::before{ content:""; width:6mm; height:1.6px; background:currentColor; display:inline-block; }
+h1,h2,h3,h4{ font-family:var(--font-display); letter-spacing:-.015em; line-height:1.15; color:var(--text); }
+h2{ font-size:23pt; font-weight:700; margin:3mm 0 4mm; letter-spacing:-.025em; }
+h3{ font-size:11.5pt; font-weight:600; }
+h4{ font-size:9.6pt; font-weight:600; }
+p{ color:var(--muted); }
+p strong, li strong{ color:var(--text); font-weight:600; }
+.gradiente{ color:var(--accent); }
+.lead{ font-size:10.8pt; line-height:1.55; color:var(--muted); max-width:150mm; }
+.piccolo{ font-size:8.2pt; }
+
+/* ---------- elementi comuni ---------- */
+.carta{ background:var(--surface); border:1px solid var(--line); border-radius:4mm; padding:5mm 5.2mm; }
+.icona{ width:9.5mm; height:9.5mm; border-radius:2.6mm; display:grid; place-items:center; background:var(--soft); color:var(--accent); border:1px solid var(--line); flex:none; }
+.icona svg{ width:5.2mm; height:5.2mm; }
+.etichetta{ display:inline-block; font-family:var(--font-mono); font-size:6.6pt; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); background:var(--soft); border:1px solid var(--line); border-radius:99px; padding:.6mm 2.4mm; }
+.spunte{ list-style:none; display:grid; gap:1.6mm; }
+.spunte li{ position:relative; padding-left:5mm; color:var(--muted); }
+.spunte li::before{ content:""; position:absolute; left:.5mm; top:1.75mm; width:1.6mm; height:1.6mm; border-radius:50%;
+  background:var(--accent); box-shadow:0 0 0 .7mm rgba(37,99,235,.16); }
+.griglia-2{ display:grid; grid-template-columns:1fr 1fr; gap:4.5mm; }
+.griglia-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:4.5mm; }
+
+/* ---------- copertina ---------- */
+.copertina{ background:radial-gradient(120% 80% at 85% 10%,var(--navy-3) 0%,transparent 55%), linear-gradient(160deg,var(--navy-2) 0%,var(--navy) 60%,#04122b 100%); color:#fff; padding:20mm 18mm; }
+.copertina::before{ content:""; position:absolute; left:0; right:0; top:0; height:2.2mm; background:linear-gradient(90deg,var(--accent),var(--cielo),transparent); }
+.costellazione{ position:absolute; inset:0; width:100%; height:100%; }
+.copertina .marchio-grande{ position:relative; display:flex; align-items:center; gap:4.5mm; }
+.copertina .marchio-grande .tessera{ width:17mm; height:17mm; border-radius:4mm; background:#fff; display:grid; place-items:center; box-shadow:0 3mm 8mm rgba(0,0,0,.25); }
+.copertina .marchio-grande .tessera img{ width:15.5mm; height:15.5mm; }
+.copertina .marchio-grande strong{ display:block; font-family:var(--font-display); font-size:15pt; font-weight:600; letter-spacing:-.01em; }
+.copertina .marchio-grande span{ display:block; color:#9fc2ff; font-size:9pt; letter-spacing:.03em; }
+.copertina .titolo{ position:absolute; left:18mm; right:18mm; top:84mm; }
+.copertina .occhiello{ color:#7fb4ff; }
+.copertina h1{ color:#fff; font-size:50pt; font-weight:700; line-height:1.02; letter-spacing:-.035em; margin:5mm 0 7mm; }
+.copertina h1 .gradiente{ color:var(--cielo); }
+.copertina .barra{ border-left:1.4mm solid var(--cielo); padding-left:5.5mm; }
+.copertina .lead{ color:#c6d7f5; font-size:12pt; max-width:130mm; }
+.terminale{ position:absolute; right:18mm; top:182mm; width:92mm; border-radius:3.5mm; overflow:hidden;
+  background:rgba(4,15,38,.78); border:1px solid rgba(127,180,255,.25); box-shadow:0 5mm 14mm rgba(0,0,0,.35); font-family:var(--font-mono); font-size:7.6pt; }
+.terminale .barra-t{ display:flex; align-items:center; gap:1.5mm; padding:2.4mm 3.5mm; background:rgba(127,180,255,.08); border-bottom:1px solid rgba(127,180,255,.15); }
+.terminale .barra-t i{ width:2.2mm; height:2.2mm; border-radius:50%; background:#ff5f57; display:block; }
+.terminale .barra-t i:nth-child(2){ background:#febc2e; } .terminale .barra-t i:nth-child(3){ background:#28c840; }
+.terminale .barra-t em{ font-style:normal; color:#7f95bd; margin-left:2mm; font-size:6.8pt; }
+.terminale .corpo{ padding:3.5mm 4mm 4mm; color:#c6d7f5; line-height:1.75; }
+.terminale .p{ color:var(--cielo); } .terminale .ok{ color:#4ade80; } .terminale .c{ color:#7f95bd; }
+.copertina .cifre{ position:absolute; left:18mm; bottom:30mm; display:grid; gap:4mm; }
+.copertina .cifre div{ font-size:9pt; color:#c6d7f5; }
+.copertina .cifre b{ font-family:var(--font-display); font-size:14pt; color:#fff; margin-right:1.6mm; font-weight:700; }
+.copertina .fondo{ position:absolute; left:18mm; right:18mm; bottom:14mm; display:flex; justify-content:space-between; border-top:1px solid rgba(127,180,255,.22); padding-top:4mm; font-size:8.5pt; color:#9fb3d6; }
+.copertina .fondo .web{ font-family:var(--font-mono); color:var(--cielo); letter-spacing:.06em; }
+
+/* ---------- azienda ---------- */
+.azienda{ display:grid; grid-template-columns:1.08fr .92fr; gap:8mm; margin-top:2mm; }
+.azienda .testo p{ margin-bottom:3.2mm; font-size:10pt; }
+.pannello{ background:linear-gradient(160deg,var(--navy-2),var(--navy)); border-radius:5mm; padding:6mm 6mm 2mm; color:#fff; }
+.dato{ padding:0 0 4.2mm; margin-bottom:4.2mm; border-bottom:1px solid rgba(127,180,255,.18); }
+.dato:last-child{ border-bottom:0; }
+.dato-num{ font-family:var(--font-display); font-size:24pt; font-weight:700; line-height:1; color:#fff; }
+.dato p{ color:#bcd0f2; font-size:8.3pt; margin-top:1.4mm; line-height:1.45; }
+.valori{ margin-top:8mm; }
+.valori .carta h3{ margin:3mm 0 1.6mm; font-size:10.5pt; }
+.valori .carta p{ font-size:8.8pt; }
+.citazione{ margin-top:7mm; border-radius:4mm; padding:5.5mm 6mm; background:var(--bg-2); border:1px solid var(--line); display:flex; gap:5mm; align-items:center; }
+.citazione p{ font-family:var(--font-display); color:var(--text); font-size:11pt; line-height:1.4; letter-spacing:-.01em; }
+.citazione .virg{ font-family:var(--font-display); font-size:34pt; line-height:.6; color:var(--accent); }
+
+/* ---------- servizi ---------- */
+.servizi-focus{ display:grid; grid-template-columns:1fr 1fr; gap:4mm; margin-top:5mm; }
+.servizio{ background:#fff; border:1px solid var(--line); border-radius:4mm; padding:4.6mm 5mm; position:relative; }
+.servizio.focus{ border-color:var(--line-forte); background:linear-gradient(180deg,#fff,var(--bg)); }
+.servizio .riga-testa{ display:flex; align-items:center; gap:3mm; margin-bottom:2.4mm; }
+.servizio h3{ font-size:11pt; }
+.servizio p{ font-size:8.6pt; line-height:1.48; }
+.servizio .spunte{ margin-top:2.6mm; gap:1.1mm; font-size:8.1pt; }
+.servizio .spunte li::before{ top:1.5mm; }
+.servizi-altri{ display:grid; grid-template-columns:repeat(3,1fr); gap:4mm; margin-top:4mm; }
+.servizi-altri .servizio h3{ font-size:10pt; }
+.servizi-altri .servizio p{ font-size:8.2pt; }
+.callout{ margin-top:5mm; border-radius:4mm; padding:5mm 6mm; background:linear-gradient(120deg,var(--navy-2),var(--accent-2)); color:#fff; display:flex; gap:6mm; align-items:center; }
+.callout h3{ color:#fff; font-size:12pt; margin:1mm 0 1.2mm; }
+.callout p{ color:#cfe0ff; font-size:8.6pt; }
+.callout .occhiello{ color:#9fc2ff; }
+.callout .azione{ flex:none; font-family:var(--font-mono); font-size:7.6pt; color:var(--navy); background:#fff; border-radius:99px; padding:2.2mm 4.2mm; font-weight:500; text-align:center; line-height:1.35; }
+
+/* ---------- sviluppo ---------- */
+.percorso{ margin-top:5mm; display:grid; gap:0; position:relative; }
+.passo{ display:grid; grid-template-columns:12mm 1fr auto; gap:4mm; align-items:start; padding:3.2mm 0; border-bottom:1px dashed var(--line-forte); }
+.passo:last-child{ border-bottom:0; }
+.passo .num{ font-family:var(--font-mono); font-size:9pt; font-weight:500; color:#fff; background:linear-gradient(135deg,var(--accent),var(--azzurro)); width:10mm; height:10mm; border-radius:3mm; display:grid; place-items:center; }
+.passo h3{ font-size:10.4pt; margin-bottom:1mm; }
+.passo p{ font-size:8.5pt; line-height:1.46; }
+.passo .etichetta{ margin-top:1mm; white-space:nowrap; }
+.progetti{ display:grid; grid-template-columns:1fr 1fr; gap:3.6mm; margin-top:4mm; }
+.progetto{ border:1px solid var(--line); border-radius:3.5mm; padding:3.8mm 4.4mm; background:#fff; }
+.progetto .cat{ font-family:var(--font-mono); font-size:6.6pt; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); }
+.progetto h4{ font-size:10.2pt; margin:.8mm 0 1.2mm; }
+.progetto p{ font-size:8.2pt; line-height:1.45; }
+.sottotitolo-sez{ font-family:var(--font-display); font-size:12pt; font-weight:600; color:var(--text); margin-top:6.5mm; display:flex; align-items:baseline; justify-content:space-between; }
+.sottotitolo-sez small{ font-family:var(--font-body); font-size:8.2pt; color:var(--muted); font-weight:400; }
+
+/* ---------- prodotti ---------- */
+.banda-cy{ position:absolute; top:0; left:0; right:0; height:44mm; background:#161635; overflow:hidden; }
+.banda-cy img{ position:absolute; left:50%; top:56%; width:112mm; transform:translate(-50%,-50%); }
+.banda-cy::after{ content:""; position:absolute; left:0; right:0; bottom:0; height:2.2mm; background:linear-gradient(90deg,#6c63ff,var(--accent),var(--azzurro)); }
+.pagina-cy .testata .marchio, .pagina-cy .testata .sezione-nome{ color:#fff; }
+.pagina-cy .testata .sezione-nome{ color:#b7b4ff; }
+.pagina-cy.interno{ padding-top:53mm; }
+.pagina-cy.interno::before{ display:none; }
+.annuncio{ display:flex; gap:3mm; align-items:center; border:1px solid var(--line-forte); background:var(--soft); border-radius:3mm; padding:2.6mm 3.6mm; margin:3.5mm 0 0; }
+.annuncio .badge{ flex:none; font-family:var(--font-mono); font-size:6.8pt; font-weight:500; letter-spacing:.06em; color:#fff; background:var(--accent); border-radius:99px; padding:.8mm 2.6mm; }
+.annuncio p{ font-size:8.6pt; }
+.pilastri{ display:grid; grid-template-columns:repeat(3,1fr); gap:3.6mm; margin-top:4.5mm; }
+.pilastri .carta{ padding:4mm 4.4mm; }
+.pilastri h4{ font-size:10pt; margin-bottom:1.2mm; }
+.pilastri p{ font-size:8.2pt; line-height:1.45; }
+.schermata{ margin-top:4.5mm; border-radius:3.5mm; overflow:hidden; border:1px solid var(--line-forte); box-shadow:0 2mm 6mm rgba(18,32,59,.08); }
+.schermata img{ display:block; width:100%; height:100%; object-fit:cover; object-position:left top; }
+.pagina-cy .schermata{ height:54mm; }
+.didascalia{ font-size:7.4pt; color:var(--faint); margin-top:1.6mm; font-style:italic; }
+.due-col{ display:grid; grid-template-columns:1fr 1fr; gap:6mm; margin-top:4.5mm; }
+.due-col h4{ margin-bottom:2mm; font-size:10pt; }
+.due-col .spunte{ font-size:8.2pt; gap:1.1mm; }
+.fonti{ display:flex; flex-wrap:wrap; gap:1.6mm; }
+.fonti span{ font-size:7.6pt; border:1px solid var(--line-forte); border-radius:99px; padding:.8mm 2.6mm; color:var(--text); background:#fff; }
+.accesso{ margin-top:4.5mm; display:flex; justify-content:space-between; align-items:center; padding:3.6mm 4.5mm; border-radius:3.5mm; background:var(--navy); color:#fff; font-size:8.6pt; }
+.accesso b{ font-family:var(--font-mono); color:var(--cielo); font-weight:500; letter-spacing:.03em; }
+.accesso span{ color:#bcd0f2; }
+
+.fg-testa{ display:flex; align-items:center; gap:4mm; margin-top:1mm; }
+.fg-testa img{ width:13mm; height:13mm; }
+.fg-testa .nome{ font-family:var(--font-display); font-size:22pt; font-weight:700; letter-spacing:-.03em; line-height:1; }
+.fg-testa .motto{ font-family:var(--font-mono); font-size:7.6pt; color:var(--muted); letter-spacing:.04em; margin-top:1mm; }
+.flusso{ display:flex; align-items:center; gap:2mm; margin:4.5mm 0 0; }
+.flusso span{ font-family:var(--font-mono); font-size:7.6pt; font-weight:500; padding:1.6mm 3.2mm; border-radius:99px; background:#fff; border:1px solid var(--line-forte); color:var(--text); }
+.flusso span.on{ background:var(--accent); border-color:var(--accent); color:#fff; }
+.flusso i{ font-style:normal; color:var(--accent); font-size:9pt; }
+.tre-col{ display:grid; grid-template-columns:1fr 34mm 1fr; gap:3mm; align-items:stretch; margin-top:4.5mm; }
+.tre-col .carta{ padding:3.8mm 4.2mm; }
+.tre-col h4{ font-size:9.4pt; margin-bottom:1.6mm; }
+.tre-col .spunte{ font-size:7.9pt; gap:.9mm; }
+.tre-col .centro{ background:linear-gradient(160deg,var(--accent),var(--accent-2)); border:0; color:#fff; display:flex; flex-direction:column; justify-content:center; text-align:center; }
+.tre-col .centro h4{ color:#fff; font-size:11pt; }
+.tre-col .centro p{ color:#dbe7ff; font-size:7.4pt; line-height:1.4; }
+.moduli{ display:grid; grid-template-columns:1fr 1fr; gap:3.4mm; margin-top:4mm; }
+.modulo{ border:1px solid var(--line); border-radius:3.5mm; padding:3.6mm 4.2mm; background:#fff; }
+.modulo h4{ font-size:9.8pt; margin-bottom:1.2mm; display:flex; align-items:center; gap:2mm; }
+.modulo h4::before{ content:""; width:1.8mm; height:1.8mm; border-radius:.5mm; background:var(--accent); transform:rotate(45deg); }
+.modulo p{ font-size:8pt; line-height:1.45; }
+.modulo.largo{ grid-column:1 / -1; background:linear-gradient(120deg,var(--bg-2),#fff); border-color:var(--line-forte); }
+
+/* ---------- certificazioni ---------- */
+.cert-griglia{ display:grid; grid-template-columns:1fr 1fr; gap:3.4mm; margin-top:4mm; }
+.cert{ display:flex; gap:3.4mm; align-items:flex-start; border:1px solid var(--line); border-radius:3.5mm; padding:3.6mm 4mm; background:#fff; }
+.cert h4{ font-size:9.4pt; margin-bottom:.6mm; }
+.cert p{ font-size:7.9pt; line-height:1.4; }
+.cert .icona{ width:8.5mm; height:8.5mm; }
+.cert .icona svg{ width:4.6mm; height:4.6mm; }
+.cert.persona{ grid-column:1 / -1; background:linear-gradient(120deg,var(--navy-2),var(--navy)); border:0; color:#fff; padding:4.6mm 5mm; }
+.cert.persona h4{ color:#fff; font-size:10.4pt; }
+.cert.persona p{ color:#bcd0f2; font-size:8pt; }
+.cert.persona .icona{ background:rgba(127,180,255,.12); color:#9fc2ff; border-color:rgba(127,180,255,.25); }
+.cert.persona .numero{ font-family:var(--font-mono); color:#fff; font-size:7.8pt; margin-top:1.6mm; letter-spacing:.02em; }
+.cert .tipo{ font-family:var(--font-mono); font-size:6.4pt; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); display:block; margin-bottom:.8mm; }
+.partner-griglia{ display:grid; grid-template-columns:repeat(3,1fr); gap:0; margin-top:4mm; border:1px solid var(--line); border-radius:3.5mm; overflow:hidden; background:#fff; }
+.partner{ padding:4mm 4.4mm; border-right:1px solid var(--line); border-bottom:1px solid var(--line); }
+.partner:nth-child(3n){ border-right:0; }
+.partner:nth-last-child(-n+3){ border-bottom:0; }
+.partner .nome{ font-family:var(--font-display); font-weight:600; font-size:11pt; color:var(--text); letter-spacing:-.01em; }
+.partner .rapporto{ font-size:7.9pt; color:var(--muted); margin-top:.6mm; }
+
+/* ---------- retro ---------- */
+.retro{ background:linear-gradient(200deg,var(--navy-2) 0%,var(--navy) 55%,#04122b 100%); color:#fff; padding:24mm 18mm 16mm; }
+.retro .occhiello{ color:#7fb4ff; position:relative; }
+.retro h2{ color:#fff; font-size:34pt; line-height:1.05; letter-spacing:-.035em; margin:5mm 0 5mm; position:relative; }
+.retro h2 .gradiente{ color:var(--cielo); }
+.retro .lead{ color:#c6d7f5; position:relative; }
+.contatti{ position:relative; display:grid; grid-template-columns:1fr 1fr; gap:4mm; margin-top:11mm; }
+.contatto{ border:1px solid rgba(127,180,255,.22); background:#0b2654; border-radius:4mm; padding:5mm 5.4mm; }
+.contatto .ico{ color:var(--cielo); width:6mm; height:6mm; }
+.contatto h3{ color:#fff; font-size:10.5pt; margin:2.6mm 0 1.4mm; }
+.contatto p{ color:#bcd0f2; font-size:8.8pt; line-height:1.5; }
+.contatto .forte{ font-family:var(--font-mono); color:#fff; font-size:9.4pt; letter-spacing:.01em; }
+.comincia{ position:relative; margin-top:10mm; }
+.comincia-passi{ display:grid; grid-template-columns:repeat(3,1fr); gap:6mm; margin-top:4.5mm; }
+.comincia-passi div{ border-top:1.4mm solid var(--cielo); padding-top:3.5mm; }
+.comincia-passi span{ font-family:var(--font-mono); font-size:8pt; color:var(--cielo); }
+.comincia-passi h3{ color:#fff; font-size:10.5pt; margin:1.2mm 0 1.2mm; }
+.comincia-passi p{ color:#bcd0f2; font-size:8.6pt; line-height:1.5; }
+.retro .chiusura{ position:absolute; left:18mm; right:18mm; bottom:16mm; }
+.retro .firma{ display:flex; align-items:center; justify-content:space-between; gap:5mm; border-top:1px solid rgba(127,180,255,.22); padding-top:5mm; }
+.retro .firma .marchio-grande{ display:flex; align-items:center; gap:3.5mm; }
+.retro .firma .tessera{ width:12mm; height:12mm; border-radius:3mm; background:#fff; display:grid; place-items:center; }
+.retro .firma .tessera img{ width:11mm; height:11mm; }
+.retro .firma strong{ display:block; font-family:var(--font-display); font-size:11pt; font-weight:600; }
+.retro .firma span{ display:block; color:#9fc2ff; font-size:8pt; }
+.retro .legale{ text-align:right; font-size:8pt; color:#9fb3d6; line-height:1.55; }
+.retro .marchi{ margin-top:4.5mm; font-size:6.3pt; line-height:1.5; color:#7f95bd; }
+.retro .edizione{ font-family:var(--font-mono); font-size:6.8pt; color:#7f95bd; margin-top:2.4mm; letter-spacing:.05em; }
+</style>
+</head>
+<body>
+
+<!-- ======================= 1 · COPERTINA ======================= -->
+<section class="pagina copertina">
+  {{COSTELLAZIONE}}
+  <div class="marchio-grande">
+    <div class="tessera"><img src="../assets/img/favicon.svg" alt=""></div>
+    <div>
+      <strong>F.R. di Busato Fausto</strong>
+      <span>l'informatica al tuo servizio</span>
+    </div>
+  </div>
+
+  <div class="titolo">
+    <p class="occhiello">Dal 2000 · Novellara (RE)</p>
+    <h1>L'informatica<br>al <span class="gradiente">tuo servizio</span>.</h1>
+    <div class="barra">
+      <p class="lead">Sviluppo software su misura, reti sicure e consulenza informatica e privacy per la tua azienda. Oltre venticinque anni di esperienza al fianco delle imprese, con soluzioni concrete e un supporto sempre raggiungibile.</p>
+    </div>
+  </div>
+
+  <div class="terminale" aria-hidden="true">
+    <div class="barra-t"><i></i><i></i><i></i><em>fr-busato — console</em></div>
+    <div class="corpo">
+      <div><span class="p">›</span> software su misura <span class="c">.........</span> <span class="ok">✓</span></div>
+      <div><span class="p">›</span> reti sicure <span class="c">................</span> <span class="ok">✓</span></div>
+      <div><span class="p">›</span> privacy, GDPR e NIS2 <span class="c">.......</span> <span class="ok">✓</span></div>
+      <div><span class="p">›</span> fornitura hardware e software <span class="ok">✓</span></div>
+      <div><span class="p">›</span> assistenza, anche remota <span class="c">...</span> <span class="ok">✓</span></div>
+      <div class="c">// un unico interlocutore, dal 2000</div>
+    </div>
+  </div>
+
+  <div class="cifre">
+    <div><b>25+</b>anni di attività</div>
+    <div><b>Software</b>su misura</div>
+    <div><b>Reti sicure</b>&amp; privacy</div>
+  </div>
+
+  <div class="fondo">
+    <span>Brochure aziendale</span>
+    <span class="web">www.fr-busato.it</span>
+  </div>
+</section>
+
+<!-- ======================= 2 · L'AZIENDA ======================= -->
+<section class="pagina interno">
+  <div class="testata"><span class="marchio"><img src="../assets/img/favicon.svg" alt="">F.R. di Busato Fausto</span><span class="sezione-nome">L'Azienda</span></div>
+
+  <p class="occhiello">L'Azienda</p>
+  <h2>Un partner informatico,<br>non un semplice <span class="gradiente">fornitore</span>.</h2>
+
+  <div class="azienda">
+    <div class="testo">
+      <p><strong>F.R. di Busato Fausto</strong> è un'impresa individuale nata nel marzo 2000 in provincia di Reggio Emilia. Il titolare, Fausto Busato, lavora in ambito informatico dal 1996 al fianco di aziende del territorio.</p>
+      <p>Negli anni l'attività si è ampliata: consulenza per l'acquisto di prodotti informatici, realizzazione di reti, pagine web, <strong>software personalizzato e soluzioni AI su misura</strong>.</p>
+      <p>Oggi, anche grazie a diverse collaborazioni, siamo in grado di affiancare il cliente in un mondo — quello informatico — in continua evoluzione, individuando le soluzioni più consone al suo modo di lavorare.</p>
+      <p>Ci rivolgiamo soprattutto a <strong>piccole e medie imprese, studi professionali</strong> e attività che cercano un riferimento informatico affidabile: sul territorio reggiano e non solo, anche da remoto.</p>
+    </div>
+    <div class="pannello">
+      <div class="dato"><span class="dato-num">2000</span><p>Anno di fondazione dell'azienda a Novellara, nel cuore della provincia reggiana.</p></div>
+      <div class="dato"><span class="dato-num">1996</span><p>Inizio delle prime collaborazioni informatiche e di disegno tecnico con le aziende del territorio.</p></div>
+      <div class="dato"><span class="dato-num">6</span><p>Rivenditori e partner di canale di Microsoft, Adobe, Dell Technologies, WatchGuard, Acronis e Lenovo.</p></div>
+      <div class="dato"><span class="dato-num">5</span><p>Certificazioni ufficiali su protezione dei dati e virtualizzazione (Acronis e VMware) e sul BIM.</p></div>
+    </div>
+  </div>
+
+  <div class="griglia-3 valori">
+    <div class="carta">
+      <div class="icona"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></div>
+      <h3>Un interlocutore unico</h3>
+      <p>Un solo referente conosce la tua infrastruttura, mantiene coerenti le scelte nel tempo e ti evita di coordinare fornitori che non si parlano.</p>
+    </div>
+    <div class="carta">
+      <div class="icona"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <h3>Sempre raggiungibile</h3>
+      <p>Per i problemi urgenti ci colleghiamo subito al tuo computer, con il tuo consenso e la partecipazione dell'operatore. In sede quando serve.</p>
+    </div>
+    <div class="carta">
+      <div class="icona"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+      <h3>Un consiglio onesto</h3>
+      <p>Configurazioni scelte sulle esigenze reali, senza sprechi: spendi il giusto, e non paghi per ciò che non ti serve.</p>
+    </div>
+  </div>
+
+  <div class="citazione">
+    <span class="virg">“</span>
+    <p>Dall'assistenza quotidiana allo sviluppo di soluzioni su misura: un unico interlocutore che segue a 360 gradi l'informatica, la sicurezza e la conformità della tua azienda.</p>
+  </div>
+
+  <div class="piede"><span>www.fr-busato.it</span><span><b>02</b> / 08</span></div>
+</section>
+
+<!-- ======================= 3 · SERVIZI ======================= -->
+<section class="pagina interno">
+  <div class="testata"><span class="marchio"><img src="../assets/img/favicon.svg" alt="">F.R. di Busato Fausto</span><span class="sezione-nome">Servizi</span></div>
+
+  <p class="occhiello">Prodotti e servizi</p>
+  <h2>Tutto ciò che serve alla tua <span class="gradiente">infrastruttura</span>.</h2>
+  <p class="lead">Dall'assistenza quotidiana allo sviluppo di soluzioni su misura, con un percorso che non cambia: si analizza, si progetta, si realizza e si resta a disposizione nel tempo.</p>
+
+  <div class="servizi-focus">
+    <div class="servizio focus">
+      <div class="riga-testa"><div class="icona"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><h3>Sviluppo Software</h3></div>
+      <p>Gestionali, automazioni, applicazioni web, soluzioni cloud e di intelligenza artificiale: software su misura progettato attorno al tuo modo di lavorare, dall'analisi dei requisiti fino all'implementazione.</p>
+      <ul class="spunte"><li>Gestionali e digitalizzazione dei processi</li><li>Applicazioni web e cloud</li><li>Soluzioni AI su misura</li></ul>
+    </div>
+    <div class="servizio focus">
+      <div class="riga-testa"><div class="icona"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h3>Consulenza e Assistenza</h3></div>
+      <p>Individuiamo con te le soluzioni più consone alle tue esigenze e ti seguiamo nella loro realizzazione, con interventi rapidi anche in assistenza remota.</p>
+      <ul class="spunte"><li>Scelta di nuovi software o servizi</li><li>Digitalizzazione di processi manuali</li><li>Gestione dei fornitori informatici</li></ul>
+    </div>
+    <div class="servizio focus">
+      <div class="riga-testa"><div class="icona"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96 12 12.01l8.73-5.05M12 22.08V12"/></svg></div><h3>Fornitura Hardware e Software</h3></div>
+      <p>Dopo un'attenta valutazione delle esigenze forniamo PC, server, componenti e accessori dei marchi più affidabili, come Dell e Lenovo, insieme ai software più adatti, con licenze in regola e configurate a dovere.</p>
+      <ul class="spunte"><li>Rinnovo del parco PC e nuovi server</li><li>Sistemi operativi, Office, sicurezza e backup</li><li>Consulenza prima dell'acquisto</li></ul>
+    </div>
+    <div class="servizio focus">
+      <div class="riga-testa"><div class="icona"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div><h3>Privacy, GDPR e NIS2</h3></div>
+      <p>Ti affianchiamo nell'adeguamento al GDPR e alla direttiva NIS2 (D.Lgs. 138/2024): analisi dei rischi, procedure, informative e misure di sicurezza per la protezione dei dati aziendali.</p>
+      <ul class="spunte"><li>Registro dei trattamenti, informative e consensi</li><li>Misure tecniche e organizzative</li><li>Supporto su richieste e segnalazioni</li></ul>
+    </div>
+  </div>
+
+  <div class="servizi-altri">
+    <div class="servizio">
+      <div class="riga-testa"><div class="icona"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div><h3>Reti sicure</h3></div>
+      <p>Progettazione e gestione di reti aziendali protette: firewall, segmentazione, backup e difesa dei dati con soluzioni WatchGuard e Acronis.</p>
+    </div>
+    <div class="servizio">
+      <div class="riga-testa"><div class="icona"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><h3>Monitoraggio siti web</h3></div>
+      <p>Teniamo sotto controllo domini e siti e segnaliamo con regolarità i problemi di sicurezza e conformità, citando la norma e come intervenire.</p>
+    </div>
+    <div class="servizio">
+      <div class="riga-testa"><div class="icona"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h3>Assistenza Hardware</h3></div>
+      <p>Diagnosi e riparazione di PC, server, periferiche e apparati di rete, con interventi puntuali e celeri, in sede o da remoto.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div>
+      <p class="occhiello">Assistenza remota</p>
+      <h3>Un problema urgente? Ci colleghiamo subito.</h3>
+      <p>L'assistenza remota risolve i piccoli problemi in modo rapido e con la partecipazione dell'operatore, senza attendere un intervento in sede.</p>
+    </div>
+    <span class="azione">www.fr-busato.it<br>«Contatta un operatore»</span>
+  </div>
+
+  <div class="piede"><span>www.fr-busato.it</span><span><b>03</b> / 08</span></div>
+</section>
+
+<!-- ======================= 4 · SVILUPPO SOFTWARE ======================= -->
+<section class="pagina interno">
+  <div class="testata"><span class="marchio"><img src="../assets/img/favicon.svg" alt="">F.R. di Busato Fausto</span><span class="sezione-nome">Sviluppo software</span></div>
+
+  <p class="occhiello">Sviluppo software · Il metodo</p>
+  <h2>Scrivere un programma oggi è facile.<br><span class="gradiente">Fidarsene</span> è un'altra cosa.</h2>
+  <p class="lead">Anche noi usiamo gli strumenti più moderni, intelligenza artificiale compresa, come un buon artigiano usa i suoi attrezzi migliori. Ma un attrezzo non decide cosa costruire e non controlla che il pezzo sia giusto: quello lo fanno il metodo e chi ci lavora. Ogni funzione, grande o piccola, fa la stessa strada.</p>
+
+  <div class="percorso">
+    <div class="passo"><span class="num">01</span><div><h3>Prima si decide cosa vuol dire «funziona»</h3><p>Che cosa la funzione deve fare, per chi, e come capiremo che è giusta: i criteri di accettazione si concordano all'inizio, così alla fine non si discute di impressioni.</p></div><span class="etichetta">criteri approvati</span></div>
+    <div class="passo"><span class="num">02</span><div><h3>Si costruisce insieme alle sue prove</h3><p>Ogni funzione nasce con i suoi test automatici, che girano a ogni modifica: se uno solo fallisce, la versione non esce.</p></div><span class="etichetta">test superati</span></div>
+    <div class="passo"><span class="num">03</span><div><h3>Si prova sui dati veri</h3><p>Sull'archivio reale dell'azienda, non su esempi inventati. Quando il programma ne sostituisce un altro, il vecchio diventa il metro di paragone.</p></div><span class="etichetta">confronto superato</span></div>
+    <div class="passo"><span class="num">04</span><div><h3>Una revisione indipendente</h3><p>Ogni modifica passa da occhi freschi che non l'hanno scritta: ogni osservazione si corregge, oppure si accetta per iscritto spiegando perché.</p></div><span class="etichetta">rilievi chiusi</span></div>
+    <div class="passo"><span class="num">05</span><div><h3>Si rilascia con la strada per tornare indietro</h3><p>Ogni versione si controlla prima e dopo l'installazione, e si sa sempre come tornare a quella di prima. Nessuna sorpresa il lunedì mattina.</p></div><span class="etichetta">ritorno pronto</span></div>
+  </div>
+
+  <p class="sottotitolo-sez">Alcuni progetti <small>Ogni progetto nasce da un problema concreto</small></p>
+  <div class="progetti">
+    <div class="progetto"><span class="cat">Distinta base · Digitalizzazione</span><h4>Compono</h4><p>Le regole di un programma di fine anni Novanta, ritrovate una per una e trasformate in distinte che l'azienda modifica da sé, provate su decine di migliaia di prodotti già realizzati.</p></div>
+    <div class="progetto"><span class="cat">Sicurezza e conformità web</span><h4>HeleoX</h4><p>Tiene d'occhio un sito a ogni giro: dice cosa lo espone, cosa non rispetta le regole e come si sistema, citando la norma esatta e non un voto da interpretare.</p></div>
+    <div class="progetto"><span class="cat">Knowledge base · AI</span><h4>Second Brain</h4><p>Un secondo cervello digitale che raccoglie e collega la conoscenza dell'azienda — decisioni, progetti, regole e clienti — per le persone e per le intelligenze artificiali.</p></div>
+    <div class="progetto"><span class="cat">Cloud · Serverless AWS</span><h4>Returns Management System</h4><p>Governa l'intero viaggio di un reso e-commerce, dalla richiesta al rimborso, mentre il cliente riceve a ogni passo l'email giusta. Interamente serverless.</p></div>
+  </div>
+
+  <div class="piede"><span>www.fr-busato.it</span><span><b>04</b> / 08</span></div>
+</section>
+
+<!-- ======================= 5 · CYBERSE ======================= -->
+<section class="pagina interno pagina-cy">
+  <div class="banda-cy"><img src="../assets/img/cyberse-logo.jpg" alt="Cyberse"></div>
+  <div class="testata"><span class="marchio"><img src="../assets/img/favicon.svg" alt="">F.R. di Busato Fausto</span><span class="sezione-nome">Prodotto · Cyberse</span></div>
+
+  <p class="occhiello">Prodotto · Documentazione di rete</p>
+  <h2 style="font-size:20pt"><span class="gradiente">Cyberse</span>: la documentazione di rete che si aggiorna da sola.</h2>
+  <p>Chi gestisce l'informatica di altre aziende custodisce decine di reti, e di solito le affida a documenti che invecchiano il giorno dopo averli scritti. Cyberse li sostituisce con un <strong>archivio vivo</strong>: legge da solo le console e gli apparati già in uso, tiene le password in una cassaforte a parte e segnala da solo backup saltati, PC senza antivirus e account a rischio.</p>
+  <div class="annuncio"><span class="badge">✦ IN ESERCIZIO</span><p>Lo usiamo ogni giorno sulle reti dei nostri clienti. <strong>Sei un MSP?</strong> Proviamolo su un tuo cliente.</p></div>
+
+  <div class="pilastri">
+    <div class="carta"><h4>Uno solo</h4><p>Apparati, persone, backup, segmenti e credenziali nello stesso posto, cercabili in un campo.</p></div>
+    <div class="carta"><h4>Sempre datato</h4><p>Ogni dato dice da dove viene e quando è stato visto l'ultima volta. Il vecchio si riconosce.</p></div>
+    <div class="carta"><h4>Segreti separati</h4><p>Cassaforte cifrata dietro un secondo fattore. Ogni lettura resta scritta, ogni cliente è isolato.</p></div>
+  </div>
+
+  <div class="schermata"><img src="../assets/img/cyberse/segnalazioni.png" alt="Le segnalazioni di Cyberse"></div>
+  <p class="didascalia">Le segnalazioni: le regole girano da sole, e quelle che dicono la stessa cosa stanno insieme. Schermata dall'ambiente dimostrativo, con aziende inventate.</p>
+
+  <div class="due-col">
+    <div>
+      <h4>Le fonti che già avete</h4>
+      <div class="fonti"><span>Agente di rete per sede</span><span>Active Directory</span><span>Microsoft 365</span><span>Acronis</span><span>WatchGuard</span><span>HPE Instant On</span><span>OPNsense</span></div>
+      <p class="piccolo" style="margin-top:2.4mm">Se due fonti si contraddicono, Cyberse lo dice invece di scegliere in silenzio. L'elenco è fatto per crescere: una console nuova si aggiunge.</p>
+    </div>
+    <div>
+      <h4>Legge e basta</h4>
+      <ul class="spunte">
+        <li>Nessun comando eseguito sui vostri computer</li>
+        <li>Privilegi minimi: legge solo ciò che serve</li>
+        <li>Ogni console solo dopo un vostro consenso</li>
+        <li>Cifratura autenticata, secondo fattore obbligatorio</li>
+        <li>Tracciate anche le letture, non solo le modifiche</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="accesso"><span>Per gli MSP: accesso alla piattaforma</span><b>msp.fr-busato.it</b></div>
+
+  <div class="piede"><span>www.fr-busato.it</span><span><b>05</b> / 08</span></div>
+</section>
+
+<!-- ======================= 6 · FRGEST ======================= -->
+<section class="pagina interno">
+  <div class="testata"><span class="marchio"><img src="../assets/img/favicon.svg" alt="">F.R. di Busato Fausto</span><span class="sezione-nome">Prodotto · frGest</span></div>
+
+  <p class="occhiello">Prodotto · Il gestionale per le piccole aziende</p>
+  <div class="fg-testa" style="margin-top:3mm">
+    <img src="../assets/img/frgest.svg" alt="">
+    <div><div class="nome">frGest</div><div class="motto">Preventivo → Fattura → Incasso</div></div>
+  </div>
+  <h2 style="font-size:19pt; margin-top:4mm">Dal preventivo all'incasso, <span class="gradiente">tutto in un posto solo</span>.</h2>
+  <p>Una piccola azienda scrive bolle e fatture, e poi rifà su un foglio a parte scadenze, IVA e previsione della banca. Con frGest un documento, quando lo si emette, <strong>muove da solo magazzino, IVA e scadenze</strong>, e le fatture dei fornitori si caricano dai file dell'intermediario invece di ribatterle. Si lavora dal browser, anche in più persone insieme.</p>
+  <div class="annuncio"><span class="badge">✦ NUOVA VERSIONE WEB</span><p>Rifatto da capo e online da settembre 2026: vent'anni di mestiere dentro, un motore nuovo sotto.</p></div>
+
+  <div class="flusso"><span>Preventivo</span><i>→</i><span>Ordine</span><i>→</i><span>DDT</span><i>→</i><span class="on">Fattura</span><i>→</i><span>Incasso</span></div>
+
+  <div class="tre-col">
+    <div class="carta"><h4>Che cosa scrivete</h4><ul class="spunte"><li>Preventivi, ordini, DDT, fatture, note di credito</li><li>Incassi e pagamenti, anche su più rate</li><li>Le ore e gli interventi, se vendete servizi</li></ul></div>
+    <div class="carta centro"><h4>frGest</h4><p>Ogni movimento viene da un documento. Nessun saldo è tenuto a mano.</p></div>
+    <div class="carta"><h4>Che cosa leggete</h4><ul class="spunte"><li>Magazzino: giacenza, impegnato e valore</li><li>Registri IVA e liquidazione</li><li>Scadenzari e previsione delle banche</li><li>Il cruscotto contro l'anno prima</li></ul></div>
+  </div>
+
+  <div class="moduli">
+    <div class="modulo"><h4>Fattura elettronica, nei due sensi</h4><p>frGest prepara i file XML, controllati sullo schema ufficiale, e legge quelli dei fornitori, anche firmati o in archivi zip. A trasmetterli e riceverli è l'intermediario che avete scelto.</p></div>
+    <div class="modulo"><h4>L'IVA senza un foglio a parte</h4><p>Registri vendite e acquisti, liquidazione periodica, comunicazione trimestrale e acconto di dicembre: i numeri vengono dai documenti, quindi tornano.</p></div>
+    <div class="modulo"><h4>Il magazzino, col suo costo vero</h4><p>Il costo di ogni carico viene dalla fattura del fornitore, con le spese ripartite. Valore a costo medio ponderato, FIFO o ultimo costo, e ubicazioni.</p></div>
+    <div class="modulo"><h4>Incassi, pagamenti e banche</h4><p>Scadenzari di clienti e fornitori, più banche con il saldo previsto mese per mese, distinte RIBA in formato CBI e bonifici SEPA con i loro esiti.</p></div>
+    <div class="modulo"><h4>Per chi vende anche servizi</h4><p>Abbonamenti con la loro periodicità, pacchetti prepagati scalati dal registro degli interventi, commesse con il margine contro il previsto.</p></div>
+    <div class="modulo"><h4>Il numero arriva all'emissione</h4><p>Senza buchi né doppioni anche in più persone. Emesso, il documento resta com'era: una fattura vecchia non cambia se domani cambia un listino.</p></div>
+    <div class="modulo largo"><h4>Usate già il frGest di prima?</h4><p>Non si ricomincia da zero: frGest carica l'archivio del programma precedente — anagrafiche, listini, documenti col loro numero originale, incassi, giacenze e interventi. Dall'archivio di un'azienda sono entrati 5.381 documenti su 5.382. Si parte da una prova sul vostro archivio.</p></div>
+  </div>
+
+  <div class="accesso"><span>Si lavora dal browser</span><b>frgest.fr-busato.it</b></div>
+
+  <div class="piede"><span>www.fr-busato.it</span><span><b>06</b> / 08</span></div>
+</section>
+
+<!-- ======================= 7 · CERTIFICAZIONI E PARTNER ======================= -->
+<section class="pagina interno">
+  <div class="testata"><span class="marchio"><img src="../assets/img/favicon.svg" alt="">F.R. di Busato Fausto</span><span class="sezione-nome">Certificazioni e partner</span></div>
+
+  <p class="occhiello">Certificazioni e formazione</p>
+  <h2>Competenze documentate,<br>non solo <span class="gradiente">dichiarate</span>.</h2>
+  <p class="lead">Certificazioni ufficiali rilasciate da enti e produttori riconosciuti e formazione specialistica: privacy e conformità normativa, protezione dei dati, continuità operativa, virtualizzazione e gestione delle informazioni nel BIM.</p>
+
+  <div class="cert-griglia">
+    <div class="cert"><div class="icona"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 7 5-3 5 3-1.5-7"/></svg></div><div><span class="tipo">Certificazione</span><h4>Acronis Cyber Protect Sales Pro</h4><p>Acronis Academy · Sales</p></div></div>
+    <div class="cert"><div class="icona"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 7 5-3 5 3-1.5-7"/></svg></div><div><span class="tipo">Certificazione</span><h4>EDR Pro</h4><p>Acronis Academy · Cloud Tech</p></div></div>
+    <div class="cert"><div class="icona"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 7 5-3 5 3-1.5-7"/></svg></div><div><span class="tipo">Certificazione</span><h4>VMware Technical Solutions Professional (VTSP)</h4><p>VMware</p></div></div>
+    <div class="cert"><div class="icona"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 7 5-3 5 3-1.5-7"/></svg></div><div><span class="tipo">Certificazione</span><h4>VMware Sales Professional (VSP)</h4><p>VMware</p></div></div>
+    <div class="cert persona">
+      <div class="icona"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></div>
+      <div>
+        <span class="tipo" style="color:#9fc2ff">Certificazione del personale · ICMQ</span>
+        <h4>Esperto in Building Information Modeling — CDE Manager</h4>
+        <p>Certificata la persona: <strong style="color:#fff">Fausto Busato</strong>. Gestisce l'ambiente di condivisione dei dati di una commessa BIM, secondo le norme UNI 11337-7:2018 e UNI/PdR 78:2020.</p>
+        <p class="numero">Certificato n° 26-02391 · scadenza 27/10/2031 · registro ICMQ</p>
+      </div>
+    </div>
+    <div class="cert"><div class="icona"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7l10-4 10 4-10 4z"/><path d="M6 9v5c0 1.5 3 3 6 3s6-1.5 6-3V9"/></svg></div><div><span class="tipo">Corso di formazione · 2020</span><h4>Master per Privacy Officer e Consulente della Privacy</h4><p>Federprivacy, frequentato da Fausto Busato</p></div></div>
+    <div class="cert"><div class="icona"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7l10-4 10 4-10 4z"/><path d="M6 9v5c0 1.5 3 3 6 3s6-1.5 6-3V9"/></svg></div><div><span class="tipo">Corso di formazione · 2025</span><h4>Direttiva NIS2: indicazioni operative</h4><p>Wolters Kluwer, frequentato da Fausto Busato</p></div></div>
+  </div>
+  <p class="piccolo" style="margin-top:3mm"><strong>Associazioni:</strong> Fausto Busato è <strong>Socio Membro di Federprivacy</strong>, codice FP-16198.</p>
+
+  <p class="occhiello" style="margin-top:7mm">Rivenditori e partner di canale</p>
+  <div class="partner-griglia">
+    <div class="partner"><div class="nome">Microsoft</div><div class="rapporto">Rivenditore</div></div>
+    <div class="partner"><div class="nome">Adobe</div><div class="rapporto">Registered Reseller</div></div>
+    <div class="partner"><div class="nome">Dell Technologies</div><div class="rapporto">Authorized Partner</div></div>
+    <div class="partner"><div class="nome">WatchGuard<sup>®</sup></div><div class="rapporto">Partner WatchGuardONE</div></div>
+    <div class="partner"><div class="nome">Acronis<sup>®</sup></div><div class="rapporto">Authorized Service Provider e Authorized Reseller</div></div>
+    <div class="partner"><div class="nome">Lenovo</div><div class="rapporto">Business Partner</div></div>
+  </div>
+
+  <div class="piede"><span>www.fr-busato.it</span><span><b>07</b> / 08</span></div>
+</section>
+
+<!-- ======================= 8 · CONTATTI (RETRO) ======================= -->
+<section class="pagina retro">
+  {{COSTELLAZIONE_RETRO}}
+  <p class="occhiello">Contatti</p>
+  <h2>Parliamo del tuo<br><span class="gradiente">progetto</span>.</h2>
+  <p class="lead">Scrivici o vieni a trovarci: individueremo insieme la soluzione più adatta alla tua azienda, senza impegno.</p>
+
+  <div class="contatti">
+    <div class="contatto">
+      <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+      <h3>Scrivici</h3>
+      <p>Per informazioni, preventivi o richieste di assistenza:</p>
+      <p class="forte">fausto@fr-busato.it</p>
+    </div>
+    <div class="contatto">
+      <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <h3>Dove siamo</h3>
+      <p>Novellara (RE), Italia.<br>Al fianco delle aziende delle province di Reggio Emilia e Modena, e anche da remoto.</p>
+    </div>
+    <div class="contatto">
+      <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>
+      <h3>Sul web</h3>
+      <p class="forte">www.fr-busato.it</p>
+      <p>Servizi, progetti, certificazioni e novità.</p>
+    </div>
+    <div class="contatto">
+      <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <h3>Assistenza remota</h3>
+      <p>Per gli interventi urgenti è attivo il collegamento remoto con operatore: dal sito, «Contatta un operatore».</p>
+    </div>
+  </div>
+
+  <div class="comincia">
+    <p class="occhiello">Come si comincia</p>
+    <div class="comincia-passi">
+      <div><span>01</span><h3>Ascolto</h3><p>Partiamo dalle tue esigenze e dai problemi concreti da risolvere.</p></div>
+      <div><span>02</span><h3>Proposta</h3><p>Le soluzioni più adatte, spiegate in modo semplice, con tempi e un preventivo chiari.</p></div>
+      <div><span>03</span><h3>Realizzazione e supporto</h3><p>Ti seguiamo nella realizzazione e restiamo raggiungibili nel tempo, anche da remoto.</p></div>
+    </div>
+  </div>
+
+  <div class="chiusura">
+    <div class="firma">
+      <div class="marchio-grande">
+        <div class="tessera"><img src="../assets/img/favicon.svg" alt=""></div>
+        <div><strong>F.R. di Busato Fausto</strong><span>l'informatica al tuo servizio</span></div>
+      </div>
+      <div class="legale">F.R. di Busato Fausto — 42017 Novellara (RE)<br>P.IVA 01878620358</div>
+    </div>
+    <p class="marchi">Microsoft e Microsoft 365 sono marchi del gruppo di società Microsoft. Dell Technologies, Dell e altri marchi sono marchi di Dell Inc. o delle sue sussidiarie. WatchGuard e WatchGuardONE sono marchi registrati o marchi di WatchGuard Technologies, Inc. negli Stati Uniti e/o in altri paesi. Acronis® è un marchio registrato di Acronis International GmbH e/o delle sue affiliate negli Stati Uniti e in altri paesi. Adobe è un marchio registrato o un marchio di Adobe negli Stati Uniti e/o in altri paesi. Lenovo è un marchio registrato o un marchio commerciale di Lenovo. Federprivacy® è un marchio registrato dell'Associazione Federprivacy. Gli altri marchi citati appartengono ai rispettivi titolari.</p>
+    <p class="edizione">Edizione novembre 2026</p>
+  </div>
+</section>
+
+</body>
+</html>

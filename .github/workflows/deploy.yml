@@ -48,6 +48,8 @@ jobs:
       # file non è cambiato). s-maxage=86400: CloudFront tiene la sua copia un giorno, e
       # l'invalidazione qui sotto la svuota a ogni rilascio.
       # Il checkout dà a ogni file una data nuova, quindi sync li ricarica tutti con l'header.
+      # Fuori dal sito anche la brochure (sorgente e PDF, si distribuisce a mano: 2026-11-18) e la
+      # cronologia delle revisioni, che è del repository e non di chi visita.
       - name: Sync dei file su S3
         run: |
           aws s3 sync . "s3://${{ secrets.S3_BUCKET }}" \
@@ -56,7 +58,9 @@ jobs:
             --exclude ".git/*" \
             --exclude ".github/*" \
             --exclude "docs/*" \
-            --exclude "README.md"
+            --exclude "brochure/*" \
+            --exclude "README.md" \
+            --exclude "REVISIONI.md"
 
       - name: Invalidazione cache CloudFront
         run: |
