@@ -28,8 +28,12 @@
     return e;
   }
 
-  /* Servizio non trovato */
+  /* Servizio non trovato: la pagina d'errore non va nei motori di ricerca */
   if (!s) {
+    const nr = document.createElement("meta");
+    nr.name = "robots";
+    nr.content = "noindex";
+    document.head.appendChild(nr);
     cont.innerHTML =
       "<section class=\"sezione container\">" +
       "<p class=\"eyebrow\">Servizio</p>" +
@@ -40,10 +44,18 @@
     return;
   }
 
-  document.title = s.nome + " — F.R. di Busato Fausto";
+  /* Per i motori di ricerca: il titolo porta la zona, e l'indirizzo canonico è quello
+     del servizio su www.fr-busato.it (così la copia su GitHub Pages non gli fa concorrenza).
+     Il canonico nasce solo qui, perché l'id lo conosce solo lo script: servizio.html non
+     deve averne uno suo, Google vuole che sia l'unico della pagina. */
+  document.title = s.nome + " a Reggio Emilia — F.R. di Busato Fausto";
   /* Le pagine servizio usano l'accento della home (blu): nessun override. */
   const md = document.querySelector('meta[name="description"]');
   if (md) md.setAttribute("content", s.nome + " — " + s.sottotitolo);
+  const canonico = document.createElement("link");
+  canonico.rel = "canonical";
+  canonico.href = "https://www.fr-busato.it/servizio.html?id=" + encodeURIComponent(s.id);
+  document.head.appendChild(canonico);
 
   /* ---- Hero ---- */
   const hero = el("section", "sezione container servizio-hero");

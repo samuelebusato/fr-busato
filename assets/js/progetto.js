@@ -38,8 +38,12 @@
     });
   }
 
-  /* Progetto non trovato */
+  /* Progetto non trovato: la pagina d'errore non va nei motori di ricerca */
   if (!progetto) {
+    var nr = document.createElement("meta");
+    nr.name = "robots";
+    nr.content = "noindex";
+    document.head.appendChild(nr);
     testa.innerHTML =
       "<h1>Progetto non trovato</h1>" +
       "<p class=\"sottotitolo\" style=\"margin-top:1rem\">Il progetto richiesto non esiste o non è più disponibile. " +
@@ -51,6 +55,21 @@
   /* Il colore del progetto sostituisce il blu come accento della pagina */
   document.documentElement.style.setProperty("--accent", progetto.colore);
   document.title = progetto.nome + " — F.R. di Busato Fausto";
+
+  /* Per i motori di ricerca: la descrizione è il testo breve del progetto (senza, Google
+     ripiegava sul piè di pagina), e l'indirizzo canonico è quello del progetto su
+     www.fr-busato.it. Il canonico nasce solo qui, perché l'id lo conosce solo lo script:
+     progetto.html non deve averne uno suo, Google vuole che sia l'unico della pagina. */
+  var md = document.querySelector('meta[name="description"]');
+  if (md) {
+    var descr = progetto.breve;
+    if (descr.length > 160) descr = descr.slice(0, descr.lastIndexOf(" ", 157)) + "…";
+    md.setAttribute("content", descr);
+  }
+  var canonico = document.createElement("link");
+  canonico.rel = "canonical";
+  canonico.href = "https://www.fr-busato.it/progetto.html?id=" + encodeURIComponent(progetto.id);
+  document.head.appendChild(canonico);
 
   /* -------- Intestazione -------- */
   var eyebrow = document.createElement("p");

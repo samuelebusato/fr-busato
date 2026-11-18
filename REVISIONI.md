@@ -5,6 +5,45 @@ esercizio. Ciò che gira adesso, e perché, sta nella nota di progetto del Secon
 (`06 Sviluppo/sito-fr-busato.md`). Aperto il 2026-11-18: ciò che viene prima è in `git log` e
 nella nota di progetto. Non si pubblica sul sito (`deploy.yml`, `--exclude`).
 
+## 2026-11-18 — Posizionamento: indirizzo e telefono come sulla scheda Google, canonico sulle pagine dinamiche
+
+- **Richiesta di Fausto**: «controlla il posizionamento del sito», e poi «Sì, punti 2 e 3» sulle
+  correzioni proposte; per l'indirizzo «Senza civico», per il telefono «Sì, pubblicalo».
+- **Che cosa cambia per chi visita**:
+  - il piè di pagina di ogni pagina dice «Via Marzabotto, 42017 Novellara (RE)» e il telefono
+    329 158 6865, che si può toccare per chiamare;
+  - nei Contatti della home, «Dove siamo» ha la via e un collegamento «Apri in Google Maps», e la
+    card «Scrivici» diventa «Scrivici o chiamaci», col telefono sotto l'email.
+- **Che cosa cambia per i motori di ricerca**:
+  - i dati strutturati della home hanno via, telefono e il collegamento alla scheda Google
+    (`hasMap`): adesso dicono quello che dice la scheda, che Google mostra terza fra le attività
+    sulla mappa per «assistenza informatica Novellara»;
+  - le pagine dei servizi hanno il titolo «… a Reggio Emilia» e l'indirizzo canonico su
+    www.fr-busato.it, che nasce in `servizio.js`. Quelle dei progetti hanno lo stesso canonico e,
+    come descrizione, il testo breve del progetto, al posto del piè di pagina che Google mostrava.
+    Un servizio o un progetto che non esiste ha `noindex`;
+  - il canonico lo crea lo script, come ammette la documentazione di Google sul JavaScript, che
+    chiede che sia l'unico della pagina. Per questo `servizio.html` e `progetto.html` non ne
+    hanno uno loro, e il README lo dice.
+- **Migrazioni**: nessuna, è un sito statico.
+- **Prove**, in locale (`py -m http.server 8765`):
+  - tre servizi, due progetti e i due id inesistenti: titolo, descrizione, un solo canonico e
+    `noindex` dove serve;
+  - i vecchi indirizzi `servizio.html?id=cyberse` e `progetto.html?id=frgest` portano ancora alle
+    schede, col loro canonico;
+  - il JSON-LD si legge; nessuno sfondamento orizzontale a 375 e a 1024 px.
+- **In esercizio**: vedi la nota di progetto. Si verifica che www.fr-busato.it serva il piè di
+  pagina con Via Marzabotto e `servizio.js` con `a Reggio Emilia`.
+- **Resta fuori**:
+  - la «Ultimo aggiornamento» di `privacy.html` non cambia: è cambiato solo il piè di pagina, non
+    l'informativa;
+  - la brochure dice ancora che il sito non pubblica il telefono;
+  - gli orari non sono nei dati strutturati, perché andrebbero tenuti uguali a quelli della
+    scheda a ogni cambio;
+  - la scheda Google mostra «Sei il proprietario di quest'attività?», quindi forse non è
+    rivendicata;
+  - la scheda di Cyberse non è nell'indice di Google: si guarda da Search Console.
+
 ## 2026-11-18 — Il deploy toglie dal sito i file che esclude
 
 - **Che cosa cambia**: tolto `--dryrun`. A ogni deploy, dopo il sync, il bucket perde ciò che
