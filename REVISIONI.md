@@ -5,6 +5,25 @@ esercizio. Ciò che gira adesso, e perché, sta nella nota di progetto del Secon
 (`06 Sviluppo/sito-fr-busato.md`). Aperto il 2026-11-18: ciò che viene prima è in `git log` e
 nella nota di progetto. Non si pubblica sul sito (`deploy.yml`, `--exclude`).
 
+## 2026-11-18 — Il profilo non dice più che ci sono le intestazioni di sicurezza
+
+- **Richiesta di Fausto**: «Sì, correggi», sulla riga di `docs/profilo.md` trovata falsa durante il
+  controllo del posizionamento.
+- **Che cosa cambia**: nel profilo, la ragione dell'asse «Sicurezza: basso» non dice più che
+  l'alterazione del sito è coperta «dalle intestazioni di sicurezza». Dice che è coperta dal ruolo
+  OIDC del deploy, e che le intestazioni **non ci sono**. Di conseguenza la verifica della regola
+  SI3 («la risposta ha TLS e le intestazioni») oggi non passa.
+  - Il valore dell'asse non cambia, e nemmeno il blocco `profilo`: le regole generate restano le
+    stesse, e non serve rigenerarle.
+  - Per chi visita il sito non cambia niente: `docs/` è fuori dal deploy.
+- **Migrazioni**: nessuna.
+- **Prove**: le risposte di www.fr-busato.it, controllate di nuovo, non hanno HSTS,
+  `X-Content-Type-Options` né `X-Frame-Options`.
+- **In esercizio**: vedi la nota di progetto. Si verifica che `docs/profilo.md` resti 404 sul sito e
+  che la home abbia la stessa ETag.
+- **Resta fuori**: attivare le intestazioni (la `SecurityHeadersPolicy` di CloudFront, dalla console
+  AWS). Quando ci saranno, la riga del profilo va corretta di nuovo.
+
 ## 2026-11-18 — Le pagine dei servizi dicono dove lavoriamo
 
 - **Richiesta di Fausto**: «Sì, proponi», sulla proposta di testi locali per le pagine dei servizi.

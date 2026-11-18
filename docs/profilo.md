@@ -27,7 +27,7 @@ toglie: CF2 — deroga del 2026-08-04 (§1.0 del framework): le righe del threat
 | Asse | Valore | Chi, quando e perché |
 |---|---|---|
 | Dati | basso | L'agente della sessione principale, su delega di Samuele, il 2026-11-14: un sito statico, che non tiene dati suoi |
-| Sicurezza | basso | Lo stesso: nulla da rubare; il rischio è l'alterazione del sito, coperta dal ruolo OIDC del deploy e dalle intestazioni di sicurezza |
+| Sicurezza | basso | Lo stesso: nulla da rubare; il rischio è l'alterazione del sito, coperta dal ruolo OIDC del deploy. Le intestazioni di sicurezza (HSTS, `X-Content-Type-Options`, `X-Frame-Options`) **non ci sono**: verificato sulle risposte del sito il 2026-11-18, quindi la verifica di SI3 («la risposta ha TLS e le intestazioni») oggi non passa. La `SecurityHeadersPolicy` di CloudFront, in `docs/deploy-aws.md`, è solo consigliata e si attiva dalla console AWS |
 | Dove gira | A | Un sito statico, su S3 e CloudFront |
 | Per chi | fr-busato | È il sito di F.R. di Busato Fausto |
 | Rigore | prodotto | È online e pubblico |
