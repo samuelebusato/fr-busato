@@ -5,6 +5,27 @@ esercizio. Ciò che gira adesso, e perché, sta nella nota di progetto del Secon
 (`06 Sviluppo/sito-fr-busato.md`). Aperto il 2026-11-18: ciò che viene prima è in `git log` e
 nella nota di progetto. Non si pubblica sul sito (`deploy.yml`, `--exclude`).
 
+## 2026-11-18 — La brochure con via e telefono, come il sito
+
+- **Richiesta di Fausto**: «Sì, allinea», sulla proposta di dare alla brochure la via e il telefono
+  che il sito pubblica dalla revisione sotto.
+- **Che cosa cambia**: solo la pagina 8, quella dei contatti.
+  - La card «Scrivici» diventa «Scrivici o chiamaci», col 329 158 6865 sotto l'email.
+  - «Dove siamo» dice «Via Marzabotto, 42017 Novellara (RE)».
+  - L'invito diventa «Scrivici, chiamaci o vieni a trovarci».
+  - La riga legale in fondo ha la via e il telefono.
+  - Il commento in testa a `brochure.html` aggiunge la regola: indirizzo e telefono uguali al sito
+    e alla scheda Google.
+- **Per chi visita il sito non cambia niente**: `brochure/` resta fuori dal deploy.
+- **Migrazioni**: nessuna.
+- **Prove**: PDF rigenerato con `py -I brochure/genera.py`.
+  - Ha sempre 8 pagine A4.
+  - Le pagine 1–7 hanno il testo identico al PDF di prima, e solo la pagina 8 cambia.
+  - I caratteri incorporati sono gli stessi, pagina per pagina.
+  - L'anteprima della pagina 8 è controllata: nessun testo oltre i riquadri o il piè.
+- **In esercizio**: vedi la nota di progetto. La brochure si distribuisce a mano; dal sito si
+  verifica che `brochure/` resti 404 e che la home abbia la stessa ETag.
+
 ## 2026-11-18 — Posizionamento: indirizzo e telefono come sulla scheda Google, canonico sulle pagine dinamiche
 
 - **Richiesta di Fausto**: «controlla il posizionamento del sito», e poi «Sì, punti 2 e 3» sulle
@@ -37,7 +58,7 @@ nella nota di progetto. Non si pubblica sul sito (`deploy.yml`, `--exclude`).
 - **Resta fuori**:
   - la «Ultimo aggiornamento» di `privacy.html` non cambia: è cambiato solo il piè di pagina, non
     l'informativa;
-  - la brochure dice ancora che il sito non pubblica il telefono;
+  - la brochure dice ancora che il sito non pubblica il telefono (allineata nella revisione sopra);
   - gli orari non sono nei dati strutturati, perché andrebbero tenuti uguali a quelli della
     scheda a ogni cambio;
   - la scheda Google mostra «Sei il proprietario di quest'attività?», quindi forse non è
