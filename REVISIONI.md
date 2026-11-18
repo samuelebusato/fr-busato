@@ -5,6 +5,22 @@ esercizio. Ciò che gira adesso, e perché, sta nella nota di progetto del Secon
 (`06 Sviluppo/sito-fr-busato.md`). Aperto il 2026-11-18: ciò che viene prima è in `git log` e
 nella nota di progetto. Non si pubblica sul sito (`deploy.yml`, `--exclude`).
 
+## 2026-11-18 — Il deploy toglie dal sito i file che esclude (prova a vuoto)
+
+- **Richiesta di Fausto**: «Sì, procedi», sulla proposta di togliere dal sito il vecchio
+  `README.md`, con un primo giro a vuoto.
+- **Che cosa cambia**: in `deploy.yml` l'elenco di ciò che non va sul sito è uno solo (`FUORI`) e
+  diventa sia le esclusioni del sync sia una cancellazione mirata dopo il sync. In questo commit la
+  cancellazione è a vuoto (`--dryrun`): il log elenca che cosa toglierebbe, e non toglie niente.
+  Per chi visita non cambia niente.
+- **Perché**: le esclusioni non cancellano ciò che era già sul bucket. `README.md` (versione
+  `a8c3bf4`) e `docs/deploy-aws.md`, caricati il 2026-07-30, rispondevano ancora 200.
+- **Migrazioni**: nessuna.
+- **Prove**: in locale, il passo con un `aws` finto che stampa gli argomenti. Senza `set -f` la
+  shell espandeva `docs/*` sui file del checkout; con `set -f` gli argomenti sono quelli voluti.
+- **Atteso nel log**: due sole righe `(dryrun) delete:`, `README.md` e `docs/deploy-aws.md`. Se è
+  così, il commit dopo toglie `--dryrun`.
+
 ## 2026-11-18 — La brochure aziendale in PDF
 
 - **Richiesta di Fausto**: «prepara una brochure aziendale in formato pdf», e poi «committa,

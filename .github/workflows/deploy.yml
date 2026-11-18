@@ -48,19 +48,29 @@ jobs:
       # file non è cambiato). s-maxage=86400: CloudFront tiene la sua copia un giorno, e
       # l'invalidazione qui sotto la svuota a ogni rilascio.
       # Il checkout dà a ogni file una data nuova, quindi sync li ricarica tutti con l'header.
-      # Fuori dal sito anche la brochure (sorgente e PDF, si distribuisce a mano: 2026-11-18) e la
-      # cronologia delle revisioni, che è del repository e non di chi visita.
+      #
+      # FUORI è l'unico elenco di ciò che non va sul sito: diventa le esclusioni del sync e, dopo,
+      # i file da togliere dal bucket. Le esclusioni impediscono di caricare, non cancellano ciò
+      # che c'era già: README.md e docs/deploy-aws.md, caricati il 2026-07-30, prima del deploy
+      # automatico, sono stati serviti fino al 2026-11-18. La brochure (sorgente e PDF) si
+      # distribuisce a mano; REVISIONI.md è del repository, non di chi visita.
+      # set -f: senza, la shell espande docs/* sui file del checkout invece di passarlo ad aws.
       - name: Sync dei file su S3
+        shell: bash
+        env:
+          FUORI: ".git/* .github/* docs/* brochure/* README.md REVISIONI.md"
         run: |
+          set -f
+          esclusi=(); compresi=()
+          for p in $FUORI; do esclusi+=(--exclude "$p"); compresi+=(--include "$p"); done
+          set +f
           aws s3 sync . "s3://${{ secrets.S3_BUCKET }}" \
             --delete \
             --cache-control "public, max-age=0, must-revalidate, s-maxage=86400" \
-            --exclude ".git/*" \
-            --exclude ".github/*" \
-            --exclude "docs/*" \
-            --exclude "brochure/*" \
-            --exclude "README.md" \
-            --exclude "REVISIONI.md"
+            "${esclusi[@]}"
+          # --dryrun al primo giro: il log dice che cosa toglierebbe, senza toglierlo (2026-11-18).
+          aws s3 rm "s3://${{ secrets.S3_BUCKET }}" --recursive --dryrun \
+            --exclude "*" "${compresi[@]}"
 
       - name: Invalidazione cache CloudFront
         run: |
